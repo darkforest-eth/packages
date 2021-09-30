@@ -1,0 +1,4 @@
+contracts.js
+contracts.d.ts
+*.wasm
+*.zkey

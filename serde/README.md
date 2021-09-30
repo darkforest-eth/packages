@@ -1,0 +1,542 @@
+# @darkforest_eth/serde
+
+This package contains serializers and deserializers for converting between
+various representations of Dark Forest data, for example between raw data
+received from blockchain calls to Dark Forest contracts and the typescript
+types used across the client.
+
+## Installation
+
+You can install this package using [`npm`](https://www.npmjs.com) or
+[`yarn`](https://classic.yarnpkg.com/lang/en/) by running:
+
+```bash
+npm install --save @darkforest_eth/serde
+```
+
+```bash
+yarn add @darkforest_eth/serde
+```
+
+When using this in a plugin, you might want to load it with [skypack](https://www.skypack.dev)
+
+```js
+import * as serde from 'http://cdn.skypack.dev/@darkforest_eth/serde';
+```
+
+## Table of contents
+
+### Type aliases
+
+- [RawArrival](README.md#rawarrival)
+- [RawArtifactPointValues](README.md#rawartifactpointvalues)
+- [RawArtifactWithMetadata](README.md#rawartifactwithmetadata)
+- [RawClaimedCoords](README.md#rawclaimedcoords)
+- [RawPlanet](README.md#rawplanet)
+- [RawPlanetExtendedInfo](README.md#rawplanetextendedinfo)
+- [RawPlayer](README.md#rawplayer)
+- [RawRevealedCoords](README.md#rawrevealedcoords)
+- [RawUpgrade](README.md#rawupgrade)
+- [RawUpgradesBranches](README.md#rawupgradesbranches)
+
+### Functions
+
+- [address](README.md#address)
+- [artifactIdFromDecStr](README.md#artifactidfromdecstr)
+- [artifactIdFromEthersBN](README.md#artifactidfromethersbn)
+- [artifactIdFromHexStr](README.md#artifactidfromhexstr)
+- [artifactIdToDecStr](README.md#artifactidtodecstr)
+- [decodeArrival](README.md#decodearrival)
+- [decodeArtifact](README.md#decodeartifact)
+- [decodeArtifactPointValues](README.md#decodeartifactpointvalues)
+- [decodeClaimedCoords](README.md#decodeclaimedcoords)
+- [decodePlanet](README.md#decodeplanet)
+- [decodePlanetDefaults](README.md#decodeplanetdefaults)
+- [decodePlayer](README.md#decodeplayer)
+- [decodeRevealedCoords](README.md#decoderevealedcoords)
+- [decodeUpgrade](README.md#decodeupgrade)
+- [decodeUpgradeBranches](README.md#decodeupgradebranches)
+- [locationIdFromBigInt](README.md#locationidfrombigint)
+- [locationIdFromDecStr](README.md#locationidfromdecstr)
+- [locationIdFromEthersBN](README.md#locationidfromethersbn)
+- [locationIdFromHexStr](README.md#locationidfromhexstr)
+- [locationIdToDecStr](README.md#locationidtodecstr)
+
+## Type aliases
+
+### RawArrival
+
+Ƭ **RawArrival**: `Awaited`<`ReturnType`<`DarkForestCore`[``"getPlanetArrival"``]\>\>
+
+---
+
+### RawArtifactPointValues
+
+Ƭ **RawArtifactPointValues**: `Awaited`<`ReturnType`<`DarkForestCore`[``"getArtifactPointValues"``]\>\>
+
+---
+
+### RawArtifactWithMetadata
+
+Ƭ **RawArtifactWithMetadata**: `Awaited`<`ReturnType`<`DarkForestGetters`[``"getArtifactById"``]\>\>
+
+---
+
+### RawClaimedCoords
+
+Ƭ **RawClaimedCoords**: `Awaited`<`ReturnType`<`DarkForestScoringRound3`[``"claimedCoords"``]\>\>
+
+---
+
+### RawPlanet
+
+Ƭ **RawPlanet**: `Awaited`<`ReturnType`<`DarkForestCore`[``"getPlanet"``]\>\>
+
+---
+
+### RawPlanetExtendedInfo
+
+Ƭ **RawPlanetExtendedInfo**: `Awaited`<`ReturnType`<`DarkForestCore`[``"planetsExtendedInfo"``]\>\>
+
+---
+
+### RawPlayer
+
+Ƭ **RawPlayer**: `Awaited`<`ReturnType`<`DarkForestCore`[``"players"``]\>\>
+
+---
+
+### RawRevealedCoords
+
+Ƭ **RawRevealedCoords**: `Awaited`<`ReturnType`<`DarkForestCore`[``"revealedCoords"``]\>\>
+
+---
+
+### RawUpgrade
+
+Ƭ **RawUpgrade**: `Awaited`<`ReturnType`<`DarkForestGetters`[``"getArtifactById"``]\>\>[``"upgrade"``]
+
+---
+
+### RawUpgradesBranches
+
+Ƭ **RawUpgradesBranches**: `Awaited`<`ReturnType`<`DarkForestCore`[``"getUpgrades"``]\>\>
+
+## Functions
+
+### address
+
+▸ **address**(`str`): `EthAddress`
+
+Converts a string to an `EthAddress`: a 0x-prefixed all lowercase hex string
+of 40 hex characters. An object of the `EthAddress` type should only ever be
+initialized through this constructor-like method. Throws if the provided
+string cannot be parsed as an Ethereum address.
+
+#### Parameters
+
+| Name  | Type     | Description              |
+| :---- | :------- | :----------------------- |
+| `str` | `string` | An address-like `string` |
+
+#### Returns
+
+`EthAddress`
+
+---
+
+### artifactIdFromDecStr
+
+▸ **artifactIdFromDecStr**(`artifactId`): `ArtifactId`
+
+Converts a string representing a decimal number into an ArtifactID: a
+non-0x-prefixed all lowercase hex string of exactly 64 hex characters
+(0-padded if necessary). ArtifactIDs should only be instantiated through
+`artifactIdFromHexStr`, `artifactIdFromDecStr`, and `artifactIdFromEthersBN`.
+
+#### Parameters
+
+| Name         | Type     | Description                                                               |
+| :----------- | :------- | :------------------------------------------------------------------------ |
+| `artifactId` | `string` | `string` of decimal digits, the base 10 representation of an artifact ID. |
+
+#### Returns
+
+`ArtifactId`
+
+---
+
+### artifactIdFromEthersBN
+
+▸ **artifactIdFromEthersBN**(`artifactId`): `ArtifactId`
+
+Converts a ethers.js BigNumber (type aliased here as EthersBN) representing a
+decimal number into an ArtifactID: a non-0x-prefixed all lowercase hex string
+of exactly 64 hex characters (0-padded if necessary). ArtifactIDs should only
+be instantiated through `artifactIdFromHexStr`, `artifactIdFromDecStr`, and
+`artifactIdFromEthersBN`.
+
+#### Parameters
+
+| Name         | Type       | Description                                     |
+| :----------- | :--------- | :---------------------------------------------- |
+| `artifactId` | `EthersBN` | ether.js `BigNumber` representing artifact's ID |
+
+#### Returns
+
+`ArtifactId`
+
+---
+
+### artifactIdFromHexStr
+
+▸ **artifactIdFromHexStr**(`artifactId`): `ArtifactId`
+
+Converts a possibly 0x-prefixed string of hex digits to an `ArtifactId`: a
+non-0x-prefixed all lowercase hex string of exactly 64 hex characters
+(0-padded if necessary). ArtifactIDs should only be instantiated through
+`artifactIdFromHexStr`, `artifactIdFromDecStr`, and `artifactIdFromEthersBN`.
+
+#### Parameters
+
+| Name         | Type     | Description                                                                              |
+| :----------- | :------- | :--------------------------------------------------------------------------------------- |
+| `artifactId` | `string` | Possibly 0x-prefixed, possibly unpadded hex `string` representation of an artifact's ID. |
+
+#### Returns
+
+`ArtifactId`
+
+---
+
+### artifactIdToDecStr
+
+▸ **artifactIdToDecStr**(`artifactId`): `string`
+
+Converts an ArtifactID to a decimal string with equivalent numerical value;
+can be used if you need to pass an artifact ID into a web3 call.
+
+#### Parameters
+
+| Name         | Type         | Description                                                                               |
+| :----------- | :----------- | :---------------------------------------------------------------------------------------- |
+| `artifactId` | `ArtifactId` | non-0x-prefixed lowercase hex `string` of 64 hex characters representing an artifact's ID |
+
+#### Returns
+
+`string`
+
+---
+
+### decodeArrival
+
+▸ **decodeArrival**(`rawArrival`): `QueuedArrival`
+
+Converts the raw typechain result of `DarkForestTypes.ArrivalData` struct to
+to a `QueuedArrival` typescript typed object (see @darkforest_eth/types)
+
+#### Parameters
+
+| Name         | Type                                 | Description                                                                                                               |
+| :----------- | :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `rawArrival` | [`RawArrival`](README.md#rawarrival) | Raw data of a `DarkForestTypes.ArrivalData` struct, returned from a blockchain call (assumed to be typed with typechain). |
+
+#### Returns
+
+`QueuedArrival`
+
+---
+
+### decodeArtifact
+
+▸ **decodeArtifact**(`rawArtifactWithMetadata`): `Artifact`
+
+Converts the raw typechain result of `DarkForestTypes.ArtifactWithMetadata`
+struct to an `Artifact` typescript typed object (see @darkforest_eth/types).
+
+#### Parameters
+
+| Name                      | Type                                                           | Description                                                                                                         |
+| :------------------------ | :------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------ |
+| `rawArtifactWithMetadata` | [`RawArtifactWithMetadata`](README.md#rawartifactwithmetadata) | Raw data of an `ArtifactWithMetadata` struct, returned from a blockchain call (assumed to be typed with typechain). |
+
+#### Returns
+
+`Artifact`
+
+---
+
+### decodeArtifactPointValues
+
+▸ **decodeArtifactPointValues**(`rawPointValues`): `ArtifactPointValues`
+
+Converts the raw typechain result of a call to
+`DarkForestCore.getArtifactPointValues` to an `ArtifactPointValues`
+typescript typed object (see @darkforest_eth/types).
+
+#### Parameters
+
+| Name             | Type                                                         |
+| :--------------- | :----------------------------------------------------------- |
+| `rawPointValues` | [`RawArtifactPointValues`](README.md#rawartifactpointvalues) |
+
+#### Returns
+
+`ArtifactPointValues`
+
+---
+
+### decodeClaimedCoords
+
+▸ **decodeClaimedCoords**(`rawClaimedCoords`): `ClaimedCoords`
+
+Converts the result of a typechain-typed ethers.js contract call returning a
+`DarkForestTypes.ClaimedCoords` struct into a `ClaimedCoords` object (see
+
+**`darkforest_eth/types)`**
+
+#### Parameters
+
+| Name               | Type                                             | Description                                                                                                |
+| :----------------- | :----------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
+| `rawClaimedCoords` | [`RawClaimedCoords`](README.md#rawclaimedcoords) | the result of a typechain-typed ethers.js contract call returning a DarkForestTypes.RevealedCoords` struct |
+
+#### Returns
+
+`ClaimedCoords`
+
+---
+
+### decodePlanet
+
+▸ **decodePlanet**(`rawLocationId`, `rawPlanet`, `rawPlanetExtendedInfo`): `Planet`
+
+Converts data obtained from a contract call (typed with Typechain) into a
+`Planet` that can be used by the client (see @darkforest_eth/types). Note
+that some `Planet` fields (1) store client data that the blockchain is not
+aware of, such as `unconfirmedDepartures`, (2) store derived data that is
+calculated later by the client, such as `silverSpent` and `bonus`, or (3)
+store data which must be added later from the results of additional contract
+calls, such as `coordsRevealed` and `heldArtifactIds`. Therefore this
+function may not be very useful to you outside of the specific context of the
+provided Dark Forest web client.
+
+#### Parameters
+
+| Name                    | Type                                                       | Description                                                                       |
+| :---------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------- |
+| `rawLocationId`         | `string`                                                   | string of decimal digits representing a number equal to a planet's ID             |
+| `rawPlanet`             | [`RawPlanet`](README.md#rawplanet)                         | typechain-typed result of a call returning a `DarkForestTypes.Planet`             |
+| `rawPlanetExtendedInfo` | [`RawPlanetExtendedInfo`](README.md#rawplanetextendedinfo) | typechain-typed result of a call returning a `DarkForestTypes.PlanetExtendedInfo` |
+
+#### Returns
+
+`Planet`
+
+---
+
+### decodePlanetDefaults
+
+▸ **decodePlanetDefaults**(`rawDefaults`): `PlanetDefaults`
+
+Converts the raw typechain result of a call which fetches a
+`DarkForestTypes.PlanetDefaultStats[]` array of structs, and converts it into
+an object with type `PlanetDefaults` (see @darkforest_eth/types).
+
+#### Parameters
+
+| Name          | Type    | Description                                                                                                                |
+| :------------ | :------ | :------------------------------------------------------------------------------------------------------------------------- |
+| `rawDefaults` | `any`[] | result of a ethers.js contract call which returns a raw `DarkForestTypes.PlanetDefaultStats` struct, typed with typechain. |
+
+#### Returns
+
+`PlanetDefaults`
+
+---
+
+### decodePlayer
+
+▸ **decodePlayer**(`rawPlayer`): `Player`
+
+Converts the raw typechain result of a call which fetches a
+`DarkForestTypes.Player` struct, and converts it into an object
+with type `Player` (see @darkforest_eth/types) that can be used by a client.
+
+#### Parameters
+
+| Name        | Type                               | Description                                                                                                     |
+| :---------- | :--------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| `rawPlayer` | [`RawPlayer`](README.md#rawplayer) | result of an ethers.js contract call which returns a raw `DarkForestTypes.Player` struct, typed with typechain. |
+
+#### Returns
+
+`Player`
+
+---
+
+### decodeRevealedCoords
+
+▸ **decodeRevealedCoords**(`rawRevealedCoords`): `RevealedCoords`
+
+Converts the result of a typechain-typed ethers.js contract call returning a
+`DarkForestTypes.RevealedCoords` struct into a `RevealedCoords` object (see
+
+**`darkforest_eth/types)`**
+
+#### Parameters
+
+| Name                | Type                                               | Description                                                                                                |
+| :------------------ | :------------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
+| `rawRevealedCoords` | [`RawRevealedCoords`](README.md#rawrevealedcoords) | the result of a typechain-typed ethers.js contract call returning a DarkForestTypes.RevealedCoords` struct |
+
+#### Returns
+
+`RevealedCoords`
+
+---
+
+### decodeUpgrade
+
+▸ **decodeUpgrade**(`rawUpgrade`): `Upgrade`
+
+Converts raw data received from a typechain-typed ethers.js contract call
+returning a `DarkForestTypes.Upgrade` into an `Upgrade` object (see
+
+**`darkforest_eth/types)`**
+
+#### Parameters
+
+| Name         | Type                                 | Description                                                                                            |
+| :----------- | :----------------------------------- | :----------------------------------------------------------------------------------------------------- |
+| `rawUpgrade` | [`RawUpgrade`](README.md#rawupgrade) | raw data received from a typechain-typed ethers.js contract call returning a `DarkForestTypes.Upgrade` |
+
+#### Returns
+
+`Upgrade`
+
+---
+
+### decodeUpgradeBranches
+
+▸ **decodeUpgradeBranches**(`rawUpgradeBranches`): `UpgradeBranches`
+
+Converts the raw return value of an ether.js contract call to
+`DarkForestCore.getUpgrades` to a 2D array of `Upgrade`s.
+
+#### Parameters
+
+| Name                 | Type                                                   | Description                                                                |
+| :------------------- | :----------------------------------------------------- | :------------------------------------------------------------------------- |
+| `rawUpgradeBranches` | [`RawUpgradesBranches`](README.md#rawupgradesbranches) | raw return value of ether.js contract call to `DarkForestCore.getUpgrades` |
+
+#### Returns
+
+`UpgradeBranches`
+
+---
+
+### locationIdFromBigInt
+
+▸ **locationIdFromBigInt**(`location`): `LocationId`
+
+Converts a BigInteger representation of location ID into a LocationID: a
+non-0x-prefixed all lowercase hex string of exactly 64 hex characters
+(0-padded). LocationIDs should only be instantiated through
+`locationIdFromHexStr`, `locationIdFromDecStr`, `locationIdFromBigInt`, and
+`locationIdFromEthersBN`.
+
+#### Parameters
+
+| Name       | Type         | Description                                   |
+| :--------- | :----------- | :-------------------------------------------- |
+| `location` | `BigInteger` | `BigInteger` representation of a location ID. |
+
+#### Returns
+
+`LocationId`
+
+---
+
+### locationIdFromDecStr
+
+▸ **locationIdFromDecStr**(`location`): `LocationId`
+
+Converts a string representing a decimal number into a LocationID: a
+non-0x-prefixed all lowercase hex string of exactly 64 hex characters
+(0-padded if necessary). LocationIDs should only be instantiated through
+`locationIdFromHexStr`, `locationIdFromDecStr`, `locationIdFromBigInt`, and
+`locationIdFromEthersBN`.
+
+#### Parameters
+
+| Name       | Type     | Description                                                              |
+| :--------- | :------- | :----------------------------------------------------------------------- |
+| `location` | `string` | `string` of decimal digits, the base 10 representation of a location ID. |
+
+#### Returns
+
+`LocationId`
+
+---
+
+### locationIdFromEthersBN
+
+▸ **locationIdFromEthersBN**(`location`): `LocationId`
+
+Converts an ethers.js BigNumber (type aliased here as `EthersBN`)
+representation of a location ID into a LocationID: a non-0x-prefixed all
+lowercase hex string of exactly 64 hex characters (0-padded). LocationIDs
+should only be instantiated through `locationIdFromHexStr`,
+`locationIdFromDecStr`, `locationIdFromBigInt`, and `locationIdFromEthersBN`.
+
+#### Parameters
+
+| Name       | Type       | Description                                           |
+| :--------- | :--------- | :---------------------------------------------------- |
+| `location` | `EthersBN` | ethers.js `BigNumber` representation of a locationID. |
+
+#### Returns
+
+`LocationId`
+
+---
+
+### locationIdFromHexStr
+
+▸ **locationIdFromHexStr**(`location`): `LocationId`
+
+Converts a possibly 0x-prefixed string of hex digits to a `LocationId`: a
+non-0x-prefixed all lowercase hex string of exactly 64 hex characters
+(0-padded if necessary). LocationIDs should only be instantiated through
+`locationIdFromHexStr`, `locationIdFromDecStr`, `locationIdFromBigInt`, and
+`locationIdFromEthersBN`.
+
+#### Parameters
+
+| Name       | Type     | Description                                                               |
+| :--------- | :------- | :------------------------------------------------------------------------ |
+| `location` | `string` | A possibly 0x-prefixed `string` of hex digits representing a location ID. |
+
+#### Returns
+
+`LocationId`
+
+---
+
+### locationIdToDecStr
+
+▸ **locationIdToDecStr**(`locationId`): `string`
+
+Converts a LocationID to a decimal string with the same numerical value; can
+be used if you need to pass an artifact ID into a web3 call.
+
+#### Parameters
+
+| Name         | Type         | Description                                             |
+| :----------- | :----------- | :------------------------------------------------------ |
+| `locationId` | `LocationId` | LocationID to convert into a `string` of decimal digits |
+
+#### Returns
+
+`string`
