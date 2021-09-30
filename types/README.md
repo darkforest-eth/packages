@@ -39,6 +39,7 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [GasPrices](interfaces/GasPrices.md)
 - [Leaderboard](interfaces/Leaderboard.md)
 - [LeaderboardEntry](interfaces/LeaderboardEntry.md)
+- [NetworkEvent](interfaces/NetworkEvent.md)
 - [PlanetDefaults](interfaces/PlanetDefaults.md)
 - [PlanetMessage](interfaces/PlanetMessage.md)
 - [PlanetMessageRequest](interfaces/PlanetMessageRequest.md)
@@ -55,6 +56,7 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [ArtifactPointValues](README.md#artifactpointvalues)
 - [ArtifactRarity](README.md#artifactrarity)
 - [ArtifactType](README.md#artifacttype)
+- [AutoGasSetting](README.md#autogassetting)
 - [Awaited](README.md#awaited)
 - [Biome](README.md#biome)
 - [ClaimedCoords](README.md#claimedcoords)
@@ -63,6 +65,7 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [LocatablePlanet](README.md#locatableplanet)
 - [LocationId](README.md#locationid)
 - [NFTMetadata](README.md#nftmetadata)
+- [NetworkHealthSummary](README.md#networkhealthsummary)
 - [Planet](README.md#planet)
 - [PlanetBonus](README.md#planetbonus)
 - [PlanetLevel](README.md#planetlevel)
@@ -88,6 +91,7 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [ArtifactRarityNames](README.md#artifactraritynames)
 - [ArtifactType](README.md#artifacttype)
 - [ArtifactTypeNames](README.md#artifacttypenames)
+- [AutoGasSetting](README.md#autogassetting)
 - [Biome](README.md#biome)
 - [BiomeNames](README.md#biomenames)
 - [PlanetLevel](README.md#planetlevel)
@@ -199,6 +203,15 @@ Abstract type representing an artifact type.
 
 ---
 
+### AutoGasSetting
+
+Ƭ **AutoGasSetting**: [`Abstract`](README.md#abstract)<`string`, `"AutoGasSetting"`\>
+
+The user can choose to have the client automatically choose a gas price for their transactions,
+depending on how much they are willing to pay and how fast they want their transactions to confirm.
+
+---
+
 ### Awaited
 
 Ƭ **Awaited**<`T`\>: `Any.Await`<`T`\>
@@ -277,6 +290,14 @@ not prefixed with 0x. LocationIDs should only be instantiated through
 | `description` | `string`         |
 | `image`       | `string`         |
 | `name`        | `string`         |
+
+---
+
+### NetworkHealthSummary
+
+Ƭ **NetworkHealthSummary**: [[`AutoGasSetting`](README.md#autogassetting), `number`][]
+
+On the server we keep track of how fast each auto gas setting confirms in practice.
 
 ---
 
@@ -592,6 +613,20 @@ Enumeration of artifact types.
 • `Const` **ArtifactTypeNames**: `Object`
 
 Mapping from ArtifactType to pretty-printed names.
+
+---
+
+### AutoGasSetting
+
+• **AutoGasSetting**: `Object`
+
+#### Type declaration
+
+| Name      | Type                                         |
+| :-------- | :------------------------------------------- |
+| `Average` | [`AutoGasSetting`](README.md#autogassetting) |
+| `Fast`    | [`AutoGasSetting`](README.md#autogassetting) |
+| `Slow`    | [`AutoGasSetting`](README.md#autogassetting) |
 
 ---
 

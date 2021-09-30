@@ -8,6 +8,7 @@ Represents a transaction that the game would like to submit to the blockchain.
 
 - [actionId](QueuedTransaction.md#actionid)
 - [args](QueuedTransaction.md#args)
+- [autoGasPriceSetting](QueuedTransaction.md#autogaspricesetting)
 - [contract](QueuedTransaction.md#contract)
 - [methodName](QueuedTransaction.md#methodname)
 - [overrides](QueuedTransaction.md#overrides)
@@ -36,6 +37,14 @@ successfully or with an error.
 • **args**: `unknown`[]
 
 The arguments we should pass to the method we're executing.
+
+---
+
+### autoGasPriceSetting
+
+• `Optional` **autoGasPriceSetting**: `string` \| `AutoGasSetting`
+
+If the user provided an auto gas setting, record that here for logging purposes.
 
 ---
 

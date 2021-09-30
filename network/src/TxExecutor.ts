@@ -1,4 +1,4 @@
-import { AutoGasSetting, DiagnosticUpdater } from '@darkforest_eth/types';
+import { AutoGasSetting, DiagnosticUpdater, NetworkEvent } from '@darkforest_eth/types';
 import { Contract, providers } from 'ethers';
 import deferred from 'p-defer';
 import timeout from 'p-timeout';
@@ -79,6 +79,11 @@ export interface QueuedTransaction {
    * settings, such as the gas price.
    */
   overrides: providers.TransactionRequest;
+
+  /**
+   * If the user provided an auto gas setting, record that here for logging purposes.
+   */
+  autoGasPriceSetting?: AutoGasSetting | string;
 }
 
 /**
@@ -205,7 +210,7 @@ export class TxExecutor {
       resolve: txReceipt,
     } = deferred<providers.TransactionReceipt>();
 
-    const txRequest = {
+    const txRequest: QueuedTransaction = {
       methodName,
       actionId,
       contract,
@@ -217,11 +222,14 @@ export class TxExecutor {
       onTransactionReceipt: txReceipt,
     };
 
+    const autoGasPriceSetting = this.gasSettingProvider(txRequest);
+    txRequest.autoGasPriceSetting = autoGasPriceSetting;
+
     if (overrides.gasPrice === undefined) {
       txRequest.overrides.gasPrice = gweiToWei(
         this.ethConnection.getAutoGasPriceGwei(
           this.ethConnection.getAutoGasPrices(),
-          this.gasSettingProvider(txRequest)
+          autoGasPriceSetting
         )
       );
     }
@@ -320,9 +328,10 @@ export class TxExecutor {
     }
 
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-    const logEvent: any = {
+    const logEvent: NetworkEvent = {
       tx_to: txRequest.contract.address,
       tx_type: txRequest.methodName,
+      auto_gas_price_setting: txRequest.autoGasPriceSetting,
       time_exec_called,
       tx_hash,
     };

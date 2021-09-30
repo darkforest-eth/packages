@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/network",
-  "version": "6.6.0-staging-round-4.3",
+  "version": "6.6.0-staging-round-4.4",
   "license": "MIT",
   "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
   "engines": {
@@ -20,11 +20,11 @@
     "docs": "typedoc && npm run format"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.6.0-staging-round-4.3",
-    "@darkforest_eth/contracts": "6.6.0-staging-round-4.3",
-    "@darkforest_eth/events": "6.6.0-staging-round-4.3",
-    "@darkforest_eth/serde": "6.6.0-staging-round-4.3",
-    "@darkforest_eth/types": "6.6.0-staging-round-4.3",
+    "@darkforest_eth/constants": "6.6.0-staging-round-4.4",
+    "@darkforest_eth/contracts": "6.6.0-staging-round-4.4",
+    "@darkforest_eth/events": "6.6.0-staging-round-4.4",
+    "@darkforest_eth/serde": "6.6.0-staging-round-4.4",
+    "@darkforest_eth/types": "6.6.0-staging-round-4.4",
     "@ethersproject/providers": "^5.0.17",
     "ethers": "^5.0.7",
     "json-stable-stringify": "^1.0.1",
@@ -46,5 +46,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "52915ca448616cf324cbf4d8812ed4ccff2abc7b"
+  "gitHead": "2b482ccd2891a972b38005f5b21fa5e00d821d48"
 }

@@ -28,6 +28,7 @@ export * from './artifact';
 export * from './claim';
 export * from './database_types';
 export * from './diagnostics';
+export * from './event';
 export * from './game_types';
 export * from './gas_prices';
 export * from './gpt_types';

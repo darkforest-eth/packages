@@ -56,6 +56,7 @@ import * as serde from 'http://cdn.skypack.dev/@darkforest_eth/serde';
 - [decodeRevealedCoords](README.md#decoderevealedcoords)
 - [decodeUpgrade](README.md#decodeupgrade)
 - [decodeUpgradeBranches](README.md#decodeupgradebranches)
+- [isNetworkEvent](README.md#isnetworkevent)
 - [locationIdFromBigInt](README.md#locationidfrombigint)
 - [locationIdFromDecStr](README.md#locationidfromdecstr)
 - [locationIdFromEthersBN](README.md#locationidfromethersbn)
@@ -433,6 +434,25 @@ Converts the raw return value of an ether.js contract call to
 #### Returns
 
 `UpgradeBranches`
+
+---
+
+### isNetworkEvent
+
+▸ **isNetworkEvent**(`event`): event is NetworkEvent
+
+Returns whether or not the given event is an instance of {@link NetworkEvent}. Not super
+stringent but works for now.
+
+#### Parameters
+
+| Name    | Type  |
+| :------ | :---- |
+| `event` | `any` |
+
+#### Returns
+
+event is NetworkEvent
 
 ---
 

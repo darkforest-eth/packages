@@ -230,10 +230,10 @@ transaction speeds, and given the user's gas price setting.
 
 #### Parameters
 
-| Name              | Type        |
-| :---------------- | :---------- |
-| `gasPrices`       | `GasPrices` |
-| `gasPriceSetting` | `string`    |
+| Name              | Type                         |
+| :---------------- | :--------------------------- |
+| `gasPrices`       | `GasPrices`                  |
+| `gasPriceSetting` | `string` \| `AutoGasSetting` |
 
 #### Returns
 

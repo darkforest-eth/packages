@@ -29,6 +29,7 @@ export * from './address';
 export * from './arrival';
 export * from './artifact';
 export * from './claim';
+export * from './event';
 export * from './location';
 export * from './planet';
 export * from './player';
