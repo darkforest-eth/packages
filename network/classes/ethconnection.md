@@ -54,7 +54,6 @@ Responsible for
 - [setDiagnosticUpdater](EthConnection.md#setdiagnosticupdater)
 - [setRpcUrl](EthConnection.md#setrpcurl)
 - [signMessage](EthConnection.md#signmessage)
-- [signMessageObject](EthConnection.md#signmessageobject)
 - [startPolling](EthConnection.md#startpolling)
 - [stopPolling](EthConnection.md#stoppolling)
 - [subscribeToContractEvents](EthConnection.md#subscribetocontractevents)
@@ -64,14 +63,13 @@ Responsible for
 
 ### constructor
 
-• **new EthConnection**(`provider`, `blockNumber`)
+• **new EthConnection**(`provider`)
 
 #### Parameters
 
-| Name          | Type              |
-| :------------ | :---------------- |
-| `provider`    | `JsonRpcProvider` |
-| `blockNumber` | `number`          |
+| Name       | Type              |
+| :--------- | :---------------- |
+| `provider` | `JsonRpcProvider` |
 
 ## Properties
 
@@ -94,7 +92,7 @@ Interval which reloads the balance of the account that this EthConnection is in 
 
 ### blockNumber
 
-• `Private` **blockNumber**: `number`
+• `Private` **blockNumber**: `number` = `0`
 
 The current latest block number.
 
@@ -575,31 +573,6 @@ Signs a string, or throws an error if a signer has not been set.
 #### Returns
 
 `Promise`<`string`\>
-
----
-
-### signMessageObject
-
-▸ **signMessageObject**<`T`\>(`obj`): `Promise`<`SignedMessage`<`T`\>\>
-
-Returns a version of this message signed by the account that this {@code EthConnectio} is
-logged in as.
-
-#### Type parameters
-
-| Name |
-| :--- |
-| `T`  |
-
-#### Parameters
-
-| Name  | Type |
-| :---- | :--- |
-| `obj` | `T`  |
-
-#### Returns
-
-`Promise`<`SignedMessage`<`T`\>\>
 
 ---
 
