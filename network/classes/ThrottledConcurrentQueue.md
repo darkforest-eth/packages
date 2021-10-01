@@ -37,15 +37,13 @@ concurrency.
 
 ### constructor
 
-• **new ThrottledConcurrentQueue**(`maxInvocationsPerIntervalMs`, `invocationIntervalMs`, `maxConcurrency?`)
+• **new ThrottledConcurrentQueue**(`config`)
 
 #### Parameters
 
-| Name                          | Type     |
-| :---------------------------- | :------- |
-| `maxInvocationsPerIntervalMs` | `number` |
-| `invocationIntervalMs`        | `number` |
-| `maxConcurrency`              | `number` |
+| Name     | Type                                                                            |
+| :------- | :------------------------------------------------------------------------------ |
+| `config` | [`ConcurrentQueueConfiguration`](../interfaces/ConcurrentQueueConfiguration.md) |
 
 ## Properties
 

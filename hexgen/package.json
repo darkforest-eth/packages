@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/hexgen",
-  "version": "6.6.3",
+  "version": "6.6.4",
   "license": "MIT",
   "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
   "engines": {
@@ -20,7 +20,7 @@
     "docs": "typedoc && npm run format"
   },
   "dependencies": {
-    "@darkforest_eth/types": "6.6.3",
+    "@darkforest_eth/types": "6.6.4",
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
@@ -33,5 +33,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "4785e7d84dff1df79b520a3a7bb9439d09a90ae1"
+  "gitHead": "7703be166f141054e5dee202bf55d2a03d0aa859"
 }

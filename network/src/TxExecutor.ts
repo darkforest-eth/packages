@@ -2,6 +2,7 @@ import { AutoGasSetting, DiagnosticUpdater, NetworkEvent } from '@darkforest_eth
 import { Contract, providers } from 'ethers';
 import deferred from 'p-defer';
 import timeout from 'p-timeout';
+import { ConcurrentQueueConfiguration } from '.';
 import { EthConnection } from './EthConnection';
 import { gweiToWei } from './Network';
 import { ThrottledConcurrentQueue } from './ThrottledConcurrentQueue';
@@ -171,9 +172,16 @@ export class TxExecutor {
     ethConnection: EthConnection,
     gasSettingProvider: GasPriceSettingProvider,
     beforeTransaction?: BeforeTransaction,
-    afterTransaction?: AfterTransaction
+    afterTransaction?: AfterTransaction,
+    queueConfiguration?: ConcurrentQueueConfiguration
   ) {
-    this.queue = new ThrottledConcurrentQueue(3, 200, 1);
+    this.queue = new ThrottledConcurrentQueue(
+      queueConfiguration ?? {
+        invocationIntervalMs: 200,
+        maxInvocationsPerIntervalMs: 3,
+        maxConcurrency: 1,
+      }
+    );
     this.lastTransactionTimestamp = Date.now();
     this.ethConnection = ethConnection;
     this.gasSettingProvider = gasSettingProvider;

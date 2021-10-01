@@ -29,6 +29,12 @@ export interface Queue {
   size: () => number;
 }
 
+export interface ConcurrentQueueConfiguration {
+  maxInvocationsPerIntervalMs: number;
+  invocationIntervalMs: number;
+  maxConcurrency?: number;
+}
+
 /**
  * A queue that executes promises with a max throughput, and optionally max
  * concurrency.
@@ -69,26 +75,22 @@ export class ThrottledConcurrentQueue implements Queue {
    */
   private executionTimeout: ReturnType<typeof setTimeout> | undefined;
 
-  public constructor(
-    maxInvocationsPerIntervalMs: number,
-    invocationIntervalMs: number,
-    maxConcurrency = Number.POSITIVE_INFINITY
-  ) {
-    if (maxInvocationsPerIntervalMs <= 0) {
+  public constructor(config: ConcurrentQueueConfiguration) {
+    this.invocationIntervalMs = config.invocationIntervalMs;
+    this.maxConcurrency = config.maxConcurrency ?? Number.POSITIVE_INFINITY;
+    this.executionTimestamps = new CircularBuffer(Array, config.maxInvocationsPerIntervalMs);
+
+    if (config.maxInvocationsPerIntervalMs <= 0) {
       throw new Error('must allow at least one invocation per interval');
     }
 
-    if (invocationIntervalMs <= 0) {
+    if (this.invocationIntervalMs <= 0) {
       throw new Error('invocation interval must be positive');
     }
 
-    if (maxConcurrency <= 0) {
+    if (this.maxConcurrency <= 0) {
       throw new Error('max concurrency must be positive');
     }
-
-    this.invocationIntervalMs = invocationIntervalMs;
-    this.maxConcurrency = maxConcurrency;
-    this.executionTimestamps = new CircularBuffer(Array, maxInvocationsPerIntervalMs);
   }
 
   /**

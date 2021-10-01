@@ -13,7 +13,11 @@ export class ContractCaller {
   /**
    * Queue which stores future contract calls.
    */
-  private readonly queue: Queue = new ThrottledConcurrentQueue(10, 200, 20);
+  private readonly queue: Queue = new ThrottledConcurrentQueue({
+    maxInvocationsPerIntervalMs: 10,
+    invocationIntervalMs: 200,
+    maxConcurrency: 20,
+  });
 
   /**
    * The maximum amount of times that we want the game to retry any individual call. Retries are

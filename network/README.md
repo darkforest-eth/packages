@@ -32,6 +32,7 @@ import * as network from 'http://cdn.skypack.dev/@darkforest_eth/network';
 
 ### Interfaces
 
+- [ConcurrentQueueConfiguration](interfaces/ConcurrentQueueConfiguration.md)
 - [PendingTransaction](interfaces/PendingTransaction.md)
 - [Queue](interfaces/Queue.md)
 - [QueuedTransaction](interfaces/QueuedTransaction.md)

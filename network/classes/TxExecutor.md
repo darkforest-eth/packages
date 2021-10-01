@@ -31,16 +31,17 @@
 
 ### constructor
 
-• **new TxExecutor**(`ethConnection`, `gasSettingProvider`, `beforeTransaction?`, `afterTransaction?`)
+• **new TxExecutor**(`ethConnection`, `gasSettingProvider`, `beforeTransaction?`, `afterTransaction?`, `queueConfiguration?`)
 
 #### Parameters
 
-| Name                 | Type                                                              |
-| :------------------- | :---------------------------------------------------------------- |
-| `ethConnection`      | [`EthConnection`](EthConnection.md)                               |
-| `gasSettingProvider` | [`GasPriceSettingProvider`](../README.md#gaspricesettingprovider) |
-| `beforeTransaction?` | [`BeforeTransaction`](../README.md#beforetransaction)             |
-| `afterTransaction?`  | [`AfterTransaction`](../README.md#aftertransaction)               |
+| Name                  | Type                                                                            |
+| :-------------------- | :------------------------------------------------------------------------------ |
+| `ethConnection`       | [`EthConnection`](EthConnection.md)                                             |
+| `gasSettingProvider`  | [`GasPriceSettingProvider`](../README.md#gaspricesettingprovider)               |
+| `beforeTransaction?`  | [`BeforeTransaction`](../README.md#beforetransaction)                           |
+| `afterTransaction?`   | [`AfterTransaction`](../README.md#aftertransaction)                             |
+| `queueConfiguration?` | [`ConcurrentQueueConfiguration`](../interfaces/ConcurrentQueueConfiguration.md) |
 
 ## Properties
 
