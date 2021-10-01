@@ -52,7 +52,7 @@ import * as constants from 'http://cdn.skypack.dev/@darkforest_eth/constants';
 
 ### BLOCK_EXPLORER_URL
 
-• `Const` **BLOCK_EXPLORER_URL**: `"https://blockscout.com/poa/xdai"`
+• `Const` **BLOCK_EXPLORER_URL**: `"https://dashboard.tenderly.co/tx/xdai"`
 
 The URL to the block explorer for the chain being used. Prepended to transaction links, etc
 

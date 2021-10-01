@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/contracts",
-  "version": "6.6.1",
+  "version": "6.6.2",
   "license": "MIT",
   "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
   "engines": {
@@ -33,5 +33,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c8042cece455256960df0ca5d90db19f0f461d3b"
+  "gitHead": "f704f44767be57800ccd4620e58591a27bb9d9b1"
 }

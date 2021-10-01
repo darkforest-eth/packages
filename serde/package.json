@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/serde",
-  "version": "6.6.1",
+  "version": "6.6.2",
   "license": "MIT",
   "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
   "engines": {
@@ -20,10 +20,10 @@
     "docs": "typedoc && npm run format"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.6.1",
-    "@darkforest_eth/contracts": "6.6.1",
-    "@darkforest_eth/hexgen": "6.6.1",
-    "@darkforest_eth/types": "6.6.1",
+    "@darkforest_eth/constants": "6.6.2",
+    "@darkforest_eth/contracts": "6.6.2",
+    "@darkforest_eth/hexgen": "6.6.2",
+    "@darkforest_eth/types": "6.6.2",
     "big-integer": "^1.6.48",
     "ethers": "^5.0.7"
   },
@@ -37,5 +37,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c8042cece455256960df0ca5d90db19f0f461d3b"
+  "gitHead": "f704f44767be57800ccd4620e58591a27bb9d9b1"
 }
