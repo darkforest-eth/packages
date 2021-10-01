@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/constants",
-  "version": "6.6.2",
+  "version": "6.6.3",
   "license": "MIT",
   "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
   "engines": {
@@ -20,7 +20,7 @@
     "docs": "typedoc && npm run format"
   },
   "dependencies": {
-    "@darkforest_eth/types": "6.6.2",
+    "@darkforest_eth/types": "6.6.3",
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
@@ -33,5 +33,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "f704f44767be57800ccd4620e58591a27bb9d9b1"
+  "gitHead": "4785e7d84dff1df79b520a3a7bb9439d09a90ae1"
 }
