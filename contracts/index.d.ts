@@ -45,27 +45,27 @@ export declare const START_BLOCK = 18361165;
 /**
  * The address for the DarkForestUtils library.
  */
-export declare const UTILS_LIBRARY_ADDRESS = '0x53B0aF9cfe7f9FCAAa530702754EA05D70592E28';
+export declare const UTILS_LIBRARY_ADDRESS = '0x7333aAd0767F8c6A94Fc40Cb9137C6cB9c141a30';
 /**
  * The address for the DarkForestPlanet library.
  */
-export declare const PLANET_LIBRARY_ADDRESS = '0x044823869f814bA6e36f8f63FEe97EbFfaD67440';
+export declare const PLANET_LIBRARY_ADDRESS = '0x46C4c388Ef70798af0409B808b26e72B116e0dBf';
 /**
  * The address for the DarkForestArtifactUtils library.
  */
-export declare const ARTIFACT_UTILS_LIBRARY_ADDRESS = '0x9733188Cb05d3e070A4bf47A705Cf6a5b82aE74d';
+export declare const ARTIFACT_UTILS_LIBRARY_ADDRESS = '0xAb1E73A97548224097bbe32656167d1F720484Ae';
 /**
  * The address for the Verifier library.
  */
-export declare const VERIFIER_LIBRARY_ADDRESS = '0x542B74c71adaEa9F6BeEeB916c85dC4785C26311';
+export declare const VERIFIER_LIBRARY_ADDRESS = '0xD823a200E7b6dFcD11569ff19d7E738cA4ecAf41';
 /**
  * The address for the DarkForestInitialize library.
  */
-export declare const INITIALIZE_LIBRARY_ADDRESS = '0x3f67B15395b730689e64196093A9f11B513f7DCd';
+export declare const INITIALIZE_LIBRARY_ADDRESS = '0x4b813c4869E2705d8DfE0c9D123303d8ae9554B1';
 /**
  * The address for the DarkForestLazyUpdate library.
  */
-export declare const LAZY_UPDATE_LIBRARY_ADDRESS = '0x8b04d70Efc21A58bD6c3030D22aAE93a7763d52F';
+export declare const LAZY_UPDATE_LIBRARY_ADDRESS = '0x0304a6b7e6Ffd1132BDA89f5471F22eFe2748045';
 /**
  * The address for the DarkForestCore contract.
  */

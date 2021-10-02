@@ -54,7 +54,7 @@ The contract ABIs can be found in the `abis` directory.
 
 ### ARTIFACT_UTILS_LIBRARY_ADDRESS
 
-• `Const` **ARTIFACT_UTILS_LIBRARY_ADDRESS**: `"0x9733188Cb05d3e070A4bf47A705Cf6a5b82aE74d"`
+• `Const` **ARTIFACT_UTILS_LIBRARY_ADDRESS**: `"0xAb1E73A97548224097bbe32656167d1F720484Ae"`
 
 The address for the DarkForestArtifactUtils library.
 
@@ -86,7 +86,7 @@ The address for the DarkForestGPTCredit contract.
 
 ### INITIALIZE_LIBRARY_ADDRESS
 
-• `Const` **INITIALIZE_LIBRARY_ADDRESS**: `"0x3f67B15395b730689e64196093A9f11B513f7DCd"`
+• `Const` **INITIALIZE_LIBRARY_ADDRESS**: `"0x4b813c4869E2705d8DfE0c9D123303d8ae9554B1"`
 
 The address for the DarkForestInitialize library.
 
@@ -94,7 +94,7 @@ The address for the DarkForestInitialize library.
 
 ### LAZY_UPDATE_LIBRARY_ADDRESS
 
-• `Const` **LAZY_UPDATE_LIBRARY_ADDRESS**: `"0x8b04d70Efc21A58bD6c3030D22aAE93a7763d52F"`
+• `Const` **LAZY_UPDATE_LIBRARY_ADDRESS**: `"0x0304a6b7e6Ffd1132BDA89f5471F22eFe2748045"`
 
 The address for the DarkForestLazyUpdate library.
 
@@ -118,7 +118,7 @@ The id of the network where these contracts are deployed.
 
 ### PLANET_LIBRARY_ADDRESS
 
-• `Const` **PLANET_LIBRARY_ADDRESS**: `"0x044823869f814bA6e36f8f63FEe97EbFfaD67440"`
+• `Const` **PLANET_LIBRARY_ADDRESS**: `"0x46C4c388Ef70798af0409B808b26e72B116e0dBf"`
 
 The address for the DarkForestPlanet library.
 
@@ -150,7 +150,7 @@ The address for the DarkForestTokens contract.
 
 ### UTILS_LIBRARY_ADDRESS
 
-• `Const` **UTILS_LIBRARY_ADDRESS**: `"0x53B0aF9cfe7f9FCAAa530702754EA05D70592E28"`
+• `Const` **UTILS_LIBRARY_ADDRESS**: `"0x7333aAd0767F8c6A94Fc40Cb9137C6cB9c141a30"`
 
 The address for the DarkForestUtils library.
 
@@ -158,7 +158,7 @@ The address for the DarkForestUtils library.
 
 ### VERIFIER_LIBRARY_ADDRESS
 
-• `Const` **VERIFIER_LIBRARY_ADDRESS**: `"0x542B74c71adaEa9F6BeEeB916c85dC4785C26311"`
+• `Const` **VERIFIER_LIBRARY_ADDRESS**: `"0xD823a200E7b6dFcD11569ff19d7E738cA4ecAf41"`
 
 The address for the Verifier library.
 

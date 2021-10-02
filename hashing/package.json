@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/hashing",
-  "version": "6.6.4",
+  "version": "6.6.5",
   "license": "MIT",
   "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
   "main": "dist/index.js",
@@ -29,5 +29,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "7703be166f141054e5dee202bf55d2a03d0aa859"
+  "gitHead": "a19557aff03b41889e0ceecc9ebaa3eb1f4276f8"
 }
