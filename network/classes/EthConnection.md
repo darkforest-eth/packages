@@ -86,7 +86,7 @@ of whatever blockchain we're connected to.
 
 ### balanceInterval
 
-• `Private` **balanceInterval**: `undefined` \| `Timeout`
+• `Private` **balanceInterval**: `undefined` \| `Timer`
 
 Interval which reloads the balance of the account that this EthConnection is in charge of.
 
@@ -147,7 +147,7 @@ Publishes an event whenever the network's auto gas prices change.
 
 ### gasPricesInterval
 
-• `Private` **gasPricesInterval**: `undefined` \| `Timeout`
+• `Private` **gasPricesInterval**: `undefined` \| `Timer`
 
 Store this so we can cancel the interval.
 

@@ -322,11 +322,16 @@ export class TxExecutor {
       }
     } catch (e) {
       console.error(e);
-      time_errored = Date.now();
       error = e as Error;
       if (!time_submitted) {
+        time_errored = Date.now();
         txRequest.onSubmissionError(error);
       } else {
+        // Ran out of retries, set nonce to undefined to refresh it
+        if (!time_errored) {
+          this.nonce = undefined;
+          time_errored = Date.now();
+        }
         txRequest.onReceiptError(error);
       }
     } finally {

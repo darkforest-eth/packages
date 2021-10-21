@@ -1,11 +1,18 @@
 import { CONTRACT_PRECISION } from '@darkforest_eth/constants';
 import type { DarkForestCore } from '@darkforest_eth/contracts/typechain';
 import { bonusFromHex } from '@darkforest_eth/hexgen';
-import type { Awaited, Planet, PlanetDefaults, SpaceType } from '@darkforest_eth/types';
+import type {
+  Awaited,
+  Planet,
+  PlanetDefaults,
+  PlanetLevel,
+  PlanetType,
+  SpaceType,
+} from '@darkforest_eth/types';
 import { address } from './address';
 import { locationIdFromDecStr } from './location';
 
-export type RawPlanet = Awaited<ReturnType<DarkForestCore['getPlanet']>>;
+export type RawPlanet = Awaited<ReturnType<DarkForestCore['planets']>>;
 export type RawPlanetExtendedInfo = Awaited<ReturnType<DarkForestCore['planetsExtendedInfo']>>;
 
 /**
@@ -40,8 +47,8 @@ export function decodePlanet(
     owner: address(rawPlanet.owner),
     hatLevel: rawPlanetExtendedInfo.hatLevel.toNumber(),
 
-    planetLevel: rawPlanet.planetLevel.toNumber(),
-    planetType: rawPlanet.planetType,
+    planetLevel: rawPlanet.planetLevel.toNumber() as PlanetLevel,
+    planetType: rawPlanet.planetType as PlanetType,
     isHomePlanet: rawPlanet.isHomePlanet,
 
     energyCap: rawPlanet.populationCap.toNumber() / CONTRACT_PRECISION,

@@ -91,7 +91,7 @@ import * as serde from 'http://cdn.skypack.dev/@darkforest_eth/serde';
 
 ### RawPlanet
 
-Ƭ **RawPlanet**: `Awaited`<`ReturnType`<`DarkForestCore`[``"getPlanet"``]\>\>
+Ƭ **RawPlanet**: `Awaited`<`ReturnType`<`DarkForestCore`[``"planets"``]\>\>
 
 ---
 

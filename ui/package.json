@@ -1,5 +1,5 @@
 {
-  "name": "@darkforest_eth/types",
+  "name": "@darkforest_eth/ui",
   "version": "6.6.6",
   "license": "MIT",
   "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
@@ -9,9 +9,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/",
-    "enums/",
-    "interfaces/"
+    "dist/"
   ],
   "scripts": {
     "prepublishOnly": "npm run docs",
@@ -22,9 +20,9 @@
     "docs": "typedoc && npm run format"
   },
   "dependencies": {
-    "big-integer": "^1.6.48",
-    "ethers": "^5.0.7",
-    "ts-toolbelt": "^9.6.0"
+    "@darkforest_eth/types": "6.6.6",
+    "color": "^3.0.2",
+    "lit": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^7.30.0",
