@@ -18,6 +18,7 @@
     "hideBreadcrumbs": true,
     "readme": "none",
     "disableSources": true,
-    "disableOutputCheck": true
+    "cleanOutputDir": false,
+    "githubPages": false
   }
 }

@@ -72,7 +72,7 @@
 
 ### colors
 
-• `Const` **colors**: `Object`
+• **colors**: `Object`
 
 #### Type declaration
 

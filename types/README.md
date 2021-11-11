@@ -579,7 +579,7 @@ Enumeration of artifact rarity levels. Common = 1, Mythic = 5
 
 ### ArtifactRarityNames
 
-• `Const` **ArtifactRarityNames**: `Object`
+• **ArtifactRarityNames**: `Object`
 
 Mapping from ArtifactRarity to pretty-printed names.
 
@@ -610,7 +610,7 @@ Enumeration of artifact types.
 
 ### ArtifactTypeNames
 
-• `Const` **ArtifactTypeNames**: `Object`
+• **ArtifactTypeNames**: `Object`
 
 Mapping from ArtifactType to pretty-printed names.
 
@@ -656,7 +656,7 @@ Enumeration of the biomes in the game. OCEAN = 1, CORRUPTED = 10
 
 ### BiomeNames
 
-• `Const` **BiomeNames**: `Object`
+• **BiomeNames**: `Object`
 
 Mapping from Biome to pretty-printed names.
 
@@ -687,7 +687,7 @@ Enumeration of the possible planet levels.
 
 ### PlanetLevelNames
 
-• `Const` **PlanetLevelNames**: `Object`
+• **PlanetLevelNames**: `Object`
 
 Mapping from PlanetLevel to pretty-printed names.
 
@@ -727,7 +727,7 @@ Enumeration of the planet types. (PLANET = 0, SILVER_BANK = 4)
 
 ### PlanetTypeNames
 
-• `Const` **PlanetTypeNames**: `Object`
+• **PlanetTypeNames**: `Object`
 
 Mapping from PlanetType to pretty-printed names.
 
@@ -752,7 +752,7 @@ Enumeration of the types of space in the game. NEBULA = 0, DEAD_SPACE = 3
 
 ### SpaceTypeNames
 
-• `Const` **SpaceTypeNames**: `Object`
+• **SpaceTypeNames**: `Object`
 
 Mapping from SpaceType to pretty-printed names.
 

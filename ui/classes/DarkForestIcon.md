@@ -2865,21 +2865,6 @@ LitElement.styles
 
 ▪ `Static` `Optional` **disableWarning**: (`warningKind`: `WarningKind`) => `void`
 
-Disable the given warning category for this class.
-
-This method only exists in development builds, so it should be accessed
-with a guard like:
-
-```ts
-// Disable for all ReactiveElement subclasses
-ReactiveElement.disableWarning.?('migration');
-
-// Disable for only MyElement and subclasses
-MyElement.disableWarning.?('migration');
-```
-
-**`nocollapse`**
-
 #### Type declaration
 
 ▸ (`warningKind`): `void`
@@ -2898,8 +2883,6 @@ MyElement.disableWarning.?('migration');
 ```
 
 **`nocollapse`**
-
-**`category`** dev-mode
 
 ##### Parameters
 
@@ -2921,21 +2904,6 @@ LitElement.disableWarning
 
 ▪ `Static` `Optional` **enableWarning**: (`warningKind`: `WarningKind`) => `void`
 
-Enable the given warning category for this class.
-
-This method only exists in development builds, so it should be accessed
-with a guard like:
-
-```ts
-// Enable for all ReactiveElement subclasses
-ReactiveElement.enableWarning.?('migration');
-
-// Enable for only MyElement and subclasses
-MyElement.enableWarning.?('migration');
-```
-
-**`nocollapse`**
-
 #### Type declaration
 
 ▸ (`warningKind`): `void`
@@ -2954,8 +2922,6 @@ MyElement.enableWarning.?('migration');
 ```
 
 **`nocollapse`**
-
-**`category`** dev-mode
 
 ##### Parameters
 
@@ -3109,6 +3075,10 @@ Returns a list of attributes corresponding to the registered properties.
 
 `string`[]
 
+#### Inherited from
+
+LitElement.observedAttributes
+
 ---
 
 ## updates Accessors
@@ -3136,6 +3106,10 @@ before fulfilling this Promise. To do this, first await
 
 A promise of a boolean that resolves to true if the update completed
 without triggering another update.
+
+#### Inherited from
+
+LitElement.updateComplete
 
 ## Other Methods
 

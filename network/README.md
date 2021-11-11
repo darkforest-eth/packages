@@ -250,13 +250,13 @@ Calls the given function, retrying it if there is an error.
 
 #### Parameters
 
-| Name            | Type                                               | Default value |
-| :-------------- | :------------------------------------------------- | :------------ |
-| `fn`            | (...`args`: `any`[]) => `Promise`<`T`\>            | `undefined`   |
-| `args`          | `any`[]                                            | `[]`          |
-| `onError?`      | [`RetryErrorHandler`](README.md#retryerrorhandler) | `undefined`   |
-| `maxRetries`    | `12`                                               | `undefined`   |
-| `retryInterval` | `number`                                           | `1000`        |
+| Name            | Type                                               | Default value              |
+| :-------------- | :------------------------------------------------- | :------------------------- |
+| `fn`            | (...`args`: `any`[]) => `Promise`<`T`\>            | `undefined`                |
+| `args`          | `any`[]                                            | `[]`                       |
+| `onError?`      | [`RetryErrorHandler`](README.md#retryerrorhandler) | `undefined`                |
+| `maxRetries`    | `12`                                               | `DEFAULT_MAX_CALL_RETRIES` |
+| `retryInterval` | `number`                                           | `1000`                     |
 
 #### Returns
 
@@ -358,7 +358,7 @@ preferred gas price. If an invalid {@link AutoGasSetting} is provided, then retu
 
 ### getResult
 
-▸ **getResult**(`pendingTransaction`): `Promise`<`TransactionReceipt`\>
+▸ **getResult**(`pendingTransaction`): `Promise`<`providers.TransactionReceipt`\>
 
 When you submit a transaction via [TxExecutor](classes/TxExecutor.md), you are given a [PendingTransaction](interfaces/PendingTransaction.md).
 This function either resolves when the transaction confirms, or rejects if there is any error.
@@ -371,7 +371,7 @@ This function either resolves when the transaction confirms, or rejects if there
 
 #### Returns
 
-`Promise`<`TransactionReceipt`\>
+`Promise`<`providers.TransactionReceipt`\>
 
 ---
 
@@ -401,9 +401,9 @@ Whether or not some value is being transferred in this transaction.
 
 #### Parameters
 
-| Name | Type                           |
-| :--- | :----------------------------- |
-| `tx` | `providers.TransactionRequest` |
+| Name | Type                 |
+| :--- | :------------------- |
+| `tx` | `TransactionRequest` |
 
 #### Returns
 
@@ -413,7 +413,7 @@ Whether or not some value is being transferred in this transaction.
 
 ### makeProvider
 
-▸ **makeProvider**(`rpcUrl`): `JsonRpcProvider`
+▸ **makeProvider**(`rpcUrl`): `providers.JsonRpcProvider`
 
 Creates a new {@link JsonRpcProvider}, and makes sure that it's connected to xDai if we're in
 production.
@@ -426,7 +426,7 @@ production.
 
 #### Returns
 
-`JsonRpcProvider`
+`providers.JsonRpcProvider`
 
 ---
 
@@ -464,7 +464,7 @@ Returns whether or not the given message was signed by the given address.
 
 ### waitForTransaction
 
-▸ **waitForTransaction**(`provider`, `txHash`): `Promise`<`TransactionReceipt`\>
+▸ **waitForTransaction**(`provider`, `txHash`): `Promise`<`providers.TransactionReceipt`\>
 
 Given a transaction hash and a JsonRpcProvider, waits for the given transaction to complete.
 
@@ -477,7 +477,7 @@ Given a transaction hash and a JsonRpcProvider, waits for the given transaction 
 
 #### Returns
 
-`Promise`<`TransactionReceipt`\>
+`Promise`<`providers.TransactionReceipt`\>
 
 ---
 
