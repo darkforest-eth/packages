@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/hashing",
-  "version": "6.7.0-staging-nov-11.0",
+  "version": "6.7.0-staging-nov-11-2.0",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "main": "dist/index.js",
@@ -30,5 +30,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "ea5bb05817f880ef48158163d34da5596a23cee3"
+  "gitHead": "778d3fa3c7b75da7804c367060570b3bd5e15471"
 }
