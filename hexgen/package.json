@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/hexgen",
-  "version": "6.7.0-staging-nov-11-2.0",
+  "version": "6.7.0-staging-nov-16.0",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -18,10 +18,10 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "docs": "typedoc && npm run format",
-    "clean": "rm -rf dist node_modules"
+    "clean": "del-cli dist node_modules"
   },
   "dependencies": {
-    "@darkforest_eth/types": "6.7.0-staging-nov-11-2.0",
+    "@darkforest_eth/types": "6.7.0-staging-nov-16.0",
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
@@ -34,5 +34,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "778d3fa3c7b75da7804c367060570b3bd5e15471"
+  "gitHead": "86a52f69596aaad80dd5e8e76a8557fd19bb9e89"
 }
