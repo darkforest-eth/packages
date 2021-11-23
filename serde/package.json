@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/serde",
-  "version": "6.7.0-staging-nov-23.0",
+  "version": "6.7.0-staging-nov-23-2.0",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -21,10 +21,10 @@
     "clean": "del-cli dist node_modules"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.7.0-staging-nov-23.0",
-    "@darkforest_eth/contracts": "6.7.0-staging-nov-23.0",
-    "@darkforest_eth/hexgen": "6.7.0-staging-nov-23.0",
-    "@darkforest_eth/types": "6.7.0-staging-nov-23.0",
+    "@darkforest_eth/constants": "6.7.0-staging-nov-23-2.0",
+    "@darkforest_eth/contracts": "6.7.0-staging-nov-23-2.0",
+    "@darkforest_eth/hexgen": "6.7.0-staging-nov-23-2.0",
+    "@darkforest_eth/types": "6.7.0-staging-nov-23-2.0",
     "big-integer": "^1.6.48",
     "ethers": "^5.5.1"
   },
@@ -39,5 +39,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "02b8fa0d7a5c2b5f1034caebabb3f7bb462ea4f0"
+  "gitHead": "356ddc6b7f84ac92dba55904682fcf7592d28d55"
 }
