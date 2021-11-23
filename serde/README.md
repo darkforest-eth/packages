@@ -31,7 +31,6 @@ import * as serde from 'http://cdn.skypack.dev/@darkforest_eth/serde';
 - [RawArrival](README.md#rawarrival)
 - [RawArtifactPointValues](README.md#rawartifactpointvalues)
 - [RawArtifactWithMetadata](README.md#rawartifactwithmetadata)
-- [RawClaimedCoords](README.md#rawclaimedcoords)
 - [RawPlanet](README.md#rawplanet)
 - [RawPlanetExtendedInfo](README.md#rawplanetextendedinfo)
 - [RawPlayer](README.md#rawplayer)
@@ -49,7 +48,6 @@ import * as serde from 'http://cdn.skypack.dev/@darkforest_eth/serde';
 - [decodeArrival](README.md#decodearrival)
 - [decodeArtifact](README.md#decodeartifact)
 - [decodeArtifactPointValues](README.md#decodeartifactpointvalues)
-- [decodeClaimedCoords](README.md#decodeclaimedcoords)
 - [decodePlanet](README.md#decodeplanet)
 - [decodePlanetDefaults](README.md#decodeplanetdefaults)
 - [decodePlayer](README.md#decodeplayer)
@@ -80,12 +78,6 @@ import * as serde from 'http://cdn.skypack.dev/@darkforest_eth/serde';
 ### RawArtifactWithMetadata
 
 Ƭ **RawArtifactWithMetadata**: `Awaited`<`ReturnType`<`DarkForestGetters`[``"getArtifactById"``]\>\>
-
----
-
-### RawClaimedCoords
-
-Ƭ **RawClaimedCoords**: `Awaited`<`ReturnType`<`DarkForestScoringRound3`[``"claimedCoords"``]\>\>
 
 ---
 
@@ -284,27 +276,6 @@ typescript typed object (see @darkforest_eth/types).
 #### Returns
 
 `ArtifactPointValues`
-
----
-
-### decodeClaimedCoords
-
-▸ **decodeClaimedCoords**(`rawClaimedCoords`): `ClaimedCoords`
-
-Converts the result of a typechain-typed ethers.js contract call returning a
-`DarkForestTypes.ClaimedCoords` struct into a `ClaimedCoords` object (see
-
-**`darkforest_eth/types)`**
-
-#### Parameters
-
-| Name               | Type                                                                                                                                                                                                                      | Description                                                                                                |
-| :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------- |
-| `rawClaimedCoords` | [`BigNumber`, `BigNumber`, `BigNumber`, `string`, `BigNumber`, `BigNumber`] & { `claimedAt`: `BigNumber` ; `claimer`: `string` ; `locationId`: `BigNumber` ; `score`: `BigNumber` ; `x`: `BigNumber` ; `y`: `BigNumber` } | the result of a typechain-typed ethers.js contract call returning a DarkForestTypes.RevealedCoords` struct |
-
-#### Returns
-
-`ClaimedCoords`
 
 ---
 

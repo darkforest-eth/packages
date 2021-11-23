@@ -37,13 +37,11 @@ The contract ABIs can be found in the `abis` directory.
 - [ARTIFACT_UTILS_LIBRARY_ADDRESS](README.md#artifact_utils_library_address)
 - [CORE_CONTRACT_ADDRESS](README.md#core_contract_address)
 - [GETTERS_CONTRACT_ADDRESS](README.md#getters_contract_address)
-- [GPT_CREDIT_CONTRACT_ADDRESS](README.md#gpt_credit_contract_address)
 - [INITIALIZE_LIBRARY_ADDRESS](README.md#initialize_library_address)
 - [LAZY_UPDATE_LIBRARY_ADDRESS](README.md#lazy_update_library_address)
 - [NETWORK](README.md#network)
 - [NETWORK_ID](README.md#network_id)
 - [PLANET_LIBRARY_ADDRESS](README.md#planet_library_address)
-- [SCORING_CONTRACT_ADDRESS](README.md#scoring_contract_address)
 - [START_BLOCK](README.md#start_block)
 - [TOKENS_CONTRACT_ADDRESS](README.md#tokens_contract_address)
 - [UTILS_LIBRARY_ADDRESS](README.md#utils_library_address)
@@ -54,7 +52,7 @@ The contract ABIs can be found in the `abis` directory.
 
 ### ARTIFACT_UTILS_LIBRARY_ADDRESS
 
-• **ARTIFACT_UTILS_LIBRARY_ADDRESS**: `"0x066d4C6505Ca059AD4755841137Bd0FFb585695d"`
+• **ARTIFACT_UTILS_LIBRARY_ADDRESS**: `"0x5f1780CfA33A4E48471c62d1C3f44807cB91D7eD"`
 
 The address for the DarkForestArtifactUtils library.
 
@@ -62,7 +60,7 @@ The address for the DarkForestArtifactUtils library.
 
 ### CORE_CONTRACT_ADDRESS
 
-• **CORE_CONTRACT_ADDRESS**: `"0x256216b0841542E3517910222afB99e127cfed30"`
+• **CORE_CONTRACT_ADDRESS**: `"0x56AE132B68aEe8da96e4B1376a2CB2711F6FD790"`
 
 The address for the DarkForestCore contract.
 
@@ -70,23 +68,15 @@ The address for the DarkForestCore contract.
 
 ### GETTERS_CONTRACT_ADDRESS
 
-• **GETTERS_CONTRACT_ADDRESS**: `"0x8170c6855f0FB667a97F70884FAf81bbB9eC775B"`
+• **GETTERS_CONTRACT_ADDRESS**: `"0x731209D398f4899cdDbfBc99593BB139033F5A6a"`
 
 The address for the DarkForestGetters contract.
 
 ---
 
-### GPT_CREDIT_CONTRACT_ADDRESS
-
-• **GPT_CREDIT_CONTRACT_ADDRESS**: `"0xDac552B86bF60Da7EDE8C569B120032c94F7289f"`
-
-The address for the DarkForestGPTCredit contract.
-
----
-
 ### INITIALIZE_LIBRARY_ADDRESS
 
-• **INITIALIZE_LIBRARY_ADDRESS**: `"0x46680B48158CcA5F73997046a3C8aA4E0479E9f6"`
+• **INITIALIZE_LIBRARY_ADDRESS**: `"0xb949aFCCc7Cf81eb22Ca9a080D9c3c3eD509C8FD"`
 
 The address for the DarkForestInitialize library.
 
@@ -94,7 +84,7 @@ The address for the DarkForestInitialize library.
 
 ### LAZY_UPDATE_LIBRARY_ADDRESS
 
-• **LAZY_UPDATE_LIBRARY_ADDRESS**: `"0xd8235c70a48E9c8555Bb77CFdC2B93fa62A91681"`
+• **LAZY_UPDATE_LIBRARY_ADDRESS**: `"0x79c63546dD9b87484E8FbDb578dd613B08B6c164"`
 
 The address for the DarkForestLazyUpdate library.
 
@@ -118,23 +108,15 @@ The id of the network where these contracts are deployed.
 
 ### PLANET_LIBRARY_ADDRESS
 
-• **PLANET_LIBRARY_ADDRESS**: `"0x9dCAAF7f070851e312642F59e39bc10Fc2F9e10A"`
+• **PLANET_LIBRARY_ADDRESS**: `"0x736D15c92821D9E5F67e57C0e693c1344dCE31A6"`
 
 The address for the DarkForestPlanet library.
 
 ---
 
-### SCORING_CONTRACT_ADDRESS
-
-• **SCORING_CONTRACT_ADDRESS**: `""`
-
-The address for the DarkForestScoring contract.
-
----
-
 ### START_BLOCK
 
-• **START_BLOCK**: `19103930`
+• **START_BLOCK**: `19219516`
 
 The block in which the DarkForestCore contract was deployed.
 
@@ -142,7 +124,7 @@ The block in which the DarkForestCore contract was deployed.
 
 ### TOKENS_CONTRACT_ADDRESS
 
-• **TOKENS_CONTRACT_ADDRESS**: `"0x1384Ff14de7B67435D7CA3982Ba7B3FD69CA18B8"`
+• **TOKENS_CONTRACT_ADDRESS**: `"0x0e742d2cc96BdDe83aa1BCF05BbF81c28568890e"`
 
 The address for the DarkForestTokens contract.
 
@@ -150,7 +132,7 @@ The address for the DarkForestTokens contract.
 
 ### UTILS_LIBRARY_ADDRESS
 
-• **UTILS_LIBRARY_ADDRESS**: `"0xde9d284A98696cb6ECB7D5B4353C6AD9d0460096"`
+• **UTILS_LIBRARY_ADDRESS**: `"0xF2b9F0019f523E094C86A68E9a7C2eeb336EFe62"`
 
 The address for the DarkForestUtils library.
 
@@ -158,7 +140,7 @@ The address for the DarkForestUtils library.
 
 ### VERIFIER_LIBRARY_ADDRESS
 
-• **VERIFIER_LIBRARY_ADDRESS**: `"0x33B6aEf2111E40fC639a7100765aDb6594DD2CAc"`
+• **VERIFIER_LIBRARY_ADDRESS**: `"0x49b64CCD7AC8E7F24FFa49A954C594bBa87C5642"`
 
 The address for the Verifier library.
 
@@ -166,6 +148,6 @@ The address for the Verifier library.
 
 ### WHITELIST_CONTRACT_ADDRESS
 
-• **WHITELIST_CONTRACT_ADDRESS**: `"0xB560D3fEA4B5Af9717EED27d5d99D049AeCAEa97"`
+• **WHITELIST_CONTRACT_ADDRESS**: `"0xdA651D70f1BDdc13265803f102Fa7A115e3D0934"`
 
 The address for the Whitelist contract.

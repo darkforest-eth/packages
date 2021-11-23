@@ -21,12 +21,6 @@ export const enum ContractMethodName {
   DEACTIVATE_ARTIFACT = 'deactivateArtifact',
   WITHDRAW_SILVER = 'withdrawSilver',
 
-  // DarkForestScoringRound3
-  CLAIM_LOCATION = 'claim',
-
-  // DarkForestGPTCredit
-  BUY_GPT_CREDITS = 'buyCredits',
-
   // Whitelist
   USE_KEY = 'useKey',
   ADD_KEYS = 'addKeys',
@@ -65,11 +59,6 @@ export type SubmittedTx = TxIntent & {
  * @hidden
  */
 export type SubmittedReveal = UnconfirmedReveal & SubmittedTx;
-
-/**
- * @hidden
- */
-export type SubmittedClaim = UnconfirmedClaim & SubmittedTx;
 
 /**
  * @hidden
@@ -227,14 +216,6 @@ export type SubmittedDeactivateArtifact = UnconfirmedDeactivateArtifact & Submit
 /**
  * @hidden
  */
-export type UnconfirmedBuyGPTCredits = TxIntent & {
-  methodName: ContractMethodName.BUY_GPT_CREDITS;
-  amount: number;
-};
-
-/**
- * @hidden
- */
 export type UnconfirmedWithdrawSilver = TxIntent & {
   methodName: ContractMethodName.WITHDRAW_SILVER;
   locationId: LocationId;
@@ -249,22 +230,8 @@ export type SubmittedWithdrawSilver = UnconfirmedWithdrawSilver & SubmittedTx;
 /**
  * @hidden
  */
-export type SubmittedBuyGPTCredits = UnconfirmedBuyGPTCredits & SubmittedTx;
-
-/**
- * @hidden
- */
 export type UnconfirmedReveal = TxIntent & {
   methodName: ContractMethodName.REVEAL_LOCATION;
-  locationId: LocationId;
-  location: WorldLocation;
-};
-
-/**
- * @hidden
- */
-export type UnconfirmedClaim = TxIntent & {
-  methodName: ContractMethodName.CLAIM_LOCATION;
   locationId: LocationId;
   location: WorldLocation;
 };

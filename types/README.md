@@ -358,7 +358,6 @@ DarkForestCore contract (or even any collection of objects).
 | `unconfirmedActivateArtifact?`   | `UnconfirmedActivateArtifact`                                      |
 | `unconfirmedAddEmoji`            | `boolean`                                                          |
 | `unconfirmedBuyHats`             | `UnconfirmedBuyHat`[]                                              |
-| `unconfirmedClaim?`              | `UnconfirmedClaim`                                                 |
 | `unconfirmedClearEmoji`          | `boolean`                                                          |
 | `unconfirmedDeactivateArtifact?` | `UnconfirmedDeactivateArtifact`                                    |
 | `unconfirmedDepartures`          | `UnconfirmedMove`[]                                                |
