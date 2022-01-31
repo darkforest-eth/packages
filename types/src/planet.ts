@@ -4,6 +4,7 @@ import type { PlanetMessage } from './planetmessage';
 import type {
   UnconfirmedActivateArtifact,
   UnconfirmedBuyHat,
+  UnconfirmedClaim,
   UnconfirmedDeactivateArtifact,
   UnconfirmedDepositArtifact,
   UnconfirmedFindArtifact,
@@ -134,6 +135,7 @@ export type Planet = {
   localPhotoidUpgrade?: Upgrade;
 
   unconfirmedReveal?: UnconfirmedReveal;
+  unconfirmedClaim?: UnconfirmedClaim;
   unconfirmedDepartures: UnconfirmedMove[];
   unconfirmedUpgrades: UnconfirmedUpgrade[];
   unconfirmedBuyHats: UnconfirmedBuyHat[];

@@ -52,7 +52,7 @@ import * as constants from 'http://cdn.skypack.dev/@darkforest_eth/constants';
 
 ### BLOCK_EXPLORER_URL
 
-• **BLOCK_EXPLORER_URL**: `"https://dashboard.tenderly.co/tx/xdai"`
+• `Const` **BLOCK_EXPLORER_URL**: `"https://dashboard.tenderly.co/tx/xdai"`
 
 The URL to the block explorer for the chain being used. Prepended to transaction links, etc
 
@@ -60,7 +60,7 @@ The URL to the block explorer for the chain being used. Prepended to transaction
 
 ### CONTRACT_PRECISION
 
-• **CONTRACT_PRECISION**: `1000`
+• `Const` **CONTRACT_PRECISION**: `1000`
 
 The precision of Energy & Silver stored in the Dark Forest smart contracts.
 
@@ -72,7 +72,7 @@ and any values being sent to the contract need to be multiplied by `CONTRACT_PRE
 
 ### DEFAULT_GAS_PRICES
 
-• **DEFAULT_GAS_PRICES**: `GasPrices`
+• `Const` **DEFAULT_GAS_PRICES**: `GasPrices`
 
 In case we cannot load gas prices from xDai, these are the default auto gas prices.
 
@@ -80,7 +80,7 @@ In case we cannot load gas prices from xDai, these are the default auto gas pric
 
 ### DEFAULT_MAX_CALL_RETRIES
 
-• **DEFAULT_MAX_CALL_RETRIES**: `12`
+• `Const` **DEFAULT_MAX_CALL_RETRIES**: `12`
 
 By default, the various {@link ContractCaller} will retry a blockchain read this many times.
 
@@ -88,7 +88,7 @@ By default, the various {@link ContractCaller} will retry a blockchain read this
 
 ### EMPTY_ADDRESS
 
-• **EMPTY_ADDRESS**: `EthAddress`
+• `Const` **EMPTY_ADDRESS**: `EthAddress`
 
 The 0x0 Ethereum address, which is used for unowned planets, artifacts without an owner, etc.
 
@@ -96,7 +96,7 @@ The 0x0 Ethereum address, which is used for unowned planets, artifacts without a
 
 ### EMPTY_ARTIFACT_ID
 
-• **EMPTY_ARTIFACT_ID**: `ArtifactId`
+• `Const` **EMPTY_ARTIFACT_ID**: `ArtifactId`
 
 A blank ArtifactID (all zeros).
 
@@ -104,7 +104,7 @@ A blank ArtifactID (all zeros).
 
 ### EMPTY_LOCATION_ID
 
-• **EMPTY_LOCATION_ID**: `LocationId`
+• `Const` **EMPTY_LOCATION_ID**: `LocationId`
 
 A blank LocationID (all zeros).
 
@@ -112,7 +112,7 @@ A blank LocationID (all zeros).
 
 ### GAS_PRICES_INTERVAL_MS
 
-• **GAS_PRICES_INTERVAL_MS**: `60000`
+• `Const` **GAS_PRICES_INTERVAL_MS**: `60000`
 
 The amount of time between gas price refreshes when fetching prices from the oracle.
 
@@ -120,7 +120,7 @@ The amount of time between gas price refreshes when fetching prices from the ora
 
 ### GAS_PRICE_API
 
-• **GAS_PRICE_API**: `"https://blockscout.com/xdai/mainnet/api/v1/gas-price-oracle"`
+• `Const` **GAS_PRICE_API**: `"https://blockscout.com/xdai/mainnet/api/v1/gas-price-oracle"`
 
 The URL for xDai's API that returns the gas prices for 35th, 60th, and 90th percentiles of gas prices in the
 previous 200 blocks. Useful for auto gas price setting.
@@ -131,7 +131,7 @@ https://www.xdaichain.com/for-developers/developer-resources/gas-price-oracle
 
 ### LOCATION_ID_UB
 
-• **LOCATION_ID_UB**: `BigInteger`
+• `Const` **LOCATION_ID_UB**: `BigInteger`
 
 The upper-bounds of a LocationID.
 
@@ -142,7 +142,7 @@ A LocationID must be less than `LOCATION_ID_UB / PLANET_RARITY` in order to be c
 
 ### MAX_ARTIFACT_RARITY
 
-• **MAX_ARTIFACT_RARITY**: `ArtifactRarity` = `ArtifactRarity.Mythic`
+• `Const` **MAX_ARTIFACT_RARITY**: `ArtifactRarity`
 
 The value of the maximum, valid artifact rarity
 
@@ -150,7 +150,7 @@ The value of the maximum, valid artifact rarity
 
 ### MAX_ARTIFACT_TYPE
 
-• **MAX_ARTIFACT_TYPE**: `ArtifactType` = `ArtifactType.BlackDomain`
+• `Const` **MAX_ARTIFACT_TYPE**: `ArtifactType`
 
 The value of the maximum, valid artifact type
 
@@ -158,7 +158,7 @@ The value of the maximum, valid artifact type
 
 ### MAX_AUTO_GAS_PRICE_GWEI
 
-• **MAX_AUTO_GAS_PRICE_GWEI**: `15`
+• `Const` **MAX_AUTO_GAS_PRICE_GWEI**: `15`
 
 In case xDai's auto-price is something ridiculous, we don't want our players to insta run out of
 money.
@@ -167,7 +167,7 @@ money.
 
 ### MAX_BIOME
 
-• **MAX_BIOME**: `Biome` = `Biome.CORRUPTED`
+• `Const` **MAX_BIOME**: `Biome`
 
 The value of the maximum, valid biome
 
@@ -175,7 +175,7 @@ The value of the maximum, valid biome
 
 ### MAX_PLANET_LEVEL
 
-• **MAX_PLANET_LEVEL**: `PlanetLevel` = `PlanetLevel.NINE`
+• `Const` **MAX_PLANET_LEVEL**: `PlanetLevel`
 
 The value of the maximum, valid planet level
 
@@ -183,7 +183,7 @@ The value of the maximum, valid planet level
 
 ### MIN_ARTIFACT_RARITY
 
-• **MIN_ARTIFACT_RARITY**: `ArtifactRarity` = `ArtifactRarity.Common`
+• `Const` **MIN_ARTIFACT_RARITY**: `ArtifactRarity`
 
 The value of the minimum, valid artifact rarity
 
@@ -191,7 +191,7 @@ The value of the minimum, valid artifact rarity
 
 ### MIN_ARTIFACT_TYPE
 
-• **MIN_ARTIFACT_TYPE**: `ArtifactType` = `ArtifactType.Monolith`
+• `Const` **MIN_ARTIFACT_TYPE**: `ArtifactType`
 
 The value of the minimum, valid artifact type
 
@@ -199,7 +199,7 @@ The value of the minimum, valid artifact type
 
 ### MIN_BIOME
 
-• **MIN_BIOME**: `Biome` = `Biome.OCEAN`
+• `Const` **MIN_BIOME**: `Biome`
 
 The value of the minimum, valid biome
 
@@ -207,7 +207,7 @@ The value of the minimum, valid biome
 
 ### MIN_PLANET_LEVEL
 
-• **MIN_PLANET_LEVEL**: `PlanetLevel` = `PlanetLevel.ZERO`
+• `Const` **MIN_PLANET_LEVEL**: `PlanetLevel`
 
 The value of the minimum, valid planet level
 
@@ -215,7 +215,7 @@ The value of the minimum, valid planet level
 
 ### PLANET_CLAIM_MIN_LEVEL
 
-• **PLANET_CLAIM_MIN_LEVEL**: `3`
+• `Const` **PLANET_CLAIM_MIN_LEVEL**: `3`
 
 The minimum level required for claiming a planet.
 
@@ -223,7 +223,7 @@ The minimum level required for claiming a planet.
 
 ### RECOMMENDED_MODAL_WIDTH
 
-• **RECOMMENDED_MODAL_WIDTH**: `"400px"`
+• `Const` **RECOMMENDED_MODAL_WIDTH**: `"400px"`
 
 {@link PlanetContextPane} is this wide, and all the subpanes of that window also try to stay
 this size as well.

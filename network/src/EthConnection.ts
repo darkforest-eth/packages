@@ -8,7 +8,13 @@ import {
   GasPrices,
   SignedMessage,
 } from '@darkforest_eth/types';
-import { BigNumber, Contract, EventFilter, providers, Wallet } from 'ethers';
+import {
+  JsonRpcProvider,
+  TransactionReceipt,
+  TransactionRequest,
+  TransactionResponse,
+} from '@ethersproject/providers';
+import { BigNumber, Contract, EventFilter, Wallet } from 'ethers';
 import stringify from 'json-stable-stringify';
 import debounce from 'just-debounce';
 import { ContractLoader } from './Contracts';
@@ -85,7 +91,7 @@ export class EthConnection {
   /**
    * The provider is the lowest level interface we use to communicate with the blockchain.
    */
-  private provider: providers.JsonRpcProvider;
+  private provider: JsonRpcProvider;
 
   /**
    * Whenever the RPC url changes, we reload the contract, and also publish an event here.
@@ -103,7 +109,7 @@ export class EthConnection {
    */
   public readonly myBalance$: Monomitter<BigNumber>;
 
-  public constructor(provider: providers.JsonRpcProvider, blockNumber: number) {
+  public constructor(provider: JsonRpcProvider, blockNumber: number) {
     this.contracts = new Map();
     this.loaders = new Map();
     this.provider = provider;
@@ -383,9 +389,7 @@ export class EthConnection {
    * Sends a transaction on behalf of the account that can be set via
    * {@link EthConnection.setAccount}. Throws an error if no account was set.
    */
-  public sendTransaction(
-    request: providers.TransactionRequest
-  ): Promise<providers.TransactionResponse> {
+  public sendTransaction(request: TransactionRequest): Promise<TransactionResponse> {
     if (!this.signer) throw new Error(`no signer`);
     return this.signer.sendTransaction(request);
   }
@@ -394,7 +398,7 @@ export class EthConnection {
    * Gets the provider this {@link EthConnection} is currently using. Don't store a reference to
    * this (unless you're writing plugins), as the provider can change.
    */
-  public getProvider(): providers.JsonRpcProvider {
+  public getProvider(): JsonRpcProvider {
     return this.provider;
   }
 
@@ -417,7 +421,7 @@ export class EthConnection {
    * Returns a promise that resolves when the transaction with the given hash is confirmed, and
    * rejects if the transaction reverts or if there's a network error.
    */
-  public waitForTransaction(txHash: string): Promise<providers.TransactionReceipt> {
+  public waitForTransaction(txHash: string): Promise<TransactionReceipt> {
     return waitForTransaction(this.provider, txHash);
   }
 

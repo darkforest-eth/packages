@@ -1,5 +1,6 @@
 import { DEFAULT_MAX_CALL_RETRIES } from '@darkforest_eth/constants';
 import { AutoGasSetting, EthAddress, GasPrices, SignedMessage } from '@darkforest_eth/types';
+import { JsonRpcProvider, TransactionReceipt } from '@ethersproject/providers';
 import { BigNumber, Contract, ContractInterface, providers, utils, Wallet } from 'ethers';
 import stringify from 'json-stable-stringify';
 import retry from 'p-retry';
@@ -121,9 +122,9 @@ export const aggregateBulkGetter = async <T>(
  * Given a transaction hash and a JsonRpcProvider, waits for the given transaction to complete.
  */
 export function waitForTransaction(
-  provider: providers.JsonRpcProvider,
+  provider: JsonRpcProvider,
   txHash: string
-): Promise<providers.TransactionReceipt> {
+): Promise<TransactionReceipt> {
   return retry(
     async (tries) => {
       console.log(`[wait-tx] WAITING ON tx hash: ${txHash} tries ${tries}`);
@@ -162,7 +163,7 @@ export function waitForTransaction(
 export function createContract<C extends Contract>(
   contractAddress: string,
   contractABI: ContractInterface,
-  provider: providers.JsonRpcProvider,
+  provider: JsonRpcProvider,
   signer?: Wallet
 ): C {
   return new Contract(contractAddress, contractABI, signer ?? provider) as C;
@@ -172,7 +173,7 @@ export function createContract<C extends Contract>(
  * Creates a new {@link JsonRpcProvider}, and makes sure that it's connected to xDai if we're in
  * production.
  */
-export function makeProvider(rpcUrl: string): providers.JsonRpcProvider {
+export function makeProvider(rpcUrl: string): JsonRpcProvider {
   let provider;
 
   if (rpcUrl.startsWith('wss://')) {
@@ -244,7 +245,7 @@ export function isPurchase(tx: providers.TransactionRequest): boolean {
  */
 export async function getResult(
   pendingTransaction: PendingTransaction
-): Promise<providers.TransactionReceipt> {
+): Promise<TransactionReceipt> {
   const [_submitted, confirmed] = await Promise.all([
     pendingTransaction.submitted,
     pendingTransaction.confirmed,

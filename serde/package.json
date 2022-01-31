@@ -1,10 +1,10 @@
 {
   "name": "@darkforest_eth/serde",
-  "version": "6.7.0-staging-dec-3.0",
+  "version": "6.6.7",
   "license": "MIT",
-  "author": "0xPARC <ivan@0xPARC.org>",
+  "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
   "engines": {
-    "node": ">=16"
+    "node": ">=14"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,27 +17,25 @@
     "test": "exit 0",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "docs": "typedoc && npm run format",
-    "clean": "del-cli dist node_modules"
+    "docs": "typedoc && npm run format"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.7.0-staging-dec-3.0",
-    "@darkforest_eth/contracts": "6.7.0-staging-dec-3.0",
-    "@darkforest_eth/hexgen": "6.7.0-staging-dec-3.0",
-    "@darkforest_eth/types": "6.7.0-staging-dec-3.0",
+    "@darkforest_eth/constants": "6.6.7",
+    "@darkforest_eth/contracts": "6.6.7",
+    "@darkforest_eth/hexgen": "6.6.7",
+    "@darkforest_eth/types": "6.6.7",
     "big-integer": "^1.6.48",
-    "ethers": "^5.5.1"
+    "ethers": "^5.0.7"
   },
   "devDependencies": {
-    "del-cli": "^4.0.1",
     "eslint": "^7.30.0",
     "prettier": "^2.3.0",
-    "typedoc": "^0.22.8",
-    "typedoc-plugin-markdown": "3.11.x",
-    "typescript": "4.4.x"
+    "typedoc": "^0.21.4",
+    "typedoc-plugin-markdown": "^3.10.3",
+    "typescript": "^4.3.5"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "524c42837b3f542610edf58c8f3d0cde7114eeb8"
+  "gitHead": "f8834dbc3c12efb798d0a5ad2f1c93fb77c4ea2b"
 }

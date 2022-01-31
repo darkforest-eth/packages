@@ -47,7 +47,7 @@
 
 ### height
 
-• `Optional` **height**: `number`
+• **height**: `number`
 
 ---
 
@@ -101,4 +101,4 @@
 
 ### width
 
-• `Optional` **width**: `number`
+• **width**: `number`

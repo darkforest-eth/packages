@@ -358,6 +358,7 @@ DarkForestCore contract (or even any collection of objects).
 | `unconfirmedActivateArtifact?`   | `UnconfirmedActivateArtifact`                                      |
 | `unconfirmedAddEmoji`            | `boolean`                                                          |
 | `unconfirmedBuyHats`             | `UnconfirmedBuyHat`[]                                              |
+| `unconfirmedClaim?`              | `UnconfirmedClaim`                                                 |
 | `unconfirmedClearEmoji`          | `boolean`                                                          |
 | `unconfirmedDeactivateArtifact?` | `UnconfirmedDeactivateArtifact`                                    |
 | `unconfirmedDepartures`          | `UnconfirmedMove`[]                                                |
@@ -578,7 +579,7 @@ Enumeration of artifact rarity levels. Common = 1, Mythic = 5
 
 ### ArtifactRarityNames
 
-• **ArtifactRarityNames**: `Object`
+• `Const` **ArtifactRarityNames**: `Object`
 
 Mapping from ArtifactRarity to pretty-printed names.
 
@@ -609,7 +610,7 @@ Enumeration of artifact types.
 
 ### ArtifactTypeNames
 
-• **ArtifactTypeNames**: `Object`
+• `Const` **ArtifactTypeNames**: `Object`
 
 Mapping from ArtifactType to pretty-printed names.
 
@@ -655,7 +656,7 @@ Enumeration of the biomes in the game. OCEAN = 1, CORRUPTED = 10
 
 ### BiomeNames
 
-• **BiomeNames**: `Object`
+• `Const` **BiomeNames**: `Object`
 
 Mapping from Biome to pretty-printed names.
 
@@ -686,7 +687,7 @@ Enumeration of the possible planet levels.
 
 ### PlanetLevelNames
 
-• **PlanetLevelNames**: `Object`
+• `Const` **PlanetLevelNames**: `Object`
 
 Mapping from PlanetLevel to pretty-printed names.
 
@@ -726,7 +727,7 @@ Enumeration of the planet types. (PLANET = 0, SILVER_BANK = 4)
 
 ### PlanetTypeNames
 
-• **PlanetTypeNames**: `Object`
+• `Const` **PlanetTypeNames**: `Object`
 
 Mapping from PlanetType to pretty-printed names.
 
@@ -751,7 +752,7 @@ Enumeration of the types of space in the game. NEBULA = 0, DEAD_SPACE = 3
 
 ### SpaceTypeNames
 
-• **SpaceTypeNames**: `Object`
+• `Const` **SpaceTypeNames**: `Object`
 
 Mapping from SpaceType to pretty-printed names.
 

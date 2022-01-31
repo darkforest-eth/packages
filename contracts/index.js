@@ -32,7 +32,9 @@
  * @packageDocumentation
  */
 Object.defineProperty(exports, '__esModule', { value: true });
-exports.WHITELIST_CONTRACT_ADDRESS =
+exports.SCORING_CONTRACT_ADDRESS =
+  exports.GPT_CREDIT_CONTRACT_ADDRESS =
+  exports.WHITELIST_CONTRACT_ADDRESS =
   exports.GETTERS_CONTRACT_ADDRESS =
   exports.TOKENS_CONTRACT_ADDRESS =
   exports.CORE_CONTRACT_ADDRESS =
@@ -57,44 +59,52 @@ exports.NETWORK_ID = 100;
 /**
  * The block in which the DarkForestCore contract was deployed.
  */
-exports.START_BLOCK = 19397418;
+exports.START_BLOCK = 18361165;
 /**
  * The address for the DarkForestUtils library.
  */
-exports.UTILS_LIBRARY_ADDRESS = '0xc321028EFDF94A838A1d96c32Df17598d3A5bDDc';
+exports.UTILS_LIBRARY_ADDRESS = '0x7333aAd0767F8c6A94Fc40Cb9137C6cB9c141a30';
 /**
  * The address for the DarkForestPlanet library.
  */
-exports.PLANET_LIBRARY_ADDRESS = '0x721A137df0F8fC2DD30eb47a05233477d47fD29A';
+exports.PLANET_LIBRARY_ADDRESS = '0x46C4c388Ef70798af0409B808b26e72B116e0dBf';
 /**
  * The address for the DarkForestArtifactUtils library.
  */
-exports.ARTIFACT_UTILS_LIBRARY_ADDRESS = '0xbcc81C6636522cfBb2DC0ef0fcFdf62e287c6a87';
+exports.ARTIFACT_UTILS_LIBRARY_ADDRESS = '0xAb1E73A97548224097bbe32656167d1F720484Ae';
 /**
  * The address for the Verifier library.
  */
-exports.VERIFIER_LIBRARY_ADDRESS = '0x0B3537b6256385B7fA5ad595227F617aF40a4dda';
+exports.VERIFIER_LIBRARY_ADDRESS = '0xD823a200E7b6dFcD11569ff19d7E738cA4ecAf41';
 /**
  * The address for the DarkForestInitialize library.
  */
-exports.INITIALIZE_LIBRARY_ADDRESS = '0xC84B257d24f423AFE5eDD81da1493d6BFc1dF830';
+exports.INITIALIZE_LIBRARY_ADDRESS = '0x4b813c4869E2705d8DfE0c9D123303d8ae9554B1';
 /**
  * The address for the DarkForestLazyUpdate library.
  */
-exports.LAZY_UPDATE_LIBRARY_ADDRESS = '0xA924AD7aA8F2Bc972d634dE54AeB921cdE72571f';
+exports.LAZY_UPDATE_LIBRARY_ADDRESS = '0x0304a6b7e6Ffd1132BDA89f5471F22eFe2748045';
 /**
  * The address for the DarkForestCore contract.
  */
-exports.CORE_CONTRACT_ADDRESS = '0x61690202fA9f49d829A8823e54c184A60e16B003';
+exports.CORE_CONTRACT_ADDRESS = '0x27a166aE00C33Bef64306760aCd7C9fD3c2fEB74';
 /**
  * The address for the DarkForestTokens contract.
  */
-exports.TOKENS_CONTRACT_ADDRESS = '0x0e2a8279C3ed4ee091096418dFA60D48d98cF04F';
+exports.TOKENS_CONTRACT_ADDRESS = '0x8e7Fc9c67Cf2bc5D001682d17355dc5c7f41e4C1';
 /**
  * The address for the DarkForestGetters contract.
  */
-exports.GETTERS_CONTRACT_ADDRESS = '0xeB4FFAe45C74eCdEf0E93Ba4be10aB592f7128B2';
+exports.GETTERS_CONTRACT_ADDRESS = '0x71eF8b8D795AEbaf6dd6a2A0397B5D3A0e2B226E';
 /**
  * The address for the Whitelist contract.
  */
-exports.WHITELIST_CONTRACT_ADDRESS = '0xfbB1c976DDAcC1523AdacFaFd8eF2168E9921d3a';
+exports.WHITELIST_CONTRACT_ADDRESS = '0xed6b8BC35405bF6aa231CDDe9ec994b9DBF1f501';
+/**
+ * The address for the DarkForestGPTCredit contract.
+ */
+exports.GPT_CREDIT_CONTRACT_ADDRESS = '0x204104155100d6bc0d8928d720b3CD8d845B0F28';
+/**
+ * The address for the DarkForestScoring contract.
+ */
+exports.SCORING_CONTRACT_ADDRESS = '';

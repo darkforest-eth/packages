@@ -31,6 +31,7 @@ export * from './diagnostics';
 export * from './event';
 export * from './game_types';
 export * from './gas_prices';
+export * from './gpt_types';
 export * from './identifier';
 export * from './planet';
 export * from './planetmessage';

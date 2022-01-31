@@ -53,7 +53,7 @@ import * as hashing from 'http://cdn.skypack.dev/@darkforest_eth/hashing';
 
 ### MAX_PERLIN_VALUE
 
-• **MAX_PERLIN_VALUE**: `32`
+• `Const` **MAX_PERLIN_VALUE**: `32`
 
 ## Functions
 

@@ -130,7 +130,7 @@ client's diagnostics pane.
 
 ### gasPrices
 
-• `Private` **gasPrices**: `GasPrices` = `DEFAULT_GAS_PRICES`
+• `Private` **gasPrices**: `GasPrices`
 
 Represents the gas price one would pay to achieve the corresponding transaction confirmation
 speed.
