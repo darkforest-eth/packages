@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/ui",
-  "version": "6.6.7",
+  "version": "6.6.9",
   "license": "MIT",
   "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
   "engines": {
@@ -20,7 +20,7 @@
     "docs": "typedoc && npm run format"
   },
   "dependencies": {
-    "@darkforest_eth/types": "6.6.7",
+    "@darkforest_eth/types": "6.6.9",
     "color": "^3.0.2",
     "lit": "^2.0.0"
   },
@@ -34,5 +34,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "f8834dbc3c12efb798d0a5ad2f1c93fb77c4ea2b"
+  "gitHead": "91ffbd66d58ac7181a8841232f9741e2c8a58922"
 }

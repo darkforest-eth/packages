@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/network",
-  "version": "6.6.7",
+  "version": "6.6.9",
   "license": "MIT",
   "author": "Clown Town Labs Inc. <brian@clowntown.dev>",
   "engines": {
@@ -20,11 +20,11 @@
     "docs": "typedoc && npm run format"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.6.7",
-    "@darkforest_eth/contracts": "6.6.7",
-    "@darkforest_eth/events": "6.6.7",
-    "@darkforest_eth/serde": "6.6.7",
-    "@darkforest_eth/types": "6.6.7",
+    "@darkforest_eth/constants": "6.6.9",
+    "@darkforest_eth/contracts": "6.6.9",
+    "@darkforest_eth/events": "6.6.9",
+    "@darkforest_eth/serde": "6.6.9",
+    "@darkforest_eth/types": "6.6.9",
     "@ethersproject/providers": "^5.0.17",
     "ethers": "^5.0.7",
     "json-stable-stringify": "^1.0.1",
@@ -46,5 +46,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "f8834dbc3c12efb798d0a5ad2f1c93fb77c4ea2b"
+  "gitHead": "91ffbd66d58ac7181a8841232f9741e2c8a58922"
 }
