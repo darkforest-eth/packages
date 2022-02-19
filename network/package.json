@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/network",
-  "version": "6.7.0",
+  "version": "6.7.2",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -21,11 +21,11 @@
     "clean": "del-cli dist node_modules"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.7.0",
-    "@darkforest_eth/contracts": "6.7.0",
-    "@darkforest_eth/events": "6.7.0",
-    "@darkforest_eth/serde": "6.7.0",
-    "@darkforest_eth/types": "6.7.0",
+    "@darkforest_eth/constants": "6.7.2",
+    "@darkforest_eth/contracts": "6.7.2",
+    "@darkforest_eth/events": "6.7.2",
+    "@darkforest_eth/serde": "6.7.2",
+    "@darkforest_eth/types": "6.7.2",
     "async-mutex": "^0.3.2",
     "ethers": "^5.5.1",
     "json-stable-stringify": "^1.0.1",
@@ -49,5 +49,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "c73f23738b9c965f868cd2f8f6bd98484afc24ce"
+  "gitHead": "f4e21f62def2ac6facbdc8d0743f307cbb765059"
 }
