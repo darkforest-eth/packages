@@ -10,7 +10,10 @@
     "declaration": true,
     "rootDir": "src",
     "outDir": "dist",
-    "inlineSourceMap": true
+    // Create .js.map files for each generated JS file
+    "sourceMap": true,
+    // Embed the original source into the sourceMap instead of pointing to source files
+    "inlineSources": true
   },
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
@@ -18,6 +21,7 @@
     "hideBreadcrumbs": true,
     "readme": "none",
     "disableSources": true,
-    "disableOutputCheck": true
+    "cleanOutputDir": false,
+    "githubPages": false
   }
 }

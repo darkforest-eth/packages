@@ -1,5 +1,5 @@
 import { CONTRACT_PRECISION } from '@darkforest_eth/constants';
-import type { DarkForestCore } from '@darkforest_eth/contracts/typechain';
+import type { DarkForest } from '@darkforest_eth/contracts/typechain';
 import { bonusFromHex } from '@darkforest_eth/hexgen';
 import type {
   Awaited,
@@ -12,8 +12,9 @@ import type {
 import { address } from './address';
 import { locationIdFromDecStr } from './location';
 
-export type RawPlanet = Awaited<ReturnType<DarkForestCore['planets']>>;
-export type RawPlanetExtendedInfo = Awaited<ReturnType<DarkForestCore['planetsExtendedInfo']>>;
+export type RawPlanet = Awaited<ReturnType<DarkForest['planets']>>;
+export type RawPlanetExtendedInfo = Awaited<ReturnType<DarkForest['planetsExtendedInfo']>>;
+export type RawPlanetExtendedInfo2 = Awaited<ReturnType<DarkForest['planetsExtendedInfo2']>>;
 
 /**
  * Converts data obtained from a contract call (typed with Typechain) into a
@@ -29,14 +30,17 @@ export type RawPlanetExtendedInfo = Awaited<ReturnType<DarkForestCore['planetsEx
  * @param rawLocationId string of decimal digits representing a number equal to
  * a planet's ID
  * @param rawPlanet typechain-typed result of a call returning a
- * `DarkForestTypes.Planet`
+ * `PlanetTypes.Planet`
  * @param rawPlanetExtendedInfo typechain-typed result of a call returning a
- * `DarkForestTypes.PlanetExtendedInfo`
+ * `PlanetTypes.PlanetExtendedInfo`
+ * @param rawPlanetExtendedInfo2 typechain-typed result of a call returning a
+ * `PlanetTypes.PlanetExtendedInfo2`
  */
 export function decodePlanet(
   rawLocationId: string,
   rawPlanet: RawPlanet,
-  rawPlanetExtendedInfo: RawPlanetExtendedInfo
+  rawPlanetExtendedInfo: RawPlanetExtendedInfo,
+  rawPlanetExtendedInfo2: RawPlanetExtendedInfo2
 ): Planet {
   const locationId = locationIdFromDecStr(rawLocationId.toString());
 
@@ -64,6 +68,8 @@ export function decodePlanet(
     speed: rawPlanet.speed.toNumber(),
     defense: rawPlanet.defense.toNumber(),
 
+    spaceJunk: rawPlanetExtendedInfo.spaceJunk.toNumber(),
+
     // metadata
     lastUpdated: rawPlanetExtendedInfo.lastUpdated.toNumber(),
     upgradeState: [
@@ -71,11 +77,6 @@ export function decodePlanet(
       rawPlanetExtendedInfo.upgradeState1.toNumber(),
       rawPlanetExtendedInfo.upgradeState2.toNumber(),
     ],
-
-    unconfirmedDepartures: [],
-    unconfirmedUpgrades: [],
-    unconfirmedBuyHats: [],
-    unconfirmedPlanetTransfers: [],
     unconfirmedClearEmoji: false,
     unconfirmedAddEmoji: false,
     loadingServerState: false,
@@ -92,20 +93,27 @@ export function decodePlanet(
     destroyed: rawPlanetExtendedInfo[11],
     heldArtifactIds: [], // this is stale and will be updated in GameObjects
     bonus: bonusFromHex(locationId),
+    pausers: rawPlanetExtendedInfo2.pausers.toNumber(),
+
+    invader: address(rawPlanetExtendedInfo2.invader),
+    capturer: address(rawPlanetExtendedInfo2.capturer),
+    invadeStartBlock: rawPlanetExtendedInfo2.invadeStartBlock.eq(0)
+      ? undefined
+      : rawPlanetExtendedInfo2.invadeStartBlock.toNumber(),
   };
 
   return planet;
 }
 
-type RawDefaults = Awaited<ReturnType<DarkForestCore['getDefaultStats']>>;
+type RawDefaults = Awaited<ReturnType<DarkForest['getDefaultStats']>>;
 
 /**
  * Converts the raw typechain result of a call which fetches a
- * `DarkForestTypes.PlanetDefaultStats[]` array of structs, and converts it into
+ * `PlanetTypes.PlanetDefaultStats[]` array of structs, and converts it into
  * an object with type `PlanetDefaults` (see @darkforest_eth/types).
  *
  * @param rawDefaults result of a ethers.js contract call which returns a raw
- * `DarkForestTypes.PlanetDefaultStats` struct, typed with typechain.
+ * `PlanetTypes.PlanetDefaultStats` struct, typed with typechain.
  */
 export function decodePlanetDefaults(rawDefaults: RawDefaults): PlanetDefaults {
   return {

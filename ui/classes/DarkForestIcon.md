@@ -2865,21 +2865,6 @@ LitElement.styles
 
 ▪ `Static` `Optional` **disableWarning**: (`warningKind`: `WarningKind`) => `void`
 
-Disable the given warning category for this class.
-
-This method only exists in development builds, so it should be accessed
-with a guard like:
-
-```ts
-// Disable for all ReactiveElement subclasses
-ReactiveElement.disableWarning.?('migration');
-
-// Disable for only MyElement and subclasses
-MyElement.disableWarning.?('migration');
-```
-
-**`nocollapse`**
-
 #### Type declaration
 
 ▸ (`warningKind`): `void`
@@ -2898,8 +2883,6 @@ MyElement.disableWarning.?('migration');
 ```
 
 **`nocollapse`**
-
-**`category`** dev-mode
 
 ##### Parameters
 
@@ -2921,21 +2904,6 @@ LitElement.disableWarning
 
 ▪ `Static` `Optional` **enableWarning**: (`warningKind`: `WarningKind`) => `void`
 
-Enable the given warning category for this class.
-
-This method only exists in development builds, so it should be accessed
-with a guard like:
-
-```ts
-// Enable for all ReactiveElement subclasses
-ReactiveElement.enableWarning.?('migration');
-
-// Enable for only MyElement and subclasses
-MyElement.enableWarning.?('migration');
-```
-
-**`nocollapse`**
-
 #### Type declaration
 
 ▸ (`warningKind`): `void`
@@ -2954,8 +2922,6 @@ MyElement.enableWarning.?('migration');
 ```
 
 **`nocollapse`**
-
-**`category`** dev-mode
 
 ##### Parameters
 
@@ -3109,6 +3075,10 @@ Returns a list of attributes corresponding to the registered properties.
 
 `string`[]
 
+#### Inherited from
+
+LitElement.observedAttributes
+
 ---
 
 ## updates Accessors
@@ -3136,6 +3106,10 @@ before fulfilling this Promise. To do this, first await
 
 A promise of a boolean that resolves to true if the update completed
 without triggering another update.
+
+#### Inherited from
+
+LitElement.updateComplete
 
 ## Other Methods
 
@@ -4517,11 +4491,11 @@ LitElement.removeEventListener
 
 ### render
 
-▸ **render**(): `TemplateResult`<`2`\> \| typeof `nothing`
+▸ **render**(): typeof `nothing` \| `TemplateResult`<`2`\>
 
 #### Returns
 
-`TemplateResult`<`2`\> \| typeof `nothing`
+typeof `nothing` \| `TemplateResult`<`2`\>
 
 #### Overrides
 
@@ -5146,10 +5120,10 @@ LitElement.disconnectedCallback
 ▸ `Static` **createProperty**(`name`, `options?`): `void`
 
 Creates a property accessor on the element prototype if one does not exist
-and stores a `PropertyDeclaration` for the property with the given options.
-The property setter calls the property's `hasChanged` property option
-or uses a strict identity check to determine whether or not to request
-an update.
+and stores a {@linkcode PropertyDeclaration} for the property with the
+given options. The property setter calls the property's `hasChanged`
+property option or uses a strict identity check to determine whether or not
+to request an update.
 
 This method may be overridden to customize properties; however,
 when doing so, it's important to call `super.createProperty` to ensure
@@ -5187,7 +5161,7 @@ LitElement.createProperty
 
 ### getPropertyDescriptor
 
-▸ `Static` `Protected` **getPropertyDescriptor**(`name`, `key`, `options`): `Object`
+▸ `Static` `Protected` **getPropertyDescriptor**(`name`, `key`, `options`): `undefined` \| `PropertyDescriptor`
 
 Returns a property descriptor to be defined on the given named property.
 If no descriptor is returned, the property will not become an accessor.
@@ -5223,14 +5197,7 @@ class MyElement extends LitElement {
 
 #### Returns
 
-`Object`
-
-| Name           | Type                           |
-| :------------- | :----------------------------- |
-| `configurable` | `boolean`                      |
-| `enumerable`   | `boolean`                      |
-| `get`          | () => `any`                    |
-| `set`          | (`value`: `unknown`) => `void` |
+`undefined` \| `PropertyDescriptor`
 
 #### Inherited from
 
@@ -5240,7 +5207,7 @@ LitElement.getPropertyDescriptor
 
 ### getPropertyOptions
 
-▸ `Static` `Protected` **getPropertyOptions**(`name`): `PropertyDeclaration`<`unknown`, `unknown`\>
+▸ `Static` **getPropertyOptions**(`name`): `PropertyDeclaration`<`unknown`, `unknown`\>
 
 Returns the property options associated with the given property.
 These options are defined with a `PropertyDeclaration` via the `properties`
@@ -5248,7 +5215,8 @@ object or the `@property` decorator and are registered in
 `createProperty(...)`.
 
 Note, this method should be considered "final" and not overridden. To
-customize the options for a given property, override [[`createProperty`]].
+customize the options for a given property, override
+[`createProperty`](DarkForestButton.md#createproperty).
 
 **`nocollapse`**
 
@@ -5569,7 +5537,7 @@ LitElement.updated
 
 ### willUpdate
 
-▸ **willUpdate**(`_changedProperties`): `void`
+▸ `Protected` **willUpdate**(`_changedProperties`): `void`
 
 #### Parameters
 

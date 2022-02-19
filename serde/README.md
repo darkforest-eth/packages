@@ -31,9 +31,9 @@ import * as serde from 'http://cdn.skypack.dev/@darkforest_eth/serde';
 - [RawArrival](README.md#rawarrival)
 - [RawArtifactPointValues](README.md#rawartifactpointvalues)
 - [RawArtifactWithMetadata](README.md#rawartifactwithmetadata)
-- [RawClaimedCoords](README.md#rawclaimedcoords)
 - [RawPlanet](README.md#rawplanet)
 - [RawPlanetExtendedInfo](README.md#rawplanetextendedinfo)
+- [RawPlanetExtendedInfo2](README.md#rawplanetextendedinfo2)
 - [RawPlayer](README.md#rawplayer)
 - [RawRevealedCoords](README.md#rawrevealedcoords)
 - [RawUpgrade](README.md#rawupgrade)
@@ -49,14 +49,48 @@ import * as serde from 'http://cdn.skypack.dev/@darkforest_eth/serde';
 - [decodeArrival](README.md#decodearrival)
 - [decodeArtifact](README.md#decodeartifact)
 - [decodeArtifactPointValues](README.md#decodeartifactpointvalues)
-- [decodeClaimedCoords](README.md#decodeclaimedcoords)
 - [decodePlanet](README.md#decodeplanet)
 - [decodePlanetDefaults](README.md#decodeplanetdefaults)
 - [decodePlayer](README.md#decodeplayer)
 - [decodeRevealedCoords](README.md#decoderevealedcoords)
 - [decodeUpgrade](README.md#decodeupgrade)
 - [decodeUpgradeBranches](README.md#decodeupgradebranches)
+- [hashToInt](README.md#hashtoint)
 - [isNetworkEvent](README.md#isnetworkevent)
+- [isUnconfirmedActivateArtifact](README.md#isunconfirmedactivateartifact)
+- [isUnconfirmedActivateArtifactTx](README.md#isunconfirmedactivateartifacttx)
+- [isUnconfirmedBuyHat](README.md#isunconfirmedbuyhat)
+- [isUnconfirmedBuyHatTx](README.md#isunconfirmedbuyhattx)
+- [isUnconfirmedCapturePlanet](README.md#isunconfirmedcaptureplanet)
+- [isUnconfirmedCapturePlanetTx](README.md#isunconfirmedcaptureplanettx)
+- [isUnconfirmedDeactivateArtifact](README.md#isunconfirmeddeactivateartifact)
+- [isUnconfirmedDeactivateArtifactTx](README.md#isunconfirmeddeactivateartifacttx)
+- [isUnconfirmedDepositArtifact](README.md#isunconfirmeddepositartifact)
+- [isUnconfirmedDepositArtifactTx](README.md#isunconfirmeddepositartifacttx)
+- [isUnconfirmedFindArtifact](README.md#isunconfirmedfindartifact)
+- [isUnconfirmedFindArtifactTx](README.md#isunconfirmedfindartifacttx)
+- [isUnconfirmedGetShips](README.md#isunconfirmedgetships)
+- [isUnconfirmedGetShipsTx](README.md#isunconfirmedgetshipstx)
+- [isUnconfirmedInit](README.md#isunconfirmedinit)
+- [isUnconfirmedInitTx](README.md#isunconfirmedinittx)
+- [isUnconfirmedInvadePlanet](README.md#isunconfirmedinvadeplanet)
+- [isUnconfirmedInvadePlanetTx](README.md#isunconfirmedinvadeplanettx)
+- [isUnconfirmedMove](README.md#isunconfirmedmove)
+- [isUnconfirmedMoveTx](README.md#isunconfirmedmovetx)
+- [isUnconfirmedProspectPlanet](README.md#isunconfirmedprospectplanet)
+- [isUnconfirmedProspectPlanetTx](README.md#isunconfirmedprospectplanettx)
+- [isUnconfirmedRelease](README.md#isunconfirmedrelease)
+- [isUnconfirmedReleaseTx](README.md#isunconfirmedreleasetx)
+- [isUnconfirmedReveal](README.md#isunconfirmedreveal)
+- [isUnconfirmedRevealTx](README.md#isunconfirmedrevealtx)
+- [isUnconfirmedTransfer](README.md#isunconfirmedtransfer)
+- [isUnconfirmedTransferTx](README.md#isunconfirmedtransfertx)
+- [isUnconfirmedUpgrade](README.md#isunconfirmedupgrade)
+- [isUnconfirmedUpgradeTx](README.md#isunconfirmedupgradetx)
+- [isUnconfirmedWithdrawArtifact](README.md#isunconfirmedwithdrawartifact)
+- [isUnconfirmedWithdrawArtifactTx](README.md#isunconfirmedwithdrawartifacttx)
+- [isUnconfirmedWithdrawSilver](README.md#isunconfirmedwithdrawsilver)
+- [isUnconfirmedWithdrawSilverTx](README.md#isunconfirmedwithdrawsilvertx)
 - [locationIdFromBigInt](README.md#locationidfrombigint)
 - [locationIdFromDecStr](README.md#locationidfromdecstr)
 - [locationIdFromEthersBN](README.md#locationidfromethersbn)
@@ -67,61 +101,61 @@ import * as serde from 'http://cdn.skypack.dev/@darkforest_eth/serde';
 
 ### RawArrival
 
-Ƭ **RawArrival**: `Awaited`<`ReturnType`<`DarkForestCore`[``"getPlanetArrival"``]\>\>
+Ƭ **RawArrival**: `Awaited`<`ReturnType`<`DarkForest`[``"getPlanetArrival"``]\>\>
 
 ---
 
 ### RawArtifactPointValues
 
-Ƭ **RawArtifactPointValues**: `Awaited`<`ReturnType`<`DarkForestCore`[``"getArtifactPointValues"``]\>\>
+Ƭ **RawArtifactPointValues**: `Awaited`<`ReturnType`<`DarkForest`[``"getArtifactPointValues"``]\>\>
 
 ---
 
 ### RawArtifactWithMetadata
 
-Ƭ **RawArtifactWithMetadata**: `Awaited`<`ReturnType`<`DarkForestGetters`[``"getArtifactById"``]\>\>
-
----
-
-### RawClaimedCoords
-
-Ƭ **RawClaimedCoords**: `Awaited`<`ReturnType`<`DarkForestScoringRound3`[``"claimedCoords"``]\>\>
+Ƭ **RawArtifactWithMetadata**: `Awaited`<`ReturnType`<`DarkForest`[``"getArtifactById"``]\>\>
 
 ---
 
 ### RawPlanet
 
-Ƭ **RawPlanet**: `Awaited`<`ReturnType`<`DarkForestCore`[``"planets"``]\>\>
+Ƭ **RawPlanet**: `Awaited`<`ReturnType`<`DarkForest`[``"planets"``]\>\>
 
 ---
 
 ### RawPlanetExtendedInfo
 
-Ƭ **RawPlanetExtendedInfo**: `Awaited`<`ReturnType`<`DarkForestCore`[``"planetsExtendedInfo"``]\>\>
+Ƭ **RawPlanetExtendedInfo**: `Awaited`<`ReturnType`<`DarkForest`[``"planetsExtendedInfo"``]\>\>
+
+---
+
+### RawPlanetExtendedInfo2
+
+Ƭ **RawPlanetExtendedInfo2**: `Awaited`<`ReturnType`<`DarkForest`[``"planetsExtendedInfo2"``]\>\>
 
 ---
 
 ### RawPlayer
 
-Ƭ **RawPlayer**: `Awaited`<`ReturnType`<`DarkForestCore`[``"players"``]\>\>
+Ƭ **RawPlayer**: `Awaited`<`ReturnType`<`DarkForest`[``"players"``]\>\>
 
 ---
 
 ### RawRevealedCoords
 
-Ƭ **RawRevealedCoords**: `Awaited`<`ReturnType`<`DarkForestCore`[``"revealedCoords"``]\>\>
+Ƭ **RawRevealedCoords**: `Awaited`<`ReturnType`<`DarkForest`[``"revealedCoords"``]\>\>
 
 ---
 
 ### RawUpgrade
 
-Ƭ **RawUpgrade**: `Awaited`<`ReturnType`<`DarkForestGetters`[``"getArtifactById"``]\>\>[``"upgrade"``]
+Ƭ **RawUpgrade**: `Awaited`<`ReturnType`<`DarkForest`[``"getArtifactById"``]\>\>[``"upgrade"``]
 
 ---
 
 ### RawUpgradesBranches
 
-Ƭ **RawUpgradesBranches**: `Awaited`<`ReturnType`<`DarkForestCore`[``"getUpgrades"``]\>\>
+Ƭ **RawUpgradesBranches**: `Awaited`<`ReturnType`<`DarkForest`[``"getUpgrades"``]\>\>
 
 ## Functions
 
@@ -179,9 +213,9 @@ be instantiated through `artifactIdFromHexStr`, `artifactIdFromDecStr`, and
 
 #### Parameters
 
-| Name         | Type       | Description                                     |
-| :----------- | :--------- | :---------------------------------------------- |
-| `artifactId` | `EthersBN` | ether.js `BigNumber` representing artifact's ID |
+| Name         | Type        | Description                                     |
+| :----------- | :---------- | :---------------------------------------------- |
+| `artifactId` | `BigNumber` | ether.js `BigNumber` representing artifact's ID |
 
 #### Returns
 
@@ -233,14 +267,14 @@ can be used if you need to pass an artifact ID into a web3 call.
 
 ▸ **decodeArrival**(`rawArrival`): `QueuedArrival`
 
-Converts the raw typechain result of `DarkForestTypes.ArrivalData` struct to
+Converts the raw typechain result of `ArrivalTypes.ArrivalData` struct to
 to a `QueuedArrival` typescript typed object (see @darkforest_eth/types)
 
 #### Parameters
 
-| Name         | Type                                 | Description                                                                                                               |
-| :----------- | :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `rawArrival` | [`RawArrival`](README.md#rawarrival) | Raw data of a `DarkForestTypes.ArrivalData` struct, returned from a blockchain call (assumed to be typed with typechain). |
+| Name         | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Description                                                                                                            |
+| :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- |
+| `rawArrival` | [`BigNumber`, `string`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `number`, `BigNumber`, `BigNumber`] & { `arrivalTime`: `BigNumber` ; `arrivalType`: `number` ; `carriedArtifactId`: `BigNumber` ; `departureTime`: `BigNumber` ; `distance`: `BigNumber` ; `fromPlanet`: `BigNumber` ; `id`: `BigNumber` ; `player`: `string` ; `popArriving`: `BigNumber` ; `silverMoved`: `BigNumber` ; `toPlanet`: `BigNumber` } | Raw data of a `ArrivalTypes.ArrivalData` struct, returned from a blockchain call (assumed to be typed with typechain). |
 
 #### Returns
 
@@ -252,14 +286,14 @@ to a `QueuedArrival` typescript typed object (see @darkforest_eth/types)
 
 ▸ **decodeArtifact**(`rawArtifactWithMetadata`): `Artifact`
 
-Converts the raw typechain result of `DarkForestTypes.ArtifactWithMetadata`
+Converts the raw typechain result of `ArtifactTypes.ArtifactWithMetadata`
 struct to an `Artifact` typescript typed object (see @darkforest_eth/types).
 
 #### Parameters
 
-| Name                      | Type                                                           | Description                                                                                                         |
-| :------------------------ | :------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------ |
-| `rawArtifactWithMetadata` | [`RawArtifactWithMetadata`](README.md#rawartifactwithmetadata) | Raw data of an `ArtifactWithMetadata` struct, returned from a blockchain call (assumed to be typed with typechain). |
+| Name                      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Description                                                                                                         |
+| :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------ |
+| `rawArtifactWithMetadata` | [[`boolean`, `BigNumber`, `BigNumber`, `number`, `number`, `BigNumber`, `string`, `number`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `string`] & { `activations`: `BigNumber` ; `artifactType`: `number` ; `controller`: `string` ; `discoverer`: `string` ; `id`: `BigNumber` ; `isInitialized`: `boolean` ; `lastActivated`: `BigNumber` ; `lastDeactivated`: `BigNumber` ; `mintedAtTimestamp`: `BigNumber` ; `planetBiome`: `number` ; `planetDiscoveredOn`: `BigNumber` ; `rarity`: `number` ; `wormholeTo`: `BigNumber` }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber` }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber` }] & { `artifact`: [`boolean`, `BigNumber`, `BigNumber`, `number`, `number`, `BigNumber`, `string`, `number`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `string`] & { `activations`: `BigNumber` ; `artifactType`: `number` ; `controller`: `string` ; `discoverer`: `string` ; `id`: `BigNumber` ; `isInitialized`: `boolean` ; `lastActivated`: `BigNumber` ; `lastDeactivated`: `BigNumber` ; `mintedAtTimestamp`: `BigNumber` ; `planetBiome`: `number` ; `planetDiscoveredOn`: `BigNumber` ; `rarity`: `number` ; `wormholeTo`: `BigNumber` } ; `locationId`: `BigNumber` ; `owner`: `string` ; `timeDelayedUpgrade`: [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber` } ; `upgrade`: [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber` } ; `voyageId`: `BigNumber` } | Raw data of an `ArtifactWithMetadata` struct, returned from a blockchain call (assumed to be typed with typechain). |
 
 #### Returns
 
@@ -272,14 +306,14 @@ struct to an `Artifact` typescript typed object (see @darkforest_eth/types).
 ▸ **decodeArtifactPointValues**(`rawPointValues`): `ArtifactPointValues`
 
 Converts the raw typechain result of a call to
-`DarkForestCore.getArtifactPointValues` to an `ArtifactPointValues`
+`DarkForest.getArtifactPointValues` to an `ArtifactPointValues`
 typescript typed object (see @darkforest_eth/types).
 
 #### Parameters
 
-| Name             | Type                                                         |
-| :--------------- | :----------------------------------------------------------- |
-| `rawPointValues` | [`RawArtifactPointValues`](README.md#rawartifactpointvalues) |
+| Name             | Type                                                                           |
+| :--------------- | :----------------------------------------------------------------------------- |
+| `rawPointValues` | [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] |
 
 #### Returns
 
@@ -287,30 +321,9 @@ typescript typed object (see @darkforest_eth/types).
 
 ---
 
-### decodeClaimedCoords
-
-▸ **decodeClaimedCoords**(`rawClaimedCoords`): `ClaimedCoords`
-
-Converts the result of a typechain-typed ethers.js contract call returning a
-`DarkForestTypes.ClaimedCoords` struct into a `ClaimedCoords` object (see
-
-**`darkforest_eth/types)`**
-
-#### Parameters
-
-| Name               | Type                                             | Description                                                                                                |
-| :----------------- | :----------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
-| `rawClaimedCoords` | [`RawClaimedCoords`](README.md#rawclaimedcoords) | the result of a typechain-typed ethers.js contract call returning a DarkForestTypes.RevealedCoords` struct |
-
-#### Returns
-
-`ClaimedCoords`
-
----
-
 ### decodePlanet
 
-▸ **decodePlanet**(`rawLocationId`, `rawPlanet`, `rawPlanetExtendedInfo`): `Planet`
+▸ **decodePlanet**(`rawLocationId`, `rawPlanet`, `rawPlanetExtendedInfo`, `rawPlanetExtendedInfo2`): `Planet`
 
 Converts data obtained from a contract call (typed with Typechain) into a
 `Planet` that can be used by the client (see @darkforest_eth/types). Note
@@ -324,11 +337,12 @@ provided Dark Forest web client.
 
 #### Parameters
 
-| Name                    | Type                                                       | Description                                                                       |
-| :---------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------- |
-| `rawLocationId`         | `string`                                                   | string of decimal digits representing a number equal to a planet's ID             |
-| `rawPlanet`             | [`RawPlanet`](README.md#rawplanet)                         | typechain-typed result of a call returning a `DarkForestTypes.Planet`             |
-| `rawPlanetExtendedInfo` | [`RawPlanetExtendedInfo`](README.md#rawplanetextendedinfo) | typechain-typed result of a call returning a `DarkForestTypes.PlanetExtendedInfo` |
+| Name                     | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Description                                                                    |
+| :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------- |
+| `rawLocationId`          | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | string of decimal digits representing a number equal to a planet's ID          |
+| `rawPlanet`              | [`string`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defense`: `BigNumber` ; `isHomePlanet`: `boolean` ; `owner`: `string` ; `planetLevel`: `BigNumber` ; `planetType`: `number` ; `population`: `BigNumber` ; `populationCap`: `BigNumber` ; `populationGrowth`: `BigNumber` ; `range`: `BigNumber` ; `silver`: `BigNumber` ; `silverCap`: `BigNumber` ; `silverGrowth`: `BigNumber` ; `speed`: `BigNumber` }                                                                     | typechain-typed result of a call returning a `PlanetTypes.Planet`              |
+| `rawPlanetExtendedInfo`  | [`boolean`, `BigNumber`, `BigNumber`, `BigNumber`, `number`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `boolean`, `BigNumber`, `boolean`, `BigNumber`] & { `createdAt`: `BigNumber` ; `destroyed`: `boolean` ; `hasTriedFindingArtifact`: `boolean` ; `hatLevel`: `BigNumber` ; `isInitialized`: `boolean` ; `lastUpdated`: `BigNumber` ; `perlin`: `BigNumber` ; `prospectedBlockNumber`: `BigNumber` ; `spaceJunk`: `BigNumber` ; `spaceType`: `number` ; `upgradeState0`: `BigNumber` ; `upgradeState1`: `BigNumber` ; `upgradeState2`: `BigNumber` } | typechain-typed result of a call returning a `PlanetTypes.PlanetExtendedInfo`  |
+| `rawPlanetExtendedInfo2` | [`boolean`, `BigNumber`, `string`, `BigNumber`, `string`] & { `capturer`: `string` ; `invadeStartBlock`: `BigNumber` ; `invader`: `string` ; `isInitialized`: `boolean` ; `pausers`: `BigNumber` }                                                                                                                                                                                                                                                                                                                                                                 | typechain-typed result of a call returning a `PlanetTypes.PlanetExtendedInfo2` |
 
 #### Returns
 
@@ -341,14 +355,14 @@ provided Dark Forest web client.
 ▸ **decodePlanetDefaults**(`rawDefaults`): `PlanetDefaults`
 
 Converts the raw typechain result of a call which fetches a
-`DarkForestTypes.PlanetDefaultStats[]` array of structs, and converts it into
+`PlanetTypes.PlanetDefaultStats[]` array of structs, and converts it into
 an object with type `PlanetDefaults` (see @darkforest_eth/types).
 
 #### Parameters
 
-| Name          | Type    | Description                                                                                                                |
-| :------------ | :------ | :------------------------------------------------------------------------------------------------------------------------- |
-| `rawDefaults` | `any`[] | result of a ethers.js contract call which returns a raw `DarkForestTypes.PlanetDefaultStats` struct, typed with typechain. |
+| Name          | Type                                                                                                                                                                                                                                                                                                                                                                               | Description                                                                                                            |
+| :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------- |
+| `rawDefaults` | [`string`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `barbarianPercentage`: `BigNumber` ; `defense`: `BigNumber` ; `label`: `string` ; `populationCap`: `BigNumber` ; `populationGrowth`: `BigNumber` ; `range`: `BigNumber` ; `silverCap`: `BigNumber` ; `silverGrowth`: `BigNumber` ; `speed`: `BigNumber` }[] | result of a ethers.js contract call which returns a raw `PlanetTypes.PlanetDefaultStats` struct, typed with typechain. |
 
 #### Returns
 
@@ -361,14 +375,14 @@ an object with type `PlanetDefaults` (see @darkforest_eth/types).
 ▸ **decodePlayer**(`rawPlayer`): `Player`
 
 Converts the raw typechain result of a call which fetches a
-`DarkForestTypes.Player` struct, and converts it into an object
+`PlayerTypes.Player` struct, and converts it into an object
 with type `Player` (see @darkforest_eth/types) that can be used by a client.
 
 #### Parameters
 
-| Name        | Type                               | Description                                                                                                     |
-| :---------- | :--------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
-| `rawPlayer` | [`RawPlayer`](README.md#rawplayer) | result of an ethers.js contract call which returns a raw `DarkForestTypes.Player` struct, typed with typechain. |
+| Name        | Type                                                                                                                                                                                                                                                                                                                                                                                 | Description                                                                                                 |
+| :---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+| `rawPlayer` | [`boolean`, `string`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `boolean`] & { `claimedShips`: `boolean` ; `homePlanetId`: `BigNumber` ; `initTimestamp`: `BigNumber` ; `isInitialized`: `boolean` ; `lastRevealTimestamp`: `BigNumber` ; `player`: `string` ; `score`: `BigNumber` ; `spaceJunk`: `BigNumber` ; `spaceJunkLimit`: `BigNumber` } | result of an ethers.js contract call which returns a raw `PlayerTypes.Player` struct, typed with typechain. |
 
 #### Returns
 
@@ -381,15 +395,15 @@ with type `Player` (see @darkforest_eth/types) that can be used by a client.
 ▸ **decodeRevealedCoords**(`rawRevealedCoords`): `RevealedCoords`
 
 Converts the result of a typechain-typed ethers.js contract call returning a
-`DarkForestTypes.RevealedCoords` struct into a `RevealedCoords` object (see
+`RevealTypes.RevealedCoords` struct into a `RevealedCoords` object (see
 
 **`darkforest_eth/types)`**
 
 #### Parameters
 
-| Name                | Type                                               | Description                                                                                                |
-| :------------------ | :------------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
-| `rawRevealedCoords` | [`RawRevealedCoords`](README.md#rawrevealedcoords) | the result of a typechain-typed ethers.js contract call returning a DarkForestTypes.RevealedCoords` struct |
+| Name                | Type                                                                                                                                           | Description                                                                                            |
+| :------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------- |
+| `rawRevealedCoords` | [`BigNumber`, `BigNumber`, `BigNumber`, `string`] & { `locationId`: `BigNumber` ; `revealer`: `string` ; `x`: `BigNumber` ; `y`: `BigNumber` } | the result of a typechain-typed ethers.js contract call returning a RevealTypes.RevealedCoords` struct |
 
 #### Returns
 
@@ -402,15 +416,15 @@ Converts the result of a typechain-typed ethers.js contract call returning a
 ▸ **decodeUpgrade**(`rawUpgrade`): `Upgrade`
 
 Converts raw data received from a typechain-typed ethers.js contract call
-returning a `DarkForestTypes.Upgrade` into an `Upgrade` object (see
+returning a `UpgradeTypes.Upgrade` into an `Upgrade` object (see
 
 **`darkforest_eth/types)`**
 
 #### Parameters
 
-| Name         | Type                                 | Description                                                                                            |
-| :----------- | :----------------------------------- | :----------------------------------------------------------------------------------------------------- |
-| `rawUpgrade` | [`RawUpgrade`](README.md#rawupgrade) | raw data received from a typechain-typed ethers.js contract call returning a `DarkForestTypes.Upgrade` |
+| Name         | Type                                                                                                                                                                                                                                       | Description                                                                                         |
+| :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
+| `rawUpgrade` | [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber` } | raw data received from a typechain-typed ethers.js contract call returning a `UpgradeTypes.Upgrade` |
 
 #### Returns
 
@@ -423,17 +437,33 @@ returning a `DarkForestTypes.Upgrade` into an `Upgrade` object (see
 ▸ **decodeUpgradeBranches**(`rawUpgradeBranches`): `UpgradeBranches`
 
 Converts the raw return value of an ether.js contract call to
-`DarkForestCore.getUpgrades` to a 2D array of `Upgrade`s.
+`DarkForest.getUpgrades` to a 2D array of `Upgrade`s.
 
 #### Parameters
 
-| Name                 | Type                                                   | Description                                                                |
-| :------------------- | :----------------------------------------------------- | :------------------------------------------------------------------------- |
-| `rawUpgradeBranches` | [`RawUpgradesBranches`](README.md#rawupgradesbranches) | raw return value of ether.js contract call to `DarkForestCore.getUpgrades` |
+| Name                 | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Description                                                            |
+| :------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- |
+| `rawUpgradeBranches` | [[[`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }], [[`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }], [[`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }, [`BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`, `BigNumber`] & { `defMultiplier`: `BigNumber` ; `popCapMultiplier`: `BigNumber` ; `popGroMultiplier`: `BigNumber` ; `rangeMultiplier`: `BigNumber` ; `speedMultiplier`: `BigNumber`  }]] | raw return value of ether.js contract call to `DarkForest.getUpgrades` |
 
 #### Returns
 
 `UpgradeBranches`
+
+---
+
+### hashToInt
+
+▸ **hashToInt**(`hash`): `number`
+
+#### Parameters
+
+| Name   | Type     |
+| :----- | :------- |
+| `hash` | `string` |
+
+#### Returns
+
+`number`
 
 ---
 
@@ -453,6 +483,550 @@ stringent but works for now.
 #### Returns
 
 event is NetworkEvent
+
+---
+
+### isUnconfirmedActivateArtifact
+
+▸ **isUnconfirmedActivateArtifact**(`txIntent`): txIntent is UnconfirmedActivateArtifact
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedActivateArtifact
+
+---
+
+### isUnconfirmedActivateArtifactTx
+
+▸ **isUnconfirmedActivateArtifactTx**(`tx`): tx is Transaction<UnconfirmedActivateArtifact\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedActivateArtifact\>
+
+---
+
+### isUnconfirmedBuyHat
+
+▸ **isUnconfirmedBuyHat**(`txIntent`): txIntent is UnconfirmedBuyHat
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedBuyHat
+
+---
+
+### isUnconfirmedBuyHatTx
+
+▸ **isUnconfirmedBuyHatTx**(`tx`): tx is Transaction<UnconfirmedBuyHat\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedBuyHat\>
+
+---
+
+### isUnconfirmedCapturePlanet
+
+▸ **isUnconfirmedCapturePlanet**(`txIntent`): txIntent is UnconfirmedCapturePlanet
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedCapturePlanet
+
+---
+
+### isUnconfirmedCapturePlanetTx
+
+▸ **isUnconfirmedCapturePlanetTx**(`tx`): tx is Transaction<UnconfirmedCapturePlanet\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedCapturePlanet\>
+
+---
+
+### isUnconfirmedDeactivateArtifact
+
+▸ **isUnconfirmedDeactivateArtifact**(`txIntent`): txIntent is UnconfirmedDeactivateArtifact
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedDeactivateArtifact
+
+---
+
+### isUnconfirmedDeactivateArtifactTx
+
+▸ **isUnconfirmedDeactivateArtifactTx**(`tx`): tx is Transaction<UnconfirmedDeactivateArtifact\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedDeactivateArtifact\>
+
+---
+
+### isUnconfirmedDepositArtifact
+
+▸ **isUnconfirmedDepositArtifact**(`txIntent`): txIntent is UnconfirmedDepositArtifact
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedDepositArtifact
+
+---
+
+### isUnconfirmedDepositArtifactTx
+
+▸ **isUnconfirmedDepositArtifactTx**(`tx`): tx is Transaction<UnconfirmedDepositArtifact\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedDepositArtifact\>
+
+---
+
+### isUnconfirmedFindArtifact
+
+▸ **isUnconfirmedFindArtifact**(`txIntent`): txIntent is UnconfirmedFindArtifact
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedFindArtifact
+
+---
+
+### isUnconfirmedFindArtifactTx
+
+▸ **isUnconfirmedFindArtifactTx**(`tx`): tx is Transaction<UnconfirmedFindArtifact\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedFindArtifact\>
+
+---
+
+### isUnconfirmedGetShips
+
+▸ **isUnconfirmedGetShips**(`txIntent`): txIntent is UnconfirmedGetShips
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedGetShips
+
+---
+
+### isUnconfirmedGetShipsTx
+
+▸ **isUnconfirmedGetShipsTx**(`tx`): tx is Transaction<UnconfirmedGetShips\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedGetShips\>
+
+---
+
+### isUnconfirmedInit
+
+▸ **isUnconfirmedInit**(`txIntent`): txIntent is UnconfirmedInit
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedInit
+
+---
+
+### isUnconfirmedInitTx
+
+▸ **isUnconfirmedInitTx**(`tx`): tx is Transaction<UnconfirmedInit\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedInit\>
+
+---
+
+### isUnconfirmedInvadePlanet
+
+▸ **isUnconfirmedInvadePlanet**(`txIntent`): txIntent is UnconfirmedInvadePlanet
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedInvadePlanet
+
+---
+
+### isUnconfirmedInvadePlanetTx
+
+▸ **isUnconfirmedInvadePlanetTx**(`tx`): tx is Transaction<UnconfirmedInvadePlanet\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedInvadePlanet\>
+
+---
+
+### isUnconfirmedMove
+
+▸ **isUnconfirmedMove**(`txIntent`): txIntent is UnconfirmedMove
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedMove
+
+---
+
+### isUnconfirmedMoveTx
+
+▸ **isUnconfirmedMoveTx**(`tx`): tx is Transaction<UnconfirmedMove\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedMove\>
+
+---
+
+### isUnconfirmedProspectPlanet
+
+▸ **isUnconfirmedProspectPlanet**(`txIntent`): txIntent is UnconfirmedProspectPlanet
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedProspectPlanet
+
+---
+
+### isUnconfirmedProspectPlanetTx
+
+▸ **isUnconfirmedProspectPlanetTx**(`tx`): tx is Transaction<UnconfirmedProspectPlanet\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedProspectPlanet\>
+
+---
+
+### isUnconfirmedRelease
+
+▸ **isUnconfirmedRelease**(`txIntent`): txIntent is UnconfirmedMove
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedMove
+
+---
+
+### isUnconfirmedReleaseTx
+
+▸ **isUnconfirmedReleaseTx**(`tx`): tx is Transaction<UnconfirmedMove\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedMove\>
+
+---
+
+### isUnconfirmedReveal
+
+▸ **isUnconfirmedReveal**(`txIntent`): txIntent is UnconfirmedReveal
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedReveal
+
+---
+
+### isUnconfirmedRevealTx
+
+▸ **isUnconfirmedRevealTx**(`tx`): tx is Transaction<UnconfirmedReveal\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedReveal\>
+
+---
+
+### isUnconfirmedTransfer
+
+▸ **isUnconfirmedTransfer**(`txIntent`): txIntent is UnconfirmedPlanetTransfer
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedPlanetTransfer
+
+---
+
+### isUnconfirmedTransferTx
+
+▸ **isUnconfirmedTransferTx**(`tx`): tx is Transaction<UnconfirmedPlanetTransfer\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedPlanetTransfer\>
+
+---
+
+### isUnconfirmedUpgrade
+
+▸ **isUnconfirmedUpgrade**(`txIntent`): txIntent is UnconfirmedUpgrade
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedUpgrade
+
+---
+
+### isUnconfirmedUpgradeTx
+
+▸ **isUnconfirmedUpgradeTx**(`tx`): tx is Transaction<UnconfirmedUpgrade\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedUpgrade\>
+
+---
+
+### isUnconfirmedWithdrawArtifact
+
+▸ **isUnconfirmedWithdrawArtifact**(`txIntent`): txIntent is UnconfirmedWithdrawArtifact
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedWithdrawArtifact
+
+---
+
+### isUnconfirmedWithdrawArtifactTx
+
+▸ **isUnconfirmedWithdrawArtifactTx**(`tx`): tx is Transaction<UnconfirmedWithdrawArtifact\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedWithdrawArtifact\>
+
+---
+
+### isUnconfirmedWithdrawSilver
+
+▸ **isUnconfirmedWithdrawSilver**(`txIntent`): txIntent is UnconfirmedWithdrawSilver
+
+#### Parameters
+
+| Name       | Type       |
+| :--------- | :--------- |
+| `txIntent` | `TxIntent` |
+
+#### Returns
+
+txIntent is UnconfirmedWithdrawSilver
+
+---
+
+### isUnconfirmedWithdrawSilverTx
+
+▸ **isUnconfirmedWithdrawSilverTx**(`tx`): tx is Transaction<UnconfirmedWithdrawSilver\>
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+tx is Transaction<UnconfirmedWithdrawSilver\>
 
 ---
 
@@ -512,9 +1086,9 @@ should only be instantiated through `locationIdFromHexStr`,
 
 #### Parameters
 
-| Name       | Type       | Description                                           |
-| :--------- | :--------- | :---------------------------------------------------- |
-| `location` | `EthersBN` | ethers.js `BigNumber` representation of a locationID. |
+| Name       | Type        | Description                                           |
+| :--------- | :---------- | :---------------------------------------------------- |
+| `location` | `BigNumber` | ethers.js `BigNumber` representation of a locationID. |
 
 #### Returns
 

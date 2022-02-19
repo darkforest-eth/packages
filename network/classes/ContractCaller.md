@@ -46,7 +46,7 @@ Allows us to update the data that might be displayed in the UI.
 
 ### maxRetries
 
-• `Private` **maxRetries**: `number`
+• `Private` **maxRetries**: `number` = `DEFAULT_MAX_CALL_RETRIES`
 
 The maximum amount of times that we want the game to retry any individual call. Retries are
 appended to the end of the queue, meaning they respect the throttling settings of this class.

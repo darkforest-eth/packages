@@ -1,7 +1,7 @@
 import { DEFAULT_MAX_CALL_RETRIES } from '@darkforest_eth/constants';
 import { DiagnosticUpdater } from '@darkforest_eth/types';
 import { ContractFunction } from 'ethers';
-import retry from 'p-retry';
+import retry, { AbortError } from 'p-retry';
 import { Queue, ThrottledConcurrentQueue } from './ThrottledConcurrentQueue';
 
 /**
@@ -57,13 +57,21 @@ export class ContractCaller {
           d.callsInQueue = this.queue.size();
         });
 
-        const callResult = await callPromise;
+        try {
+          const callResult = await callPromise;
+          this.diagnosticsUpdater?.updateDiagnostics((d) => {
+            d.callsInQueue = this.queue.size();
+          });
 
-        this.diagnosticsUpdater?.updateDiagnostics((d) => {
-          d.callsInQueue = this.queue.size();
-        });
-
-        return callResult;
+          return callResult;
+        } catch (err) {
+          if ((<Error & { code?: string }>err).code === 'CALL_EXCEPTION') {
+            throw new AbortError('Could not call function on given contract');
+          } else {
+            console.warn('retrying after err:', err);
+            throw err;
+          }
+        }
       },
       { retries: this.maxRetries }
     );

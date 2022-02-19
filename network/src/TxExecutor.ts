@@ -1,107 +1,50 @@
-import { AutoGasSetting, DiagnosticUpdater, NetworkEvent } from '@darkforest_eth/types';
-import { Contract, providers } from 'ethers';
+import {
+  AutoGasSetting,
+  DiagnosticUpdater,
+  EthTxStatus,
+  NetworkEvent,
+  PersistedTransaction,
+  Transaction,
+  TransactionId,
+  TxIntent,
+} from '@darkforest_eth/types';
+import { Mutex } from 'async-mutex';
+import { providers } from 'ethers';
 import deferred from 'p-defer';
 import timeout from 'p-timeout';
-import { ConcurrentQueueConfiguration } from '.';
 import { EthConnection } from './EthConnection';
-import { gweiToWei } from './Network';
-import { ThrottledConcurrentQueue } from './ThrottledConcurrentQueue';
+import { gweiToWei, waitForTransaction } from './Network';
+import { ConcurrentQueueConfiguration, ThrottledConcurrentQueue } from './ThrottledConcurrentQueue';
 
 /**
  * Returns either a string that represents the gas price we should use by default for transactions,
  * or a string that represents the fact that we should be using one of the automatic gas prices.
  */
-export type GasPriceSettingProvider = (
-  transactionRequest: QueuedTransaction
-) => AutoGasSetting | string;
+export type GasPriceSettingProvider = (transactionRequest: Transaction) => AutoGasSetting | string;
+
+/**
+ * {@link TxExecutor} calls this before queueing a function to determine whether or not that
+ * function should be queued. If this function rejects, a transaction is not queued.
+ */
+export type BeforeQueued = (
+  id: TransactionId,
+  intent: TxIntent,
+  overrides?: providers.TransactionRequest
+) => Promise<void>;
 
 /**
  * {@link TxExecutor} calls this before executing a function to determine whether or not that
- * function should execute. If this function throws, the transaction is cancelled.
+ * function should execute. If this function rejects, the transaction is cancelled.
  */
-export type BeforeTransaction = (transactionRequest: QueuedTransaction) => Promise<void>;
+export type BeforeTransaction = (transactionRequest: Transaction) => Promise<void>;
 
 /**
  * {@link TxExecutor} calls this after executing a transaction.
  */
 export type AfterTransaction = (
-  transactionRequest: QueuedTransaction,
+  transactionRequest: Transaction,
   performanceMetrics: unknown
 ) => Promise<void>;
-
-/**
- * Represents a transaction that the game would like to submit to the blockchain.
- */
-export interface QueuedTransaction {
-  /**
-   * Uniquely identifies this transaction. Invariant throughout the entire life of a transaction,
-   * from the moment the game conceives of taking that action, to the moment that it finishes either
-   * successfully or with an error.
-   */
-  actionId: string;
-
-  /**
-   * Called if there was an error submitting this transaction.
-   */
-  onSubmissionError: (e: Error | undefined) => void;
-
-  /**
-   * Called if there was an error waiting for this transaction to complete.
-   */
-  onReceiptError: (e: Error | undefined) => void;
-
-  /**
-   * Called when the transaction was successfully submitted to the mempool.
-   */
-  onTransactionResponse: (e: providers.TransactionResponse) => void;
-
-  /**
-   * Called when the transaction successfully completes.
-   */
-  onTransactionReceipt: (e: providers.TransactionReceipt) => void;
-
-  /**
-   * The contract on which to execute this transaction.
-   */
-  contract: Contract;
-
-  /**
-   * The name of the contract method to execute.
-   */
-  methodName: string;
-
-  /**
-   * The arguments we should pass to the method we're executing.
-   */
-  args: unknown[];
-
-  /**
-   * Allows the submitter of the transaction to override some low-level blockchain transaction
-   * settings, such as the gas price.
-   */
-  overrides: providers.TransactionRequest;
-
-  /**
-   * If the user provided an auto gas setting, record that here for logging purposes.
-   */
-  autoGasPriceSetting?: AutoGasSetting | string;
-}
-
-/**
- * Represents a transaction that is in flight.
- */
-export interface PendingTransaction {
-  /**
-   * Resolves or rejects depending on the success or failure of this transaction to get into the
-   * mempool. If this rejects, {@link PendingTransaction.confirmed} neither rejects nor resolves.
-   */
-  submitted: Promise<providers.TransactionResponse>;
-
-  /**
-   * Resolves or rejects depending on the success or failure of this transaction to execute.
-   */
-  confirmed: Promise<providers.TransactionReceipt>;
-}
 
 export class TxExecutor {
   /**
@@ -109,11 +52,6 @@ export class TxExecutor {
    * this amount of time.
    */
   private static readonly TX_SUBMIT_TIMEOUT = 30000;
-
-  /**
-   * We refresh the nonce if it hasn't been updated in this amount of time.
-   */
-  private static readonly NONCE_STALE_AFTER_MS = 5_000;
 
   /**
    * Our interface to the blockchain.
@@ -125,6 +63,12 @@ export class TxExecutor {
    * if there is not a manual gas price specified for that transaction.
    */
   private readonly gasSettingProvider: GasPriceSettingProvider;
+
+  /**
+   * If present, called before any transaction is queued, to give the user of {@link TxExecutor} the
+   * opportunity to cancel the event by rejecting. Useful for interstitials.
+   */
+  private readonly beforeQueued?: BeforeQueued;
 
   /**
    * If present, called before every transaction, to give the user of {@link TxExecutor} the
@@ -141,7 +85,7 @@ export class TxExecutor {
   /**
    * Task queue which executes transactions in a controlled manner.
    */
-  private readonly queue: ThrottledConcurrentQueue;
+  private readonly queue: ThrottledConcurrentQueue<Transaction>;
 
   /**
    * We record the last transaction timestamp so that we know when it's a good time to refresh the
@@ -156,6 +100,12 @@ export class TxExecutor {
   private nonce: number | undefined;
 
   /**
+   * Increments every time a new transaction is created. This is separate from the nonce because
+   * it is used solely for ordering transactions client-side.
+   */
+  private idSequence: TransactionId = 0;
+
+  /**
    * Allows us to record some diagnostics that appear in the DiagnosticsPane of the Dark Forest client.
    */
   private diagnosticsUpdater?: DiagnosticUpdater;
@@ -168,43 +118,114 @@ export class TxExecutor {
     gasLimit: 2_000_000,
   };
 
+  /**
+   * Mutex that ensures only one transaction is modifying the nonce
+   * at a time.
+   */
+  private nonceMutex: Mutex;
+
+  /**
+   * Turning this on refreshes the nonce if there has not been
+   * a transaction after {@link NONCE_STALE_AFTER_MS}. This is so that
+   * we can get the most up to date nonce even if other
+   * wallets/applications are sending transactions as the same
+   * address.
+   */
+  private supportMultipleWallets: boolean;
+
+  /**
+   * If {@link supportMultipleWallets} is true, refresh the nonce if a
+   * transaction has not been sent in this amount of time.
+   */
+  private static readonly NONCE_STALE_AFTER_MS = 5_000;
+
   constructor(
     ethConnection: EthConnection,
     gasSettingProvider: GasPriceSettingProvider,
+    beforeQueued?: BeforeQueued,
     beforeTransaction?: BeforeTransaction,
     afterTransaction?: AfterTransaction,
-    queueConfiguration?: ConcurrentQueueConfiguration
+    queueConfiguration?: ConcurrentQueueConfiguration,
+    supportMultipleWallets = true
   ) {
     this.queue = new ThrottledConcurrentQueue(
       queueConfiguration ?? {
         invocationIntervalMs: 200,
         maxInvocationsPerIntervalMs: 3,
-        maxConcurrency: 1,
+        maxConcurrency: 3,
       }
     );
     this.lastTransactionTimestamp = Date.now();
     this.ethConnection = ethConnection;
     this.gasSettingProvider = gasSettingProvider;
+    this.beforeQueued = beforeQueued;
     this.beforeTransaction = beforeTransaction;
     this.afterTransaction = afterTransaction;
+    this.nonceMutex = new Mutex();
+    this.supportMultipleWallets = supportMultipleWallets;
+  }
+
+  /**
+   * Given a transaction that has been persisted (and therefore submitted), we return a transaction
+   * whose confirmationPromise resolves once the transaction was verified to have been confirmed.
+   * Useful for plugging these persisted transactions into our transaction system.
+   */
+  public waitForTransaction<T extends TxIntent>(ser: PersistedTransaction<T>): Transaction<T> {
+    const {
+      promise: submittedPromise,
+      reject: rejectTxResponse,
+      resolve: txResponse,
+    } = deferred<providers.TransactionResponse>();
+
+    const {
+      promise: confirmedPromise,
+      reject: rejectTxReceipt,
+      resolve: txReceipt,
+    } = deferred<providers.TransactionReceipt>();
+
+    const tx: Transaction<T> = {
+      id: this.nextId(),
+      lastUpdatedAt: Date.now(),
+      state: EthTxStatus.Init,
+      intent: ser.intent,
+      submittedPromise,
+      confirmedPromise,
+      onSubmissionError: rejectTxResponse,
+      onReceiptError: rejectTxReceipt,
+      onTransactionResponse: txResponse,
+      onTransactionReceipt: txReceipt,
+    };
+
+    waitForTransaction(this.ethConnection.getProvider(), ser.hash)
+      .then((receipt) => {
+        tx.onTransactionReceipt(receipt);
+      })
+      .catch((err) => {
+        tx.onReceiptError(err);
+      });
+
+    return tx;
   }
 
   /**
    * Schedules this transaction for execution.
    */
-  public queueTransaction(
-    actionId: string,
-    contract: Contract,
-    methodName: string,
-    args: unknown[],
-    overrides: providers.TransactionRequest = {
-      gasPrice: undefined,
-      gasLimit: 2000000,
-    }
-  ): PendingTransaction {
+  public async queueTransaction<T extends TxIntent>(
+    intent: T,
+    overrides?: providers.TransactionRequest
+  ): Promise<Transaction<T>> {
     this.diagnosticsUpdater?.updateDiagnostics((d) => {
       d.transactionsInQueue++;
     });
+
+    const id = this.nextId();
+
+    // The `beforeQueued` function is run before we do anything with the TX
+    // And outside of the try/catch so anything it throws can be bubbled instead of
+    // marking it as a reverted TX
+    if (this.beforeQueued) {
+      await this.beforeQueued(id, intent, overrides);
+    }
 
     const {
       promise: submittedPromise,
@@ -213,16 +234,18 @@ export class TxExecutor {
     } = deferred<providers.TransactionResponse>();
 
     const {
-      promise: receiptPromise,
+      promise: confirmedPromise,
       reject: rejectTxReceipt,
       resolve: txReceipt,
     } = deferred<providers.TransactionReceipt>();
 
-    const txRequest: QueuedTransaction = {
-      methodName,
-      actionId,
-      contract,
-      args,
+    const tx: Transaction<T> = {
+      id,
+      lastUpdatedAt: Date.now(),
+      state: EthTxStatus.Init,
+      intent,
+      submittedPromise,
+      confirmedPromise,
       overrides,
       onSubmissionError: rejectTxResponse,
       onReceiptError: rejectTxReceipt,
@@ -230,11 +253,12 @@ export class TxExecutor {
       onTransactionReceipt: txReceipt,
     };
 
-    const autoGasPriceSetting = this.gasSettingProvider(txRequest);
-    txRequest.autoGasPriceSetting = autoGasPriceSetting;
+    const autoGasPriceSetting = this.gasSettingProvider(tx);
+    tx.autoGasPriceSetting = autoGasPriceSetting;
 
-    if (overrides.gasPrice === undefined) {
-      txRequest.overrides.gasPrice = gweiToWei(
+    if (tx.overrides?.gasPrice === undefined) {
+      tx.overrides = tx.overrides ?? {};
+      tx.overrides.gasPrice = gweiToWei(
         this.ethConnection.getAutoGasPriceGwei(
           this.ethConnection.getAutoGasPrices(),
           autoGasPriceSetting
@@ -247,33 +271,73 @@ export class TxExecutor {
         d.transactionsInQueue--;
       });
 
-      return this.execute(txRequest);
-    });
+      return this.execute(tx);
+    }, tx);
 
-    return {
-      submitted: submittedPromise,
-      confirmed: receiptPromise,
-    };
+    return tx;
+  }
+
+  public dequeueTransction(tx: Transaction) {
+    this.queue.remove((queuedTx) => queuedTx?.id === tx.id);
+    tx.state = EthTxStatus.Cancel;
+  }
+
+  public prioritizeTransaction(tx: Transaction) {
+    this.queue.prioritize((queuedTx) => queuedTx?.id === tx.id);
+    tx.state = EthTxStatus.Prioritized;
   }
 
   /**
-   * If the nonce is probably stale, reload it from the blockchain.
+   * Returns the current nonce and increments it in memory for the next transaction.
+   * If nonce is undefined, or there has been a big gap between transactions,
+   * refresh the nonce from the blockchain. This only replaces the nonce if the
+   * blockchain nonce is found to be higher than the local calculation.
+   * The stale timer is to support multiple wallets/applications interacting
+   * with the game at the same time.
    */
-  private async maybeUpdateNonce() {
-    if (
+  private async getNonce() {
+    const releaseMutex = await this.nonceMutex.acquire();
+    const shouldRefreshNonce =
       this.nonce === undefined ||
-      Date.now() - this.lastTransactionTimestamp > TxExecutor.NONCE_STALE_AFTER_MS
-    ) {
-      const newNonce = await this.ethConnection.getNonce();
-      if (newNonce !== undefined) this.nonce = newNonce;
+      (this.supportMultipleWallets &&
+        Date.now() - this.lastTransactionTimestamp > TxExecutor.NONCE_STALE_AFTER_MS);
+
+    if (shouldRefreshNonce) {
+      const chainNonce = await this.ethConnection.getNonce();
+      const localNonce = this.nonce || 0;
+
+      this.nonce = Math.max(chainNonce, localNonce);
     }
+
+    const nonce = this.nonce;
+    if (this.nonce !== undefined) this.nonce++;
+
+    releaseMutex();
+
+    return nonce;
+  }
+
+  /**
+   * Reset nonce.
+   * This will trigger a refresh from the blockchain the next time
+   * execution starts.
+   */
+  private async resetNonce() {
+    return this.nonceMutex.runExclusive(() => (this.nonce = undefined));
+  }
+
+  /**
+   * Return current counter and increment.
+   */
+  private nextId() {
+    return ++this.idSequence;
   }
 
   /**
    * Executes the given queued transaction. This is a field rather than a method declaration on
    * purpose for `this` purposes.
    */
-  private execute = async (txRequest: QueuedTransaction) => {
+  private execute = async (tx: Transaction) => {
     let time_called: number | undefined = undefined;
     let error: Error | undefined = undefined;
     let time_submitted: number | undefined = undefined;
@@ -284,55 +348,70 @@ export class TxExecutor {
     const time_exec_called = Date.now();
 
     try {
-      await this.maybeUpdateNonce();
+      tx.state = EthTxStatus.Processing;
 
       if (this.beforeTransaction) {
-        await this.beforeTransaction(txRequest);
+        await this.beforeTransaction(tx);
       }
+
+      const nonce = await this.getNonce();
 
       const requestWithDefaults = Object.assign(
         JSON.parse(JSON.stringify(this.defaultTxOptions)),
-        txRequest.overrides
+        tx.overrides
       );
 
       time_called = Date.now();
+
+      const args = await tx.intent.args;
       const submitted = await timeout<providers.TransactionResponse>(
-        txRequest.contract[txRequest.methodName](...txRequest.args, {
+        tx.intent.contract[tx.intent.methodName](...args, {
           ...requestWithDefaults,
-          nonce: this.nonce,
+          nonce,
         }),
         TxExecutor.TX_SUBMIT_TIMEOUT,
-        `tx request ${txRequest.actionId} failed to submit: timed out}`
+        `tx request ${tx.id} failed to submit: timed out}`
       );
+
+      tx.state = EthTxStatus.Submit;
+      tx.hash = submitted.hash;
+
       time_submitted = Date.now();
+      tx.lastUpdatedAt = time_submitted;
       tx_hash = submitted.hash;
-      if (this.nonce !== undefined) {
-        this.nonce += 1;
-      }
       this.lastTransactionTimestamp = time_submitted;
-      txRequest.onTransactionResponse(submitted);
+      tx.onTransactionResponse(submitted);
 
       const confirmed = await this.ethConnection.waitForTransaction(submitted.hash);
       if (confirmed.status !== 1) {
         time_errored = Date.now();
+        tx.lastUpdatedAt = time_errored;
+        tx.state = EthTxStatus.Fail;
+        await this.resetNonce();
         throw new Error('transaction reverted');
       } else {
+        tx.state = EthTxStatus.Confirm;
         time_confirmed = Date.now();
-        txRequest.onTransactionReceipt(confirmed);
+        tx.lastUpdatedAt = time_confirmed;
+        tx.onTransactionReceipt(confirmed);
       }
     } catch (e) {
       console.error(e);
+      tx.state = EthTxStatus.Fail;
       error = e as Error;
+
       if (!time_submitted) {
+        await this.resetNonce();
         time_errored = Date.now();
-        txRequest.onSubmissionError(error);
+        tx.onSubmissionError(error);
       } else {
         // Ran out of retries, set nonce to undefined to refresh it
         if (!time_errored) {
-          this.nonce = undefined;
+          await this.resetNonce();
           time_errored = Date.now();
         }
-        txRequest.onReceiptError(error);
+        tx.lastUpdatedAt = time_errored;
+        tx.onReceiptError(error);
       }
     } finally {
       this.diagnosticsUpdater?.updateDiagnostics((d) => {
@@ -340,11 +419,10 @@ export class TxExecutor {
       });
     }
 
-    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     const logEvent: NetworkEvent = {
-      tx_to: txRequest.contract.address,
-      tx_type: txRequest.methodName,
-      auto_gas_price_setting: txRequest.autoGasPriceSetting,
+      tx_to: tx.intent.contract.address,
+      tx_type: tx.intent.methodName,
+      auto_gas_price_setting: tx.autoGasPriceSetting,
       time_exec_called,
       tx_hash,
     };
@@ -372,7 +450,7 @@ export class TxExecutor {
     logEvent.rpc_endpoint = this.ethConnection.getRpcEndpoint();
     logEvent.user_address = this.ethConnection.getAddress();
 
-    this.afterTransaction && this.afterTransaction(txRequest, logEvent);
+    this.afterTransaction && this.afterTransaction(tx, logEvent);
   };
 
   public setDiagnosticUpdater(diagnosticUpdater?: DiagnosticUpdater) {

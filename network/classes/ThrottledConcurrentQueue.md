@@ -1,7 +1,13 @@
-# Class: ThrottledConcurrentQueue
+# Class: ThrottledConcurrentQueue<U\>
 
 A queue that executes promises with a max throughput, and optionally max
 concurrency.
+
+## Type parameters
+
+| Name | Type      |
+| :--- | :-------- |
+| `U`  | `unknown` |
 
 ## Implements
 
@@ -30,6 +36,8 @@ concurrency.
 - [executeNextTasks](ThrottledConcurrentQueue.md#executenexttasks)
 - [next](ThrottledConcurrentQueue.md#next)
 - [nextPossibleExecution](ThrottledConcurrentQueue.md#nextpossibleexecution)
+- [prioritize](ThrottledConcurrentQueue.md#prioritize)
+- [remove](ThrottledConcurrentQueue.md#remove)
 - [size](ThrottledConcurrentQueue.md#size)
 - [throttleQuotaRemaining](ThrottledConcurrentQueue.md#throttlequotaremaining)
 
@@ -37,7 +45,13 @@ concurrency.
 
 ### constructor
 
-• **new ThrottledConcurrentQueue**(`config`)
+• **new ThrottledConcurrentQueue**<`U`\>(`config`)
+
+#### Type parameters
+
+| Name | Type      |
+| :--- | :-------- |
+| `U`  | `unknown` |
 
 #### Parameters
 
@@ -94,7 +108,7 @@ Maximum amount of tasks that can be executing at the same time.
 
 ### taskQueue
 
-• `Private` **taskQueue**: `QueuedTask`<`unknown`\>[] = `[]`
+• `Private` **taskQueue**: `QueuedTask`<`unknown`, `U`\>[] = `[]`
 
 Queue of tasks to execute. Added to the front, popped off the back.
 
@@ -102,7 +116,7 @@ Queue of tasks to execute. Added to the front, popped off the back.
 
 ### add
 
-▸ **add**<`T`\>(`start`): `Promise`<`T`\>
+▸ **add**<`T`\>(`start`, `metadata?`): `Promise`<`T`\>
 
 Adds a task to be executed at some point in the future. Returns a promise that resolves when
 the task finishes successfully, and rejects when there is an error.
@@ -115,9 +129,10 @@ the task finishes successfully, and rejects when there is an error.
 
 #### Parameters
 
-| Name    | Type                  | Description                                             |
-| :------ | :-------------------- | :------------------------------------------------------ |
-| `start` | () => `Promise`<`T`\> | a function that returns a promise representing the task |
+| Name        | Type                  | Description                                             |
+| :---------- | :-------------------- | :------------------------------------------------------ |
+| `start`     | () => `Promise`<`T`\> | a function that returns a promise representing the task |
+| `metadata?` | `U`                   | optional data to be associated with the task            |
 
 #### Returns
 
@@ -191,6 +206,51 @@ throttle limit.
 #### Returns
 
 `undefined` \| `number`
+
+---
+
+### prioritize
+
+▸ **prioritize**(`predicate`): `QueuedTask`<`unknown`, `U`\>
+
+Prioritize a currently queued task so that it is up next for execution.
+For this to work, you have to provide the optional metadata during
+queue construction and addition of tasks.
+
+Prioritized tasks are executed in FILO order.
+
+Throws an error if no matching task is found.
+
+#### Parameters
+
+| Name        | Type                                          | Description                                                 |
+| :---------- | :-------------------------------------------- | :---------------------------------------------------------- |
+| `predicate` | (`metadata`: `undefined` \| `U`) => `boolean` | Should return true for the task you would like prioritized. |
+
+#### Returns
+
+`QueuedTask`<`unknown`, `U`\>
+
+---
+
+### remove
+
+▸ **remove**(`predicate`): `QueuedTask`<`unknown`, `U`\>
+
+Remove one task from the queue. For this to work, you have to provide
+the optional metadata during queue construction and addition of tasks.
+
+Throws an error if no matching task is found.
+
+#### Parameters
+
+| Name        | Type                                          | Description                                             |
+| :---------- | :-------------------------------------------- | :------------------------------------------------------ |
+| `predicate` | (`metadata`: `undefined` \| `U`) => `boolean` | Should return true for the task you would like removed. |
+
+#### Returns
+
+`QueuedTask`<`unknown`, `U`\>
 
 ---
 

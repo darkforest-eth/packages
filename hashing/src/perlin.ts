@@ -1,3 +1,4 @@
+import { PerlinConfig } from '@darkforest_eth/types';
 import BigInt, { BigInteger } from 'big-integer';
 import { Fraction } from './fractions/bigFraction.js';
 import { perlinRandHash } from './mimc';
@@ -20,40 +21,6 @@ interface Vector {
 interface GradientAtPoint {
   coords: Vector;
   gradient: Vector;
-}
-
-/**
- * Various configuration used for calculating perlin.
- * Always make sure these values match the contracts you are working with
- * or else your transactions **will** be reverted.
- */
-export interface PerlinConfig {
-  /**
-   * The key being used for the perlin calculation. Will be `SPACETYPE_KEY` or `BIOMEBASE_KEY`.
-   */
-  key: number;
-  /**
-   * The `PERLIN_LENGTH_SCALE` being used to calculate perlin.
-   */
-  scale: number;
-  /**
-   * Whether the X coordinate is being mirrored in the perlin calculation.
-   *
-   * @default false
-   */
-  mirrorX: boolean;
-  /**
-   * Whether the Y coordinate is being mirrored in the perlin calculation.
-   *
-   * @default false
-   */
-  mirrorY: boolean;
-  /**
-   * If the resulting perlin should be "floored".
-   *
-   * @default false
-   */
-  floor: boolean;
 }
 
 type HashFn = (...inputs: number[]) => number;

@@ -50,7 +50,7 @@ export function bonusFromHex(hex: LocationId): PlanetBonus {
   const bonus = bonusById.get(hex);
   if (bonus) return bonus;
 
-  const newBonus = Array(5).fill(false) as PlanetBonus;
+  const newBonus = Array(6).fill(false) as PlanetBonus;
 
   for (let i = 0; i < newBonus.length; i++) {
     newBonus[i] = getBytesFromHex(hex, 9 + i, 10 + i).lesser(16);

@@ -33,7 +33,6 @@ import * as hashing from 'http://cdn.skypack.dev/@darkforest_eth/hashing';
 ### Interfaces
 
 - [IntegerVector](interfaces/IntegerVector.md)
-- [PerlinConfig](interfaces/PerlinConfig.md)
 
 ### Variables
 
@@ -53,7 +52,7 @@ import * as hashing from 'http://cdn.skypack.dev/@darkforest_eth/hashing';
 
 ### MAX_PERLIN_VALUE
 
-• `Const` **MAX_PERLIN_VALUE**: `32`
+• **MAX_PERLIN_VALUE**: `32`
 
 ## Functions
 
@@ -154,7 +153,7 @@ Calculates the perlin for a location, given the x,y pair and the PerlinConfig fo
 | Name      | Type                                           | Description                                                            |
 | :-------- | :--------------------------------------------- | :--------------------------------------------------------------------- |
 | `coords`  | [`IntegerVector`](interfaces/IntegerVector.md) | An object of the x,y coordinates for which perlin is being calculated. |
-| `options` | [`PerlinConfig`](interfaces/PerlinConfig.md)   | An object containing the configuration for the perlin algorithm.       |
+| `options` | `PerlinConfig`                                 | An object containing the configuration for the perlin algorithm.       |
 
 #### Returns
 

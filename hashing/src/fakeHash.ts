@@ -62,14 +62,14 @@ const cyc = (m: number, n: number) => (r: number, s: number) => {
 /**
  * @hidden
  */
-export const fakeHash = (x: number, y: number) => {
+export const fakeHash = (planetRarity: number) => (x: number, y: number) => {
   const m = Math.floor(x / 256);
   const r = x - m * 256;
   const n = Math.floor(y / 256);
   const s = y - n * 256;
   const [mPrime, nPrime] = sigma(m, n);
   const [xPrime, yPrime] = sigma(...cyc(mPrime, nPrime)(...sigma(r, s)));
-  const validPlanet = xPrime === 0 && yPrime < 4;
+  const validPlanet = xPrime * 256 + yPrime < (256 * 256) / planetRarity;
   // first four bytes
   let hash = validPlanet ? '00000000' : '1eadbeef';
   // next 28 bytes, generated 4 at a time. deterministically generated from x, y

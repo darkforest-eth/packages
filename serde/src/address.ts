@@ -1,4 +1,5 @@
 import type { EthAddress } from '@darkforest_eth/types';
+import bigInt from 'big-integer';
 
 /**
  * Converts a string to an `EthAddress`: a 0x-prefixed all lowercase hex string
@@ -18,4 +19,9 @@ export function address(str: string): EthAddress {
   }
   if (ret.length !== 40) throw new Error('not a valid address');
   return `0x${ret}` as EthAddress;
+}
+
+export function hashToInt(hash: string): number {
+  const seed = bigInt(hash, 16).and(0xffffffffff).toString(16);
+  return parseInt('0x' + seed);
 }

@@ -41,7 +41,7 @@ export interface RevealSnarkInput {
 }
 
 /**
- * Shape of the args for `revealLocation` DarkForestCore contract call
+ * Shape of the args for `revealLocation` DarkForest contract call
  */
 export type RevealSnarkContractCallArgs = [
   [string, string], // proofA
@@ -70,7 +70,7 @@ export interface InitSnarkInput {
 }
 
 /**
- * Shape of the args for the `initializePlayer` DarkForestCore contract call
+ * Shape of the args for the `initializePlayer` DarkForest contract call
  */
 export type InitSnarkContractCallArgs = [
   [string, string], // proofA
@@ -102,7 +102,7 @@ export interface MoveSnarkInput {
 }
 
 /**
- * (Almost) shape of the args for `move` DarkForestCore contract call.
+ * (Almost) shape of the args for `move` DarkForest contract call.
  * The fourth array element additionally needs shipsMoved, silverMoved, and
  * artifactIdMoved before it can be passed as args to `move`, but those values
  * are not part of the zkSNARK.
@@ -144,7 +144,7 @@ export interface BiomebaseSnarkInput {
 }
 
 /**
- * Shape of the args for `findArtifact` DarkForestCore contract call.
+ * Shape of the args for `findArtifact` DarkForest contract call.
  */
 export type BiomebaseSnarkContractCallArgs = [
   [string, string], // proofA
@@ -166,7 +166,7 @@ export type BiomebaseSnarkContractCallArgs = [
 ];
 
 /**
- * Type representing the shape of args that are passed into DarkForestCore
+ * Type representing the shape of args that are passed into DarkForest
  * functions that require zkSNARK verification.
  */
 export type ContractCallArgs =
@@ -195,7 +195,7 @@ export interface SnarkJSProofAndSignals {
 
 /**
  * Method for converting the output of snarkJS `fullProve` into args that can be
- * passed into DarkForestCore smart contract functions which perform zk proof
+ * passed into DarkForest smart contract functions which perform zk proof
  * verification.
  *
  * @param snarkProof the SNARK proof

@@ -6,6 +6,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "declaration": true
+    "declaration": true,
+    // Create .js.map files for each generated JS file
+    "sourceMap": true,
+    // Embed the original source into the sourceMap instead of pointing to source files
+    "inlineSources": true
   }
 }

@@ -82,7 +82,16 @@ export const MIN_ARTIFACT_TYPE = ArtifactType.Monolith;
 /**
  * The value of the maximum, valid artifact type
  */
-export const MAX_ARTIFACT_TYPE = ArtifactType.BlackDomain;
+export const MAX_ARTIFACT_TYPE = ArtifactType.ShipTitan;
+
+/**
+ * The value of the minimum, valid spaceship type
+ */
+export const MIN_SPACESHIP_TYPE = ArtifactType.ShipMothership;
+/**
+ * The value of the maximum, valid spaceship type
+ */
+export const MAX_SPACESHIP_TYPE = ArtifactType.ShipTitan;
 
 /**
  * The value of the minimum, valid artifact rarity
@@ -146,8 +155,8 @@ export const BLOCK_EXPLORER_URL = 'https://dashboard.tenderly.co/tx/xdai' as con
 export const GAS_PRICES_INTERVAL_MS = 60_000 as const;
 
 /**
- * {@link PlanetContextPane} is this wide, and all the subpanes of that window also try to stay
- * this size as well.
+ * {@link PlanetContextPane} is this wide, and all the subpanes of that modal also try to stay this
+ * size as well.
  */
 export const RECOMMENDED_MODAL_WIDTH = '400px' as const;
 
@@ -155,3 +164,35 @@ export const RECOMMENDED_MODAL_WIDTH = '400px' as const;
  * The minimum level required for claiming a planet.
  */
 export const PLANET_CLAIM_MIN_LEVEL = 3 as const;
+
+/**
+ * Keys to handle in a special fashion when dealing with key presses
+ */
+export const SpecialKey = {
+  Space: ' ',
+  Tab: 'Tab',
+  Escape: 'Escape',
+  Control: 'Control',
+  Shift: 'Shift',
+} as const;
+
+export const HAT_SIZES = [
+  'None',
+  'Tiny HAT',
+  'Small HAT',
+  'Medium HAT',
+  'Large HAT',
+  'Huge HAT',
+  'Mega HAT',
+  'Enormous HAT',
+  'Titanic HAT',
+  'Legendary HAT',
+  'Almighty HAT',
+  'Cosmic HAT',
+  'Celestial HAT',
+  'Empyrean HAT',
+  'Ethereal HAT',
+  'Transcendental HAT',
+  'haaaat',
+  'HAAAAT',
+];

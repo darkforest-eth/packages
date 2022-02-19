@@ -27,5 +27,6 @@ export * from './Contracts';
 export * from './EthConnection';
 export * from './Network';
 export * from './ThrottledConcurrentQueue';
+export * from './TransactionCollection';
 export * from './TxExecutor';
 export * from './xDaiApi';

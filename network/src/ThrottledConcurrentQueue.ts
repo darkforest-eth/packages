@@ -1,10 +1,11 @@
+import { findIndex } from 'lodash';
 import CircularBuffer from 'mnemonist/circular-buffer';
 import deferred from 'p-defer';
 
 /**
  * Represents a task that has been queued for later execution.
  */
-interface QueuedTask<T> {
+interface QueuedTask<T, U> {
   /**
    * This is called when the task succeeds.
    */
@@ -19,6 +20,12 @@ interface QueuedTask<T> {
    * Starts the task.
    */
   start: () => Promise<T>;
+
+  /**
+   * Optional data to be associated with the task.
+   * Currently only used when finding a task during removal.
+   */
+  metadata: U | undefined;
 }
 
 /**
@@ -39,7 +46,7 @@ export interface ConcurrentQueueConfiguration {
  * A queue that executes promises with a max throughput, and optionally max
  * concurrency.
  */
-export class ThrottledConcurrentQueue implements Queue {
+export class ThrottledConcurrentQueue<U = unknown> implements Queue {
   /**
    * The interval during which we only allow a certain maximum amount of tasks
    * to be executed.
@@ -54,7 +61,7 @@ export class ThrottledConcurrentQueue implements Queue {
   /**
    * Queue of tasks to execute. Added to the front, popped off the back.
    */
-  private taskQueue: Array<QueuedTask<unknown>> = [];
+  private taskQueue: Array<QueuedTask<unknown, U>> = [];
 
   /**
    * Each time a task is executed, record the start of its execution time.
@@ -98,14 +105,16 @@ export class ThrottledConcurrentQueue implements Queue {
    * the task finishes successfully, and rejects when there is an error.
    *
    * @param start a function that returns a promise representing the task
+   * @param metadata optional data to be associated with the task
    */
-  public add<T>(start: () => Promise<T>): Promise<T> {
+  public add<T>(start: () => Promise<T>, metadata?: U): Promise<T> {
     const { resolve, reject, promise } = deferred<T>();
 
     this.taskQueue.unshift({
       resolve: resolve as (t: unknown) => void,
       reject,
       start,
+      metadata,
     });
 
     setTimeout(() => {
@@ -113,6 +122,46 @@ export class ThrottledConcurrentQueue implements Queue {
     }, 0);
 
     return promise;
+  }
+
+  /**
+   * Remove one task from the queue. For this to work, you have to provide
+   * the optional metadata during queue construction and addition of tasks.
+   *
+   * Throws an error if no matching task is found.
+   * @param predicate Should return true for the task you would like removed.
+   */
+  public remove(predicate: (metadata: U | undefined) => boolean): QueuedTask<unknown, U> {
+    const foundIndex = findIndex(this.taskQueue, (task: QueuedTask<unknown, U>) =>
+      predicate(task.metadata)
+    );
+
+    if (foundIndex === -1) throw new Error(`specified task was not found`);
+
+    return this.taskQueue.splice(foundIndex, 1)[0];
+  }
+
+  /**
+   * Prioritize a currently queued task so that it is up next for execution.
+   * For this to work, you have to provide the optional metadata during
+   * queue construction and addition of tasks.
+   *
+   * Prioritized tasks are executed in FILO order.
+   *
+   * Throws an error if no matching task is found.
+   * @param predicate Should return true for the task you would like prioritized.
+   */
+  public prioritize(predicate: (metadata: U | undefined) => boolean): QueuedTask<unknown, U> {
+    const foundIndex = findIndex(this.taskQueue, (task: QueuedTask<unknown, U>) =>
+      predicate(task.metadata)
+    );
+
+    if (foundIndex === -1) throw new Error(`specified task was not found`);
+
+    const foundTask = this.taskQueue.splice(foundIndex, 1)[0];
+    this.taskQueue.push(foundTask);
+
+    return foundTask;
   }
 
   /**

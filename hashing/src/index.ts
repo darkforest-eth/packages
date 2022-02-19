@@ -27,18 +27,10 @@
 import { fakeHash, seededRandom } from './fakeHash';
 import { Fraction } from './fractions/bigFraction.js';
 import mimcHash, { modPBigInt, modPBigIntNative } from './mimc';
-import {
-  getRandomGradientAt,
-  IntegerVector,
-  MAX_PERLIN_VALUE,
-  perlin,
-  PerlinConfig,
-  rand,
-} from './perlin';
+import { getRandomGradientAt, IntegerVector, MAX_PERLIN_VALUE, perlin, rand } from './perlin';
 
 export {
   mimcHash,
-  PerlinConfig,
   IntegerVector,
   perlin,
   rand,

@@ -1,3 +1,4 @@
+import type { Contract } from 'ethers';
 import type { ArtifactId, EthAddress, LocationId } from './identifier';
 import type { WorldLocation } from './world';
 
@@ -6,13 +7,12 @@ import type { WorldLocation } from './world';
  */
 //eslint-disable-next-line @projectsophon/typescript-enum/no-enum
 export const enum ContractMethodName {
-  // DarkForestCore
   REVEAL_LOCATION = 'revealLocation',
   INIT = 'initializePlayer',
   MOVE = 'move',
   UPGRADE = 'upgradePlanet',
   BUY_HAT = 'buyHat',
-  PLANET_TRANSFER = 'transferOwnership',
+  PLANET_TRANSFER = 'transferPlanet',
   FIND_ARTIFACT = 'findArtifact',
   PROSPECT_PLANET = 'prospectPlanet',
   DEPOSIT_ARTIFACT = 'depositArtifact',
@@ -20,16 +20,12 @@ export const enum ContractMethodName {
   ACTIVATE_ARTIFACT = 'activateArtifact',
   DEACTIVATE_ARTIFACT = 'deactivateArtifact',
   WITHDRAW_SILVER = 'withdrawSilver',
-
-  // DarkForestScoringRound3
-  CLAIM_LOCATION = 'claim',
-
-  // DarkForestGPTCredit
-  BUY_GPT_CREDITS = 'buyCredits',
-
-  // Whitelist
   USE_KEY = 'useKey',
   ADD_KEYS = 'addKeys',
+  GET_SHIPS = 'giveSpaceShips',
+  CREATE_LOBBY = 'createLobby',
+  INVADE_PLANET = 'invadePlanet',
+  CAPTURE_PLANET = 'capturePlanet',
 }
 
 /**
@@ -37,39 +33,25 @@ export const enum ContractMethodName {
  */
 //eslint-disable-next-line @projectsophon/typescript-enum/no-enum
 export const enum EthTxStatus {
-  Init,
-  Submit,
-  Confirm,
-  Fail,
+  Init = 'Init',
+  Processing = 'Processing',
+  Prioritized = 'Prioritized',
+  Submit = 'Submit',
+  Confirm = 'Confirm',
+  Fail = 'Fail',
+  Cancel = 'Cancel',
 }
 
 /**
+ * The intent of this type is to represent a transaction that will occur on the blockchain in a way
+ * that the game understands. This should usually be accessed as a member of {@link Transaction}.
  * @hidden
  */
 export type TxIntent = {
-  // we generate a txId so we can reference the tx
-  // before it is submitted to chain and given a txHash
-  actionId: string;
+  contract: Contract;
   methodName: ContractMethodName;
+  args: Promise<unknown[]>;
 };
-
-/**
- * @hidden
- */
-export type SubmittedTx = TxIntent & {
-  txHash: string;
-  sentAtTimestamp: number;
-};
-
-/**
- * @hidden
- */
-export type SubmittedReveal = UnconfirmedReveal & SubmittedTx;
-
-/**
- * @hidden
- */
-export type SubmittedClaim = UnconfirmedClaim & SubmittedTx;
 
 /**
  * @hidden
@@ -83,24 +65,15 @@ export type UnconfirmedInit = TxIntent & {
 /**
  * @hidden
  */
-export type SubmittedInit = UnconfirmedInit & SubmittedTx;
-
-/**
- * @hidden
- */
 export type UnconfirmedMove = TxIntent & {
   methodName: ContractMethodName.MOVE;
   from: LocationId;
   to: LocationId;
   forces: number;
   silver: number;
+  abandoning: boolean;
   artifact?: ArtifactId;
 };
-
-/**
- * @hidden
- */
-export type SubmittedMove = UnconfirmedMove & SubmittedTx;
 
 /**
  * @hidden
@@ -113,20 +86,10 @@ export type UnconfirmedFindArtifact = TxIntent & {
 /**
  * @hidden
  */
-export type SubmittedFindArtifact = UnconfirmedFindArtifact & SubmittedTx;
-
-/**
- * @hidden
- */
 export type UnconfirmedProspectPlanet = TxIntent & {
   methodName: ContractMethodName.PROSPECT_PLANET;
   planetId: LocationId;
 };
-
-/**
- * @hidden
- */
-export type SubmittedProspectPlanet = UnconfirmedProspectPlanet & SubmittedTx;
 
 /**
  * @hidden
@@ -140,11 +103,6 @@ export type UnconfirmedPlanetTransfer = TxIntent & {
 /**
  * @hidden
  */
-export type SubmittedPlanetTransfer = UnconfirmedPlanetTransfer & SubmittedTx;
-
-/**
- * @hidden
- */
 export type UnconfirmedUpgrade = TxIntent & {
   methodName: ContractMethodName.UPGRADE;
   locationId: LocationId;
@@ -154,20 +112,10 @@ export type UnconfirmedUpgrade = TxIntent & {
 /**
  * @hidden
  */
-export type SubmittedUpgrade = UnconfirmedUpgrade & SubmittedTx;
-
-/**
- * @hidden
- */
 export type UnconfirmedBuyHat = TxIntent & {
   methodName: ContractMethodName.BUY_HAT;
   locationId: LocationId;
 };
-
-/**
- * @hidden
- */
-export type SubmittedBuyHat = UnconfirmedBuyHat & SubmittedTx;
 
 /**
  * @hidden
@@ -181,21 +129,11 @@ export type UnconfirmedDepositArtifact = TxIntent & {
 /**
  * @hidden
  */
-export type SubmittedDepositArtifact = UnconfirmedDepositArtifact & SubmittedTx;
-
-/**
- * @hidden
- */
 export type UnconfirmedWithdrawArtifact = TxIntent & {
   methodName: ContractMethodName.WITHDRAW_ARTIFACT;
   locationId: LocationId;
   artifactId: ArtifactId;
 };
-
-/**
- * @hidden
- */
-export type SubmittedWithdrawArtifact = UnconfirmedWithdrawArtifact & SubmittedTx;
 
 /**
  * @hidden
@@ -209,27 +147,9 @@ export type UnconfirmedActivateArtifact = TxIntent & {
 /**
  * @hidden
  */
-export type SubmittedActivateArtifact = UnconfirmedActivateArtifact & SubmittedTx;
-
-/**
- * @hidden
- */
 export type UnconfirmedDeactivateArtifact = TxIntent & {
   locationId: LocationId;
   artifactId: ArtifactId;
-};
-
-/**
- * @hidden
- */
-export type SubmittedDeactivateArtifact = UnconfirmedDeactivateArtifact & SubmittedTx;
-
-/**
- * @hidden
- */
-export type UnconfirmedBuyGPTCredits = TxIntent & {
-  methodName: ContractMethodName.BUY_GPT_CREDITS;
-  amount: number;
 };
 
 /**
@@ -244,16 +164,6 @@ export type UnconfirmedWithdrawSilver = TxIntent & {
 /**
  * @hidden
  */
-export type SubmittedWithdrawSilver = UnconfirmedWithdrawSilver & SubmittedTx;
-
-/**
- * @hidden
- */
-export type SubmittedBuyGPTCredits = UnconfirmedBuyGPTCredits & SubmittedTx;
-
-/**
- * @hidden
- */
 export type UnconfirmedReveal = TxIntent & {
   methodName: ContractMethodName.REVEAL_LOCATION;
   locationId: LocationId;
@@ -263,8 +173,44 @@ export type UnconfirmedReveal = TxIntent & {
 /**
  * @hidden
  */
-export type UnconfirmedClaim = TxIntent & {
-  methodName: ContractMethodName.CLAIM_LOCATION;
+export type UnconfirmedAddKeys = TxIntent & {
+  methodName: ContractMethodName.ADD_KEYS;
+};
+
+/**
+ * @hidden
+ */
+export type UnconfirmedUseKey = TxIntent & {
+  methodName: ContractMethodName.USE_KEY;
+};
+
+/**
+ * @hidden
+ */
+export type UnconfirmedGetShips = TxIntent & {
+  methodName: ContractMethodName.GET_SHIPS;
   locationId: LocationId;
-  location: WorldLocation;
+};
+
+/**
+ * @hidden
+ */
+export type UnconfirmedCreateLobby = TxIntent & {
+  methodName: ContractMethodName.CREATE_LOBBY;
+};
+
+/**
+ * @hidden
+ */
+export type UnconfirmedInvadePlanet = TxIntent & {
+  methodName: ContractMethodName.INVADE_PLANET;
+  locationId: LocationId;
+};
+
+/**
+ * @hidden
+ */
+export type UnconfirmedCapturePlanet = TxIntent & {
+  methodName: ContractMethodName.CAPTURE_PLANET;
+  locationId: LocationId;
 };

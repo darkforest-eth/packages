@@ -35,6 +35,7 @@ Responsible for
 - [getAutoGasPriceGwei](EthConnection.md#getautogaspricegwei)
 - [getAutoGasPrices](EthConnection.md#getautogasprices)
 - [getContract](EthConnection.md#getcontract)
+- [getCurrentBlockNumber](EthConnection.md#getcurrentblocknumber)
 - [getMyBalance](EthConnection.md#getmybalance)
 - [getNonce](EthConnection.md#getnonce)
 - [getPrivateKey](EthConnection.md#getprivatekey)
@@ -130,7 +131,7 @@ client's diagnostics pane.
 
 ### gasPrices
 
-• `Private` **gasPrices**: `GasPrices`
+• `Private` **gasPrices**: `GasPrices` = `DEFAULT_GAS_PRICES`
 
 Represents the gas price one would pay to achieve the corresponding transaction confirmation
 speed.
@@ -276,6 +277,16 @@ Retreives a contract from the registry. Must exist otherwise this will throw.
 `T`
 
 The contract requested
+
+---
+
+### getCurrentBlockNumber
+
+▸ **getCurrentBlockNumber**(): `number`
+
+#### Returns
+
+`number`
 
 ---
 

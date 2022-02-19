@@ -9,6 +9,7 @@ Represents a voyage.
 - [arrivalTime](QueuedArrival.md#arrivaltime)
 - [artifactId](QueuedArrival.md#artifactid)
 - [departureTime](QueuedArrival.md#departuretime)
+- [distance](QueuedArrival.md#distance)
 - [energyArriving](QueuedArrival.md#energyarriving)
 - [eventId](QueuedArrival.md#eventid)
 - [fromPlanet](QueuedArrival.md#fromplanet)
@@ -33,6 +34,12 @@ Represents a voyage.
 ### departureTime
 
 • **departureTime**: `number`
+
+---
+
+### distance
+
+• **distance**: `number`
 
 ---
 

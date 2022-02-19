@@ -28,18 +28,18 @@ import * as network from 'http://cdn.skypack.dev/@darkforest_eth/network';
 - [ContractCaller](classes/ContractCaller.md)
 - [EthConnection](classes/EthConnection.md)
 - [ThrottledConcurrentQueue](classes/ThrottledConcurrentQueue.md)
+- [TxCollection](classes/TxCollection.md)
 - [TxExecutor](classes/TxExecutor.md)
 
 ### Interfaces
 
 - [ConcurrentQueueConfiguration](interfaces/ConcurrentQueueConfiguration.md)
-- [PendingTransaction](interfaces/PendingTransaction.md)
 - [Queue](interfaces/Queue.md)
-- [QueuedTransaction](interfaces/QueuedTransaction.md)
 
 ### Type aliases
 
 - [AfterTransaction](README.md#aftertransaction)
+- [BeforeQueued](README.md#beforequeued)
 - [BeforeTransaction](README.md#beforetransaction)
 - [ContractLoader](README.md#contractloader)
 - [GasPriceSettingProvider](README.md#gaspricesettingprovider)
@@ -55,7 +55,6 @@ import * as network from 'http://cdn.skypack.dev/@darkforest_eth/network';
 - [ethToWei](README.md#ethtowei)
 - [getAutoGasPrices](README.md#getautogasprices)
 - [getGasSettingGwei](README.md#getgassettinggwei)
-- [getResult](README.md#getresult)
 - [gweiToWei](README.md#gweitowei)
 - [isPurchase](README.md#ispurchase)
 - [makeProvider](README.md#makeprovider)
@@ -69,7 +68,7 @@ import * as network from 'http://cdn.skypack.dev/@darkforest_eth/network';
 
 ### AfterTransaction
 
-Ƭ **AfterTransaction**: (`transactionRequest`: [`QueuedTransaction`](interfaces/QueuedTransaction.md), `performanceMetrics`: `unknown`) => `Promise`<`void`\>
+Ƭ **AfterTransaction**: (`transactionRequest`: `Transaction`, `performanceMetrics`: `unknown`) => `Promise`<`void`\>
 
 #### Type declaration
 
@@ -79,10 +78,35 @@ import * as network from 'http://cdn.skypack.dev/@darkforest_eth/network';
 
 ##### Parameters
 
-| Name                 | Type                                                   |
-| :------------------- | :----------------------------------------------------- |
-| `transactionRequest` | [`QueuedTransaction`](interfaces/QueuedTransaction.md) |
-| `performanceMetrics` | `unknown`                                              |
+| Name                 | Type          |
+| :------------------- | :------------ |
+| `transactionRequest` | `Transaction` |
+| `performanceMetrics` | `unknown`     |
+
+##### Returns
+
+`Promise`<`void`\>
+
+---
+
+### BeforeQueued
+
+Ƭ **BeforeQueued**: (`id`: `TransactionId`, `intent`: `TxIntent`, `overrides?`: `providers.TransactionRequest`) => `Promise`<`void`\>
+
+#### Type declaration
+
+▸ (`id`, `intent`, `overrides?`): `Promise`<`void`\>
+
+[TxExecutor](classes/TxExecutor.md) calls this before queueing a function to determine whether or not that
+function should be queued. If this function rejects, a transaction is not queued.
+
+##### Parameters
+
+| Name         | Type                           |
+| :----------- | :----------------------------- |
+| `id`         | `TransactionId`                |
+| `intent`     | `TxIntent`                     |
+| `overrides?` | `providers.TransactionRequest` |
 
 ##### Returns
 
@@ -92,20 +116,20 @@ import * as network from 'http://cdn.skypack.dev/@darkforest_eth/network';
 
 ### BeforeTransaction
 
-Ƭ **BeforeTransaction**: (`transactionRequest`: [`QueuedTransaction`](interfaces/QueuedTransaction.md)) => `Promise`<`void`\>
+Ƭ **BeforeTransaction**: (`transactionRequest`: `Transaction`) => `Promise`<`void`\>
 
 #### Type declaration
 
 ▸ (`transactionRequest`): `Promise`<`void`\>
 
 [TxExecutor](classes/TxExecutor.md) calls this before executing a function to determine whether or not that
-function should execute. If this function throws, the transaction is cancelled.
+function should execute. If this function rejects, the transaction is cancelled.
 
 ##### Parameters
 
-| Name                 | Type                                                   |
-| :------------------- | :----------------------------------------------------- |
-| `transactionRequest` | [`QueuedTransaction`](interfaces/QueuedTransaction.md) |
+| Name                 | Type          |
+| :------------------- | :------------ |
+| `transactionRequest` | `Transaction` |
 
 ##### Returns
 
@@ -143,7 +167,7 @@ function should execute. If this function throws, the transaction is cancelled.
 
 ### GasPriceSettingProvider
 
-Ƭ **GasPriceSettingProvider**: (`transactionRequest`: [`QueuedTransaction`](interfaces/QueuedTransaction.md)) => `AutoGasSetting` \| `string`
+Ƭ **GasPriceSettingProvider**: (`transactionRequest`: `Transaction`) => `AutoGasSetting` \| `string`
 
 #### Type declaration
 
@@ -154,9 +178,9 @@ or a string that represents the fact that we should be using one of the automati
 
 ##### Parameters
 
-| Name                 | Type                                                   |
-| :------------------- | :----------------------------------------------------- |
-| `transactionRequest` | [`QueuedTransaction`](interfaces/QueuedTransaction.md) |
+| Name                 | Type          |
+| :------------------- | :------------ |
+| `transactionRequest` | `Transaction` |
 
 ##### Returns
 
@@ -250,13 +274,13 @@ Calls the given function, retrying it if there is an error.
 
 #### Parameters
 
-| Name            | Type                                               | Default value |
-| :-------------- | :------------------------------------------------- | :------------ |
-| `fn`            | (...`args`: `any`[]) => `Promise`<`T`\>            | `undefined`   |
-| `args`          | `any`[]                                            | `[]`          |
-| `onError?`      | [`RetryErrorHandler`](README.md#retryerrorhandler) | `undefined`   |
-| `maxRetries`    | `12`                                               | `undefined`   |
-| `retryInterval` | `number`                                           | `1000`        |
+| Name            | Type                                               | Default value              |
+| :-------------- | :------------------------------------------------- | :------------------------- |
+| `fn`            | (...`args`: `any`[]) => `Promise`<`T`\>            | `undefined`                |
+| `args`          | `any`[]                                            | `[]`                       |
+| `onError?`      | [`RetryErrorHandler`](README.md#retryerrorhandler) | `undefined`                |
+| `maxRetries`    | `12`                                               | `DEFAULT_MAX_CALL_RETRIES` |
+| `retryInterval` | `number`                                           | `1000`                     |
 
 #### Returns
 
@@ -356,25 +380,6 @@ preferred gas price. If an invalid {@link AutoGasSetting} is provided, then retu
 
 ---
 
-### getResult
-
-▸ **getResult**(`pendingTransaction`): `Promise`<`TransactionReceipt`\>
-
-When you submit a transaction via [TxExecutor](classes/TxExecutor.md), you are given a [PendingTransaction](interfaces/PendingTransaction.md).
-This function either resolves when the transaction confirms, or rejects if there is any error.
-
-#### Parameters
-
-| Name                 | Type                                                     |
-| :------------------- | :------------------------------------------------------- |
-| `pendingTransaction` | [`PendingTransaction`](interfaces/PendingTransaction.md) |
-
-#### Returns
-
-`Promise`<`TransactionReceipt`\>
-
----
-
 ### gweiToWei
 
 ▸ **gweiToWei**(`gwei`): `BigNumber`
@@ -395,15 +400,15 @@ Returns the given amount of gwei in wei as a big integer.
 
 ### isPurchase
 
-▸ **isPurchase**(`tx`): `boolean`
+▸ **isPurchase**(`tx?`): `boolean`
 
 Whether or not some value is being transferred in this transaction.
 
 #### Parameters
 
-| Name | Type                           |
-| :--- | :----------------------------- |
-| `tx` | `providers.TransactionRequest` |
+| Name  | Type                 |
+| :---- | :------------------- |
+| `tx?` | `TransactionRequest` |
 
 #### Returns
 
@@ -413,7 +418,7 @@ Whether or not some value is being transferred in this transaction.
 
 ### makeProvider
 
-▸ **makeProvider**(`rpcUrl`): `JsonRpcProvider`
+▸ **makeProvider**(`rpcUrl`): `providers.JsonRpcProvider`
 
 Creates a new {@link JsonRpcProvider}, and makes sure that it's connected to xDai if we're in
 production.
@@ -426,7 +431,7 @@ production.
 
 #### Returns
 
-`JsonRpcProvider`
+`providers.JsonRpcProvider`
 
 ---
 
@@ -444,17 +449,17 @@ A function that just never resolves.s
 
 ### verifySignature
 
-▸ **verifySignature**(`message`, `signature`, `address`): `boolean`
+▸ **verifySignature**(`message`, `signature`, `addr`): `boolean`
 
 Returns whether or not the given message was signed by the given address.
 
 #### Parameters
 
-| Name        | Type         |
-| :---------- | :----------- |
-| `message`   | `string`     |
-| `signature` | `string`     |
-| `address`   | `EthAddress` |
+| Name        | Type                        |
+| :---------- | :-------------------------- |
+| `message`   | `string`                    |
+| `signature` | `string`                    |
+| `addr`      | `undefined` \| `EthAddress` |
 
 #### Returns
 
@@ -464,7 +469,7 @@ Returns whether or not the given message was signed by the given address.
 
 ### waitForTransaction
 
-▸ **waitForTransaction**(`provider`, `txHash`): `Promise`<`TransactionReceipt`\>
+▸ **waitForTransaction**(`provider`, `txHash`): `Promise`<`providers.TransactionReceipt`\>
 
 Given a transaction hash and a JsonRpcProvider, waits for the given transaction to complete.
 
@@ -477,7 +482,7 @@ Given a transaction hash and a JsonRpcProvider, waits for the given transaction 
 
 #### Returns
 
-`Promise`<`TransactionReceipt`\>
+`Promise`<`providers.TransactionReceipt`\>
 
 ---
 

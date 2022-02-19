@@ -54,7 +54,7 @@ import * as snarks from 'http://cdn.skypack.dev/@darkforest_eth/snarks';
 
 Ƭ **BiomebaseSnarkContractCallArgs**: [[`string`, `string`], [[`string`, `string`], [`string`, `string`]], [`string`, `string`], [`string`, `string`, `string`, `string`, `string`, `string`, `string`]]
 
-Shape of the args for `findArtifact` DarkForestCore contract call.
+Shape of the args for `findArtifact` DarkForest contract call.
 
 ---
 
@@ -62,7 +62,7 @@ Shape of the args for `findArtifact` DarkForestCore contract call.
 
 Ƭ **ContractCallArgs**: [`RevealSnarkContractCallArgs`](README.md#revealsnarkcontractcallargs) \| [`InitSnarkContractCallArgs`](README.md#initsnarkcontractcallargs) \| [`MoveSnarkContractCallArgs`](README.md#movesnarkcontractcallargs) \| [`BiomebaseSnarkContractCallArgs`](README.md#biomebasesnarkcontractcallargs)
 
-Type representing the shape of args that are passed into DarkForestCore
+Type representing the shape of args that are passed into DarkForest
 functions that require zkSNARK verification.
 
 ---
@@ -71,7 +71,7 @@ functions that require zkSNARK verification.
 
 Ƭ **InitSnarkContractCallArgs**: [[`string`, `string`], [[`string`, `string`], [`string`, `string`]], [`string`, `string`], [`string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`]]
 
-Shape of the args for the `initializePlayer` DarkForestCore contract call
+Shape of the args for the `initializePlayer` DarkForest contract call
 
 ---
 
@@ -79,7 +79,7 @@ Shape of the args for the `initializePlayer` DarkForestCore contract call
 
 Ƭ **MoveSnarkContractCallArgs**: [[`string`, `string`], [[`string`, `string`], [`string`, `string`]], [`string`, `string`], [`string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`]]
 
-(Almost) shape of the args for `move` DarkForestCore contract call.
+(Almost) shape of the args for `move` DarkForest contract call.
 The fourth array element additionally needs shipsMoved, silverMoved, and
 artifactIdMoved before it can be passed as args to `move`, but those values
 are not part of the zkSNARK.
@@ -90,7 +90,7 @@ are not part of the zkSNARK.
 
 Ƭ **RevealSnarkContractCallArgs**: [[`string`, `string`], [[`string`, `string`], [`string`, `string`]], [`string`, `string`], [`string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`]]
 
-Shape of the args for `revealLocation` DarkForestCore contract call
+Shape of the args for `revealLocation` DarkForest contract call
 
 ## Functions
 
@@ -99,7 +99,7 @@ Shape of the args for `revealLocation` DarkForestCore contract call
 ▸ **buildContractCallArgs**(`snarkProof`, `publicSignals`): [`ContractCallArgs`](README.md#contractcallargs)
 
 Method for converting the output of snarkJS `fullProve` into args that can be
-passed into DarkForestCore smart contract functions which perform zk proof
+passed into DarkForest smart contract functions which perform zk proof
 verification.
 
 #### Parameters

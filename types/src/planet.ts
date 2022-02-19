@@ -1,21 +1,7 @@
 import type { Biome, SpaceType } from './game_types';
 import type { ArtifactId, EthAddress, LocationId } from './identifier';
 import type { PlanetMessage } from './planetmessage';
-import type {
-  UnconfirmedActivateArtifact,
-  UnconfirmedBuyHat,
-  UnconfirmedClaim,
-  UnconfirmedDeactivateArtifact,
-  UnconfirmedDepositArtifact,
-  UnconfirmedFindArtifact,
-  UnconfirmedMove,
-  UnconfirmedPlanetTransfer,
-  UnconfirmedProspectPlanet,
-  UnconfirmedReveal,
-  UnconfirmedUpgrade,
-  UnconfirmedWithdrawArtifact,
-  UnconfirmedWithdrawSilver,
-} from './transactions';
+import { TransactionCollection } from './transaction';
 import type { Upgrade, UpgradeState } from './upgrade';
 import type { Abstract } from './utility';
 import type { WorldLocation } from './world';
@@ -90,7 +76,7 @@ export const PlanetTypeNames = {
  * doubling each of five stats: (in order) [energyCap, energyGrowth, range,
  * speed, defense]
  */
-export type PlanetBonus = [boolean, boolean, boolean, boolean, boolean];
+export type PlanetBonus = [boolean, boolean, boolean, boolean, boolean, boolean];
 
 /**
  * Represents a Dark Forest planet object (planets, asteroid fields, quasars,
@@ -100,7 +86,7 @@ export type PlanetBonus = [boolean, boolean, boolean, boolean, boolean];
  * have been submitted to the blockchain from a client), or (2) store derived
  * data that is calculated separately client-side, such as `silverSpent` and
  * `bonus`. So this object does not cleanly map to any single object in the
- * DarkForestCore contract (or even any collection of objects).
+ * DarkForest contract (or even any collection of objects).
  */
 export type Planet = {
   locationId: LocationId;
@@ -126,6 +112,8 @@ export type Planet = {
   energy: number;
   silver: number;
 
+  spaceJunk: number;
+
   lastUpdated: number;
   upgradeState: UpgradeState;
   hasTriedFindingArtifact: boolean;
@@ -134,19 +122,7 @@ export type Planet = {
   prospectedBlockNumber?: number;
   localPhotoidUpgrade?: Upgrade;
 
-  unconfirmedReveal?: UnconfirmedReveal;
-  unconfirmedClaim?: UnconfirmedClaim;
-  unconfirmedDepartures: UnconfirmedMove[];
-  unconfirmedUpgrades: UnconfirmedUpgrade[];
-  unconfirmedBuyHats: UnconfirmedBuyHat[];
-  unconfirmedPlanetTransfers: UnconfirmedPlanetTransfer[];
-  unconfirmedProspectPlanet?: UnconfirmedProspectPlanet;
-  unconfirmedFindArtifact?: UnconfirmedFindArtifact;
-  unconfirmedDepositArtifact?: UnconfirmedDepositArtifact;
-  unconfirmedWithdrawArtifact?: UnconfirmedWithdrawArtifact;
-  unconfirmedActivateArtifact?: UnconfirmedActivateArtifact;
-  unconfirmedDeactivateArtifact?: UnconfirmedDeactivateArtifact;
-  unconfirmedWithdrawSilver?: UnconfirmedWithdrawSilver;
+  transactions?: TransactionCollection;
   unconfirmedAddEmoji: boolean;
   unconfirmedClearEmoji: boolean;
   loadingServerState: boolean;
@@ -167,6 +143,12 @@ export type Planet = {
   messages?: PlanetMessage<unknown>[];
 
   bonus: PlanetBonus;
+
+  pausers: number;
+
+  invader?: EthAddress;
+  capturer?: EthAddress;
+  invadeStartBlock?: number;
 };
 
 /**

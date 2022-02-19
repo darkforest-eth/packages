@@ -1,4 +1,4 @@
-import type { DarkForestCore, DarkForestGetters } from '@darkforest_eth/contracts/typechain';
+import type { DarkForest } from '@darkforest_eth/contracts/typechain';
 import type {
   Artifact,
   ArtifactId,
@@ -70,11 +70,11 @@ export function artifactIdToDecStr(artifactId: ArtifactId): string {
   return bigInt(artifactId, 16).toString(10);
 }
 
-export type RawArtifactPointValues = Awaited<ReturnType<DarkForestCore['getArtifactPointValues']>>;
+export type RawArtifactPointValues = Awaited<ReturnType<DarkForest['getArtifactPointValues']>>;
 
 /**
  * Converts the raw typechain result of a call to
- * `DarkForestCore.getArtifactPointValues` to an `ArtifactPointValues`
+ * `DarkForest.getArtifactPointValues` to an `ArtifactPointValues`
  * typescript typed object (see @darkforest_eth/types).
  */
 export function decodeArtifactPointValues(
@@ -90,10 +90,10 @@ export function decodeArtifactPointValues(
   };
 }
 
-export type RawArtifactWithMetadata = Awaited<ReturnType<DarkForestGetters['getArtifactById']>>;
+export type RawArtifactWithMetadata = Awaited<ReturnType<DarkForest['getArtifactById']>>;
 
 /**
- * Converts the raw typechain result of `DarkForestTypes.ArtifactWithMetadata`
+ * Converts the raw typechain result of `ArtifactTypes.ArtifactWithMetadata`
  * struct to an `Artifact` typescript typed object (see @darkforest_eth/types).
  *
  * @param rawArtifactWithMetadata Raw data of an `ArtifactWithMetadata` struct,
@@ -112,8 +112,10 @@ export function decodeArtifact(rawArtifactWithMetadata: RawArtifactWithMetadata)
     mintedAtTimestamp: artifact.mintedAtTimestamp.toNumber(),
     discoverer: address(artifact.discoverer),
     artifactType: artifact.artifactType as ArtifactType,
+    activations: artifact.activations.toNumber(),
     lastActivated: artifact.lastActivated.toNumber(),
     lastDeactivated: artifact.lastDeactivated.toNumber(),
+    controller: address(artifact.controller),
     wormholeTo: artifact.wormholeTo.eq(0) ? undefined : locationIdFromEthersBN(artifact.wormholeTo),
     currentOwner: address(owner),
     upgrade: decodeUpgrade(upgrade),

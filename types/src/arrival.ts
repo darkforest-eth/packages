@@ -12,6 +12,7 @@ export interface QueuedArrival {
   silverMoved: number;
   artifactId?: ArtifactId;
   departureTime: number;
+  distance: number;
   arrivalTime: number;
 }
 

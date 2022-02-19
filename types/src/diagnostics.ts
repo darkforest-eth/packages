@@ -13,8 +13,8 @@ export interface Diagnostics {
   totalChunks: number;
   gasPrices?: GasPrices;
   rpcUrl: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
 /**

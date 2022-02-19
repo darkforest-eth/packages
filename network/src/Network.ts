@@ -1,11 +1,10 @@
 import { DEFAULT_MAX_CALL_RETRIES } from '@darkforest_eth/constants';
+import { address } from '@darkforest_eth/serde';
 import { AutoGasSetting, EthAddress, GasPrices, SignedMessage } from '@darkforest_eth/types';
-import { JsonRpcProvider, TransactionReceipt } from '@ethersproject/providers';
 import { BigNumber, Contract, ContractInterface, providers, utils, Wallet } from 'ethers';
 import stringify from 'json-stable-stringify';
 import retry from 'p-retry';
 import timeout from 'p-timeout';
-import { PendingTransaction } from './TxExecutor';
 
 export type RetryErrorHandler = (i: number, e: Error) => void;
 
@@ -122,9 +121,9 @@ export const aggregateBulkGetter = async <T>(
  * Given a transaction hash and a JsonRpcProvider, waits for the given transaction to complete.
  */
 export function waitForTransaction(
-  provider: JsonRpcProvider,
+  provider: providers.JsonRpcProvider,
   txHash: string
-): Promise<TransactionReceipt> {
+): Promise<providers.TransactionReceipt> {
   return retry(
     async (tries) => {
       console.log(`[wait-tx] WAITING ON tx hash: ${txHash} tries ${tries}`);
@@ -163,7 +162,7 @@ export function waitForTransaction(
 export function createContract<C extends Contract>(
   contractAddress: string,
   contractABI: ContractInterface,
-  provider: JsonRpcProvider,
+  provider: providers.JsonRpcProvider,
   signer?: Wallet
 ): C {
   return new Contract(contractAddress, contractABI, signer ?? provider) as C;
@@ -173,7 +172,7 @@ export function createContract<C extends Contract>(
  * Creates a new {@link JsonRpcProvider}, and makes sure that it's connected to xDai if we're in
  * production.
  */
-export function makeProvider(rpcUrl: string): JsonRpcProvider {
+export function makeProvider(rpcUrl: string): providers.JsonRpcProvider {
   let provider;
 
   if (rpcUrl.startsWith('wss://')) {
@@ -192,7 +191,7 @@ export function makeProvider(rpcUrl: string): JsonRpcProvider {
 export function assertProperlySigned(message: SignedMessage<unknown>): void {
   const preSigned = stringify(message.message);
 
-  if (!verifySignature(preSigned, message.signature as string, message.sender as EthAddress)) {
+  if (!verifySignature(preSigned, message.signature as string, message.sender)) {
     throw new Error(`failed to verify: ${message}`);
   }
 }
@@ -200,8 +199,15 @@ export function assertProperlySigned(message: SignedMessage<unknown>): void {
 /**
  * Returns whether or not the given message was signed by the given address.
  */
-export function verifySignature(message: string, signature: string, address: EthAddress): boolean {
-  return utils.verifyMessage(message, signature).toLowerCase() === address;
+export function verifySignature(
+  message: string,
+  signature: string,
+  addr: EthAddress | undefined
+): boolean {
+  if (!addr) {
+    return false;
+  }
+  return address(utils.verifyMessage(message, signature)) === addr;
 }
 
 /**
@@ -235,21 +241,6 @@ export function ethToWei(eth: number): BigNumber {
 /**
  * Whether or not some value is being transferred in this transaction.
  */
-export function isPurchase(tx: providers.TransactionRequest): boolean {
-  return tx.value !== undefined && tx.value > 0;
-}
-
-/**
- * When you submit a transaction via {@link TxExecutor}, you are given a {@link PendingTransaction}.
- * This function either resolves when the transaction confirms, or rejects if there is any error.
- */
-export async function getResult(
-  pendingTransaction: PendingTransaction
-): Promise<TransactionReceipt> {
-  const [_submitted, confirmed] = await Promise.all([
-    pendingTransaction.submitted,
-    pendingTransaction.confirmed,
-  ]);
-
-  return confirmed;
+export function isPurchase(tx?: providers.TransactionRequest): boolean {
+  return tx !== undefined && tx.value !== undefined && tx.value > 0;
 }

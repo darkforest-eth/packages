@@ -9,39 +9,50 @@
 ### Properties
 
 - [afterTransaction](TxExecutor.md#aftertransaction)
+- [beforeQueued](TxExecutor.md#beforequeued)
 - [beforeTransaction](TxExecutor.md#beforetransaction)
 - [defaultTxOptions](TxExecutor.md#defaulttxoptions)
 - [diagnosticsUpdater](TxExecutor.md#diagnosticsupdater)
 - [ethConnection](TxExecutor.md#ethconnection)
 - [gasSettingProvider](TxExecutor.md#gassettingprovider)
+- [idSequence](TxExecutor.md#idsequence)
 - [lastTransactionTimestamp](TxExecutor.md#lasttransactiontimestamp)
 - [nonce](TxExecutor.md#nonce)
+- [nonceMutex](TxExecutor.md#noncemutex)
 - [queue](TxExecutor.md#queue)
+- [supportMultipleWallets](TxExecutor.md#supportmultiplewallets)
 - [NONCE_STALE_AFTER_MS](TxExecutor.md#nonce_stale_after_ms)
 - [TX_SUBMIT_TIMEOUT](TxExecutor.md#tx_submit_timeout)
 
 ### Methods
 
+- [dequeueTransction](TxExecutor.md#dequeuetransction)
 - [execute](TxExecutor.md#execute)
-- [maybeUpdateNonce](TxExecutor.md#maybeupdatenonce)
+- [getNonce](TxExecutor.md#getnonce)
+- [nextId](TxExecutor.md#nextid)
+- [prioritizeTransaction](TxExecutor.md#prioritizetransaction)
 - [queueTransaction](TxExecutor.md#queuetransaction)
+- [resetNonce](TxExecutor.md#resetnonce)
 - [setDiagnosticUpdater](TxExecutor.md#setdiagnosticupdater)
+- [waitForTransaction](TxExecutor.md#waitfortransaction)
 
 ## Constructors
 
 ### constructor
 
-• **new TxExecutor**(`ethConnection`, `gasSettingProvider`, `beforeTransaction?`, `afterTransaction?`, `queueConfiguration?`)
+• **new TxExecutor**(`ethConnection`, `gasSettingProvider`, `beforeQueued?`, `beforeTransaction?`, `afterTransaction?`, `queueConfiguration?`, `supportMultipleWallets?`)
 
 #### Parameters
 
-| Name                  | Type                                                                            |
-| :-------------------- | :------------------------------------------------------------------------------ |
-| `ethConnection`       | [`EthConnection`](EthConnection.md)                                             |
-| `gasSettingProvider`  | [`GasPriceSettingProvider`](../README.md#gaspricesettingprovider)               |
-| `beforeTransaction?`  | [`BeforeTransaction`](../README.md#beforetransaction)                           |
-| `afterTransaction?`   | [`AfterTransaction`](../README.md#aftertransaction)                             |
-| `queueConfiguration?` | [`ConcurrentQueueConfiguration`](../interfaces/ConcurrentQueueConfiguration.md) |
+| Name                     | Type                                                                            | Default value |
+| :----------------------- | :------------------------------------------------------------------------------ | :------------ |
+| `ethConnection`          | [`EthConnection`](EthConnection.md)                                             | `undefined`   |
+| `gasSettingProvider`     | [`GasPriceSettingProvider`](../README.md#gaspricesettingprovider)               | `undefined`   |
+| `beforeQueued?`          | [`BeforeQueued`](../README.md#beforequeued)                                     | `undefined`   |
+| `beforeTransaction?`     | [`BeforeTransaction`](../README.md#beforetransaction)                           | `undefined`   |
+| `afterTransaction?`      | [`AfterTransaction`](../README.md#aftertransaction)                             | `undefined`   |
+| `queueConfiguration?`    | [`ConcurrentQueueConfiguration`](../interfaces/ConcurrentQueueConfiguration.md) | `undefined`   |
+| `supportMultipleWallets` | `boolean`                                                                       | `true`        |
 
 ## Properties
 
@@ -51,6 +62,15 @@
 
 If present, called after every transaction with the transaction info as well as its performance
 metrics.
+
+---
+
+### beforeQueued
+
+• `Private` `Optional` `Readonly` **beforeQueued**: [`BeforeQueued`](../README.md#beforequeued)
+
+If present, called before any transaction is queued, to give the user of [TxExecutor](TxExecutor.md) the
+opportunity to cancel the event by rejecting. Useful for interstitials.
 
 ---
 
@@ -97,6 +117,15 @@ if there is not a manual gas price specified for that transaction.
 
 ---
 
+### idSequence
+
+• `Private` **idSequence**: `number` = `0`
+
+Increments every time a new transaction is created. This is separate from the nonce because
+it is used solely for ordering transactions client-side.
+
+---
+
 ### lastTransactionTimestamp
 
 • `Private` **lastTransactionTimestamp**: `number`
@@ -115,11 +144,32 @@ transaction.
 
 ---
 
+### nonceMutex
+
+• `Private` **nonceMutex**: `Mutex`
+
+Mutex that ensures only one transaction is modifying the nonce
+at a time.
+
+---
+
 ### queue
 
-• `Private` `Readonly` **queue**: [`ThrottledConcurrentQueue`](ThrottledConcurrentQueue.md)
+• `Private` `Readonly` **queue**: [`ThrottledConcurrentQueue`](ThrottledConcurrentQueue.md)<`Transaction`<`TxIntent`\>\>
 
 Task queue which executes transactions in a controlled manner.
+
+---
+
+### supportMultipleWallets
+
+• `Private` **supportMultipleWallets**: `boolean`
+
+Turning this on refreshes the nonce if there has not been
+a transaction after [NONCE_STALE_AFTER_MS](TxExecutor.md#nonce_stale_after_ms). This is so that
+we can get the most up to date nonce even if other
+wallets/applications are sending transactions as the same
+address.
 
 ---
 
@@ -127,7 +177,8 @@ Task queue which executes transactions in a controlled manner.
 
 ▪ `Static` `Private` `Readonly` **NONCE_STALE_AFTER_MS**: `5000`
 
-We refresh the nonce if it hasn't been updated in this amount of time.
+If {@link supportMultipleWallets} is true, refresh the nonce if a
+transaction has not been sent in this amount of time.
 
 ---
 
@@ -140,18 +191,34 @@ this amount of time.
 
 ## Methods
 
+### dequeueTransction
+
+▸ **dequeueTransction**(`tx`): `void`
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+`void`
+
+---
+
 ### execute
 
-▸ `Private` **execute**(`txRequest`): `Promise`<`void`\>
+▸ `Private` **execute**(`tx`): `Promise`<`void`\>
 
 Executes the given queued transaction. This is a field rather than a method declaration on
 purpose for `this` purposes.
 
 #### Parameters
 
-| Name        | Type                                                      |
-| :---------- | :-------------------------------------------------------- |
-| `txRequest` | [`QueuedTransaction`](../interfaces/QueuedTransaction.md) |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
@@ -159,37 +226,87 @@ purpose for `this` purposes.
 
 ---
 
-### maybeUpdateNonce
+### getNonce
 
-▸ `Private` **maybeUpdateNonce**(): `Promise`<`void`\>
+▸ `Private` **getNonce**(): `Promise`<`undefined` \| `number`\>
 
-If the nonce is probably stale, reload it from the blockchain.
+Returns the current nonce and increments it in memory for the next transaction.
+If nonce is undefined, or there has been a big gap between transactions,
+refresh the nonce from the blockchain. This only replaces the nonce if the
+blockchain nonce is found to be higher than the local calculation.
+The stale timer is to support multiple wallets/applications interacting
+with the game at the same time.
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`<`undefined` \| `number`\>
+
+---
+
+### nextId
+
+▸ `Private` **nextId**(): `number`
+
+Return current counter and increment.
+
+#### Returns
+
+`number`
+
+---
+
+### prioritizeTransaction
+
+▸ **prioritizeTransaction**(`tx`): `void`
+
+#### Parameters
+
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
+
+#### Returns
+
+`void`
 
 ---
 
 ### queueTransaction
 
-▸ **queueTransaction**(`actionId`, `contract`, `methodName`, `args`, `overrides?`): [`PendingTransaction`](../interfaces/PendingTransaction.md)
+▸ **queueTransaction**<`T`\>(`intent`, `overrides?`): `Promise`<`Transaction`<`T`\>\>
 
 Schedules this transaction for execution.
+
+#### Type parameters
+
+| Name | Type               |
+| :--- | :----------------- |
+| `T`  | extends `TxIntent` |
 
 #### Parameters
 
 | Name         | Type                 |
 | :----------- | :------------------- |
-| `actionId`   | `string`             |
-| `contract`   | `Contract`           |
-| `methodName` | `string`             |
-| `args`       | `unknown`[]          |
-| `overrides`  | `TransactionRequest` |
+| `intent`     | `T`                  |
+| `overrides?` | `TransactionRequest` |
 
 #### Returns
 
-[`PendingTransaction`](../interfaces/PendingTransaction.md)
+`Promise`<`Transaction`<`T`\>\>
+
+---
+
+### resetNonce
+
+▸ `Private` **resetNonce**(): `Promise`<`undefined`\>
+
+Reset nonce.
+This will trigger a refresh from the blockchain the next time
+execution starts.
+
+#### Returns
+
+`Promise`<`undefined`\>
 
 ---
 
@@ -206,3 +323,29 @@ Schedules this transaction for execution.
 #### Returns
 
 `void`
+
+---
+
+### waitForTransaction
+
+▸ **waitForTransaction**<`T`\>(`ser`): `Transaction`<`T`\>
+
+Given a transaction that has been persisted (and therefore submitted), we return a transaction
+whose confirmationPromise resolves once the transaction was verified to have been confirmed.
+Useful for plugging these persisted transactions into our transaction system.
+
+#### Type parameters
+
+| Name | Type               |
+| :--- | :----------------- |
+| `T`  | extends `TxIntent` |
+
+#### Parameters
+
+| Name  | Type                         |
+| :---- | :--------------------------- |
+| `ser` | `PersistedTransaction`<`T`\> |
+
+#### Returns
+
+`Transaction`<`T`\>
