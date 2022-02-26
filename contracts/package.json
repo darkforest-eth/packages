@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/contracts",
-  "version": "6.7.3",
+  "version": "6.7.4",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -24,6 +24,10 @@
     "docs": "typedoc --tsconfig tsconfig.docs.json && npm run format",
     "clean": "del-cli node_modules typechain abis"
   },
+  "dependencies": {
+    "@ethersproject/providers": "^5.5.1",
+    "ethers": "^5.5.1"
+  },
   "devDependencies": {
     "del-cli": "^4.0.1",
     "eslint": "^7.30.0",
@@ -35,5 +39,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "baa6b1027e0797407bfaaf8b93072c4dc828a667"
+  "gitHead": "35d149f3629c9e66f80df9dfdba2f74e2c24543a"
 }

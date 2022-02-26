@@ -292,6 +292,7 @@
 
 ### Other Methods
 
+- [\_handleChange](DarkForestSliderHandle.md#_handlechange)
 - [addEventListener](DarkForestSliderHandle.md#addeventlistener)
 - [after](DarkForestSliderHandle.md#after)
 - [animate](DarkForestSliderHandle.md#animate)
@@ -3431,6 +3432,22 @@ SliderHandle.updateComplete
 
 ## Other Methods
 
+### \_handleChange
+
+▸ `Private` **\_handleChange**(`_evt`): `void`
+
+#### Parameters
+
+| Name   | Type    |
+| :----- | :------ |
+| `_evt` | `Event` |
+
+#### Returns
+
+`void`
+
+---
+
 ### addEventListener
 
 ▸ **addEventListener**<`K`\>(`type`, `listener`, `options?`): `void`
@@ -3770,7 +3787,7 @@ SliderHandle.compareDocumentPosition
 
 `void`
 
-#### Inherited from
+#### Overrides
 
 SliderHandle.connectedCallback
 
@@ -3806,7 +3823,7 @@ SliderHandle.contains
 
 `void`
 
-#### Inherited from
+#### Overrides
 
 SliderHandle.disconnectedCallback
 

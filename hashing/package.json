@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/hashing",
-  "version": "6.7.3",
+  "version": "6.7.4",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "main": "dist/index.js",
@@ -18,7 +18,7 @@
     "clean": "del-cli dist node_modules"
   },
   "dependencies": {
-    "@darkforest_eth/types": "6.7.3",
+    "@darkforest_eth/types": "6.7.4",
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
@@ -32,5 +32,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "baa6b1027e0797407bfaaf8b93072c4dc828a667"
+  "gitHead": "35d149f3629c9e66f80df9dfdba2f74e2c24543a"
 }
