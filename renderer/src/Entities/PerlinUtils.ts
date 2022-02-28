@@ -114,21 +114,21 @@ export function getCachedGradient(
 
   let res = getRandomGradientAt(
     {
-      x: new Fraction(config.mirrorX ? Math.abs(coords.x) : coords.x),
-      y: new Fraction(config.mirrorY ? Math.abs(coords.y) : coords.y),
+      x: new Fraction(config.mirrorY ? Math.abs(coords.x) : coords.x), // mirror across the vertical y-axis
+      y: new Fraction(config.mirrorX ? Math.abs(coords.y) : coords.y), // mirror across the horizontal x-axis
     },
     new Fraction(scale * 2 ** pow),
     myRand
   );
 
-  if (config.mirrorX && (quadrant === Quadrant.TopLeft || quadrant === Quadrant.BottomLeft)) {
+  if (config.mirrorY && (quadrant === Quadrant.TopLeft || quadrant === Quadrant.BottomLeft)) {
     res = {
       x: res.x.mul(-1),
       y: res.y,
     };
   }
 
-  if (config.mirrorY && (quadrant === Quadrant.BottomLeft || quadrant === Quadrant.BottomRight)) {
+  if (config.mirrorX && (quadrant === Quadrant.BottomLeft || quadrant === Quadrant.BottomRight)) {
     res = {
       x: res.x,
       y: res.y.mul(-1),

@@ -65,6 +65,7 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 ### Type aliases
 
 - [Abstract](README.md#abstract)
+- [ArrivalType](README.md#arrivaltype)
 - [Artifact](README.md#artifact)
 - [ArtifactId](README.md#artifactid)
 - [ArtifactPointValues](README.md#artifactpointvalues)
@@ -132,6 +133,7 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 
 ### Variables
 
+- [ArrivalType](README.md#arrivaltype)
 - [ArtifactRarity](README.md#artifactrarity)
 - [ArtifactRarityNames](README.md#artifactraritynames)
 - [ArtifactType](README.md#artifacttype)
@@ -179,6 +181,14 @@ The `Id` type parameter is the key to vary upon and should be unique unless bein
 | :--- | :---------------- |
 | `T`  | `T`               |
 | `Id` | extends `Any.Key` |
+
+---
+
+### ArrivalType
+
+Ƭ **ArrivalType**: [`Abstract`](README.md#abstract)<`number`, `"ArrivalType"`\>
+
+Abstract type representing an arrival type.
 
 ---
 
@@ -875,6 +885,23 @@ these coordinates, and the biomebase perlin value at these coordinates
 | `to`   | [`LocationId`](README.md#locationid) |
 
 ## Variables
+
+### ArrivalType
+
+• **ArrivalType**: `Object`
+
+Enumeration of arrival types.
+
+#### Type declaration
+
+| Name       | Type                                   |
+| :--------- | :------------------------------------- |
+| `Normal`   | [`ArrivalType`](README.md#arrivaltype) |
+| `Photoid`  | [`ArrivalType`](README.md#arrivaltype) |
+| `Unknown`  | [`ArrivalType`](README.md#arrivaltype) |
+| `Wormhole` | [`ArrivalType`](README.md#arrivaltype) |
+
+---
 
 ### ArtifactRarity
 

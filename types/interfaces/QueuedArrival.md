@@ -7,6 +7,7 @@ Represents a voyage.
 ### Properties
 
 - [arrivalTime](QueuedArrival.md#arrivaltime)
+- [arrivalType](QueuedArrival.md#arrivaltype)
 - [artifactId](QueuedArrival.md#artifactid)
 - [departureTime](QueuedArrival.md#departuretime)
 - [distance](QueuedArrival.md#distance)
@@ -22,6 +23,12 @@ Represents a voyage.
 ### arrivalTime
 
 • **arrivalTime**: `number`
+
+---
+
+### arrivalType
+
+• **arrivalType**: [`ArrivalType`](../README.md#arrivaltype)
 
 ---
 

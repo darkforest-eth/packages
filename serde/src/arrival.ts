@@ -1,6 +1,6 @@
 import { CONTRACT_PRECISION } from '@darkforest_eth/constants';
 import type { DarkForest } from '@darkforest_eth/contracts/typechain';
-import type { Awaited, QueuedArrival, VoyageId } from '@darkforest_eth/types';
+import type { ArrivalType, Awaited, QueuedArrival, VoyageId } from '@darkforest_eth/types';
 import { address } from './address';
 import { artifactIdFromEthersBN } from './artifact';
 import { locationIdFromDecStr } from './location';
@@ -28,6 +28,7 @@ export function decodeArrival(rawArrival: RawArrival): QueuedArrival {
     artifactId: rawArrival.carriedArtifactId.eq(0)
       ? undefined
       : artifactIdFromEthersBN(rawArrival.carriedArtifactId),
+    arrivalType: rawArrival.arrivalType as ArrivalType,
   };
 
   return arrival;
