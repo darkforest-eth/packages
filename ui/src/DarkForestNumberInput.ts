@@ -152,7 +152,7 @@ export class DarkForestNumberInput extends LitElement {
     }
   }
 
-  private _handleInput(evt: Event) {
+  private _handleInput(evt: InputEvent) {
     if (this.disabled) {
       evt.stopImmediatePropagation();
       evt.preventDefault();
@@ -162,7 +162,11 @@ export class DarkForestNumberInput extends LitElement {
       }
     } else {
       if (evt.target) {
-        this._value = (evt.target as HTMLInputElement).value;
+        if ((evt.target as HTMLInputElement).checkValidity()) {
+          this._value = (evt.target as HTMLInputElement).value;
+        } else {
+          evt.stopImmediatePropagation();
+        }
       }
     }
   }

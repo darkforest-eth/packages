@@ -3197,9 +3197,9 @@ LitElement.updateComplete
 
 #### Parameters
 
-| Name  | Type    |
-| :---- | :------ |
-| `evt` | `Event` |
+| Name  | Type         |
+| :---- | :----------- |
+| `evt` | `InputEvent` |
 
 #### Returns
 
