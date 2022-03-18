@@ -1,4 +1,11 @@
-import { Chunk, PerlinConfig, Rectangle, Vec3 } from '@darkforest_eth/types';
+import {
+  Chunk,
+  PerlinConfig,
+  PerlinRendererType,
+  Rectangle,
+  RendererType,
+  Vec3,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { PERLIN_PROGRAM_DEFINITION } from '../Programs/PerlinProgram';
 import { AttribManager } from '../WebGL/AttribManager';
@@ -14,33 +21,26 @@ import {
   up,
   valueOf,
 } from './PerlinUtils';
-import { RectRenderer } from './RectRenderer';
 
-export class PerlinRenderer extends GenericRenderer<typeof PERLIN_PROGRAM_DEFINITION> {
+export class PerlinRenderer
+  extends GenericRenderer<typeof PERLIN_PROGRAM_DEFINITION>
+  implements PerlinRendererType
+{
   manager: GameGLManager;
   config: PerlinConfig;
 
   posBuffer: number[];
   coordsBuffer: number[];
 
-  rectRenderer: RectRenderer | undefined;
-
   thresholds: Vec3;
+  rendererType = RendererType.Perlin;
 
-  constructor(
-    manager: GameGLManager,
-    config: PerlinConfig,
-    thresholds: [number, number, number],
-    rectRenderer: RectRenderer | undefined = undefined
-  ) {
+  constructor(manager: GameGLManager) {
     super(manager, PERLIN_PROGRAM_DEFINITION);
-    this.config = config;
-    this.rectRenderer = rectRenderer;
-
+    this.config = manager.renderer.context.getPerlinConfig(false);
     this.posBuffer = EngineUtils.makeEmptyQuadVec2();
     this.coordsBuffer = EngineUtils.makeEmptyQuadVec2();
-
-    this.thresholds = thresholds;
+    this.thresholds = manager.renderer.context.getPerlinThresholds();
   }
 
   private bufferGradients(

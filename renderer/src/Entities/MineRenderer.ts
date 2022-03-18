@@ -1,43 +1,45 @@
 import { MAX_PLANET_LEVEL } from '@darkforest_eth/constants';
-import { Planet, WorldCoords } from '@darkforest_eth/types';
+import {
+  CanvasCoords,
+  MineRendererType,
+  Planet,
+  RendererType,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { engineConsts } from '../EngineConsts';
 import { EngineUtils } from '../EngineUtils';
+import { Renderer } from '../Renderer';
 import { GameGLManager } from '../WebGL/GameGLManager';
-import { BeltRenderer } from './BeltRenderer';
-import { MineBodyRenderer } from './MineBodyRenderer';
 
-export class MineRenderer {
-  mineBodyRenderer: MineBodyRenderer;
-  beltRenderer: BeltRenderer;
+export class MineRenderer implements MineRendererType {
   manager: GameGLManager;
 
+  rendererType = RendererType.Mine;
+
+  renderer: Renderer;
+
   constructor(manager: GameGLManager) {
-    this.mineBodyRenderer = new MineBodyRenderer(manager);
-    this.beltRenderer = new BeltRenderer(manager);
     this.manager = manager;
+    this.renderer = manager.renderer;
   }
 
-  public queueMineScreen(planet: Planet, centerW: WorldCoords, radiusW: number, z: number) {
+  public queueMineScreen(planet: Planet, center: CanvasCoords, radius: number, z: number) {
     const {
       white,
       belt: { silver },
     } = engineConsts.colors;
-
-    this.mineBodyRenderer.queueMineScreen(planet, centerW, radiusW, z);
+    const { beltRenderer, mineBodyRenderer } = this.renderer;
+    mineBodyRenderer.queueMineScreen(planet, center, radius, z);
     const level = planet.planetLevel;
 
     const now = EngineUtils.getNow() * 0.3;
 
-    if (level >= 1)
-      this.beltRenderer.queueBeltAtIdx(planet, centerW, radiusW, white, 0, now * 0.5, true);
-    if (level >= 3)
-      this.beltRenderer.queueBeltAtIdx(planet, centerW, radiusW, white, 0, -now * 0.5, true);
-    if (level >= 5)
-      this.beltRenderer.queueBeltAtIdx(planet, centerW, radiusW, white, 0, -now * 0.3, true);
-    if (level >= 7)
-      this.beltRenderer.queueBeltAtIdx(planet, centerW, radiusW, white, 0, now * 0.3, true);
+    if (level >= 1) beltRenderer.queueBeltAtIdx(planet, center, radius, white, 0, now * 0.5, true);
+    if (level >= 3) beltRenderer.queueBeltAtIdx(planet, center, radius, white, 0, -now * 0.5, true);
+    if (level >= 5) beltRenderer.queueBeltAtIdx(planet, center, radius, white, 0, -now * 0.3, true);
+    if (level >= 7) beltRenderer.queueBeltAtIdx(planet, center, radius, white, 0, now * 0.3, true);
     if (level === MAX_PLANET_LEVEL) {
-      this.beltRenderer.queueBeltAtIdx(planet, centerW, radiusW, silver, 2, 0, true);
+      beltRenderer.queueBeltAtIdx(planet, center, radius, silver, 2, 0, true);
     }
   }
 
@@ -50,12 +52,14 @@ export class MineRenderer {
   }
 
   public flush() {
-    this.beltRenderer.flush();
-    this.mineBodyRenderer.flush();
+    const { beltRenderer, mineBodyRenderer } = this.manager.renderer;
+    beltRenderer.flush();
+    mineBodyRenderer.flush();
   }
 
   public setUniforms() {
-    this.mineBodyRenderer.setUniforms();
-    this.beltRenderer.setUniforms();
+    const { beltRenderer, mineBodyRenderer } = this.manager.renderer;
+    if (mineBodyRenderer.setUniforms) mineBodyRenderer.setUniforms();
+    if (beltRenderer.setUniforms) beltRenderer.setUniforms();
   }
 }

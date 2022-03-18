@@ -1,16 +1,26 @@
-import { CanvasCoords, GameViewport, Planet, WorldCoords } from '@darkforest_eth/types';
+import {
+  BlackDomainRendererType,
+  CanvasCoords,
+  GameViewport,
+  Planet,
+  RendererType,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { BLACKDOMAIN_PROGRAM_DEFINITION } from '../Programs/BlackDomainProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
 /** Renders a shadow-type thing over destroyed planets */
-export class BlackDomainRenderer extends GenericRenderer<typeof BLACKDOMAIN_PROGRAM_DEFINITION> {
+export class BlackDomainRenderer
+  extends GenericRenderer<typeof BLACKDOMAIN_PROGRAM_DEFINITION>
+  implements BlackDomainRendererType
+{
   quad3Buffer: number[];
   quad2Buffer: number[];
 
   viewport: GameViewport;
-
+  rendererType = RendererType.BlackDomain;
   constructor(manager: GameGLManager) {
     super(manager, BLACKDOMAIN_PROGRAM_DEFINITION);
 

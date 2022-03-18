@@ -1,16 +1,28 @@
-import { CanvasCoords, Chunk, RenderZIndex, RGBVec, WorldCoords } from '@darkforest_eth/types';
+import {
+  CanvasCoords,
+  Chunk,
+  RectRendererType,
+  RendererType,
+  RenderZIndex,
+  RGBVec,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { RECT_PROGRAM_DEFINITION } from '../Programs/RectProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
-export class RectRenderer extends GenericRenderer<typeof RECT_PROGRAM_DEFINITION, GameGLManager> {
+export class RectRenderer
+  extends GenericRenderer<typeof RECT_PROGRAM_DEFINITION, GameGLManager>
+  implements RectRendererType
+{
   quad3Buffer: number[];
   quad2Buffer: number[];
 
+  rendererType = RendererType.Rect;
+
   constructor(manager: GameGLManager) {
     super(manager, RECT_PROGRAM_DEFINITION);
-
     this.quad3Buffer = EngineUtils.makeEmptyQuad();
     this.quad2Buffer = EngineUtils.makeQuadVec2(0, 0, 1, 1);
   }

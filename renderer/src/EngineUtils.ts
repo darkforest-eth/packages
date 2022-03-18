@@ -12,7 +12,10 @@ export const glsl = (arr: TemplateStringsArray, ...args: any[]): string =>
   });
 
 export class EngineUtils {
-  // 12000 is a nicely divisible number, 2pi ensures periodicity
+  /**
+   * 12000 is a nicely divisible number, 2pi ensures periodicity
+   * @returns the modular of the current unix time by (2 * pi  * 12000) in seconds
+   */
   public static getNow = (): number => (Date.now() / 1000) % (2 * Math.PI * 12000);
 
   // prettier-ignore

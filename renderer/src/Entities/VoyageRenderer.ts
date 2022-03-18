@@ -6,12 +6,15 @@ import {
   Planet,
   Player,
   QueuedArrival,
+  RendererType,
   RenderZIndex,
   TextAlign,
   TextAnchor,
+  VoyageRendererType,
 } from '@darkforest_eth/types';
 import { engineConsts } from '../EngineConsts';
 import { Renderer } from '../Renderer';
+import { GameGLManager } from '../WebGL/GameGLManager';
 
 const { white, gold } = engineConsts.colors;
 const { enemyA, mineA, shipA } = engineConsts.colors.voyage;
@@ -34,11 +37,12 @@ function getVoyageColor(fromPlanet: Planet, toPlanet: Planet, isMine: boolean, i
 }
 
 /* responsible for calling renderers in order to draw voyages */
-export class VoyageRenderer {
+export class VoyageRenderer implements VoyageRendererType {
   renderer: Renderer;
 
-  constructor(renderer: Renderer) {
-    this.renderer = renderer;
+  rendererType = RendererType.Voyager;
+  constructor(gl: GameGLManager) {
+    this.renderer = gl.renderer;
   }
 
   drawFleet(
@@ -223,4 +227,7 @@ export class VoyageRenderer {
       confirmed ? false : true
     );
   }
+
+  // eslint-disable-next-line
+  flush() {}
 }

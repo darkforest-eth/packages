@@ -2,7 +2,8 @@ import {
   Chunk,
   PerlinConfig,
   Rectangle,
-  SpaceColorConfiguration,
+  RendererType,
+  SpaceRendererType,
   Vec3,
 } from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
@@ -20,7 +21,6 @@ import {
   up,
   valueOf,
 } from './PerlinUtils';
-import { RectRenderer } from './RectRenderer';
 
 export type SpaceColorUniforms = {
   innerNebulaColor: Vec3;
@@ -41,33 +41,30 @@ function hexToRgb(hex: string): Vec3 {
 
 const fallbackColor = '#000000';
 
-export class SpaceRenderer extends GenericRenderer<typeof SPACE_PROGRAM_DEFINITION> {
+export class SpaceRenderer
+  extends GenericRenderer<typeof SPACE_PROGRAM_DEFINITION>
+  implements SpaceRendererType
+{
   manager: GameGLManager;
   config: PerlinConfig;
 
   posBuffer: number[];
   coordsBuffer: number[];
 
-  rectRenderer: RectRenderer | undefined;
-
   thresholds: Vec3;
   colors: SpaceColorUniforms;
 
-  constructor(
-    manager: GameGLManager,
-    config: PerlinConfig,
-    thresholds: [number, number, number],
-    rectRenderer: RectRenderer | undefined = undefined,
-    colors: SpaceColorConfiguration
-  ) {
+  rendererType = RendererType.Space;
+
+  constructor(manager: GameGLManager) {
     super(manager, SPACE_PROGRAM_DEFINITION);
-    this.config = config;
-    this.rectRenderer = rectRenderer;
+    this.config = manager.renderer.context.getPerlinConfig(false);
+    const colors = this.manager.renderer.config.spaceColors;
 
     this.posBuffer = EngineUtils.makeEmptyQuadVec2();
     this.coordsBuffer = EngineUtils.makeEmptyQuadVec2();
 
-    this.thresholds = thresholds;
+    this.thresholds = manager.renderer.context.getPerlinThresholds();
 
     // construct color cache, we mutate this later
     this.colors = {

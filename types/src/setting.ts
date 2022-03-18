@@ -58,4 +58,5 @@ export const Setting = {
   RendererColorDeepSpace: 'RendererColorDeepSpace' as Setting,
   RendererColorDeadSpace: 'RendererColorDeadSpace' as Setting,
   DisableFancySpaceEffect: 'DisableFancySpaceEffect' as Setting,
+  ForceReloadEmbeddedPlugins: 'ForceReloadEmbeddedPlugins' as Setting,
 };

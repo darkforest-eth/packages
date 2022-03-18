@@ -1,12 +1,25 @@
 import { getPlanetCosmetic } from '@darkforest_eth/procedural';
-import { CanvasCoords, DrawMode, GameViewport, Planet, RGBVec } from '@darkforest_eth/types';
+import {
+  AsteroidRendererType,
+  CanvasCoords,
+  DrawMode,
+  GameViewport,
+  Planet,
+  RendererType,
+  RGBVec,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { ASTEROID_PROGRAM_DEFINITION } from '../Programs/AsteroidProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
-export class AsteroidRenderer extends GenericRenderer<typeof ASTEROID_PROGRAM_DEFINITION> {
+export class AsteroidRenderer
+  extends GenericRenderer<typeof ASTEROID_PROGRAM_DEFINITION>
+  implements AsteroidRendererType
+{
   viewport: GameViewport;
+
+  rendererType = RendererType.Asteroid;
 
   constructor(manager: GameGLManager) {
     super(manager, ASTEROID_PROGRAM_DEFINITION);

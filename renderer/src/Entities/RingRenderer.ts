@@ -1,15 +1,28 @@
-import { CanvasCoords, GameViewport, Planet, RGBVec, WorldCoords } from '@darkforest_eth/types';
+import {
+  CanvasCoords,
+  GameViewport,
+  Planet,
+  RendererType,
+  RGBVec,
+  RingRendererType,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { propsFromIdx, RingProps, RING_PROGRAM_DEFINITION } from '../Programs/RingProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
-export class RingRenderer extends GenericRenderer<typeof RING_PROGRAM_DEFINITION, GameGLManager> {
+export class RingRenderer
+  extends GenericRenderer<typeof RING_PROGRAM_DEFINITION, GameGLManager>
+  implements RingRendererType
+{
   viewport: GameViewport;
 
   topRectPosBuffer: number[]; // 2d for rect pos
   botRectPosBuffer: number[]; // 2d for rect pos
   posBuffer: number[]; // 3d for writing actual pos
+
+  rendererType = RendererType.Ring;
 
   constructor(manager: GameGLManager) {
     super(manager, RING_PROGRAM_DEFINITION);
@@ -21,7 +34,7 @@ export class RingRenderer extends GenericRenderer<typeof RING_PROGRAM_DEFINITION
     this.posBuffer = EngineUtils.makeEmptyQuad();
   }
 
-  queueBeltWorld(
+  queueRingWorld(
     centerW: CanvasCoords,
     radiusW: number, // screen coords
     color: RGBVec,
@@ -34,10 +47,10 @@ export class RingRenderer extends GenericRenderer<typeof RING_PROGRAM_DEFINITION
     const center = this.viewport.worldToCanvasCoords(centerW);
     const radius = this.viewport.worldToCanvasDist(radiusW);
 
-    this.queueBelt(center, radius, color, l, z, delZ, props, angle);
+    this.queueRing(center, radius, color, l, z, delZ, props, angle);
   }
 
-  queueBelt(
+  queueRing(
     center: CanvasCoords,
     radius: number, // screen coords
     color: RGBVec,
@@ -90,7 +103,7 @@ export class RingRenderer extends GenericRenderer<typeof RING_PROGRAM_DEFINITION
     this.verts += 6;
   }
 
-  queueBeltAtIdx(
+  queueRingAtIdx(
     planet: Planet,
     centerW: WorldCoords,
     radiusW: number,
@@ -104,7 +117,7 @@ export class RingRenderer extends GenericRenderer<typeof RING_PROGRAM_DEFINITION
     const z = EngineUtils.getPlanetZIndex(planet);
     const l = 3.0 + beltIdx * 1.5;
 
-    this.queueBeltWorld(centerW, radiusW, color, l, z, delZ, props, angle);
+    this.queueRingWorld(centerW, radiusW, color, l, z, delZ, props, angle);
   }
 
   public setUniforms() {

@@ -55,9 +55,13 @@
 
 ▸ `Static` **getNow**(): `number`
 
+12000 is a nicely divisible number, 2pi ensures periodicity
+
 #### Returns
 
 `number`
+
+the modular of the current unix time by (2 _ pi _ 12000) in seconds
 
 ---
 

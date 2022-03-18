@@ -1,5 +1,5 @@
 import { getPlanetCosmetic } from '@darkforest_eth/procedural';
-import { Planet, WorldCoords } from '@darkforest_eth/types';
+import { Planet, PlanetRendererType, RendererType, WorldCoords } from '@darkforest_eth/types';
 import { mat4 } from 'gl-matrix';
 import { engineConsts } from '../EngineConsts';
 import { EngineUtils } from '../EngineUtils';
@@ -13,14 +13,16 @@ import { GenericRenderer } from '../WebGL/GenericRenderer';
 
 const { maxRadius } = engineConsts.planet;
 
-export class PlanetRenderer extends GenericRenderer<
-  typeof PLANET_PROGRAM_DEFINITION,
-  GameGLManager
-> {
+export class PlanetRenderer
+  extends GenericRenderer<typeof PLANET_PROGRAM_DEFINITION, GameGLManager>
+  implements PlanetRendererType
+{
   timeMatrix: mat4;
 
   quad3Buffer: number[];
   quad2Buffer: number[];
+
+  rendererType = RendererType.Planet;
 
   constructor(manager: GameGLManager) {
     super(manager, PLANET_PROGRAM_DEFINITION);

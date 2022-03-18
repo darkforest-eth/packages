@@ -1,56 +1,45 @@
-import { CanvasCoords, Planet, WorldCoords } from '@darkforest_eth/types';
+import { Planet, QuasarRendererType, RendererType, WorldCoords } from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { Renderer } from '../Renderer';
 import { GameGLManager } from '../WebGL/GameGLManager';
-import { QuasarBodyRenderer } from './QuasarBodyRenderer';
-import { QuasarRayRenderer } from './QuasarRayRenderer';
 
-export class QuasarRenderer {
+export class QuasarRenderer implements QuasarRendererType {
   manager: GameGLManager;
   renderer: Renderer;
 
-  quasarBodyRenderer: QuasarBodyRenderer;
-  quasarRayRendererTop: QuasarRayRenderer;
-  quasarRayRendererBot: QuasarRayRenderer;
+  rendererType = RendererType.Quasar;
 
   constructor(manager: GameGLManager) {
     this.manager = manager;
-
-    this.quasarBodyRenderer = new QuasarBodyRenderer(manager);
-    this.quasarRayRendererTop = new QuasarRayRenderer(manager);
-    this.quasarRayRendererBot = new QuasarRayRenderer(manager);
+    this.renderer = manager.renderer;
   }
 
   private getAngle(): number {
     return EngineUtils.getNow() * 0.5;
   }
 
-  public queueQuasarScreen(planet: Planet, center: CanvasCoords, radius: number, z: number) {
-    const angle = this.getAngle();
-    this.quasarRayRendererBot.queueQuasarRayScreen(false, planet, center, radius, z, angle);
-    this.quasarRayRendererTop.queueQuasarRayScreen(true, planet, center, radius, z, angle);
-    this.quasarBodyRenderer.queueQuasarBodyScreen(planet, center, radius, z, angle);
-  }
-
   public queueQuasar(planet: Planet, centerW: WorldCoords, radiusW: number) {
+    const { quasarBodyRenderer, quasarRayRenderer } = this.renderer;
     const angle = this.getAngle();
 
     const z = EngineUtils.getPlanetZIndex(planet);
-    this.quasarRayRendererBot.queueQuasarRay(false, planet, centerW, radiusW, z, angle);
-    this.quasarRayRendererTop.queueQuasarRay(true, planet, centerW, radiusW, z, angle);
-    this.quasarBodyRenderer.queueQuasarBody(planet, centerW, radiusW, z, angle);
+    quasarRayRenderer.queueQuasarRay(planet, centerW, radiusW, z, false, angle);
+    quasarRayRenderer.queueQuasarRay(planet, centerW, radiusW, z, true, angle);
+    quasarBodyRenderer.queueQuasarBody(planet, centerW, radiusW, z, angle);
   }
 
   public flush() {
     // order matters!
-    this.quasarRayRendererBot.flush();
-    this.quasarBodyRenderer.flush();
-    this.quasarRayRendererTop.flush();
+    const { quasarBodyRenderer, quasarRayRenderer } = this.renderer;
+    quasarRayRenderer.flush();
+    quasarBodyRenderer.flush();
+    quasarRayRenderer.flush();
   }
 
   public setUniforms() {
-    this.quasarRayRendererBot.setUniforms();
-    this.quasarRayRendererTop.setUniforms();
-    this.quasarBodyRenderer.setUniforms();
+    const { quasarBodyRenderer, quasarRayRenderer } = this.renderer;
+    if (quasarRayRenderer.setUniforms) quasarRayRenderer.setUniforms();
+    if (quasarRayRenderer.setUniforms) quasarRayRenderer.setUniforms();
+    if (quasarBodyRenderer.setUniforms) quasarBodyRenderer.setUniforms();
   }
 }

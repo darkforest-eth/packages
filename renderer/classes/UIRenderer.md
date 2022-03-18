@@ -1,5 +1,9 @@
 # Class: UIRenderer
 
+## Implements
+
+- `UIRendererType`
+
 ## Table of contents
 
 ### Constructors
@@ -9,10 +13,12 @@
 ### Properties
 
 - [renderer](UIRenderer.md#renderer)
+- [rendererType](UIRenderer.md#renderertype)
 
 ### Methods
 
 - [drawMiner](UIRenderer.md#drawminer)
+- [flush](UIRenderer.md#flush)
 - [queueBorders](UIRenderer.md#queueborders)
 - [queueHoveringRect](UIRenderer.md#queuehoveringrect)
 - [queueMousePath](UIRenderer.md#queuemousepath)
@@ -24,19 +30,29 @@
 
 ### constructor
 
-• **new UIRenderer**(`renderer`)
+• **new UIRenderer**(`gl`)
 
 #### Parameters
 
-| Name       | Type                      |
-| :--------- | :------------------------ |
-| `renderer` | [`Renderer`](Renderer.md) |
+| Name | Type                                |
+| :--- | :---------------------------------- |
+| `gl` | [`GameGLManager`](GameGLManager.md) |
 
 ## Properties
 
 ### renderer
 
 • **renderer**: [`Renderer`](Renderer.md)
+
+---
+
+### rendererType
+
+• **rendererType**: `RendererType` = `RendererType.UI`
+
+#### Implementation of
+
+UIRendererType.rendererType
 
 ## Methods
 
@@ -48,6 +64,24 @@
 
 `void`
 
+#### Implementation of
+
+UIRendererType.drawMiner
+
+---
+
+### flush
+
+▸ **flush**(): `void`
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+UIRendererType.flush
+
 ---
 
 ### queueBorders
@@ -57,6 +91,10 @@
 #### Returns
 
 `void`
+
+#### Implementation of
+
+UIRendererType.queueBorders
 
 ---
 
@@ -68,6 +106,10 @@
 
 `void`
 
+#### Implementation of
+
+UIRendererType.queueHoveringRect
+
 ---
 
 ### queueMousePath
@@ -77,6 +119,10 @@
 #### Returns
 
 `void`
+
+#### Implementation of
+
+UIRendererType.queueMousePath
 
 ---
 
@@ -106,6 +152,10 @@
 
 `void`
 
+#### Implementation of
+
+UIRendererType.queueSelectedRangeRing
+
 ---
 
 ### queueSelectedRect
@@ -115,3 +165,7 @@
 #### Returns
 
 `void`
+
+#### Implementation of
+
+UIRendererType.queueSelectedRect

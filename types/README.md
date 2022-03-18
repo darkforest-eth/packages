@@ -32,8 +32,14 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 ### Interfaces
 
 - [ArrivalWithTimer](interfaces/ArrivalWithTimer.md)
+- [AsteroidRendererType](interfaces/AsteroidRendererType.md)
+- [BackgroundRendererType](interfaces/BackgroundRendererType.md)
+- [BaseRenderer](interfaces/BaseRenderer.md)
+- [BeltRendererType](interfaces/BeltRendererType.md)
+- [BlackDomainRendererType](interfaces/BlackDomainRendererType.md)
 - [CanvasCoords](interfaces/CanvasCoords.md)
 - [Chunk](interfaces/Chunk.md)
+- [CircleRendererType](interfaces/CircleRendererType.md)
 - [DeleteMessagesRequest](interfaces/DeleteMessagesRequest.md)
 - [DiagnosticUpdater](interfaces/DiagnosticUpdater.md)
 - [Diagnostics](interfaces/Diagnostics.md)
@@ -43,9 +49,13 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [IRendererConfig](interfaces/IRendererConfig.md)
 - [Leaderboard](interfaces/Leaderboard.md)
 - [LeaderboardEntry](interfaces/LeaderboardEntry.md)
+- [LineRendererType](interfaces/LineRendererType.md)
+- [MineBodyRendererType](interfaces/MineBodyRendererType.md)
+- [MineRendererType](interfaces/MineRendererType.md)
 - [ModalPosition](interfaces/ModalPosition.md)
 - [NetworkEvent](interfaces/NetworkEvent.md)
 - [PerlinConfig](interfaces/PerlinConfig.md)
+- [PerlinRendererType](interfaces/PerlinRendererType.md)
 - [PersistedTransaction](interfaces/PersistedTransaction.md)
 - [PlanetCosmeticInfo](interfaces/PlanetCosmeticInfo.md)
 - [PlanetDefaults](interfaces/PlanetDefaults.md)
@@ -53,14 +63,30 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [PlanetMessageRequest](interfaces/PlanetMessageRequest.md)
 - [PlanetMessageResponse](interfaces/PlanetMessageResponse.md)
 - [PlanetRenderInfo](interfaces/PlanetRenderInfo.md)
+- [PlanetRenderManagerType](interfaces/PlanetRenderManagerType.md)
+- [PlanetRendererType](interfaces/PlanetRendererType.md)
 - [PostMessageRequest](interfaces/PostMessageRequest.md)
+- [QuasarBodyRendererType](interfaces/QuasarBodyRendererType.md)
+- [QuasarRayRendererType](interfaces/QuasarRayRendererType.md)
+- [QuasarRendererType](interfaces/QuasarRendererType.md)
 - [QueuedArrival](interfaces/QueuedArrival.md)
 - [Radii](interfaces/Radii.md)
+- [RectRendererType](interfaces/RectRendererType.md)
 - [Rectangle](interfaces/Rectangle.md)
 - [RenderedArtifact](interfaces/RenderedArtifact.md)
+- [RingRendererType](interfaces/RingRendererType.md)
+- [RuinsRendererType](interfaces/RuinsRendererType.md)
 - [SignedMessage](interfaces/SignedMessage.md)
+- [SpaceRendererType](interfaces/SpaceRendererType.md)
+- [SpacetimeRipRendererType](interfaces/SpacetimeRipRendererType.md)
+- [SpriteRendererType](interfaces/SpriteRendererType.md)
+- [TextRendererType](interfaces/TextRendererType.md)
 - [Transaction](interfaces/Transaction.md)
 - [TransactionCollection](interfaces/TransactionCollection.md)
+- [UIRendererType](interfaces/UIRendererType.md)
+- [UnminedRendererType](interfaces/UnminedRendererType.md)
+- [VoyageRendererType](interfaces/VoyageRendererType.md)
+- [WormholeRendererType](interfaces/WormholeRendererType.md)
 
 ### Type aliases
 
@@ -104,6 +130,8 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [RGBVec](README.md#rgbvec)
 - [RegisterResponse](README.md#registerresponse)
 - [RenderZIndex](README.md#renderzindex)
+- [RendererProgram](README.md#rendererprogram)
+- [RendererType](README.md#renderertype)
 - [RevealedCoords](README.md#revealedcoords)
 - [RevealedLocation](README.md#revealedlocation)
 - [RuinsInfo](README.md#ruinsinfo)
@@ -153,6 +181,7 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [PlanetType](README.md#planettype)
 - [PlanetTypeNames](README.md#planettypenames)
 - [RenderZIndex](README.md#renderzindex)
+- [RendererType](README.md#renderertype)
 - [Setting](README.md#setting)
 - [SpaceType](README.md#spacetype)
 - [SpaceTypeNames](README.md#spacetypenames)
@@ -619,6 +648,31 @@ struct
 ### RenderZIndex
 
 Ƭ **RenderZIndex**: [`Abstract`](README.md#abstract)<`number`, `"RenderZIndex"`\>
+
+---
+
+### RendererProgram
+
+Ƭ **RendererProgram**: `Object`
+
+#### Type declaration
+
+| Name             | Type     |
+| :--------------- | :------- |
+| `attribs`        | `Object` |
+| `fragmentShader` | `string` |
+| `uniforms`       | `Object` |
+| `vertexShader`   | `string` |
+
+---
+
+### RendererType
+
+Ƭ **RendererType**: [`Abstract`](README.md#abstract)<`number`, `"RendererType"`\>
+
+Enum for determining the type of renderer
+Each renderer should contain a variable called 'rendererType'
+'rendererType' should be a enum that corresponds with the type of renderer it is
 
 ---
 
@@ -1211,6 +1265,42 @@ Mapping from PlanetType to pretty-printed names.
 
 ---
 
+### RendererType
+
+• **RendererType**: `Object`
+
+#### Type declaration
+
+| Name            | Type                                     |
+| :-------------- | :--------------------------------------- |
+| `Asteroid`      | [`RendererType`](README.md#renderertype) |
+| `Background`    | [`RendererType`](README.md#renderertype) |
+| `Belt`          | [`RendererType`](README.md#renderertype) |
+| `BlackDomain`   | [`RendererType`](README.md#renderertype) |
+| `Circle`        | [`RendererType`](README.md#renderertype) |
+| `Line`          | [`RendererType`](README.md#renderertype) |
+| `Mine`          | [`RendererType`](README.md#renderertype) |
+| `MineBody`      | [`RendererType`](README.md#renderertype) |
+| `Perlin`        | [`RendererType`](README.md#renderertype) |
+| `Planet`        | [`RendererType`](README.md#renderertype) |
+| `PlanetManager` | [`RendererType`](README.md#renderertype) |
+| `Quasar`        | [`RendererType`](README.md#renderertype) |
+| `QuasarBody`    | [`RendererType`](README.md#renderertype) |
+| `QuasarRay`     | [`RendererType`](README.md#renderertype) |
+| `Rect`          | [`RendererType`](README.md#renderertype) |
+| `Ring`          | [`RendererType`](README.md#renderertype) |
+| `Ruins`         | [`RendererType`](README.md#renderertype) |
+| `Space`         | [`RendererType`](README.md#renderertype) |
+| `SpacetimeRip`  | [`RendererType`](README.md#renderertype) |
+| `Sprite`        | [`RendererType`](README.md#renderertype) |
+| `Text`          | [`RendererType`](README.md#renderertype) |
+| `UI`            | [`RendererType`](README.md#renderertype) |
+| `Unmined`       | [`RendererType`](README.md#renderertype) |
+| `Voyager`       | [`RendererType`](README.md#renderertype) |
+| `Wormhole`      | [`RendererType`](README.md#renderertype) |
+
+---
+
 ### Setting
 
 • **Setting**: `Object`
@@ -1231,6 +1321,7 @@ per instance of the dark forest contract that it's connected to.
 | `DisableHatRendering`                        | [`Setting`](README.md#setting) |
 | `DrawChunkBorders`                           | [`Setting`](README.md#setting) |
 | `ExperimentalFeatures`                       | [`Setting`](README.md#setting) |
+| `ForceReloadEmbeddedPlugins`                 | [`Setting`](README.md#setting) |
 | `FoundArtifact`                              | [`Setting`](README.md#setting) |
 | `FoundComet`                                 | [`Setting`](README.md#setting) |
 | `FoundDeepSpace`                             | [`Setting`](README.md#setting) |

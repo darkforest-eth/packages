@@ -1,19 +1,24 @@
-import { CanvasCoords, RenderZIndex, RGBVec } from '@darkforest_eth/types';
+import {
+  CanvasCoords,
+  RendererType,
+  RenderZIndex,
+  RGBVec,
+  UnminedRendererType,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { UNMINED_PROGRAM_DEFINITION } from '../Programs/UnminedProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
-export class UnmindedRenderer extends GenericRenderer<
-  typeof UNMINED_PROGRAM_DEFINITION,
-  GameGLManager
-> {
+export class UnminedRenderer
+  extends GenericRenderer<typeof UNMINED_PROGRAM_DEFINITION, GameGLManager>
+  implements UnminedRendererType
+{
   quad3Buffer: number[];
   quad2Buffer: number[];
-
+  rendererType = RendererType.Unmined;
   constructor(manager: GameGLManager) {
     super(manager, UNMINED_PROGRAM_DEFINITION);
-
     this.quad3Buffer = EngineUtils.makeEmptyQuad();
     this.quad2Buffer = EngineUtils.makeQuadVec2(0, 0, 1, 1);
   }

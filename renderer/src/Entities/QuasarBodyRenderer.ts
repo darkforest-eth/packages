@@ -1,16 +1,24 @@
 import { getPlanetCosmetic } from '@darkforest_eth/procedural';
-import { CanvasCoords, Planet, WorldCoords } from '@darkforest_eth/types';
+import {
+  CanvasCoords,
+  Planet,
+  QuasarBodyRendererType,
+  RendererType,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { QUASARBODY_PROGRAM_DEFINITION } from '../Programs/QuasarBodyProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
-export class QuasarBodyRenderer extends GenericRenderer<
-  typeof QUASARBODY_PROGRAM_DEFINITION,
-  GameGLManager
-> {
+export class QuasarBodyRenderer
+  extends GenericRenderer<typeof QUASARBODY_PROGRAM_DEFINITION, GameGLManager>
+  implements QuasarBodyRendererType
+{
   quad3Buffer: number[];
   quad2Buffer: number[];
+
+  rendererType = RendererType.QuasarBody;
 
   constructor(manager: GameGLManager) {
     super(manager, QUASARBODY_PROGRAM_DEFINITION);

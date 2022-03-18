@@ -6,6 +6,10 @@
 
   ↳ **`SpriteRenderer`**
 
+## Implements
+
+- `SpriteRendererType`
+
 ## Table of contents
 
 ### Constructors
@@ -22,6 +26,7 @@
 - [posBuffer](SpriteRenderer.md#posbuffer)
 - [program](SpriteRenderer.md#program)
 - [rectposBuffer](SpriteRenderer.md#rectposbuffer)
+- [rendererType](SpriteRenderer.md#renderertype)
 - [texBuffer](SpriteRenderer.md#texbuffer)
 - [texIdx](SpriteRenderer.md#texidx)
 - [thumb](SpriteRenderer.md#thumb)
@@ -55,8 +60,8 @@ Create a renderer from a GameGLManager and program data.
 | Name      | Type                              | Default value |
 | :-------- | :-------------------------------- | :------------ |
 | `manager` | [`WebGLManager`](WebGLManager.md) | `undefined`   |
-| `thumb`   | `boolean`                         | `false`       |
-| `flip`    | `boolean`                         | `false`       |
+| `thumb`   | `boolean`                         | `true`        |
+| `flip`    | `boolean`                         | `true`        |
 
 #### Overrides
 
@@ -134,6 +139,16 @@ The program corresponding to this renderer.
 ### rectposBuffer
 
 • `Private` **rectposBuffer**: `number`[]
+
+---
+
+### rendererType
+
+• **rendererType**: `RendererType` = `RendererType.Sprite`
+
+#### Implementation of
+
+SpriteRendererType.rendererType
 
 ---
 
@@ -215,6 +230,10 @@ Draw all buffered vertices to the screen.
 
 `void`
 
+#### Implementation of
+
+SpriteRendererType.flush
+
 #### Overrides
 
 [GenericRenderer](GenericRenderer.md).[flush](GenericRenderer.md#flush)
@@ -274,6 +293,10 @@ Draw all buffered vertices to the screen.
 
 `void`
 
+#### Implementation of
+
+SpriteRendererType.queueArtifact
+
 ---
 
 ### queueArtifactWorld
@@ -298,6 +321,10 @@ Queue artifact to worldcoords, centered
 #### Returns
 
 `void`
+
+#### Implementation of
+
+SpriteRendererType.queueArtifactWorld
 
 ---
 

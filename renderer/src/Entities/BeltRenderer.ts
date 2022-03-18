@@ -1,18 +1,29 @@
-import { CanvasCoords, Planet, RGBVec, WorldCoords } from '@darkforest_eth/types';
+import {
+  BeltRendererType,
+  CanvasCoords,
+  Planet,
+  RendererType,
+  RGBVec,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import autoBind from 'auto-bind';
 import { EngineUtils } from '../EngineUtils';
 import { BeltProps, BELT_PROGRAM_DEFINITION, propsFromIdx } from '../Programs/BeltProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
-export class BeltRenderer extends GenericRenderer<typeof BELT_PROGRAM_DEFINITION, GameGLManager> {
+export class BeltRenderer
+  extends GenericRenderer<typeof BELT_PROGRAM_DEFINITION, GameGLManager>
+  implements BeltRendererType
+{
   topRectPosBuffer: number[]; // 2d for rect pos
   botRectPosBuffer: number[]; // 2d for rect pos
   posBuffer: number[]; // 3d for writing actual pos
 
+  rendererType = RendererType.Belt;
+
   constructor(manager: GameGLManager) {
     super(manager, BELT_PROGRAM_DEFINITION);
-
     this.topRectPosBuffer = EngineUtils.makeEmptyQuadVec2();
     this.botRectPosBuffer = EngineUtils.makeEmptyQuadVec2();
     this.posBuffer = EngineUtils.makeEmptyQuad();
@@ -105,7 +116,6 @@ export class BeltRenderer extends GenericRenderer<typeof BELT_PROGRAM_DEFINITION
     const l = 3.0 + beltIdx * 1.5;
 
     const queue = screen ? this.queueBelt : this.queueBeltWorld;
-
     queue(center, radius, color, l, z, delZ, props, angle);
   }
 

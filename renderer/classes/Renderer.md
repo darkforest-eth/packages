@@ -15,26 +15,34 @@
 - [bufferCanvas](Renderer.md#buffercanvas)
 - [canvas](Renderer.md#canvas)
 - [circleRenderer](Renderer.md#circlerenderer)
+- [config](Renderer.md#config)
 - [context](Renderer.md#context)
 - [frameCount](Renderer.md#framecount)
 - [frameRequestId](Renderer.md#framerequestid)
 - [glCanvas](Renderer.md#glcanvas)
 - [glManager](Renderer.md#glmanager)
 - [lineRenderer](Renderer.md#linerenderer)
+- [mineBodyRenderer](Renderer.md#minebodyrenderer)
 - [mineRenderer](Renderer.md#minerenderer)
 - [now](Renderer.md#now)
 - [overlay2dRenderer](Renderer.md#overlay2drenderer)
+- [perlinRenderer](Renderer.md#perlinrenderer)
 - [planetRenderManager](Renderer.md#planetrendermanager)
 - [planetRenderer](Renderer.md#planetrenderer)
 - [previousRenderTimestamp](Renderer.md#previousrendertimestamp)
+- [quasarBodyRenderer](Renderer.md#quasarbodyrenderer)
+- [quasarRayRenderer](Renderer.md#quasarrayrenderer)
 - [quasarRenderer](Renderer.md#quasarrenderer)
 - [rectRenderer](Renderer.md#rectrenderer)
+- [rendererStack](Renderer.md#rendererstack)
 - [ringRenderer](Renderer.md#ringrenderer)
 - [ruinsRenderer](Renderer.md#ruinsrenderer)
+- [spaceRenderer](Renderer.md#spacerenderer)
 - [spacetimeRipRenderer](Renderer.md#spacetimeriprenderer)
 - [spriteRenderer](Renderer.md#spriterenderer)
 - [textRenderer](Renderer.md#textrenderer)
 - [uiRenderManager](Renderer.md#uirendermanager)
+- [unminedRenderer](Renderer.md#unminedrenderer)
 - [viewport](Renderer.md#viewport)
 - [voyageRenderManager](Renderer.md#voyagerendermanager)
 - [wormholeRenderManager](Renderer.md#wormholerendermanager)
@@ -42,10 +50,14 @@
 
 ### Methods
 
+- [addCustomRenderer](Renderer.md#addcustomrenderer)
 - [draw](Renderer.md#draw)
+- [get2DRenderer](Renderer.md#get2drenderer)
 - [getViewport](Renderer.md#getviewport)
 - [loop](Renderer.md#loop)
 - [recordRender](Renderer.md#recordrender)
+- [removeCustomRenderer](Renderer.md#removecustomrenderer)
+- [setRenderer](Renderer.md#setrenderer)
 - [setup](Renderer.md#setup)
 - [destroy](Renderer.md#destroy)
 - [initialize](Renderer.md#initialize)
@@ -71,25 +83,25 @@
 
 ### asteroidRenderer
 
-• **asteroidRenderer**: `AsteroidRenderer`
+• **asteroidRenderer**: `AsteroidRendererType`
 
 ---
 
 ### beltRenderer
 
-• **beltRenderer**: `BeltRenderer`
+• **beltRenderer**: `BeltRendererType`
 
 ---
 
 ### bgRenderer
 
-• **bgRenderer**: `BackgroundRenderer`
+• **bgRenderer**: `BackgroundRendererType`
 
 ---
 
 ### blackDomainRenderer
 
-• **blackDomainRenderer**: `BlackDomainRenderer`
+• **blackDomainRenderer**: `BlackDomainRendererType`
 
 ---
 
@@ -107,7 +119,13 @@
 
 ### circleRenderer
 
-• **circleRenderer**: `CircleRenderer`
+• **circleRenderer**: `CircleRendererType`
+
+---
+
+### config
+
+• **config**: `IRendererConfig`
 
 ---
 
@@ -143,13 +161,19 @@
 
 ### lineRenderer
 
-• **lineRenderer**: `LineRenderer`
+• **lineRenderer**: `LineRendererType`
+
+---
+
+### mineBodyRenderer
+
+• **mineBodyRenderer**: `MineBodyRendererType`
 
 ---
 
 ### mineRenderer
 
-• **mineRenderer**: `MineRenderer`
+• **mineRenderer**: `MineRendererType`
 
 ---
 
@@ -165,15 +189,21 @@
 
 ---
 
+### perlinRenderer
+
+• **perlinRenderer**: `PerlinRendererType`
+
+---
+
 ### planetRenderManager
 
-• **planetRenderManager**: `PlanetRenderManager`
+• **planetRenderManager**: `PlanetRenderManagerType`
 
 ---
 
 ### planetRenderer
 
-• **planetRenderer**: `PlanetRenderer`
+• **planetRenderer**: `PlanetRendererType`
 
 ---
 
@@ -183,51 +213,81 @@
 
 ---
 
+### quasarBodyRenderer
+
+• **quasarBodyRenderer**: `QuasarBodyRendererType`
+
+---
+
+### quasarRayRenderer
+
+• **quasarRayRenderer**: `QuasarRayRendererType`
+
+---
+
 ### quasarRenderer
 
-• **quasarRenderer**: `QuasarRenderer`
+• **quasarRenderer**: `QuasarRendererType`
 
 ---
 
 ### rectRenderer
 
-• **rectRenderer**: `RectRenderer`
+• **rectRenderer**: `RectRendererType`
+
+---
+
+### rendererStack
+
+• **rendererStack**: `BaseRenderer`[]
 
 ---
 
 ### ringRenderer
 
-• **ringRenderer**: `RingRenderer`
+• **ringRenderer**: `RingRendererType`
 
 ---
 
 ### ruinsRenderer
 
-• **ruinsRenderer**: `RuinsRenderer`
+• **ruinsRenderer**: `RuinsRendererType`
+
+---
+
+### spaceRenderer
+
+• **spaceRenderer**: `SpaceRendererType`
 
 ---
 
 ### spacetimeRipRenderer
 
-• **spacetimeRipRenderer**: `SpacetimeRipRenderer`
+• **spacetimeRipRenderer**: `SpacetimeRipRendererType`
 
 ---
 
 ### spriteRenderer
 
-• **spriteRenderer**: [`SpriteRenderer`](SpriteRenderer.md)
+• **spriteRenderer**: `SpriteRendererType`
 
 ---
 
 ### textRenderer
 
-• **textRenderer**: `TextRenderer`
+• **textRenderer**: `TextRendererType`
 
 ---
 
 ### uiRenderManager
 
-• **uiRenderManager**: [`UIRenderer`](UIRenderer.md)
+• **uiRenderManager**: `UIRendererType`
+
+---
+
+### unminedRenderer
+
+• **unminedRenderer**: `UnminedRendererType`
 
 ---
 
@@ -239,13 +299,13 @@
 
 ### voyageRenderManager
 
-• **voyageRenderManager**: `VoyageRenderer`
+• **voyageRenderManager**: `VoyageRendererType`
 
 ---
 
 ### wormholeRenderManager
 
-• **wormholeRenderManager**: `WormholeRenderer`
+• **wormholeRenderManager**: `WormholeRendererType`
 
 ---
 
@@ -255,6 +315,28 @@
 
 ## Methods
 
+### addCustomRenderer
+
+▸ **addCustomRenderer**(`renderer`): `void`
+
+Called by GameUIManager to add custom renderer into the game.
+The function automatically determines what kind of renderer it is based on the type property.
+The renderer is then added onto the rendering stack
+The renderering stack is a data structure used to determine which renderer to draw with.
+The most recently added renderers to the stack will be the ones to be used.
+
+#### Parameters
+
+| Name       | Type           |
+| :--------- | :------------- |
+| `renderer` | `BaseRenderer` |
+
+#### Returns
+
+`void`
+
+---
+
 ### draw
 
 ▸ `Private` **draw**(): `void`
@@ -262,6 +344,16 @@
 #### Returns
 
 `void`
+
+---
+
+### get2DRenderer
+
+▸ **get2DRenderer**(): `CanvasRenderingContext2D`
+
+#### Returns
+
+`CanvasRenderingContext2D`
 
 ---
 
@@ -301,15 +393,48 @@
 
 ---
 
-### setup
+### removeCustomRenderer
 
-▸ `Private` **setup**(`config`): `void`
+▸ **removeCustomRenderer**(`renderer`): `void`
+
+Called by GameUIManager to remove the passed in renderers from the game.
 
 #### Parameters
 
-| Name     | Type              |
-| :------- | :---------------- |
-| `config` | `IRendererConfig` |
+| Name       | Type           | Description        |
+| :--------- | :------------- | :----------------- |
+| `renderer` | `BaseRenderer` | passed in renderer |
+
+#### Returns
+
+`void`
+
+---
+
+### setRenderer
+
+▸ `Private` **setRenderer**(`renderer`): `boolean`
+
+Determines the type of the passed in renderer and replaces the
+current renderer of the same type with the one passed in.
+If the renderer is determined to not follow any of the renderer
+types it will print a message into the console
+
+#### Parameters
+
+| Name       | Type           | Description         |
+| :--------- | :------------- | :------------------ |
+| `renderer` | `BaseRenderer` | an unknown renderer |
+
+#### Returns
+
+`boolean`
+
+---
+
+### setup
+
+▸ `Private` **setup**(): `void`
 
 #### Returns
 
