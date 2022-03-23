@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/gamelogic",
-  "version": "6.7.12",
+  "version": "6.7.13",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -21,9 +21,9 @@
     "clean": "del-cli dist node_modules tsconfig.ref.tsbuildinfo"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.7.12",
-    "@darkforest_eth/serde": "6.7.12",
-    "@darkforest_eth/types": "6.7.12"
+    "@darkforest_eth/constants": "6.7.13",
+    "@darkforest_eth/serde": "6.7.13",
+    "@darkforest_eth/types": "6.7.13"
   },
   "devDependencies": {
     "del-cli": "^4.0.1",
@@ -36,5 +36,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "b54983f046e9262d332f39e1f815b1bdd311cb27"
+  "gitHead": "eee88d6d2d79d208c7f664ed71db0240eda0b648"
 }
