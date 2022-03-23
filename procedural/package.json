@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/procedural",
-  "version": "6.7.13",
+  "version": "6.7.14",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -21,11 +21,11 @@
     "clean": "del-cli dist node_modules tsconfig.ref.tsbuildinfo"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.7.13",
-    "@darkforest_eth/gamelogic": "6.7.13",
-    "@darkforest_eth/hashing": "6.7.13",
-    "@darkforest_eth/serde": "6.7.13",
-    "@darkforest_eth/types": "6.7.13",
+    "@darkforest_eth/constants": "6.7.14",
+    "@darkforest_eth/gamelogic": "6.7.14",
+    "@darkforest_eth/hashing": "6.7.14",
+    "@darkforest_eth/serde": "6.7.14",
+    "@darkforest_eth/types": "6.7.14",
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
@@ -39,5 +39,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "eee88d6d2d79d208c7f664ed71db0240eda0b648"
+  "gitHead": "de59c8b5b66a77e44df9d91ad635dd47816e3003"
 }

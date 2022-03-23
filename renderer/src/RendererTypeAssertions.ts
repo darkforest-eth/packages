@@ -4,6 +4,7 @@ import {
   BaseRenderer,
   BeltRendererType,
   BlackDomainRendererType,
+  CaptureZoneRendererType,
   CircleRendererType,
   LineRendererType,
   MineBodyRendererType,
@@ -130,4 +131,8 @@ export function isQuasarBodyRenderer(renderer: BaseRenderer): renderer is Quasar
 
 export function isQuasarRayRenderer(renderer: BaseRenderer): renderer is QuasarRayRendererType {
   return renderer.rendererType === RendererType.QuasarRay;
+}
+
+export function isCaptureZoneRenderer(renderer: BaseRenderer): renderer is CaptureZoneRendererType {
+  return renderer.rendererType === RendererType.CaptureZone;
 }

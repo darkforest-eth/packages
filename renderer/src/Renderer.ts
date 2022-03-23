@@ -7,6 +7,7 @@ import {
   BeltRendererType,
   BlackDomainRendererType,
   CaptureZone,
+  CaptureZoneRendererType,
   Chunk,
   CircleRendererType,
   DiagnosticUpdater,
@@ -56,6 +57,7 @@ import { AsteroidRenderer } from './Entities/AsteroidRenderer';
 import { BackgroundRenderer } from './Entities/BackgroundRenderer';
 import { BeltRenderer } from './Entities/BeltRenderer';
 import { BlackDomainRenderer } from './Entities/BlackDomainRenderer';
+import { CaptureZoneRenderer } from './Entities/CaptureZoneRenderer';
 import { CircleRenderer } from './Entities/CircleRenderer';
 import { LineRenderer } from './Entities/LineRenderer';
 import { MineBodyRenderer } from './Entities/MineBodyRenderer';
@@ -82,6 +84,7 @@ import {
   isBackgroundRenderer,
   isBeltRenderer,
   isBlackDomainRenderer,
+  isCaptureZoneRenderer,
   isCircleRenderer,
   isLineRenderer,
   isMineBodyRenderer,
@@ -191,6 +194,7 @@ export class Renderer {
   ringRenderer: RingRendererType;
   spriteRenderer: SpriteRendererType;
   blackDomainRenderer: BlackDomainRendererType;
+  captureZoneRenderer: CaptureZoneRendererType;
 
   //planet entities
   planetRenderer: PlanetRendererType;
@@ -274,6 +278,7 @@ export class Renderer {
 
       new QuasarBodyRenderer(this.glManager),
       new QuasarRayRenderer(this.glManager),
+      new CaptureZoneRenderer(this.glManager),
     ];
     for (const index in this.rendererStack) {
       this.setRenderer(this.rendererStack[index]);
@@ -364,10 +369,8 @@ export class Renderer {
 
     this.uiRenderManager.queueBorders();
 
-    for (const zone of this.context.getCaptureZones()) {
-      this.circleRenderer.queueCircleWorld(zone.coords, zone.radius, [255, 215, 0, 75]);
-    }
-    this.circleRenderer.flush();
+    this.captureZoneRenderer.queueCaptureZones();
+    this.captureZoneRenderer.flush();
 
     this.uiRenderManager.queueSelectedRangeRing();
     this.uiRenderManager.queueSelectedRect();
@@ -616,6 +619,14 @@ export class Renderer {
         console.log('Renderer is not a QuasarRayRenderer');
         return false;
 
+      case RendererType.CaptureZone:
+        if (isCaptureZoneRenderer(renderer)) {
+          this.captureZoneRenderer = renderer;
+          break;
+        }
+        console.log('Renderer is not a CaptureZoneRenderer');
+        return false;
+
       default:
         console.log(renderer.rendererType);
         console.log(typeof renderer.rendererType);
@@ -629,7 +640,7 @@ export class Renderer {
    * Called by GameUIManager to add custom renderer into the game.
    * The function automatically determines what kind of renderer it is based on the type property.
    * The renderer is then added onto the rendering stack
-   * The renderering stack is a data structure used to determine which renderer to draw with.
+   * The renderer stack is a data structure used to determine which renderer to draw with.
    * The most recently added renderers to the stack will be the ones to be used.
    * @param renderer
    */

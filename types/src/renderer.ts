@@ -197,6 +197,7 @@ export const RendererType = {
   PlanetManager: 22 as RendererType,
   QuasarBody: 23 as RendererType,
   QuasarRay: 24 as RendererType,
+  CaptureZone: 25 as RendererType,
 };
 
 export interface PlanetRendererType {
@@ -921,6 +922,20 @@ export interface QuasarRayRendererType {
   flush(): void;
 
   setUniforms?(): void;
+}
+
+export interface CaptureZoneRendererType {
+  rendererType: RendererType;
+
+  /**
+   * Queue all Capture Zones
+   */
+  queueCaptureZones(): void;
+
+  /**
+   * Draw all Capture Zones
+   */
+  flush(): void;
 }
 /**
  * The purpose of this interface is for type checking

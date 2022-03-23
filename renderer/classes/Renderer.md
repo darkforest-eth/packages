@@ -14,6 +14,7 @@
 - [blackDomainRenderer](Renderer.md#blackdomainrenderer)
 - [bufferCanvas](Renderer.md#buffercanvas)
 - [canvas](Renderer.md#canvas)
+- [captureZoneRenderer](Renderer.md#capturezonerenderer)
 - [circleRenderer](Renderer.md#circlerenderer)
 - [config](Renderer.md#config)
 - [context](Renderer.md#context)
@@ -114,6 +115,12 @@
 ### canvas
 
 • **canvas**: `HTMLCanvasElement`
+
+---
+
+### captureZoneRenderer
+
+• **captureZoneRenderer**: `CaptureZoneRendererType`
 
 ---
 
@@ -322,7 +329,7 @@
 Called by GameUIManager to add custom renderer into the game.
 The function automatically determines what kind of renderer it is based on the type property.
 The renderer is then added onto the rendering stack
-The renderering stack is a data structure used to determine which renderer to draw with.
+The renderer stack is a data structure used to determine which renderer to draw with.
 The most recently added renderers to the stack will be the ones to be used.
 
 #### Parameters

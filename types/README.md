@@ -38,6 +38,7 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [BeltRendererType](interfaces/BeltRendererType.md)
 - [BlackDomainRendererType](interfaces/BlackDomainRendererType.md)
 - [CanvasCoords](interfaces/CanvasCoords.md)
+- [CaptureZoneRendererType](interfaces/CaptureZoneRendererType.md)
 - [Chunk](interfaces/Chunk.md)
 - [CircleRendererType](interfaces/CircleRendererType.md)
 - [DeleteMessagesRequest](interfaces/DeleteMessagesRequest.md)
@@ -1276,6 +1277,7 @@ Mapping from PlanetType to pretty-printed names.
 | `Background`    | [`RendererType`](README.md#renderertype) |
 | `Belt`          | [`RendererType`](README.md#renderertype) |
 | `BlackDomain`   | [`RendererType`](README.md#renderertype) |
+| `CaptureZone`   | [`RendererType`](README.md#renderertype) |
 | `Circle`        | [`RendererType`](README.md#renderertype) |
 | `Line`          | [`RendererType`](README.md#renderertype) |
 | `Mine`          | [`RendererType`](README.md#renderertype) |
