@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.base.json",
-  "exclude": ["index.ts"]
+  "include": ["index.ts", "typechain/**/*.ts", "typechain/**/*.d.ts"]
 }

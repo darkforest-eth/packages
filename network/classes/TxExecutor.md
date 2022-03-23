@@ -177,7 +177,7 @@ address.
 
 ▪ `Static` `Private` `Readonly` **NONCE_STALE_AFTER_MS**: `5000`
 
-If {@link supportMultipleWallets} is true, refresh the nonce if a
+If [supportMultipleWallets](TxExecutor.md#supportmultiplewallets) is true, refresh the nonce if a
 transaction has not been sent in this amount of time.
 
 ---

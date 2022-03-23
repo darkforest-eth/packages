@@ -7,6 +7,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
+    // We generate the index.d.ts.map in `eth/` so we want to enable declarationMap here
+    "declarationMap": true,
     // Create .js.map files for each generated JS file
     "sourceMap": true,
     // Embed the original source into the sourceMap instead of pointing to source files

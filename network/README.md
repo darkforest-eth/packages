@@ -211,7 +211,7 @@ or a string that represents the fact that we should be using one of the automati
 
 ### aggregateBulkGetter
 
-▸ `Const` **aggregateBulkGetter**<`T`\>(`total`, `querySize`, `getterFn`, `onProgress?`, `offset?`): `Promise`<`T`[]\>
+▸ **aggregateBulkGetter**<`T`\>(`total`, `querySize`, `getterFn`, `onProgress?`, `offset?`): `Promise`<`T`[]\>
 
 A useful utility function that breaks up the proverbial number line (defined by {@code total} and
 {@code querySize}), and calls {@code getterFn} for each of the sections on the number line.
@@ -260,7 +260,7 @@ Ensures that the given message was properly signed.
 
 ### callWithRetry
 
-▸ `Const` **callWithRetry**<`T`\>(`fn`, `args?`, `onError?`, `maxRetries?`, `retryInterval?`): `Promise`<`T`\>
+▸ **callWithRetry**<`T`\>(`fn`, `args?`, `onError?`, `maxRetries?`, `retryInterval?`): `Promise`<`T`\>
 
 Calls the given function, retrying it if there is an error.
 

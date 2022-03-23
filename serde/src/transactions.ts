@@ -1,5 +1,4 @@
 import {
-  ContractMethodName,
   Transaction,
   TxIntent,
   UnconfirmedActivateArtifact,
@@ -26,15 +25,15 @@ import {
 // - these `isUnconfirmedX` should check something more than the method name
 
 export function isUnconfirmedReveal(txIntent: TxIntent): txIntent is UnconfirmedReveal {
-  return txIntent.methodName === ContractMethodName.REVEAL_LOCATION;
+  return txIntent.methodName === 'revealLocation';
 }
 
 export function isUnconfirmedInit(txIntent: TxIntent): txIntent is UnconfirmedInit {
-  return txIntent.methodName === ContractMethodName.INIT;
+  return txIntent.methodName === 'initializePlayer';
 }
 
 export function isUnconfirmedMove(txIntent: TxIntent): txIntent is UnconfirmedMove {
-  return txIntent.methodName === ContractMethodName.MOVE;
+  return txIntent.methodName === 'move';
 }
 
 export function isUnconfirmedRelease(txIntent: TxIntent): txIntent is UnconfirmedMove {
@@ -42,69 +41,69 @@ export function isUnconfirmedRelease(txIntent: TxIntent): txIntent is Unconfirme
 }
 
 export function isUnconfirmedUpgrade(txIntent: TxIntent): txIntent is UnconfirmedUpgrade {
-  return txIntent.methodName === ContractMethodName.UPGRADE;
+  return txIntent.methodName === 'upgradePlanet';
 }
 
 export function isUnconfirmedBuyHat(txIntent: TxIntent): txIntent is UnconfirmedBuyHat {
-  return txIntent.methodName === ContractMethodName.BUY_HAT;
+  return txIntent.methodName === 'buyHat';
 }
 
 export function isUnconfirmedTransfer(txIntent: TxIntent): txIntent is UnconfirmedPlanetTransfer {
-  return txIntent.methodName === ContractMethodName.PLANET_TRANSFER;
+  return txIntent.methodName === 'transferPlanet';
 }
 
 export function isUnconfirmedFindArtifact(txIntent: TxIntent): txIntent is UnconfirmedFindArtifact {
-  return txIntent.methodName === ContractMethodName.FIND_ARTIFACT;
+  return txIntent.methodName === 'findArtifact';
 }
 
 export function isUnconfirmedDepositArtifact(
   txIntent: TxIntent
 ): txIntent is UnconfirmedDepositArtifact {
-  return txIntent.methodName === ContractMethodName.DEPOSIT_ARTIFACT;
+  return txIntent.methodName === 'depositArtifact';
 }
 
 export function isUnconfirmedWithdrawArtifact(
   txIntent: TxIntent
 ): txIntent is UnconfirmedWithdrawArtifact {
-  return txIntent.methodName === ContractMethodName.WITHDRAW_ARTIFACT;
+  return txIntent.methodName === 'withdrawArtifact';
 }
 
 export function isUnconfirmedProspectPlanet(
   txIntent: TxIntent
 ): txIntent is UnconfirmedProspectPlanet {
-  return txIntent.methodName === ContractMethodName.PROSPECT_PLANET;
+  return txIntent.methodName === 'prospectPlanet';
 }
 
 export function isUnconfirmedActivateArtifact(
   txIntent: TxIntent
 ): txIntent is UnconfirmedActivateArtifact {
-  return txIntent.methodName === ContractMethodName.ACTIVATE_ARTIFACT;
+  return txIntent.methodName === 'activateArtifact';
 }
 
 export function isUnconfirmedDeactivateArtifact(
   txIntent: TxIntent
 ): txIntent is UnconfirmedDeactivateArtifact {
-  return txIntent.methodName === ContractMethodName.DEACTIVATE_ARTIFACT;
+  return txIntent.methodName === 'deactivateArtifact';
 }
 
 export function isUnconfirmedWithdrawSilver(
   txIntent: TxIntent
 ): txIntent is UnconfirmedWithdrawSilver {
-  return txIntent.methodName === ContractMethodName.WITHDRAW_SILVER;
+  return txIntent.methodName === 'withdrawSilver';
 }
 
 export function isUnconfirmedGetShips(txIntent: TxIntent): txIntent is UnconfirmedGetShips {
-  return txIntent.methodName === ContractMethodName.GET_SHIPS;
+  return txIntent.methodName === 'giveSpaceShips';
 }
 
 export function isUnconfirmedCapturePlanet(
   txIntent: TxIntent
 ): txIntent is UnconfirmedCapturePlanet {
-  return txIntent.methodName === ContractMethodName.CAPTURE_PLANET;
+  return txIntent.methodName === 'capturePlanet';
 }
 
 export function isUnconfirmedInvadePlanet(txIntent: TxIntent): txIntent is UnconfirmedInvadePlanet {
-  return txIntent.methodName === ContractMethodName.INVADE_PLANET;
+  return txIntent.methodName === 'invadePlanet';
 }
 
 export function isUnconfirmedRevealTx(tx: Transaction): tx is Transaction<UnconfirmedReveal> {

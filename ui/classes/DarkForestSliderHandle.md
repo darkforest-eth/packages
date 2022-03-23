@@ -298,6 +298,7 @@
 - [animate](DarkForestSliderHandle.md#animate)
 - [append](DarkForestSliderHandle.md#append)
 - [appendChild](DarkForestSliderHandle.md#appendchild)
+- [attachInternals](DarkForestSliderHandle.md#attachinternals)
 - [attachShadow](DarkForestSliderHandle.md#attachshadow)
 - [before](DarkForestSliderHandle.md#before)
 - [blur](DarkForestSliderHandle.md#blur)
@@ -1641,7 +1642,7 @@ SliderHandle.offsetWidth
 
 ### onabort
 
-• **onabort**: `null` \| (`ev`: `UIEvent`) => `any`
+• **onabort**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `UIEvent`) => `any`
 
 Fires when the user aborts the download.
 
@@ -1655,7 +1656,7 @@ SliderHandle.onabort
 
 ### onanimationcancel
 
-• **onanimationcancel**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationcancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1665,7 +1666,7 @@ SliderHandle.onanimationcancel
 
 ### onanimationend
 
-• **onanimationend**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1675,7 +1676,7 @@ SliderHandle.onanimationend
 
 ### onanimationiteration
 
-• **onanimationiteration**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationiteration**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1685,7 +1686,7 @@ SliderHandle.onanimationiteration
 
 ### onanimationstart
 
-• **onanimationstart**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1695,7 +1696,7 @@ SliderHandle.onanimationstart
 
 ### onauxclick
 
-• **onauxclick**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onauxclick**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 #### Inherited from
 
@@ -1705,7 +1706,7 @@ SliderHandle.onauxclick
 
 ### onblur
 
-• **onblur**: `null` \| (`ev`: `FocusEvent`) => `any`
+• **onblur**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `FocusEvent`) => `any`
 
 Fires when the object loses the input focus.
 
@@ -1719,7 +1720,7 @@ SliderHandle.onblur
 
 ### oncanplay
 
-• **oncanplay**: `null` \| (`ev`: `Event`) => `any`
+• **oncanplay**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when playback is possible, but would require further buffering.
 
@@ -1733,7 +1734,7 @@ SliderHandle.oncanplay
 
 ### oncanplaythrough
 
-• **oncanplaythrough**: `null` \| (`ev`: `Event`) => `any`
+• **oncanplaythrough**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1743,7 +1744,7 @@ SliderHandle.oncanplaythrough
 
 ### onchange
 
-• **onchange**: `null` \| (`ev`: `Event`) => `any`
+• **onchange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the contents of the object or selection have changed.
 
@@ -1757,7 +1758,7 @@ SliderHandle.onchange
 
 ### onclick
 
-• **onclick**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onclick**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user clicks the left mouse button on the object
 
@@ -1771,7 +1772,7 @@ SliderHandle.onclick
 
 ### onclose
 
-• **onclose**: `null` \| (`ev`: `Event`) => `any`
+• **onclose**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1781,7 +1782,7 @@ SliderHandle.onclose
 
 ### oncontextmenu
 
-• **oncontextmenu**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **oncontextmenu**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user clicks the right mouse button in the client area, opening the context menu.
 
@@ -1795,7 +1796,7 @@ SliderHandle.oncontextmenu
 
 ### oncopy
 
-• **oncopy**: `null` \| (`ev`: `ClipboardEvent`) => `any`
+• **oncopy**: `null` \| (`this`: `DocumentAndElementEventHandlers`, `ev`: `ClipboardEvent`) => `any`
 
 #### Inherited from
 
@@ -1805,7 +1806,7 @@ SliderHandle.oncopy
 
 ### oncuechange
 
-• **oncuechange**: `null` \| (`ev`: `Event`) => `any`
+• **oncuechange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1815,7 +1816,7 @@ SliderHandle.oncuechange
 
 ### oncut
 
-• **oncut**: `null` \| (`ev`: `ClipboardEvent`) => `any`
+• **oncut**: `null` \| (`this`: `DocumentAndElementEventHandlers`, `ev`: `ClipboardEvent`) => `any`
 
 #### Inherited from
 
@@ -1825,7 +1826,7 @@ SliderHandle.oncut
 
 ### ondblclick
 
-• **ondblclick**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **ondblclick**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user double-clicks the object.
 
@@ -1839,7 +1840,7 @@ SliderHandle.ondblclick
 
 ### ondrag
 
-• **ondrag**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondrag**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the source object continuously during a drag operation.
 
@@ -1853,7 +1854,7 @@ SliderHandle.ondrag
 
 ### ondragend
 
-• **ondragend**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the source object when the user releases the mouse at the close of a drag operation.
 
@@ -1867,7 +1868,7 @@ SliderHandle.ondragend
 
 ### ondragenter
 
-• **ondragenter**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragenter**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the target element when the user drags the object to a valid drop target.
 
@@ -1881,7 +1882,7 @@ SliderHandle.ondragenter
 
 ### ondragleave
 
-• **ondragleave**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragleave**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the target object when the user moves the mouse out of a valid drop target during a drag operation.
 
@@ -1895,7 +1896,7 @@ SliderHandle.ondragleave
 
 ### ondragover
 
-• **ondragover**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragover**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the target element continuously while the user drags the object over a valid drop target.
 
@@ -1909,7 +1910,7 @@ SliderHandle.ondragover
 
 ### ondragstart
 
-• **ondragstart**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the source object when the user starts to drag a text selection or selected object.
 
@@ -1923,7 +1924,7 @@ SliderHandle.ondragstart
 
 ### ondrop
 
-• **ondrop**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondrop**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 #### Inherited from
 
@@ -1933,7 +1934,7 @@ SliderHandle.ondrop
 
 ### ondurationchange
 
-• **ondurationchange**: `null` \| (`ev`: `Event`) => `any`
+• **ondurationchange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the duration attribute is updated.
 
@@ -1947,7 +1948,7 @@ SliderHandle.ondurationchange
 
 ### onemptied
 
-• **onemptied**: `null` \| (`ev`: `Event`) => `any`
+• **onemptied**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the media element is reset to its initial state.
 
@@ -1961,7 +1962,7 @@ SliderHandle.onemptied
 
 ### onended
 
-• **onended**: `null` \| (`ev`: `Event`) => `any`
+• **onended**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the end of playback is reached.
 
@@ -1989,7 +1990,7 @@ SliderHandle.onerror
 
 ### onfocus
 
-• **onfocus**: `null` \| (`ev`: `FocusEvent`) => `any`
+• **onfocus**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `FocusEvent`) => `any`
 
 Fires when the object receives focus.
 
@@ -2003,7 +2004,7 @@ SliderHandle.onfocus
 
 ### onformdata
 
-• **onformdata**: `null` \| (`ev`: `FormDataEvent`) => `any`
+• **onformdata**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `FormDataEvent`) => `any`
 
 #### Inherited from
 
@@ -2013,7 +2014,7 @@ SliderHandle.onformdata
 
 ### onfullscreenchange
 
-• **onfullscreenchange**: `null` \| (`ev`: `Event`) => `any`
+• **onfullscreenchange**: `null` \| (`this`: `Element`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2023,7 +2024,7 @@ SliderHandle.onfullscreenchange
 
 ### onfullscreenerror
 
-• **onfullscreenerror**: `null` \| (`ev`: `Event`) => `any`
+• **onfullscreenerror**: `null` \| (`this`: `Element`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2033,7 +2034,7 @@ SliderHandle.onfullscreenerror
 
 ### ongotpointercapture
 
-• **ongotpointercapture**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **ongotpointercapture**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2043,7 +2044,7 @@ SliderHandle.ongotpointercapture
 
 ### oninput
 
-• **oninput**: `null` \| (`ev`: `Event`) => `any`
+• **oninput**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2053,7 +2054,7 @@ SliderHandle.oninput
 
 ### oninvalid
 
-• **oninvalid**: `null` \| (`ev`: `Event`) => `any`
+• **oninvalid**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2063,7 +2064,7 @@ SliderHandle.oninvalid
 
 ### onkeydown
 
-• **onkeydown**: `null` \| (`ev`: `KeyboardEvent`) => `any`
+• **onkeydown**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `KeyboardEvent`) => `any`
 
 Fires when the user presses a key.
 
@@ -2077,7 +2078,7 @@ SliderHandle.onkeydown
 
 ### onkeypress
 
-• **onkeypress**: `null` \| (`ev`: `KeyboardEvent`) => `any`
+• **onkeypress**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `KeyboardEvent`) => `any`
 
 Fires when the user presses an alphanumeric key.
 
@@ -2093,7 +2094,7 @@ SliderHandle.onkeypress
 
 ### onkeyup
 
-• **onkeyup**: `null` \| (`ev`: `KeyboardEvent`) => `any`
+• **onkeyup**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `KeyboardEvent`) => `any`
 
 Fires when the user releases a key.
 
@@ -2107,7 +2108,7 @@ SliderHandle.onkeyup
 
 ### onload
 
-• **onload**: `null` \| (`ev`: `Event`) => `any`
+• **onload**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires immediately after the browser loads the object.
 
@@ -2121,7 +2122,7 @@ SliderHandle.onload
 
 ### onloadeddata
 
-• **onloadeddata**: `null` \| (`ev`: `Event`) => `any`
+• **onloadeddata**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when media data is loaded at the current playback position.
 
@@ -2135,7 +2136,7 @@ SliderHandle.onloadeddata
 
 ### onloadedmetadata
 
-• **onloadedmetadata**: `null` \| (`ev`: `Event`) => `any`
+• **onloadedmetadata**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the duration and dimensions of the media have been determined.
 
@@ -2149,7 +2150,7 @@ SliderHandle.onloadedmetadata
 
 ### onloadstart
 
-• **onloadstart**: `null` \| (`ev`: `Event`) => `any`
+• **onloadstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when Internet Explorer begins looking for media data.
 
@@ -2163,7 +2164,7 @@ SliderHandle.onloadstart
 
 ### onlostpointercapture
 
-• **onlostpointercapture**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onlostpointercapture**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2173,7 +2174,7 @@ SliderHandle.onlostpointercapture
 
 ### onmousedown
 
-• **onmousedown**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmousedown**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user clicks the object with either mouse button.
 
@@ -2187,7 +2188,7 @@ SliderHandle.onmousedown
 
 ### onmouseenter
 
-• **onmouseenter**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseenter**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 #### Inherited from
 
@@ -2197,7 +2198,7 @@ SliderHandle.onmouseenter
 
 ### onmouseleave
 
-• **onmouseleave**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseleave**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 #### Inherited from
 
@@ -2207,7 +2208,7 @@ SliderHandle.onmouseleave
 
 ### onmousemove
 
-• **onmousemove**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmousemove**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user moves the mouse over the object.
 
@@ -2221,7 +2222,7 @@ SliderHandle.onmousemove
 
 ### onmouseout
 
-• **onmouseout**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseout**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user moves the mouse pointer outside the boundaries of the object.
 
@@ -2235,7 +2236,7 @@ SliderHandle.onmouseout
 
 ### onmouseover
 
-• **onmouseover**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseover**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user moves the mouse pointer into the object.
 
@@ -2249,7 +2250,7 @@ SliderHandle.onmouseover
 
 ### onmouseup
 
-• **onmouseup**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseup**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user releases a mouse button while the mouse is over the object.
 
@@ -2263,7 +2264,7 @@ SliderHandle.onmouseup
 
 ### onpaste
 
-• **onpaste**: `null` \| (`ev`: `ClipboardEvent`) => `any`
+• **onpaste**: `null` \| (`this`: `DocumentAndElementEventHandlers`, `ev`: `ClipboardEvent`) => `any`
 
 #### Inherited from
 
@@ -2273,7 +2274,7 @@ SliderHandle.onpaste
 
 ### onpause
 
-• **onpause**: `null` \| (`ev`: `Event`) => `any`
+• **onpause**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when playback is paused.
 
@@ -2287,7 +2288,7 @@ SliderHandle.onpause
 
 ### onplay
 
-• **onplay**: `null` \| (`ev`: `Event`) => `any`
+• **onplay**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the play method is requested.
 
@@ -2301,7 +2302,7 @@ SliderHandle.onplay
 
 ### onplaying
 
-• **onplaying**: `null` \| (`ev`: `Event`) => `any`
+• **onplaying**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the audio or video has started playing.
 
@@ -2315,7 +2316,7 @@ SliderHandle.onplaying
 
 ### onpointercancel
 
-• **onpointercancel**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointercancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2325,7 +2326,7 @@ SliderHandle.onpointercancel
 
 ### onpointerdown
 
-• **onpointerdown**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerdown**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2335,7 +2336,7 @@ SliderHandle.onpointerdown
 
 ### onpointerenter
 
-• **onpointerenter**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerenter**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2345,7 +2346,7 @@ SliderHandle.onpointerenter
 
 ### onpointerleave
 
-• **onpointerleave**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerleave**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2355,7 +2356,7 @@ SliderHandle.onpointerleave
 
 ### onpointermove
 
-• **onpointermove**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointermove**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2365,7 +2366,7 @@ SliderHandle.onpointermove
 
 ### onpointerout
 
-• **onpointerout**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerout**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2375,7 +2376,7 @@ SliderHandle.onpointerout
 
 ### onpointerover
 
-• **onpointerover**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerover**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2385,7 +2386,7 @@ SliderHandle.onpointerover
 
 ### onpointerup
 
-• **onpointerup**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerup**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2395,7 +2396,7 @@ SliderHandle.onpointerup
 
 ### onprogress
 
-• **onprogress**: `null` \| (`ev`: `ProgressEvent`<`EventTarget`\>) => `any`
+• **onprogress**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `ProgressEvent`<`EventTarget`\>) => `any`
 
 Occurs to indicate progress while downloading media data.
 
@@ -2409,7 +2410,7 @@ SliderHandle.onprogress
 
 ### onratechange
 
-• **onratechange**: `null` \| (`ev`: `Event`) => `any`
+• **onratechange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the playback rate is increased or decreased.
 
@@ -2423,7 +2424,7 @@ SliderHandle.onratechange
 
 ### onreset
 
-• **onreset**: `null` \| (`ev`: `Event`) => `any`
+• **onreset**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the user resets a form.
 
@@ -2437,7 +2438,7 @@ SliderHandle.onreset
 
 ### onresize
 
-• **onresize**: `null` \| (`ev`: `UIEvent`) => `any`
+• **onresize**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `UIEvent`) => `any`
 
 #### Inherited from
 
@@ -2447,7 +2448,7 @@ SliderHandle.onresize
 
 ### onscroll
 
-• **onscroll**: `null` \| (`ev`: `Event`) => `any`
+• **onscroll**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the user repositions the scroll box in the scroll bar on the object.
 
@@ -2461,7 +2462,7 @@ SliderHandle.onscroll
 
 ### onseeked
 
-• **onseeked**: `null` \| (`ev`: `Event`) => `any`
+• **onseeked**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the seek operation ends.
 
@@ -2475,7 +2476,7 @@ SliderHandle.onseeked
 
 ### onseeking
 
-• **onseeking**: `null` \| (`ev`: `Event`) => `any`
+• **onseeking**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the current playback position is moved.
 
@@ -2489,7 +2490,7 @@ SliderHandle.onseeking
 
 ### onselect
 
-• **onselect**: `null` \| (`ev`: `Event`) => `any`
+• **onselect**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the current selection changes.
 
@@ -2503,7 +2504,7 @@ SliderHandle.onselect
 
 ### onselectionchange
 
-• **onselectionchange**: `null` \| (`ev`: `Event`) => `any`
+• **onselectionchange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2513,7 +2514,7 @@ SliderHandle.onselectionchange
 
 ### onselectstart
 
-• **onselectstart**: `null` \| (`ev`: `Event`) => `any`
+• **onselectstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2523,7 +2524,7 @@ SliderHandle.onselectstart
 
 ### onstalled
 
-• **onstalled**: `null` \| (`ev`: `Event`) => `any`
+• **onstalled**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the download has stopped.
 
@@ -2537,7 +2538,7 @@ SliderHandle.onstalled
 
 ### onsubmit
 
-• **onsubmit**: `null` \| (`ev`: `Event`) => `any`
+• **onsubmit**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `SubmitEvent`) => `any`
 
 #### Inherited from
 
@@ -2547,7 +2548,7 @@ SliderHandle.onsubmit
 
 ### onsuspend
 
-• **onsuspend**: `null` \| (`ev`: `Event`) => `any`
+• **onsuspend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs if the load operation has been intentionally halted.
 
@@ -2561,7 +2562,7 @@ SliderHandle.onsuspend
 
 ### ontimeupdate
 
-• **ontimeupdate**: `null` \| (`ev`: `Event`) => `any`
+• **ontimeupdate**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs to indicate the current playback position.
 
@@ -2575,7 +2576,7 @@ SliderHandle.ontimeupdate
 
 ### ontoggle
 
-• **ontoggle**: `null` \| (`ev`: `Event`) => `any`
+• **ontoggle**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2585,7 +2586,7 @@ SliderHandle.ontoggle
 
 ### ontouchcancel
 
-• `Optional` **ontouchcancel**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchcancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2595,7 +2596,7 @@ SliderHandle.ontouchcancel
 
 ### ontouchend
 
-• `Optional` **ontouchend**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2605,7 +2606,7 @@ SliderHandle.ontouchend
 
 ### ontouchmove
 
-• `Optional` **ontouchmove**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchmove**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2615,7 +2616,7 @@ SliderHandle.ontouchmove
 
 ### ontouchstart
 
-• `Optional` **ontouchstart**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2625,7 +2626,7 @@ SliderHandle.ontouchstart
 
 ### ontransitioncancel
 
-• **ontransitioncancel**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitioncancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2635,7 +2636,7 @@ SliderHandle.ontransitioncancel
 
 ### ontransitionend
 
-• **ontransitionend**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitionend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2645,7 +2646,7 @@ SliderHandle.ontransitionend
 
 ### ontransitionrun
 
-• **ontransitionrun**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitionrun**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2655,7 +2656,7 @@ SliderHandle.ontransitionrun
 
 ### ontransitionstart
 
-• **ontransitionstart**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitionstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2665,7 +2666,7 @@ SliderHandle.ontransitionstart
 
 ### onvolumechange
 
-• **onvolumechange**: `null` \| (`ev`: `Event`) => `any`
+• **onvolumechange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the volume is changed, or playback is muted or unmuted.
 
@@ -2679,7 +2680,7 @@ SliderHandle.onvolumechange
 
 ### onwaiting
 
-• **onwaiting**: `null` \| (`ev`: `Event`) => `any`
+• **onwaiting**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when playback stops because the next frame of a video resource is not available.
 
@@ -2693,7 +2694,9 @@ SliderHandle.onwaiting
 
 ### onwebkitanimationend
 
-• **onwebkitanimationend**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkitanimationend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `onanimationend`.
 
 #### Inherited from
 
@@ -2703,7 +2706,9 @@ SliderHandle.onwebkitanimationend
 
 ### onwebkitanimationiteration
 
-• **onwebkitanimationiteration**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkitanimationiteration**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `onanimationiteration`.
 
 #### Inherited from
 
@@ -2713,7 +2718,9 @@ SliderHandle.onwebkitanimationiteration
 
 ### onwebkitanimationstart
 
-• **onwebkitanimationstart**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkitanimationstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `onanimationstart`.
 
 #### Inherited from
 
@@ -2723,7 +2730,9 @@ SliderHandle.onwebkitanimationstart
 
 ### onwebkittransitionend
 
-• **onwebkittransitionend**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkittransitionend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `ontransitionend`.
 
 #### Inherited from
 
@@ -2733,7 +2742,7 @@ SliderHandle.onwebkittransitionend
 
 ### onwheel
 
-• **onwheel**: `null` \| (`ev`: `WheelEvent`) => `any`
+• **onwheel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `WheelEvent`) => `any`
 
 #### Inherited from
 
@@ -3460,11 +3469,11 @@ SliderHandle.updateComplete
 
 #### Parameters
 
-| Name       | Type                                        |
-| :--------- | :------------------------------------------ |
-| `type`     | `K`                                         |
-| `listener` | (`ev`: `HTMLElementEventMap`[`K`]) => `any` |
-| `options?` | `boolean` \| `AddEventListenerOptions`      |
+| Name       | Type                                                               |
+| :--------- | :----------------------------------------------------------------- |
+| `type`     | `K`                                                                |
+| `listener` | (`this`: `HTMLElement`, `ev`: `HTMLElementEventMap`[`K`]) => `any` |
+| `options?` | `boolean` \| `AddEventListenerOptions`                             |
 
 #### Returns
 
@@ -3586,6 +3595,20 @@ SliderHandle.append
 #### Inherited from
 
 SliderHandle.appendChild
+
+---
+
+### attachInternals
+
+▸ **attachInternals**(): `ElementInternals`
+
+#### Returns
+
+`ElementInternals`
+
+#### Inherited from
+
+SliderHandle.attachInternals
 
 ---
 
@@ -3737,9 +3760,9 @@ SliderHandle.closest
 
 #### Type parameters
 
-| Name | Type                         |
-| :--- | :--------------------------- |
-| `E`  | extends ` Element``Element ` |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `E`  | extends `Element` = `Element` |
 
 #### Parameters
 
@@ -4663,9 +4686,9 @@ SliderHandle.querySelector
 
 #### Type parameters
 
-| Name | Type                         |
-| :--- | :--------------------------- |
-| `E`  | extends ` Element``Element ` |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `E`  | extends `Element` = `Element` |
 
 #### Parameters
 
@@ -4735,9 +4758,9 @@ SliderHandle.querySelectorAll
 
 #### Type parameters
 
-| Name | Type                         |
-| :--- | :--------------------------- |
-| `E`  | extends ` Element``Element ` |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `E`  | extends `Element` = `Element` |
 
 #### Parameters
 
@@ -4894,11 +4917,11 @@ SliderHandle.removeChild
 
 #### Parameters
 
-| Name       | Type                                        |
-| :--------- | :------------------------------------------ |
-| `type`     | `K`                                         |
-| `listener` | (`ev`: `HTMLElementEventMap`[`K`]) => `any` |
-| `options?` | `boolean` \| `EventListenerOptions`         |
+| Name       | Type                                                               |
+| :--------- | :----------------------------------------------------------------- |
+| `type`     | `K`                                                                |
+| `listener` | (`this`: `HTMLElement`, `ev`: `HTMLElementEventMap`[`K`]) => `any` |
+| `options?` | `boolean` \| `EventListenerOptions`                                |
 
 #### Returns
 
@@ -5618,7 +5641,7 @@ object or the `@property` decorator and are registered in
 
 Note, this method should be considered "final" and not overridden. To
 customize the options for a given property, override
-[`createProperty`](DarkForestButton.md#createproperty).
+[`createProperty`](DarkForestSliderHandle.md#createproperty).
 
 **`nocollapse`**
 

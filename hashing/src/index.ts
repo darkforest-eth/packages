@@ -25,7 +25,7 @@
  * @packageDocumentation
  */
 import { fakeHash, seededRandom } from './fakeHash';
-import { Fraction } from './fractions/bigFraction.js';
+import { Fraction } from './fractions/bigFraction';
 import mimcHash, { modPBigInt, modPBigIntNative } from './mimc';
 import { getRandomGradientAt, IntegerVector, MAX_PERLIN_VALUE, perlin, rand } from './perlin';
 

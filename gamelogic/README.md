@@ -68,7 +68,7 @@
 
 ### RelicsList
 
-• **RelicsList**: `ArtifactType`[]
+• `Const` **RelicsList**: `ArtifactType`[]
 
 ## Functions
 
@@ -142,7 +142,7 @@
 
 ### biomeName
 
-▸ `Const` **biomeName**(`biome`): `string`
+▸ **biomeName**(`biome`): `string`
 
 #### Parameters
 
@@ -212,7 +212,7 @@
 
 ### dateMintedAt
 
-▸ `Const` **dateMintedAt**(`artifact`): `string`
+▸ **dateMintedAt**(`artifact`): `string`
 
 #### Parameters
 
@@ -244,7 +244,7 @@
 
 ### formatNumber
 
-▸ `Const` **formatNumber**(`num`, `smallDec?`): `string`
+▸ **formatNumber**(`num`, `smallDec?`): `string`
 
 #### Parameters
 
@@ -309,7 +309,7 @@
 
 ### getPlanetRank
 
-▸ `Const` **getPlanetRank**(`planet`): `number`
+▸ **getPlanetRank**(`planet`): `number`
 
 #### Parameters
 
@@ -506,7 +506,7 @@ planet is LocatablePlanet
 
 ### levelFromRarity
 
-▸ `Const` **levelFromRarity**(`rarity`): `PlanetLevel`
+▸ **levelFromRarity**(`rarity`): `PlanetLevel`
 
 #### Parameters
 
@@ -522,7 +522,7 @@ planet is LocatablePlanet
 
 ### rarityName
 
-▸ `Const` **rarityName**(`rarity`): `string`
+▸ **rarityName**(`rarity`): `string`
 
 #### Parameters
 
@@ -538,7 +538,7 @@ planet is LocatablePlanet
 
 ### rarityNameFromArtifact
 
-▸ `Const` **rarityNameFromArtifact**(`a`): `string`
+▸ **rarityNameFromArtifact**(`a`): `string`
 
 #### Parameters
 

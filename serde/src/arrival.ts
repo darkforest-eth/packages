@@ -1,6 +1,6 @@
 import { CONTRACT_PRECISION } from '@darkforest_eth/constants';
 import type { DarkForest } from '@darkforest_eth/contracts/typechain';
-import type { ArrivalType, Awaited, QueuedArrival, VoyageId } from '@darkforest_eth/types';
+import type { ArrivalType, QueuedArrival, VoyageId } from '@darkforest_eth/types';
 import { address } from './address';
 import { artifactIdFromEthersBN } from './artifact';
 import { locationIdFromDecStr } from './location';

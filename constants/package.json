@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/constants",
-  "version": "6.7.10",
+  "version": "6.7.12",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -12,16 +12,16 @@
     "dist/"
   ],
   "scripts": {
-    "prepublishOnly": "npm run docs",
-    "prepare": "tsc -p .",
+    "prepublishOnly": "npm run build && npm run docs",
+    "build": "tsc -p .",
     "test": "exit 0",
     "lint": "eslint .",
     "format": "prettier --write .",
     "docs": "typedoc && npm run format",
-    "clean": "del-cli dist node_modules"
+    "clean": "del-cli dist node_modules tsconfig.ref.tsbuildinfo"
   },
   "dependencies": {
-    "@darkforest_eth/types": "6.7.10",
+    "@darkforest_eth/types": "6.7.12",
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
@@ -30,10 +30,10 @@
     "prettier": "^2.3.0",
     "typedoc": "^0.22.8",
     "typedoc-plugin-markdown": "3.11.x",
-    "typescript": "4.4.x"
+    "typescript": "4.5.x"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "5b53d13bbbb288f8bef5b876d495e0bb9b19ef66"
+  "gitHead": "b54983f046e9262d332f39e1f815b1bdd311cb27"
 }

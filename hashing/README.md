@@ -26,16 +26,13 @@ import * as hashing from 'http://cdn.skypack.dev/@darkforest_eth/hashing';
 
 ## Table of contents
 
-### Classes
-
-- [Fraction](classes/Fraction.md)
-
 ### Interfaces
 
 - [IntegerVector](interfaces/IntegerVector.md)
 
 ### Variables
 
+- [Fraction](README.md#fraction)
 - [MAX_PERLIN_VALUE](README.md#max_perlin_value)
 
 ### Functions
@@ -50,23 +47,29 @@ import * as hashing from 'http://cdn.skypack.dev/@darkforest_eth/hashing';
 
 ## Variables
 
+### Fraction
+
+• **Fraction**: `IFraction`
+
+---
+
 ### MAX_PERLIN_VALUE
 
-• **MAX_PERLIN_VALUE**: `32`
+• `Const` **MAX_PERLIN_VALUE**: `32`
 
 ## Functions
 
 ### getRandomGradientAt
 
-▸ `Const` **getRandomGradientAt**(`point`, `scale`, `randFn`): `Vector`
+▸ **getRandomGradientAt**(`point`, `scale`, `randFn`): `Vector`
 
 #### Parameters
 
-| Name     | Type                              |
-| :------- | :-------------------------------- |
-| `point`  | `Vector`                          |
-| `scale`  | [`Fraction`](classes/Fraction.md) |
-| `randFn` | `HashFn`                          |
+| Name     | Type        |
+| :------- | :---------- |
+| `point`  | `Vector`    |
+| `scale`  | `IFraction` |
+| `randFn` | `HashFn`    |
 
 #### Returns
 
@@ -163,7 +166,7 @@ Calculates the perlin for a location, given the x,y pair and the PerlinConfig fo
 
 ### rand
 
-▸ `Const` **rand**(`key`): (...`args`: `number`[]) => `number`
+▸ **rand**(`key`): (...`args`: `number`[]) => `number`
 
 #### Parameters
 

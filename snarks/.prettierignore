@@ -1,4 +1,7 @@
-contracts.js
-contracts.d.ts
+index.js
+index.js.map
+index.d.ts
+index.d.ts.map
 *.wasm
 *.zkey
+tsconfig.ref.tsbuildinfo

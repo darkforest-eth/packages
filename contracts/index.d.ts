@@ -33,7 +33,7 @@
 /**
  * The name of the network where these contracts are deployed.
  */
-export declare const NETWORK = 'xdai';
+export declare const NETWORK = "xdai";
 /**
  * The id of the network where these contracts are deployed.
  */
@@ -45,8 +45,9 @@ export declare const START_BLOCK = 20713468;
 /**
  * The address for the DarkForest contract.
  */
-export declare const CONTRACT_ADDRESS = '0x5da117b8aB8b739346F5EdC166789E5aFb1a7145';
+export declare const CONTRACT_ADDRESS = "0x5da117b8aB8b739346F5EdC166789E5aFb1a7145";
 /**
  * The address for the initalizer contract. Useful for lobbies.
  */
-export declare const INIT_ADDRESS = '0x162564a30C73204A0b404D23A033bFBA377ADdc2';
+export declare const INIT_ADDRESS = "0x162564a30C73204A0b404D23A033bFBA377ADdc2";
+//# sourceMappingURL=index.d.ts.map

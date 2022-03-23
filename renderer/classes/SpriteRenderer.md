@@ -84,7 +84,7 @@ Kept for use in inherited classes.
 
 ### attribManagers
 
-• **attribManagers**: [`AttribManagers`](../README.md#attribmanagers)<`Object`\>
+• **attribManagers**: [`AttribManagers`](../README.md#attribmanagers)<{ `attribs`: { `color`: { `dim`: `number` = 4; `name`: `string` = a.color; `normalize`: `boolean` = true; `type`: `AttribType` = AttribType.UByte } ; `invert`: { `dim`: `number` = 1; `name`: `string` = a.invert; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `mythic`: { `dim`: `number` = 1; `name`: `string` = a.mythic; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `position`: { `dim`: `number` = 2; `name`: `string` = a.position; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `rectPos`: { `dim`: `number` = 2; `name`: `string` = a.rectPos; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `shine`: { `dim`: `number` = 1; `name`: `string` = a.shine; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `texcoord`: { `dim`: `number` = 2; `name`: `string` = a.texcoord; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } } ; `fragmentShader`: `string` ; `uniforms`: { `matrix`: { `name`: `string` = u.matrix; `type`: `UniformType` = UniformType.Mat4 } ; `texture`: { `name`: `string` = u.texture; `type`: `UniformType` = UniformType.Texture } } ; `vertexShader`: `string` }\>
 
 A dictionary of attrib managers, keyed by attrib name.
 
@@ -185,7 +185,7 @@ Kept for use in inherited classes.
 
 ### uniformLocs
 
-• **uniformLocs**: [`UniformLocs`](../README.md#uniformlocs)<`Object`\>
+• **uniformLocs**: [`UniformLocs`](../README.md#uniformlocs)<{ `attribs`: { `color`: { `dim`: `number` = 4; `name`: `string` = a.color; `normalize`: `boolean` = true; `type`: `AttribType` = AttribType.UByte } ; `invert`: { `dim`: `number` = 1; `name`: `string` = a.invert; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `mythic`: { `dim`: `number` = 1; `name`: `string` = a.mythic; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `position`: { `dim`: `number` = 2; `name`: `string` = a.position; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `rectPos`: { `dim`: `number` = 2; `name`: `string` = a.rectPos; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `shine`: { `dim`: `number` = 1; `name`: `string` = a.shine; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `texcoord`: { `dim`: `number` = 2; `name`: `string` = a.texcoord; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } } ; `fragmentShader`: `string` ; `uniforms`: { `matrix`: { `name`: `string` = u.matrix; `type`: `UniformType` = UniformType.Mat4 } ; `texture`: { `name`: `string` = u.texture; `type`: `UniformType` = UniformType.Texture } } ; `vertexShader`: `string` }\>
 
 Uniform locs for this program. Typically not referenced directly,
 but rather through generated uniformSetters. Kept for use in inherited classes.
@@ -198,7 +198,7 @@ but rather through generated uniformSetters. Kept for use in inherited classes.
 
 ### uniformSetters
 
-• **uniformSetters**: [`UniformSetters`](../README.md#uniformsetters)<`Object`\>
+• **uniformSetters**: [`UniformSetters`](../README.md#uniformsetters)<{ `attribs`: { `color`: { `dim`: `number` = 4; `name`: `string` = a.color; `normalize`: `boolean` = true; `type`: `AttribType` = AttribType.UByte } ; `invert`: { `dim`: `number` = 1; `name`: `string` = a.invert; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `mythic`: { `dim`: `number` = 1; `name`: `string` = a.mythic; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `position`: { `dim`: `number` = 2; `name`: `string` = a.position; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `rectPos`: { `dim`: `number` = 2; `name`: `string` = a.rectPos; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `shine`: { `dim`: `number` = 1; `name`: `string` = a.shine; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } ; `texcoord`: { `dim`: `number` = 2; `name`: `string` = a.texcoord; `normalize`: `boolean` = false; `type`: `AttribType` = AttribType.Float } } ; `fragmentShader`: `string` ; `uniforms`: { `matrix`: { `name`: `string` = u.matrix; `type`: `UniformType` = UniformType.Mat4 } ; `texture`: { `name`: `string` = u.texture; `type`: `UniformType` = UniformType.Texture } } ; `vertexShader`: `string` }\>
 
 A dictionary of uniform setters, keyed by uniform name.
 

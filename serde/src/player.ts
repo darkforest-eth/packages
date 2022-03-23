@@ -1,5 +1,5 @@
 import type { DarkForest } from '@darkforest_eth/contracts/typechain';
-import type { Awaited, Player } from '@darkforest_eth/types';
+import type { Player } from '@darkforest_eth/types';
 import { address } from './address';
 import { locationIdFromEthersBN } from './location';
 

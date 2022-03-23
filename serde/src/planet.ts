@@ -2,7 +2,6 @@ import { CONTRACT_PRECISION } from '@darkforest_eth/constants';
 import type { DarkForest } from '@darkforest_eth/contracts/typechain';
 import { bonusFromHex } from '@darkforest_eth/hexgen';
 import type {
-  Awaited,
   Planet,
   PlanetDefaults,
   PlanetLevel,

@@ -1,4 +1,4 @@
-import { AutoGasSetting } from './setting';
+import type { AutoGasSetting } from './setting';
 
 /**
  * These are measured in gwei.

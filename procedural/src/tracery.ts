@@ -1,4 +1,5 @@
 /* eslint-disable */
+//@ts-nocheck
 
 var tracery = (function () {
   var rng = Math.random;
@@ -702,4 +703,4 @@ var tracery = (function () {
   return tracery;
 })();
 
-module.exports = tracery;
+export default tracery;

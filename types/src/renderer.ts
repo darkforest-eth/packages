@@ -1,10 +1,10 @@
-import { mat3, mat4 } from 'gl-matrix';
-import { RenderedArtifact } from './artifact';
-import { HatType } from './hat';
-import { LocationId } from './identifier';
-import { LocatablePlanet, Planet } from './planet';
-import { Abstract } from './utility';
-import { Chunk, WorldCoords } from './world';
+import type { mat3, mat4 } from 'gl-matrix';
+import type { RenderedArtifact } from './artifact';
+import type { HatType } from './hat';
+import type { LocationId } from './identifier';
+import type { LocatablePlanet, Planet } from './planet';
+import type { Abstract } from './utility';
+import type { Chunk, WorldCoords } from './world';
 
 export interface PlanetRenderInfo {
   planet: LocatablePlanet;

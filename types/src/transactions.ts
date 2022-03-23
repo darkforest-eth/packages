@@ -1,46 +1,37 @@
 import type { Contract } from 'ethers';
+import type { LiteralUnion } from 'type-fest';
 import type { ArtifactId, EthAddress, LocationId } from './identifier';
 import type { WorldLocation } from './world';
 
-/**
- * @hidden
- */
-//eslint-disable-next-line @projectsophon/typescript-enum/no-enum
-export const enum ContractMethodName {
-  REVEAL_LOCATION = 'revealLocation',
-  INIT = 'initializePlayer',
-  MOVE = 'move',
-  UPGRADE = 'upgradePlanet',
-  BUY_HAT = 'buyHat',
-  PLANET_TRANSFER = 'transferPlanet',
-  FIND_ARTIFACT = 'findArtifact',
-  PROSPECT_PLANET = 'prospectPlanet',
-  DEPOSIT_ARTIFACT = 'depositArtifact',
-  WITHDRAW_ARTIFACT = 'withdrawArtifact',
-  ACTIVATE_ARTIFACT = 'activateArtifact',
-  DEACTIVATE_ARTIFACT = 'deactivateArtifact',
-  WITHDRAW_SILVER = 'withdrawSilver',
-  USE_KEY = 'useKey',
-  ADD_KEYS = 'addKeys',
-  GET_SHIPS = 'giveSpaceShips',
-  CREATE_LOBBY = 'createLobby',
-  INVADE_PLANET = 'invadePlanet',
-  CAPTURE_PLANET = 'capturePlanet',
-}
+export type ContractMethodName =
+  | 'revealLocation'
+  | 'initializePlayer'
+  | 'move'
+  | 'upgradePlanet'
+  | 'buyHat'
+  | 'transferPlanet'
+  | 'findArtifact'
+  | 'prospectPlanet'
+  | 'depositArtifact'
+  | 'withdrawArtifact'
+  | 'activateArtifact'
+  | 'deactivateArtifact'
+  | 'withdrawSilver'
+  | 'useKey'
+  | 'addKeys'
+  | 'giveSpaceShips'
+  | 'createLobby'
+  | 'invadePlanet'
+  | 'capturePlanet';
 
-/**
- * @hidden
- */
-//eslint-disable-next-line @projectsophon/typescript-enum/no-enum
-export const enum EthTxStatus {
-  Init = 'Init',
-  Processing = 'Processing',
-  Prioritized = 'Prioritized',
-  Submit = 'Submit',
-  Confirm = 'Confirm',
-  Fail = 'Fail',
-  Cancel = 'Cancel',
-}
+export type EthTxStatus =
+  | 'Init'
+  | 'Processing'
+  | 'Prioritized'
+  | 'Submit'
+  | 'Confirm'
+  | 'Fail'
+  | 'Cancel';
 
 /**
  * The intent of this type is to represent a transaction that will occur on the blockchain in a way
@@ -49,7 +40,7 @@ export const enum EthTxStatus {
  */
 export type TxIntent = {
   contract: Contract;
-  methodName: ContractMethodName;
+  methodName: LiteralUnion<ContractMethodName, string>;
   args: Promise<unknown[]>;
 };
 
@@ -57,7 +48,7 @@ export type TxIntent = {
  * @hidden
  */
 export type UnconfirmedInit = TxIntent & {
-  methodName: ContractMethodName.INIT;
+  methodName: 'initializePlayer';
   locationId: LocationId;
   location: WorldLocation;
 };
@@ -66,7 +57,7 @@ export type UnconfirmedInit = TxIntent & {
  * @hidden
  */
 export type UnconfirmedMove = TxIntent & {
-  methodName: ContractMethodName.MOVE;
+  methodName: 'move';
   from: LocationId;
   to: LocationId;
   forces: number;
@@ -79,7 +70,7 @@ export type UnconfirmedMove = TxIntent & {
  * @hidden
  */
 export type UnconfirmedFindArtifact = TxIntent & {
-  methodName: ContractMethodName.FIND_ARTIFACT;
+  methodName: 'findArtifact';
   planetId: LocationId;
 };
 
@@ -87,7 +78,7 @@ export type UnconfirmedFindArtifact = TxIntent & {
  * @hidden
  */
 export type UnconfirmedProspectPlanet = TxIntent & {
-  methodName: ContractMethodName.PROSPECT_PLANET;
+  methodName: 'prospectPlanet';
   planetId: LocationId;
 };
 
@@ -95,7 +86,7 @@ export type UnconfirmedProspectPlanet = TxIntent & {
  * @hidden
  */
 export type UnconfirmedPlanetTransfer = TxIntent & {
-  methodName: ContractMethodName.PLANET_TRANSFER;
+  methodName: 'transferPlanet';
   planetId: LocationId;
   newOwner: EthAddress;
 };
@@ -104,7 +95,7 @@ export type UnconfirmedPlanetTransfer = TxIntent & {
  * @hidden
  */
 export type UnconfirmedUpgrade = TxIntent & {
-  methodName: ContractMethodName.UPGRADE;
+  methodName: 'upgradePlanet';
   locationId: LocationId;
   upgradeBranch: number; // 0, 1, or 2
 };
@@ -113,7 +104,7 @@ export type UnconfirmedUpgrade = TxIntent & {
  * @hidden
  */
 export type UnconfirmedBuyHat = TxIntent & {
-  methodName: ContractMethodName.BUY_HAT;
+  methodName: 'buyHat';
   locationId: LocationId;
 };
 
@@ -121,7 +112,7 @@ export type UnconfirmedBuyHat = TxIntent & {
  * @hidden
  */
 export type UnconfirmedDepositArtifact = TxIntent & {
-  methodName: ContractMethodName.DEPOSIT_ARTIFACT;
+  methodName: 'depositArtifact';
   locationId: LocationId;
   artifactId: ArtifactId;
 };
@@ -130,7 +121,7 @@ export type UnconfirmedDepositArtifact = TxIntent & {
  * @hidden
  */
 export type UnconfirmedWithdrawArtifact = TxIntent & {
-  methodName: ContractMethodName.WITHDRAW_ARTIFACT;
+  methodName: 'withdrawArtifact';
   locationId: LocationId;
   artifactId: ArtifactId;
 };
@@ -139,6 +130,7 @@ export type UnconfirmedWithdrawArtifact = TxIntent & {
  * @hidden
  */
 export type UnconfirmedActivateArtifact = TxIntent & {
+  methodName: 'activateArtifact';
   locationId: LocationId;
   artifactId: ArtifactId;
   wormholeTo?: LocationId;
@@ -148,6 +140,7 @@ export type UnconfirmedActivateArtifact = TxIntent & {
  * @hidden
  */
 export type UnconfirmedDeactivateArtifact = TxIntent & {
+  methodName: 'deactivateArtifact';
   locationId: LocationId;
   artifactId: ArtifactId;
 };
@@ -156,7 +149,7 @@ export type UnconfirmedDeactivateArtifact = TxIntent & {
  * @hidden
  */
 export type UnconfirmedWithdrawSilver = TxIntent & {
-  methodName: ContractMethodName.WITHDRAW_SILVER;
+  methodName: 'withdrawSilver';
   locationId: LocationId;
   amount: number;
 };
@@ -165,7 +158,7 @@ export type UnconfirmedWithdrawSilver = TxIntent & {
  * @hidden
  */
 export type UnconfirmedReveal = TxIntent & {
-  methodName: ContractMethodName.REVEAL_LOCATION;
+  methodName: 'revealLocation';
   locationId: LocationId;
   location: WorldLocation;
 };
@@ -174,21 +167,21 @@ export type UnconfirmedReveal = TxIntent & {
  * @hidden
  */
 export type UnconfirmedAddKeys = TxIntent & {
-  methodName: ContractMethodName.ADD_KEYS;
+  methodName: 'addKeys';
 };
 
 /**
  * @hidden
  */
 export type UnconfirmedUseKey = TxIntent & {
-  methodName: ContractMethodName.USE_KEY;
+  methodName: 'useKey';
 };
 
 /**
  * @hidden
  */
 export type UnconfirmedGetShips = TxIntent & {
-  methodName: ContractMethodName.GET_SHIPS;
+  methodName: 'giveSpaceShips';
   locationId: LocationId;
 };
 
@@ -196,14 +189,14 @@ export type UnconfirmedGetShips = TxIntent & {
  * @hidden
  */
 export type UnconfirmedCreateLobby = TxIntent & {
-  methodName: ContractMethodName.CREATE_LOBBY;
+  methodName: 'createLobby';
 };
 
 /**
  * @hidden
  */
 export type UnconfirmedInvadePlanet = TxIntent & {
-  methodName: ContractMethodName.INVADE_PLANET;
+  methodName: 'invadePlanet';
   locationId: LocationId;
 };
 
@@ -211,6 +204,6 @@ export type UnconfirmedInvadePlanet = TxIntent & {
  * @hidden
  */
 export type UnconfirmedCapturePlanet = TxIntent & {
-  methodName: ContractMethodName.CAPTURE_PLANET;
+  methodName: 'capturePlanet';
   locationId: LocationId;
 };
