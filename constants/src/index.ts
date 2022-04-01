@@ -196,3 +196,9 @@ export const HAT_SIZES = [
   'haaaat',
   'HAAAAT',
 ];
+
+/**
+ * This should be updated every round.
+ */
+export const THEGRAPH_API_URL =
+  'https://api.thegraph.com/subgraphs/name/darkforest-eth/dark-forest-v06-round-5';

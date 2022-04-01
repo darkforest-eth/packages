@@ -51,6 +51,7 @@ import * as constants from 'http://cdn.skypack.dev/@darkforest_eth/constants';
 - [PLANET_CLAIM_MIN_LEVEL](README.md#planet_claim_min_level)
 - [RECOMMENDED_MODAL_WIDTH](README.md#recommended_modal_width)
 - [SpecialKey](README.md#specialkey)
+- [THEGRAPH_API_URL](README.md#thegraph_api_url)
 
 ## Variables
 
@@ -271,3 +272,11 @@ Keys to handle in a special fashion when dealing with key presses
 | `Shift`   | `"Shift"`   |
 | `Space`   | `" "`       |
 | `Tab`     | `"Tab"`     |
+
+---
+
+### THEGRAPH_API_URL
+
+• `Const` **THEGRAPH_API_URL**: `"https://api.thegraph.com/subgraphs/name/darkforest-eth/dark-forest-v06-round-5"`
+
+This should be updated every round.
