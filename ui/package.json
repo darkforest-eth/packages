@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/ui",
-  "version": "6.7.20",
+  "version": "6.7.22",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -21,8 +21,8 @@
     "clean": "del-cli dist node_modules tsconfig.ref.tsbuildinfo"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.7.20",
-    "@darkforest_eth/types": "6.7.20",
+    "@darkforest_eth/constants": "6.7.22",
+    "@darkforest_eth/types": "6.7.22",
     "@spectrum-web-components/slider": "^0.12.3",
     "@spectrum-web-components/theme": "^0.9.3",
     "color": "^3.0.2",
@@ -40,5 +40,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "f503effcbb1ff095741bca8c860504ead2e34112"
+  "gitHead": "69b58dee0d80b10b77032dfb756695fe7721a22e"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/serde",
-  "version": "6.7.20",
+  "version": "6.7.22",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -21,10 +21,10 @@
     "clean": "del-cli dist node_modules tsconfig.ref.tsbuildinfo"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.7.20",
-    "@darkforest_eth/contracts": "6.7.20",
-    "@darkforest_eth/hexgen": "6.7.20",
-    "@darkforest_eth/types": "6.7.20",
+    "@darkforest_eth/constants": "6.7.22",
+    "@darkforest_eth/contracts": "6.7.22",
+    "@darkforest_eth/hexgen": "6.7.22",
+    "@darkforest_eth/types": "6.7.22",
     "big-integer": "^1.6.48",
     "ethers": "^5.5.1"
   },
@@ -39,5 +39,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "f503effcbb1ff095741bca8c860504ead2e34112"
+  "gitHead": "69b58dee0d80b10b77032dfb756695fe7721a22e"
 }

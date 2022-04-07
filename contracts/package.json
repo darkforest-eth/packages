@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/contracts",
-  "version": "6.7.20",
+  "version": "6.7.22",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -40,5 +40,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "f503effcbb1ff095741bca8c860504ead2e34112"
+  "gitHead": "69b58dee0d80b10b77032dfb756695fe7721a22e"
 }
