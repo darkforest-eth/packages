@@ -18,6 +18,7 @@ export type ContractMethodName =
   | 'deactivateArtifact'
   | 'withdrawSilver'
   | 'useKey'
+  | 'adminUseKey'
   | 'addKeys'
   | 'giveSpaceShips'
   | 'createLobby'
@@ -175,6 +176,13 @@ export type UnconfirmedAddKeys = TxIntent & {
  */
 export type UnconfirmedUseKey = TxIntent & {
   methodName: 'useKey';
+};
+
+/**
+ * @hidden
+ */
+export type UnconfirmedAdminUseKey = TxIntent & {
+  methodName: 'adminUseKey';
 };
 
 /**

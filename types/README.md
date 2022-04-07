@@ -366,7 +366,7 @@ Represents a planet location that has been broadcast on-chain
 
 ### ContractMethodName
 
-Ƭ **ContractMethodName**: `"revealLocation"` \| `"initializePlayer"` \| `"move"` \| `"upgradePlanet"` \| `"buyHat"` \| `"transferPlanet"` \| `"findArtifact"` \| `"prospectPlanet"` \| `"depositArtifact"` \| `"withdrawArtifact"` \| `"activateArtifact"` \| `"deactivateArtifact"` \| `"withdrawSilver"` \| `"useKey"` \| `"addKeys"` \| `"giveSpaceShips"` \| `"createLobby"` \| `"invadePlanet"` \| `"capturePlanet"`
+Ƭ **ContractMethodName**: `"revealLocation"` \| `"initializePlayer"` \| `"move"` \| `"upgradePlanet"` \| `"buyHat"` \| `"transferPlanet"` \| `"findArtifact"` \| `"prospectPlanet"` \| `"depositArtifact"` \| `"withdrawArtifact"` \| `"activateArtifact"` \| `"deactivateArtifact"` \| `"withdrawSilver"` \| `"useKey"` \| `"adminUseKey"` \| `"addKeys"` \| `"giveSpaceShips"` \| `"createLobby"` \| `"invadePlanet"` \| `"capturePlanet"`
 
 ---
 

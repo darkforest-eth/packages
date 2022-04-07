@@ -39,6 +39,7 @@ import * as hashing from 'http://cdn.skypack.dev/@darkforest_eth/hashing';
 
 - [getRandomGradientAt](README.md#getrandomgradientat)
 - [mimcHash](README.md#mimchash)
+- [mimcSponge](README.md#mimcsponge)
 - [modPBigInt](README.md#modpbigint)
 - [modPBigIntNative](README.md#modpbigintnative)
 - [perlin](README.md#perlin)
@@ -104,6 +105,25 @@ The primary function used to build any MiMC hashing algorithm for Dark Forest.
 ##### Returns
 
 `BigInteger`
+
+---
+
+### mimcSponge
+
+▸ **mimcSponge**(`inputs`, `nOutputs`, `rounds`, `key`): `BigInteger`[]
+
+#### Parameters
+
+| Name       | Type           |
+| :--------- | :------------- |
+| `inputs`   | `BigInteger`[] |
+| `nOutputs` | `number`       |
+| `rounds`   | `number`       |
+| `key`      | `number`       |
+
+#### Returns
+
+`BigInteger`[]
 
 ---
 
