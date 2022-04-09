@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/constants",
-  "version": "6.7.25",
+  "version": "6.7.26",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -21,7 +21,7 @@
     "clean": "del-cli dist node_modules tsconfig.ref.tsbuildinfo"
   },
   "dependencies": {
-    "@darkforest_eth/types": "6.7.25",
+    "@darkforest_eth/types": "6.7.26",
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
@@ -35,5 +35,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "b4b32aa42df443109045c31e0d40aae98d7c5063"
+  "gitHead": "51854c5062d507d5b55087b7fe0b55738f8e52a3"
 }
