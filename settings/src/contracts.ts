@@ -15,6 +15,13 @@ export const decodeContracts = decoders.guard(
      */
     CONTRACT_ADDRESS: decoders.string,
     INIT_ADDRESS: decoders.string,
+    /**
+     * Library addresses
+     */
+    VERIFIER_ADDRESS: decoders.string,
+    LIB_GAME_UTILS_ADDRESS: decoders.string,
+    LIB_PLANET_ADDRESS: decoders.string,
+    LIB_ARTIFACT_UTILS_ADDRESS: decoders.string,
   }),
   { style: 'simple' }
 );
