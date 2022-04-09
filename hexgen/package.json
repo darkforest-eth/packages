@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/hexgen",
-  "version": "6.7.24",
+  "version": "6.7.25",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -21,7 +21,7 @@
     "clean": "del-cli dist node_modules tsconfig.ref.tsbuildinfo"
   },
   "dependencies": {
-    "@darkforest_eth/types": "6.7.24",
+    "@darkforest_eth/types": "6.7.25",
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
@@ -35,5 +35,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "97ba637f16c15df2f8c02ea0c1c85504a8aeb25b"
+  "gitHead": "b4b32aa42df443109045c31e0d40aae98d7c5063"
 }
