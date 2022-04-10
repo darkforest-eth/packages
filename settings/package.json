@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/settings",
-  "version": "6.7.26",
+  "version": "6.7.27",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -34,5 +34,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "51854c5062d507d5b55087b7fe0b55738f8e52a3"
+  "gitHead": "1b9842b43d307c6333256e90309dba59d9f9f9fe"
 }
