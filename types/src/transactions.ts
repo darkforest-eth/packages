@@ -25,7 +25,11 @@ export const enum ContractMethodName {
   GET_SHIPS = 'giveSpaceShips',
   CREATE_LOBBY = 'createLobby',
   INVADE_PLANET = 'invadePlanet',
+  INVADE_TARGET_PLANET = 'invadeTargetPlanet',
   CAPTURE_PLANET = 'capturePlanet',
+  CLAIM_VICTORY = "claimTargetPlanetVictory",
+  CREATE_PLANET = "createPlanet",
+  CREATE_ARENA_PLANET = "createArenaPlanet",
 }
 
 /**
@@ -207,10 +211,31 @@ export type UnconfirmedInvadePlanet = TxIntent & {
   locationId: LocationId;
 };
 
+/*
+* @hidden
+*/
+export declare type UnconfirmedInvadeTargetPlanet = TxIntent & {
+   methodName: ContractMethodName.INVADE_TARGET_PLANET;
+   locationId: LocationId;
+};
+
 /**
  * @hidden
  */
 export type UnconfirmedCapturePlanet = TxIntent & {
   methodName: ContractMethodName.CAPTURE_PLANET;
   locationId: LocationId;
+};
+/**
+ * @hidden
+ */
+ export declare type UnconfirmedClaimVictory = TxIntent & {
+  methodName: ContractMethodName.CLAIM_VICTORY;
+  locationId: LocationId;
+};
+/**
+ * @hidden
+ */
+ export declare type UnconfirmedCreateArenaPlanet = TxIntent & {
+  methodName: ContractMethodName.CREATE_ARENA_PLANET;
 };

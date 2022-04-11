@@ -149,6 +149,8 @@ export type Planet = {
   invader?: EthAddress;
   capturer?: EthAddress;
   invadeStartBlock?: number;
+  isTargetPlanet: boolean;
+  isSpawnPlanet: boolean;
 };
 
 /**
@@ -205,3 +207,14 @@ export class DFStatefulAnimation<T> extends DFAnimation {
     return this._state;
   }
 }
+
+export type AdminPlanet = {
+  x: number;
+  y: number;
+  level: number;
+  planetType: number;
+  requireValidLocationId: boolean;
+  revealLocation: boolean;
+  isTargetPlanet: boolean;
+  isSpawnPlanet: boolean;
+};

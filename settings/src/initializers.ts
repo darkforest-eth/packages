@@ -146,6 +146,12 @@ export const decodeInitializers = decoders.guard(
     ),
     CAPTURE_ZONE_HOLD_BLOCKS_REQUIRED: withDefault(decoders.number, 16),
     CAPTURE_ZONES_PER_5000_WORLD_RADIUS: withDefault(decoders.number, 1),
+
+    MANUAL_SPAWN: withDefault(decoders.boolean, false),
+
+    TARGET_PLANETS: withDefault(decoders.boolean, false),
+    TARGET_PLANET_HOLD_BLOCKS_REQUIRED: withDefault(decoders.number, 16),
+
   }),
   { style: 'simple' }
 );

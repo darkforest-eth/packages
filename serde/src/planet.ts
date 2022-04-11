@@ -15,6 +15,7 @@ import { locationIdFromDecStr } from './location';
 export type RawPlanet = Awaited<ReturnType<DarkForest['planets']>>;
 export type RawPlanetExtendedInfo = Awaited<ReturnType<DarkForest['planetsExtendedInfo']>>;
 export type RawPlanetExtendedInfo2 = Awaited<ReturnType<DarkForest['planetsExtendedInfo2']>>;
+export type RawPlanetArenaInfo = Awaited<ReturnType<DarkForest['planetsArenaInfo']>>;
 
 /**
  * Converts data obtained from a contract call (typed with Typechain) into a
@@ -35,12 +36,15 @@ export type RawPlanetExtendedInfo2 = Awaited<ReturnType<DarkForest['planetsExten
  * `PlanetTypes.PlanetExtendedInfo`
  * @param rawPlanetExtendedInfo2 typechain-typed result of a call returning a
  * `PlanetTypes.PlanetExtendedInfo2`
+ *  * @param rawPlanetArenaInfo typechain-typed result of a call returning a
+ * `PlanetTypes.PlanetArenaInfo`
  */
 export function decodePlanet(
   rawLocationId: string,
   rawPlanet: RawPlanet,
   rawPlanetExtendedInfo: RawPlanetExtendedInfo,
-  rawPlanetExtendedInfo2: RawPlanetExtendedInfo2
+  rawPlanetExtendedInfo2: RawPlanetExtendedInfo2,
+  rawPlanetArenaInfo: RawPlanetArenaInfo,
 ): Planet {
   const locationId = locationIdFromDecStr(rawLocationId.toString());
 
@@ -100,6 +104,9 @@ export function decodePlanet(
     invadeStartBlock: rawPlanetExtendedInfo2.invadeStartBlock.eq(0)
       ? undefined
       : rawPlanetExtendedInfo2.invadeStartBlock.toNumber(),
+
+      isTargetPlanet: rawPlanetArenaInfo.targetPlanet,
+      isSpawnPlanet: rawPlanetArenaInfo.spawnPlanet
   };
 
   return planet;

@@ -5,12 +5,14 @@ import {
   UnconfirmedActivateArtifact,
   UnconfirmedBuyHat,
   UnconfirmedCapturePlanet,
+  UnconfirmedClaimVictory,
   UnconfirmedDeactivateArtifact,
   UnconfirmedDepositArtifact,
   UnconfirmedFindArtifact,
   UnconfirmedGetShips,
   UnconfirmedInit,
   UnconfirmedInvadePlanet,
+  UnconfirmedInvadeTargetPlanet,
   UnconfirmedMove,
   UnconfirmedPlanetTransfer,
   UnconfirmedProspectPlanet,
@@ -107,6 +109,16 @@ export function isUnconfirmedInvadePlanet(txIntent: TxIntent): txIntent is Uncon
   return txIntent.methodName === ContractMethodName.INVADE_PLANET;
 }
 
+export function isUnconfirmedInvadeTargetPlanet(txIntent: TxIntent): txIntent is UnconfirmedInvadeTargetPlanet {
+  return txIntent.methodName === ContractMethodName.INVADE_TARGET_PLANET;
+}
+
+export function isUnconfirmedClaimVictory(
+  txIntent: TxIntent
+): txIntent is UnconfirmedClaimVictory {
+  return txIntent.methodName === ContractMethodName.CLAIM_VICTORY;
+}
+
 export function isUnconfirmedRevealTx(tx: Transaction): tx is Transaction<UnconfirmedReveal> {
   return isUnconfirmedReveal(tx.intent);
 }
@@ -118,6 +130,7 @@ export function isUnconfirmedInitTx(tx: Transaction): tx is Transaction<Unconfir
 export function isUnconfirmedMoveTx(tx: Transaction): tx is Transaction<UnconfirmedMove> {
   return isUnconfirmedMove(tx.intent);
 }
+
 
 export function isUnconfirmedReleaseTx(tx: Transaction): tx is Transaction<UnconfirmedMove> {
   return isUnconfirmedRelease(tx.intent);
@@ -194,3 +207,16 @@ export function isUnconfirmedCapturePlanetTx(
 ): tx is Transaction<UnconfirmedCapturePlanet> {
   return isUnconfirmedCapturePlanet(tx.intent);
 }
+
+export function isUnconfirmedInvadeTargetPlanetTx(
+  tx: Transaction
+): tx is Transaction<UnconfirmedInvadeTargetPlanet> {
+  return isUnconfirmedInvadeTargetPlanet(tx.intent);
+}
+
+export function isUnconfirmedClaimVictoryTx(
+  tx: Transaction
+): tx is Transaction<UnconfirmedClaimVictory> {
+  return isUnconfirmedClaimVictory(tx.intent);
+}
+
