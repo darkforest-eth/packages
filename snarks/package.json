@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/snarks",
-  "version": "6.7.27",
+  "version": "6.7.28",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -41,5 +41,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "1b9842b43d307c6333256e90309dba59d9f9f9fe"
+  "gitHead": "3a6c76d2f63fb7207250aee79114fcf70bde3afc"
 }

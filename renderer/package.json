@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/renderer",
-  "version": "6.7.27",
+  "version": "6.7.28",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -23,12 +23,12 @@
     "clean": "del-cli dist node_modules tsconfig.ref.tsbuildinfo"
   },
   "dependencies": {
-    "@darkforest_eth/constants": "6.7.27",
-    "@darkforest_eth/gamelogic": "6.7.27",
-    "@darkforest_eth/hashing": "6.7.27",
-    "@darkforest_eth/procedural": "6.7.27",
-    "@darkforest_eth/serde": "6.7.27",
-    "@darkforest_eth/types": "6.7.27",
+    "@darkforest_eth/constants": "6.7.28",
+    "@darkforest_eth/gamelogic": "6.7.28",
+    "@darkforest_eth/hashing": "6.7.28",
+    "@darkforest_eth/procedural": "6.7.28",
+    "@darkforest_eth/serde": "6.7.28",
+    "@darkforest_eth/types": "6.7.28",
     "@types/gl-matrix": "^3.2.0",
     "@types/webgl2": "^0.0.5",
     "auto-bind": "^4.0.0",
@@ -45,5 +45,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "1b9842b43d307c6333256e90309dba59d9f9f9fe"
+  "gitHead": "3a6c76d2f63fb7207250aee79114fcf70bde3afc"
 }
