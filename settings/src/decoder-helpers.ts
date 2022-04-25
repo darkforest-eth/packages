@@ -54,6 +54,28 @@ export function array6<A>(decoder: decoders.Decoder<A>) {
   );
 }
 
+export type ExactArray8<A> = [A, A, A, A, A, A, A, A];
+
+export function exactArray8<A>(decoder: decoders.Decoder<A>) {
+  return decoders.map(
+    decoders.compose(
+      decoders.array(decoder),
+      decoders.predicate((arr) => arr.length === 8, `Must be exactly 8-length`)
+    ),
+    (value) =>
+      [
+        value[0],
+        value[1],
+        value[2],
+        value[3],
+        value[4],
+        value[5],
+        value[6],
+        value[7],
+      ] as ExactArray8<A>
+  );
+}
+
 export type ExactArray10<A> = [A, A, A, A, A, A, A, A, A, A];
 
 export function exactArray10<A>(decoder: decoders.Decoder<A>) {

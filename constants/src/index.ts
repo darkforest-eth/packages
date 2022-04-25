@@ -196,3 +196,9 @@ export const HAT_SIZES = [
   'haaaat',
   'HAAAAT',
 ];
+
+export const GNOSIS_OPTIMISM_CHAIN_ID = 300 as const;
+
+export const KOVAN_OPTIMISM_CHAIN_ID = 69 as const;
+
+export const GNOSIS_CHAIN_ID = 100 as const;

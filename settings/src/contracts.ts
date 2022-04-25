@@ -18,10 +18,10 @@ export const decodeContracts = decoders.guard(
     /**
      * Library addresses
      */
-    VERIFIER_ADDRESS: decoders.string,
-    LIB_GAME_UTILS_ADDRESS: decoders.string,
-    LIB_PLANET_ADDRESS: decoders.string,
-    LIB_ARTIFACT_UTILS_ADDRESS: decoders.string,
+    VERIFIER_ADDRESS: decoders.either(decoders.string,decoders.undefined_),
+    LIB_GAME_UTILS_ADDRESS: decoders.either(decoders.string,decoders.undefined_),
+    LIB_PLANET_ADDRESS: decoders.either(decoders.string,decoders.undefined_),
+    LIB_ARTIFACT_UTILS_ADDRESS: decoders.either(decoders.string,decoders.undefined_)
   }),
   { style: 'simple' }
 );

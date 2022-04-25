@@ -1,9 +1,10 @@
 import * as decoders from 'decoders';
-import type { ExactArray10, ExactArray4, ExactArray5, Tuple6 } from './decoder-helpers';
+import type { ExactArray10, ExactArray8, ExactArray4, ExactArray5, Tuple6 } from './decoder-helpers';
 import {
   array6,
   between,
   exactArray10,
+  exactArray8,
   exactArray4,
   exactArray5,
   withDefault,
@@ -151,6 +152,16 @@ export const decodeInitializers = decoders.guard(
 
     TARGET_PLANETS: withDefault(decoders.boolean, false),
     TARGET_PLANET_HOLD_BLOCKS_REQUIRED: withDefault(decoders.number, 16),
+
+    MODIFIERS: withDefault<ExactArray8<number>>(
+      exactArray8(decoders.number),
+      [100,100,100,100,100,100,100,100]
+    ),
+
+    SPACESHIPS: withDefault<ExactArray5<boolean>>(
+      exactArray5(decoders.boolean),
+      [true, true, true, true, true]
+    )
 
   }),
   { style: 'simple' }
