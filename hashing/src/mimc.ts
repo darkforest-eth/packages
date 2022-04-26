@@ -319,7 +319,7 @@ export const mimcWithRounds =
  * @param key The key for the MiMC algorithm. Will usually be PLANETHASH_KEY, SPACETYPE_KEY, or BIOMEBASE_KEY.
  */
 function mimcHash(key: number) {
-  return mimcWithRounds(220, key);
+  return mimcWithRounds(5, key);
 }
 
 export const perlinRandHash = (key: number) => mimcWithRounds(4, key);
