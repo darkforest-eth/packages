@@ -151,8 +151,7 @@ export const decodeInitializers = decoders.guard(
     MANUAL_SPAWN: withDefault(decoders.boolean, false),
 
     TARGET_PLANETS: withDefault(decoders.boolean, false),
-    TARGET_PLANET_HOLD_BLOCKS_REQUIRED: withDefault(decoders.number, 16),
-
+    CLAIM_VICTORY_ENERGY_PERCENT : withDefault(decoders.number, 50),
     MODIFIERS: withDefault<ExactArray8<number>>(
       exactArray8(decoders.number),
       [100,100,100,100,100,100,100,100]
@@ -161,7 +160,9 @@ export const decodeInitializers = decoders.guard(
     SPACESHIPS: withDefault<ExactArray5<boolean>>(
       exactArray5(decoders.boolean),
       [true, true, true, true, true]
-    )
+    ),
+
+
 
   }),
   { style: 'simple' }

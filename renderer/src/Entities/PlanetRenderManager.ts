@@ -183,9 +183,10 @@ export class PlanetRenderManager {
     radiusW: number,
     textAlpha: number
   ) {
-    if (!renderInfo.planet.messages) return;
     const { overlay2dRenderer: cM } = this.renderer;
-    cM.drawPlanetMessages(coords, radiusW, renderInfo, textAlpha);
+    if (renderInfo.planet.isTargetPlanet) cM.drawTarget(coords, radiusW, renderInfo, textAlpha);
+    else if (renderInfo.planet.messages)
+      cM.drawPlanetMessages(coords, radiusW, renderInfo, textAlpha);
   }
 
   private queueArtifactIcon(planet: Planet, { x, y }: WorldCoords, radius: number) {
