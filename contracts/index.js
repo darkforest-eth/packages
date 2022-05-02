@@ -78,3 +78,10 @@ exports.LIB_PLANET_ADDRESS = '0x06Eb5e618b313c6C7DeeDcE9e788BA7aE17A6de5';
  * The address for the LibArtifacts library. Useful for lobbies.
  */
 exports.LIB_ARTIFACT_UTILS_ADDRESS = '0x19BfD86E25Cec4928626762Fe3d89E9624D5c51B';
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+exports.FAUCET_ADDRESS = void 0;
+/**
+ * The address for the Faucet contract. Useful for lobbies.
+ */
+exports.FAUCET_ADDRESS = '0x58E0C68ec2f0B770F9000b3e26e5D760591c58Ad';

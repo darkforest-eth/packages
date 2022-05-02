@@ -21,7 +21,8 @@ export const decodeContracts = decoders.guard(
     VERIFIER_ADDRESS: decoders.either(decoders.string,decoders.undefined_),
     LIB_GAME_UTILS_ADDRESS: decoders.either(decoders.string,decoders.undefined_),
     LIB_PLANET_ADDRESS: decoders.either(decoders.string,decoders.undefined_),
-    LIB_ARTIFACT_UTILS_ADDRESS: decoders.either(decoders.string,decoders.undefined_)
+    LIB_ARTIFACT_UTILS_ADDRESS: decoders.either(decoders.string,decoders.undefined_),
+    FAUCET_ADDRESS: decoders.either(decoders.string,decoders.undefined_)
   }),
   { style: 'simple' }
 );
