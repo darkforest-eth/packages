@@ -41,32 +41,32 @@ export declare const NETWORK_ID = 300;
 /**
  * The block in which the DarkForest contract was initialized.
  */
-export declare const START_BLOCK = 47399;
+export declare const START_BLOCK = 48135;
 /**
  * The address for the DarkForest contract.
  */
-export declare const CONTRACT_ADDRESS = '0xC31B2697f310aDDD8e241bcE1958Bce53Bbfaaed';
+export declare const CONTRACT_ADDRESS = '0x9EED3460Ce72254f9F0ad5164C12F39E5E10A40C';
 /**
  * The address for the initalizer contract. Useful for lobbies.
  */
-export declare const INIT_ADDRESS = '0xff3a25E86B2a9Fc5B2FfdE1553D8110C549AA899';
+export declare const INIT_ADDRESS = '0x6b9EA68DbF64aFe8eeFED0169A8B4c5fa8c666cc';
 /**
  * The address for the Verifier library. Useful for lobbies.
  */
-export declare const VERIFIER_ADDRESS = '0x6b96263225CC723e72F274817a449a2FD8A6c25a';
+export declare const VERIFIER_ADDRESS = '0xC6cDe623Dd2a027df6F7c13f7dD240E3A89CBA68';
 /**
  * The address for the LibGameUtils library. Useful for lobbies.
  */
-export declare const LIB_GAME_UTILS_ADDRESS = '0x9eC5082F943fF5Dd102450F496377D43f589eFa7';
+export declare const LIB_GAME_UTILS_ADDRESS = '0xFcEF980d2433E335D66a838B86cd213Aa710378D';
 /**
  * The address for the LibPlanet library. Useful for lobbies.
  */
-export declare const LIB_PLANET_ADDRESS = '0x06Eb5e618b313c6C7DeeDcE9e788BA7aE17A6de5';
+export declare const LIB_PLANET_ADDRESS = '0x58eD9B2E7f1fEC6889D137Bc7Ced7ecD87aD06Ee';
 /**
  * The address for the LibArtifacts library. Useful for lobbies.
  */
-export declare const LIB_ARTIFACT_UTILS_ADDRESS = '0x19BfD86E25Cec4928626762Fe3d89E9624D5c51B';
+export declare const LIB_ARTIFACT_UTILS_ADDRESS = '0x816a0EC0a526968a8d79e7D0e7113d5afAc25eD0';
 /**
  * The address for the Faucet contract. Useful for lobbies.
  */
-export declare const FAUCET_ADDRESS = '0x58E0C68ec2f0B770F9000b3e26e5D760591c58Ad';
+export declare const FAUCET_ADDRESS = '0xEb1E97445A9E8042a5120ECE339aB70b07307edf';
