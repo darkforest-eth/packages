@@ -244,16 +244,16 @@ export class Overlay2DRenderer {
     });
   }
 
-  drawTarget(
+  drawEmoji(
     centerWorld: WorldCoords,
     radiusWorld: number,
     renderInfo: PlanetRenderInfo,
-    textAlpha: number
+    textAlpha: number,
+    emoji: string
   ) {
     const viewport = this.renderer.getViewport();
     const pixelCoords = viewport.worldToCanvasCoords(centerWorld);
     const radiusPixels = viewport.worldToCanvasDist(radiusWorld);
-    const text : string = `🎯`;
 
     let size = radiusPixels;
     let offsetY = -2;
@@ -277,9 +277,9 @@ export class Overlay2DRenderer {
 
     this.ctx.font = `${size}px Arial`;
     this.ctx.fillStyle = `rgba(0, 0, 0, ${textAlpha})`;
-    const textSize = this.ctx.measureText(text);
+    const textSize = this.ctx.measureText(emoji);
     this.ctx.fillText(
-      text,
+      emoji,
       pixelCoords.x - textSize.width / 2,
       pixelCoords.y - radiusPixels * 1.3 + offsetY
     );

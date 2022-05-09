@@ -184,7 +184,10 @@ export class PlanetRenderManager {
     textAlpha: number
   ) {
     const { overlay2dRenderer: cM } = this.renderer;
-    if (renderInfo.planet.isTargetPlanet) cM.drawTarget(coords, radiusW, renderInfo, textAlpha);
+    if (renderInfo.planet.isTargetPlanet)
+      cM.drawEmoji(coords, radiusW, renderInfo, textAlpha, `🎯`);
+    else if (renderInfo.planet.isSpawnPlanet)
+      cM.drawEmoji(coords, radiusW, renderInfo, textAlpha, `🍼`);
     else if (renderInfo.planet.messages)
       cM.drawPlanetMessages(coords, radiusW, renderInfo, textAlpha);
   }
