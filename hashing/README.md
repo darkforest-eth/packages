@@ -26,22 +26,20 @@ import * as hashing from 'http://cdn.skypack.dev/@darkforest_eth/hashing';
 
 ## Table of contents
 
-### Classes
-
-- [Fraction](classes/Fraction.md)
-
 ### Interfaces
 
 - [IntegerVector](interfaces/IntegerVector.md)
 
 ### Variables
 
+- [Fraction](README.md#fraction)
 - [MAX_PERLIN_VALUE](README.md#max_perlin_value)
 
 ### Functions
 
 - [getRandomGradientAt](README.md#getrandomgradientat)
 - [mimcHash](README.md#mimchash)
+- [mimcSponge](README.md#mimcsponge)
 - [modPBigInt](README.md#modpbigint)
 - [modPBigIntNative](README.md#modpbigintnative)
 - [perlin](README.md#perlin)
@@ -50,23 +48,29 @@ import * as hashing from 'http://cdn.skypack.dev/@darkforest_eth/hashing';
 
 ## Variables
 
+### Fraction
+
+• **Fraction**: `IFraction`
+
+---
+
 ### MAX_PERLIN_VALUE
 
-• **MAX_PERLIN_VALUE**: `32`
+• `Const` **MAX_PERLIN_VALUE**: `32`
 
 ## Functions
 
 ### getRandomGradientAt
 
-▸ `Const` **getRandomGradientAt**(`point`, `scale`, `randFn`): `Vector`
+▸ **getRandomGradientAt**(`point`, `scale`, `randFn`): `Vector`
 
 #### Parameters
 
-| Name     | Type                              |
-| :------- | :-------------------------------- |
-| `point`  | `Vector`                          |
-| `scale`  | [`Fraction`](classes/Fraction.md) |
-| `randFn` | `HashFn`                          |
+| Name     | Type        |
+| :------- | :---------- |
+| `point`  | `Vector`    |
+| `scale`  | `IFraction` |
+| `randFn` | `HashFn`    |
 
 #### Returns
 
@@ -101,6 +105,25 @@ The primary function used to build any MiMC hashing algorithm for Dark Forest.
 ##### Returns
 
 `BigInteger`
+
+---
+
+### mimcSponge
+
+▸ **mimcSponge**(`inputs`, `nOutputs`, `rounds`, `key`): `BigInteger`[]
+
+#### Parameters
+
+| Name       | Type           |
+| :--------- | :------------- |
+| `inputs`   | `BigInteger`[] |
+| `nOutputs` | `number`       |
+| `rounds`   | `number`       |
+| `key`      | `number`       |
+
+#### Returns
+
+`BigInteger`[]
 
 ---
 
@@ -163,7 +186,7 @@ Calculates the perlin for a location, given the x,y pair and the PerlinConfig fo
 
 ### rand
 
-▸ `Const` **rand**(`key`): (...`args`: `number`[]) => `number`
+▸ **rand**(`key`): (...`args`: `number`[]) => `number`
 
 #### Parameters
 

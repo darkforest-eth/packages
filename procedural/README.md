@@ -77,37 +77,37 @@
 
 ### grayColors
 
-• **grayColors**: `PlanetCosmeticInfo`
+• `Const` **grayColors**: `PlanetCosmeticInfo`
 
 ---
 
 ### mockCommon
 
-• **mockCommon**: `Artifact`
+• `Const` **mockCommon**: `Artifact`
 
 ---
 
 ### mockEpic
 
-• **mockEpic**: `Artifact`
+• `Const` **mockEpic**: `Artifact`
 
 ---
 
 ### mockLegendary
 
-• **mockLegendary**: `Artifact`
+• `Const` **mockLegendary**: `Artifact`
 
 ---
 
 ### mockRare
 
-• **mockRare**: `Artifact`
+• `Const` **mockRare**: `Artifact`
 
 ## Functions
 
 ### artifactName
 
-▸ `Const` **artifactName**(`artifact`): `string`
+▸ **artifactName**(`artifact`): `string`
 
 #### Parameters
 
@@ -473,7 +473,7 @@
 
 ### mockArtifact
 
-▸ `Const` **mockArtifact**(`rarity`, `artifactType?`, `planetBiome?`): `Artifact`
+▸ **mockArtifact**(`rarity`, `artifactType?`, `planetBiome?`): `Artifact`
 
 #### Parameters
 
@@ -491,7 +491,7 @@
 
 ### mockArtifactWithRarity
 
-▸ `Const` **mockArtifactWithRarity**(`rarity`, `artifactType?`, `planetBiome?`): `Artifact`
+▸ **mockArtifactWithRarity**(`rarity`, `artifactType?`, `planetBiome?`): `Artifact`
 
 #### Parameters
 
@@ -597,7 +597,7 @@
 
 ### titleCase
 
-▸ `Const` **titleCase**(`title`): `string`
+▸ **titleCase**(`title`): `string`
 
 #### Parameters
 

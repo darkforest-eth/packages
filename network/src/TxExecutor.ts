@@ -1,7 +1,6 @@
 import {
   AutoGasSetting,
   DiagnosticUpdater,
-  EthTxStatus,
   NetworkEvent,
   PersistedTransaction,
   Transaction,
@@ -186,7 +185,7 @@ export class TxExecutor {
     const tx: Transaction<T> = {
       id: this.nextId(),
       lastUpdatedAt: Date.now(),
-      state: EthTxStatus.Init,
+      state: 'Init',
       intent: ser.intent,
       submittedPromise,
       confirmedPromise,
@@ -242,7 +241,7 @@ export class TxExecutor {
     const tx: Transaction<T> = {
       id,
       lastUpdatedAt: Date.now(),
-      state: EthTxStatus.Init,
+      state: 'Init',
       intent,
       submittedPromise,
       confirmedPromise,
@@ -279,12 +278,12 @@ export class TxExecutor {
 
   public dequeueTransction(tx: Transaction) {
     this.queue.remove((queuedTx) => queuedTx?.id === tx.id);
-    tx.state = EthTxStatus.Cancel;
+    tx.state = 'Cancel';
   }
 
   public prioritizeTransaction(tx: Transaction) {
     this.queue.prioritize((queuedTx) => queuedTx?.id === tx.id);
-    tx.state = EthTxStatus.Prioritized;
+    tx.state = 'Prioritized';
   }
 
   /**
@@ -348,7 +347,7 @@ export class TxExecutor {
     const time_exec_called = Date.now();
 
     try {
-      tx.state = EthTxStatus.Processing;
+      tx.state = 'Processing';
 
       if (this.beforeTransaction) {
         await this.beforeTransaction(tx);
@@ -373,7 +372,7 @@ export class TxExecutor {
         `tx request ${tx.id} failed to submit: timed out}`
       );
 
-      tx.state = EthTxStatus.Submit;
+      tx.state = 'Submit';
       tx.hash = submitted.hash;
 
       time_submitted = Date.now();
@@ -386,18 +385,18 @@ export class TxExecutor {
       if (confirmed.status !== 1) {
         time_errored = Date.now();
         tx.lastUpdatedAt = time_errored;
-        tx.state = EthTxStatus.Fail;
+        tx.state = 'Fail';
         await this.resetNonce();
         throw new Error('transaction reverted');
       } else {
-        tx.state = EthTxStatus.Confirm;
+        tx.state = 'Confirm';
         time_confirmed = Date.now();
         tx.lastUpdatedAt = time_confirmed;
         tx.onTransactionReceipt(confirmed);
       }
     } catch (e) {
       console.error(e);
-      tx.state = EthTxStatus.Fail;
+      tx.state = 'Fail';
       error = e as Error;
 
       if (!time_submitted) {

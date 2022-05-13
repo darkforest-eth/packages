@@ -35,6 +35,7 @@ import * as snarks from 'http://cdn.skypack.dev/@darkforest_eth/snarks';
 - [RevealSnarkInput](interfaces/RevealSnarkInput.md)
 - [SnarkJSProof](interfaces/SnarkJSProof.md)
 - [SnarkJSProofAndSignals](interfaces/SnarkJSProofAndSignals.md)
+- [WhitelistSnarkInput](interfaces/WhitelistSnarkInput.md)
 
 ### Type aliases
 
@@ -43,6 +44,7 @@ import * as snarks from 'http://cdn.skypack.dev/@darkforest_eth/snarks';
 - [InitSnarkContractCallArgs](README.md#initsnarkcontractcallargs)
 - [MoveSnarkContractCallArgs](README.md#movesnarkcontractcallargs)
 - [RevealSnarkContractCallArgs](README.md#revealsnarkcontractcallargs)
+- [WhitelistSnarkContractCallArgs](README.md#whitelistsnarkcontractcallargs)
 
 ### Functions
 
@@ -60,7 +62,7 @@ Shape of the args for `findArtifact` DarkForest contract call.
 
 ### ContractCallArgs
 
-Ƭ **ContractCallArgs**: [`RevealSnarkContractCallArgs`](README.md#revealsnarkcontractcallargs) \| [`InitSnarkContractCallArgs`](README.md#initsnarkcontractcallargs) \| [`MoveSnarkContractCallArgs`](README.md#movesnarkcontractcallargs) \| [`BiomebaseSnarkContractCallArgs`](README.md#biomebasesnarkcontractcallargs)
+Ƭ **ContractCallArgs**: [`RevealSnarkContractCallArgs`](README.md#revealsnarkcontractcallargs) \| [`InitSnarkContractCallArgs`](README.md#initsnarkcontractcallargs) \| [`MoveSnarkContractCallArgs`](README.md#movesnarkcontractcallargs) \| [`BiomebaseSnarkContractCallArgs`](README.md#biomebasesnarkcontractcallargs) \| [`WhitelistSnarkContractCallArgs`](README.md#whitelistsnarkcontractcallargs)
 
 Type representing the shape of args that are passed into DarkForest
 functions that require zkSNARK verification.
@@ -91,6 +93,14 @@ are not part of the zkSNARK.
 Ƭ **RevealSnarkContractCallArgs**: [[`string`, `string`], [[`string`, `string`], [`string`, `string`]], [`string`, `string`], [`string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`]]
 
 Shape of the args for `revealLocation` DarkForest contract call
+
+---
+
+### WhitelistSnarkContractCallArgs
+
+Ƭ **WhitelistSnarkContractCallArgs**: [[`string`, `string`], [[`string`, `string`], [`string`, `string`]], [`string`, `string`], [`string`, `string`]]
+
+Shape of the args for `whitelistRegister` DarkForest contract call.
 
 ## Functions
 

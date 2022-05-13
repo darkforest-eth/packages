@@ -1,9 +1,11 @@
 import {
   CanvasCoords,
+  RendererType,
   RenderZIndex,
   RGBAVec,
   TextAlign,
   TextAnchor,
+  TextRendererType,
   WorldCoords,
 } from '@darkforest_eth/types';
 import { engineConsts } from '../EngineConsts';
@@ -21,7 +23,10 @@ const { glyphW, glyphH, canvasDim, rowL, scale } = engineConsts.glyphs;
 const screenW = glyphW / scale;
 const screenH = glyphH / scale;
 
-export class TextRenderer extends GenericRenderer<typeof TEXT_PROGRAM_DEFINITION, GameGLManager> {
+export class TextRenderer
+  extends GenericRenderer<typeof TEXT_PROGRAM_DEFINITION, GameGLManager>
+  implements TextRendererType
+{
   bufferCanvas: HTMLCanvasElement;
 
   quad3Buffer: number[];
@@ -30,11 +35,11 @@ export class TextRenderer extends GenericRenderer<typeof TEXT_PROGRAM_DEFINITION
   glyphData: Map<string, GlyphInfo>;
 
   texIdx: number;
-
-  constructor(manager: GameGLManager, bufferCanvas: HTMLCanvasElement) {
+  rendererType = RendererType.Text;
+  constructor(manager: GameGLManager) {
     super(manager, TEXT_PROGRAM_DEFINITION);
 
-    this.bufferCanvas = bufferCanvas;
+    this.bufferCanvas = manager.renderer.bufferCanvas;
 
     this.glyphData = new Map<string, GlyphInfo>();
     this.createGlyphs();

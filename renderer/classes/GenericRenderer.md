@@ -12,7 +12,7 @@ and data about attribs / uniforms and provides:
 | Name | Type                                                                          |
 | :--- | :---------------------------------------------------------------------------- |
 | `T`  | extends [`EngineProgramDefinition`](../interfaces/EngineProgramDefinition.md) |
-| `U`  | extends [`WebGLManager`](WebGLManager.md)[`WebGLManager`](WebGLManager.md)    |
+| `U`  | extends [`WebGLManager`](WebGLManager.md) = [`WebGLManager`](WebGLManager.md) |
 
 ## Hierarchy
 
@@ -52,10 +52,10 @@ Create a renderer from a GameGLManager and program data.
 
 #### Type parameters
 
-| Name | Type                                                                             |
-| :--- | :------------------------------------------------------------------------------- |
-| `T`  | extends [`EngineProgramDefinition`](../interfaces/EngineProgramDefinition.md)    |
-| `U`  | extends [`WebGLManager`](WebGLManager.md)<`U`\>[`WebGLManager`](WebGLManager.md) |
+| Name | Type                                                                                |
+| :--- | :---------------------------------------------------------------------------------- |
+| `T`  | extends [`EngineProgramDefinition`](../interfaces/EngineProgramDefinition.md)       |
+| `U`  | extends [`WebGLManager`](WebGLManager.md)<`U`\> = [`WebGLManager`](WebGLManager.md) |
 
 #### Parameters
 

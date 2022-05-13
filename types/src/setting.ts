@@ -2,7 +2,7 @@
  * @hidden
  */
 
-import { Abstract } from './utility';
+import type { Abstract } from './utility';
 
 /**
  * The user can choose to have the client automatically choose a gas price for their transactions,
@@ -58,4 +58,5 @@ export const Setting = {
   RendererColorDeepSpace: 'RendererColorDeepSpace' as Setting,
   RendererColorDeadSpace: 'RendererColorDeadSpace' as Setting,
   DisableFancySpaceEffect: 'DisableFancySpaceEffect' as Setting,
+  ForceReloadEmbeddedPlugins: 'ForceReloadEmbeddedPlugins' as Setting,
 };

@@ -1,5 +1,5 @@
 import type { ArtifactId, EthAddress, LocationId, VoyageId } from './identifier';
-import { Abstract } from './utility';
+import type { Abstract } from './utility';
 
 /**
  * Represents a voyage.

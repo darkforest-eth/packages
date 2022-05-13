@@ -1,4 +1,4 @@
-import { EthAddress, LocationId } from './identifier';
+import type { EthAddress, LocationId } from './identifier';
 
 /**
  * Represents a player; corresponds fairly closely with the analogous contract

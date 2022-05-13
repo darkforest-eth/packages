@@ -256,7 +256,7 @@ class FeistelState {
   }
 }
 
-function mimcSponge(
+export function mimcSponge(
   inputs: BigInteger[],
   nOutputs: number,
   rounds: number,

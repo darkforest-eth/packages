@@ -1,13 +1,26 @@
 import { getPlanetCosmetic } from '@darkforest_eth/procedural';
-import { CanvasCoords, Planet, PlanetLevel, RGBVec, WorldCoords } from '@darkforest_eth/types';
+import {
+  CanvasCoords,
+  Planet,
+  PlanetLevel,
+  RendererType,
+  RGBVec,
+  RuinsRendererType,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { RUINS_PROGRAM_DEFINITION } from '../Programs/RuinsProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
-export class RuinsRenderer extends GenericRenderer<typeof RUINS_PROGRAM_DEFINITION, GameGLManager> {
+export class RuinsRenderer
+  extends GenericRenderer<typeof RUINS_PROGRAM_DEFINITION, GameGLManager>
+  implements RuinsRendererType
+{
   quad3Buffer: number[];
   quad2Buffer: number[];
+
+  rendererType = RendererType.Ruins;
 
   constructor(manager: GameGLManager) {
     super(manager, RUINS_PROGRAM_DEFINITION);

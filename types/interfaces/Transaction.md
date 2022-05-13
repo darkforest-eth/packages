@@ -4,9 +4,9 @@ Represents a transaction that the game would like to submit to the blockchain.
 
 ## Type parameters
 
-| Name | Type                           |
-| :--- | :----------------------------- |
-| `T`  | extends ` TxIntent``TxIntent ` |
+| Name | Type                            |
+| :--- | :------------------------------ |
+| `T`  | extends `TxIntent` = `TxIntent` |
 
 ## Table of contents
 
@@ -92,7 +92,7 @@ Overrides parameters which modifies the internal details of this transaction.
 
 ### state
 
-• **state**: `EthTxStatus`
+• **state**: [`EthTxStatus`](../README.md#ethtxstatus)
 
 The current state of this transaction - updated whenever the state changes by {@code TxExecutor}
 

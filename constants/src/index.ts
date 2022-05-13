@@ -30,7 +30,7 @@ import {
   EthAddress,
   GasPrices,
   LocationId,
-  PlanetLevel,
+  PlanetLevel
 } from '@darkforest_eth/types';
 import bigInt, { BigInteger } from 'big-integer';
 
@@ -202,3 +202,8 @@ export const GNOSIS_OPTIMISM_CHAIN_ID = 300 as const;
 export const KOVAN_OPTIMISM_CHAIN_ID = 69 as const;
 
 export const GNOSIS_CHAIN_ID = 100 as const;
+/**
+ * This should be updated every round.
+ */
+export const THEGRAPH_API_URL =
+  'https://api.thegraph.com/subgraphs/name/darkforest-eth/dark-forest-v06-round-5';

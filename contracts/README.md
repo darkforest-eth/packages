@@ -44,7 +44,7 @@ The contract ABIs can be found in the `abis` directory.
 
 ### CONTRACT_ADDRESS
 
-• **CONTRACT_ADDRESS**: `"0x5da117b8aB8b739346F5EdC166789E5aFb1a7145"`
+• `Const` **CONTRACT_ADDRESS**: `"0x5da117b8aB8b739346F5EdC166789E5aFb1a7145"`
 
 The address for the DarkForest contract.
 
@@ -52,7 +52,7 @@ The address for the DarkForest contract.
 
 ### INIT_ADDRESS
 
-• **INIT_ADDRESS**: `"0x162564a30C73204A0b404D23A033bFBA377ADdc2"`
+• `Const` **INIT_ADDRESS**: `"0x162564a30C73204A0b404D23A033bFBA377ADdc2"`
 
 The address for the initalizer contract. Useful for lobbies.
 
@@ -60,7 +60,7 @@ The address for the initalizer contract. Useful for lobbies.
 
 ### NETWORK
 
-• **NETWORK**: `"xdai"`
+• `Const` **NETWORK**: `"xdai"`
 
 The name of the network where these contracts are deployed.
 
@@ -68,7 +68,7 @@ The name of the network where these contracts are deployed.
 
 ### NETWORK_ID
 
-• **NETWORK_ID**: `100`
+• `Const` **NETWORK_ID**: `100`
 
 The id of the network where these contracts are deployed.
 
@@ -76,6 +76,6 @@ The id of the network where these contracts are deployed.
 
 ### START_BLOCK
 
-• **START_BLOCK**: `20713468`
+• `Const` **START_BLOCK**: `20713468`
 
 The block in which the DarkForest contract was initialized.

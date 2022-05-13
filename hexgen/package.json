@@ -1,6 +1,6 @@
 {
   "name": "@darkforest_eth/hexgen",
-  "version": "6.7.9",
+  "version": "6.7.29",
   "license": "MIT",
   "author": "0xPARC <ivan@0xPARC.org>",
   "engines": {
@@ -12,16 +12,16 @@
     "dist/"
   ],
   "scripts": {
-    "prepublishOnly": "npm run docs",
-    "prepare": "tsc -p .",
+    "prepublishOnly": "npm run build && npm run docs",
+    "build": "tsc -p .",
     "test": "exit 0",
     "lint": "eslint .",
     "format": "prettier --write .",
     "docs": "typedoc && npm run format",
-    "clean": "del-cli dist node_modules"
+    "clean": "del-cli dist node_modules tsconfig.ref.tsbuildinfo"
   },
   "dependencies": {
-    "@darkforest_eth/types": "6.7.9",
+    "@darkforest_eth/types": "6.7.29",
     "big-integer": "^1.6.48"
   },
   "devDependencies": {
@@ -30,10 +30,10 @@
     "prettier": "^2.3.0",
     "typedoc": "^0.22.8",
     "typedoc-plugin-markdown": "3.11.x",
-    "typescript": "4.4.x"
+    "typescript": "4.5.x"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "2d1cffe17c6ee951d30ff1a5f396bbd88b051fa3"
+  "gitHead": "7be5c147fe7c92b409ae3e7608713590f5b66c63"
 }

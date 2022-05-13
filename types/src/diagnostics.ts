@@ -1,4 +1,4 @@
-import { GasPrices } from './gas_prices';
+import type { GasPrices } from './gas_prices';
 
 export interface Diagnostics {
   visiblePlanets: number;

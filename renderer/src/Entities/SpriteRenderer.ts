@@ -5,8 +5,10 @@ import {
   CanvasCoords,
   GameViewport,
   RenderedArtifact,
+  RendererType,
   RGBAVec,
   RGBVec,
+  SpriteRendererType,
   WorldCoords,
 } from '@darkforest_eth/types';
 import { engineConsts } from '../EngineConsts';
@@ -20,8 +22,10 @@ import {
 } from '../TextureManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 import { WebGLManager } from '../WebGL/WebGLManager';
-
-export class SpriteRenderer extends GenericRenderer<typeof SPRITE_PROGRAM_DEFINITION> {
+export class SpriteRenderer
+  extends GenericRenderer<typeof SPRITE_PROGRAM_DEFINITION>
+  implements SpriteRendererType
+{
   private posBuffer: number[];
   private texBuffer: number[];
   private rectposBuffer: number[];
@@ -31,7 +35,9 @@ export class SpriteRenderer extends GenericRenderer<typeof SPRITE_PROGRAM_DEFINI
   private texIdx: number;
   private flip: boolean;
 
-  constructor(manager: WebGLManager, thumb = false, flip = false) {
+  rendererType = RendererType.Sprite;
+
+  constructor(manager: WebGLManager, thumb = true, flip = true) {
     super(manager, SPRITE_PROGRAM_DEFINITION);
 
     this.thumb = thumb;
@@ -42,10 +48,8 @@ export class SpriteRenderer extends GenericRenderer<typeof SPRITE_PROGRAM_DEFINI
     this.texBuffer = EngineUtils.makeEmptyQuadVec2();
     this.posBuffer = EngineUtils.makeEmptyQuad();
     this.rectposBuffer = EngineUtils.makeQuadVec2(0, 0, 1, 1);
-
     this.loadAtlas(thumb);
   }
-
   private async loadAtlas(thumb: boolean) {
     const loader = thumb ? loadArtifactThumbAtlas : loadArtifactAtlas;
 

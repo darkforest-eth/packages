@@ -1,4 +1,4 @@
-import { Abstract } from './utility';
+import type { Abstract } from './utility';
 
 export type HatType = Abstract<string, 'HatType'>;
 

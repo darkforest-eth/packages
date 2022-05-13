@@ -1,47 +1,37 @@
 import {
+  BackgroundRendererType,
   Chunk,
-  PerlinConfig,
+  RendererType,
   RGBVec,
-  SpaceColorConfiguration,
   SpaceType,
 } from '@darkforest_eth/types';
 import { Renderer } from '../Renderer';
 import { GameGLManager } from '../WebGL/GameGLManager';
-import { PerlinRenderer } from './PerlinRenderer';
 import { RectRenderer } from './RectRenderer';
-import { SpaceRenderer } from './SpaceRenderer';
-import { UnmindedRenderer } from './UnminedRenderer';
 
-export class BackgroundRenderer {
+export class BackgroundRenderer implements BackgroundRendererType {
   manager: GameGLManager;
+
   renderer: Renderer;
 
-  spaceRenderer: SpaceRenderer;
-  perlinRenderer: PerlinRenderer;
   borderRenderer: RectRenderer;
+
   chunkShadowRenderer: RectRenderer;
-  unminedRenderer: UnmindedRenderer;
+
   highQuality = true;
 
-  constructor(
-    manager: GameGLManager,
-    config: PerlinConfig,
-    thresholds: [number, number, number],
-    spaceColors: SpaceColorConfiguration
-  ) {
+  rendererType = RendererType.Background;
+
+  constructor(manager: GameGLManager) {
     this.manager = manager;
     this.renderer = manager.renderer;
 
-    const rectRenderer = new RectRenderer(manager);
-    this.borderRenderer = rectRenderer;
-    this.spaceRenderer = new SpaceRenderer(manager, config, thresholds, rectRenderer, spaceColors);
-    this.perlinRenderer = new PerlinRenderer(manager, config, thresholds, rectRenderer);
+    this.borderRenderer = new RectRenderer(manager);
 
     this.chunkShadowRenderer = new RectRenderer(manager);
-    this.unminedRenderer = new UnmindedRenderer(manager);
   }
 
-  drawChunks(
+  queueChunks(
     exploredChunks: Iterable<Chunk>,
     highPerfMode: boolean,
     drawChunkBorders: boolean,
@@ -53,6 +43,7 @@ export class BackgroundRenderer {
     deadSpaceColor?: string
   ): void {
     // upload current camera transform to shader
+    const { unminedRenderer, spaceRenderer, perlinRenderer } = this.renderer;
     if (highPerfMode) return;
 
     // use low quality effect if:
@@ -63,33 +54,34 @@ export class BackgroundRenderer {
     const viewport = this.manager.renderer.getViewport();
 
     // draw large background rect underneath everything
-    this.unminedRenderer.queueRect(
+    unminedRenderer.queueRect(
       { x: 0, y: 0 },
       viewport.viewportWidth,
       viewport.viewportHeight,
       [0, 0, 0],
       4
     );
-
-    this.spaceRenderer.setColorConfiguration(
-      innerNebulaColor,
-      nebulaColor,
-      spaceColor,
-      deepSpaceColor,
-      deadSpaceColor
-    );
+    if (innerNebulaColor && nebulaColor && spaceColor && deepSpaceColor && deadSpaceColor) {
+      spaceRenderer.setColorConfiguration(
+        innerNebulaColor,
+        nebulaColor,
+        spaceColor,
+        deepSpaceColor,
+        deadSpaceColor
+      );
+    }
 
     for (const exploredChunk of exploredChunks) {
       if (viewport.intersectsViewport(exploredChunk)) {
         // add this chunk to the verts array
         if (this.highQuality) {
-          this.spaceRenderer.queueChunk(exploredChunk);
+          spaceRenderer.queueChunk(exploredChunk);
           this.chunkShadowRenderer.queueChunkBorderWithPadding(
             exploredChunk,
             1 + 1 * viewport.scale
           );
         } else {
-          this.perlinRenderer.queueChunk(exploredChunk);
+          perlinRenderer.queueChunk(exploredChunk);
         }
 
         if (drawChunkBorders) {
@@ -98,8 +90,6 @@ export class BackgroundRenderer {
         }
       }
     }
-
-    this.flush();
   }
 
   fillPerlin() {
@@ -135,12 +125,13 @@ export class BackgroundRenderer {
   }
 
   flush(): void {
+    const { unminedRenderer, spaceRenderer, perlinRenderer } = this.renderer;
     if (this.highQuality) {
-      this.unminedRenderer.flush();
+      unminedRenderer.flush();
       this.chunkShadowRenderer.flush();
-      this.spaceRenderer.flush();
+      spaceRenderer.flush();
     } else {
-      this.perlinRenderer.flush();
+      perlinRenderer.flush();
     }
     this.borderRenderer.flush();
   }

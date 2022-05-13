@@ -1,15 +1,24 @@
 import { getPlanetCosmetic, hslToRgb } from '@darkforest_eth/procedural';
-import { CanvasCoords, DrawMode, Planet, RGBVec, WorldCoords } from '@darkforest_eth/types';
+import {
+  CanvasCoords,
+  DrawMode,
+  MineBodyRendererType,
+  Planet,
+  RendererType,
+  RGBVec,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { MINE_PROGRAM_DEFINITION } from '../Programs/MineProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
 /** Renderers asteroids at the center of silver mines  */
-export class MineBodyRenderer extends GenericRenderer<
-  typeof MINE_PROGRAM_DEFINITION,
-  GameGLManager
-> {
+export class MineBodyRenderer
+  extends GenericRenderer<typeof MINE_PROGRAM_DEFINITION, GameGLManager>
+  implements MineBodyRendererType
+{
+  rendererType = RendererType.MineBody;
   constructor(manager: GameGLManager) {
     super(manager, MINE_PROGRAM_DEFINITION);
   }

@@ -58,7 +58,7 @@ import * as settings from 'http://cdn.skypack.dev/@darkforest_eth/settings';
 
 ### decodeAdminPlanets
 
-▸ `Const` **decodeAdminPlanets**(`blob`): { `level`: `number` ; `planetType`: `number` ; `requireValidLocationId`: `boolean` ; `revealLocation`: `boolean` ; `x`: `number` ; `y`: `number` }[]
+▸ **decodeAdminPlanets**(`blob`): { `level`: `number` ; `planetType`: `number` ; `requireValidLocationId`: `boolean` ; `revealLocation`: `boolean` ; `x`: `number` ; `y`: `number` }[]
 
 #### Parameters
 
@@ -74,7 +74,7 @@ import * as settings from 'http://cdn.skypack.dev/@darkforest_eth/settings';
 
 ### decodeContracts
 
-▸ `Const` **decodeContracts**(`blob`): `Object`
+▸ **decodeContracts**(`blob`): `Object`
 
 #### Parameters
 
@@ -98,7 +98,7 @@ import * as settings from 'http://cdn.skypack.dev/@darkforest_eth/settings';
 
 ### decodeInitializers
 
-▸ `Const` **decodeInitializers**(`blob`): `Object`
+▸ **decodeInitializers**(`blob`): `Object`
 
 #### Parameters
 

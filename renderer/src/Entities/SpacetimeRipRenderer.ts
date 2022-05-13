@@ -1,16 +1,25 @@
 import { getPlanetCosmetic } from '@darkforest_eth/procedural';
-import { CanvasCoords, Planet, SpaceType, WorldCoords } from '@darkforest_eth/types';
+import {
+  CanvasCoords,
+  Planet,
+  RendererType,
+  SpacetimeRipRendererType,
+  SpaceType,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { SPACETIMERIP_PROGRAM_DEFINITION } from '../Programs/SpacetimeRipProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
-export class SpacetimeRipRenderer extends GenericRenderer<
-  typeof SPACETIMERIP_PROGRAM_DEFINITION,
-  GameGLManager
-> {
+export class SpacetimeRipRenderer
+  extends GenericRenderer<typeof SPACETIMERIP_PROGRAM_DEFINITION, GameGLManager>
+  implements SpacetimeRipRendererType
+{
   quad3Buffer: number[];
   quad2Buffer: number[];
+
+  rendererType = RendererType.SpacetimeRip;
 
   constructor(manager: GameGLManager) {
     super(manager, SPACETIMERIP_PROGRAM_DEFINITION);

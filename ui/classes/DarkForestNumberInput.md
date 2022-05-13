@@ -75,6 +75,7 @@
 - [assignedSlot](DarkForestNumberInput.md#assignedslot)
 - [attributes](DarkForestNumberInput.md#attributes)
 - [autocapitalize](DarkForestNumberInput.md#autocapitalize)
+- [autofocus](DarkForestNumberInput.md#autofocus)
 - [baseURI](DarkForestNumberInput.md#baseuri)
 - [childElementCount](DarkForestNumberInput.md#childelementcount)
 - [childNodes](DarkForestNumberInput.md#childnodes)
@@ -288,6 +289,7 @@
 - [animate](DarkForestNumberInput.md#animate)
 - [append](DarkForestNumberInput.md#append)
 - [appendChild](DarkForestNumberInput.md#appendchild)
+- [attachInternals](DarkForestNumberInput.md#attachinternals)
 - [attachShadow](DarkForestNumberInput.md#attachshadow)
 - [before](DarkForestNumberInput.md#before)
 - [blur](DarkForestNumberInput.md#blur)
@@ -1038,6 +1040,16 @@ LitElement.autocapitalize
 
 ---
 
+### autofocus
+
+• **autofocus**: `boolean`
+
+#### Inherited from
+
+LitElement.autofocus
+
+---
+
 ### baseURI
 
 • `Readonly` **baseURI**: `string`
@@ -1486,7 +1498,7 @@ LitElement.offsetWidth
 
 ### onabort
 
-• **onabort**: `null` \| (`ev`: `UIEvent`) => `any`
+• **onabort**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `UIEvent`) => `any`
 
 Fires when the user aborts the download.
 
@@ -1500,7 +1512,7 @@ LitElement.onabort
 
 ### onanimationcancel
 
-• **onanimationcancel**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationcancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1510,7 +1522,7 @@ LitElement.onanimationcancel
 
 ### onanimationend
 
-• **onanimationend**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1520,7 +1532,7 @@ LitElement.onanimationend
 
 ### onanimationiteration
 
-• **onanimationiteration**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationiteration**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1530,7 +1542,7 @@ LitElement.onanimationiteration
 
 ### onanimationstart
 
-• **onanimationstart**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1540,7 +1552,7 @@ LitElement.onanimationstart
 
 ### onauxclick
 
-• **onauxclick**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onauxclick**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 #### Inherited from
 
@@ -1550,7 +1562,7 @@ LitElement.onauxclick
 
 ### onblur
 
-• **onblur**: `null` \| (`ev`: `FocusEvent`) => `any`
+• **onblur**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `FocusEvent`) => `any`
 
 Fires when the object loses the input focus.
 
@@ -1564,7 +1576,7 @@ LitElement.onblur
 
 ### oncanplay
 
-• **oncanplay**: `null` \| (`ev`: `Event`) => `any`
+• **oncanplay**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when playback is possible, but would require further buffering.
 
@@ -1578,7 +1590,7 @@ LitElement.oncanplay
 
 ### oncanplaythrough
 
-• **oncanplaythrough**: `null` \| (`ev`: `Event`) => `any`
+• **oncanplaythrough**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1588,7 +1600,7 @@ LitElement.oncanplaythrough
 
 ### onchange
 
-• **onchange**: `null` \| (`ev`: `Event`) => `any`
+• **onchange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the contents of the object or selection have changed.
 
@@ -1602,7 +1614,7 @@ LitElement.onchange
 
 ### onclick
 
-• **onclick**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onclick**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user clicks the left mouse button on the object
 
@@ -1616,7 +1628,7 @@ LitElement.onclick
 
 ### onclose
 
-• **onclose**: `null` \| (`ev`: `Event`) => `any`
+• **onclose**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1626,7 +1638,7 @@ LitElement.onclose
 
 ### oncontextmenu
 
-• **oncontextmenu**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **oncontextmenu**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user clicks the right mouse button in the client area, opening the context menu.
 
@@ -1640,7 +1652,7 @@ LitElement.oncontextmenu
 
 ### oncopy
 
-• **oncopy**: `null` \| (`ev`: `ClipboardEvent`) => `any`
+• **oncopy**: `null` \| (`this`: `DocumentAndElementEventHandlers`, `ev`: `ClipboardEvent`) => `any`
 
 #### Inherited from
 
@@ -1650,7 +1662,7 @@ LitElement.oncopy
 
 ### oncuechange
 
-• **oncuechange**: `null` \| (`ev`: `Event`) => `any`
+• **oncuechange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1660,7 +1672,7 @@ LitElement.oncuechange
 
 ### oncut
 
-• **oncut**: `null` \| (`ev`: `ClipboardEvent`) => `any`
+• **oncut**: `null` \| (`this`: `DocumentAndElementEventHandlers`, `ev`: `ClipboardEvent`) => `any`
 
 #### Inherited from
 
@@ -1670,7 +1682,7 @@ LitElement.oncut
 
 ### ondblclick
 
-• **ondblclick**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **ondblclick**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user double-clicks the object.
 
@@ -1684,7 +1696,7 @@ LitElement.ondblclick
 
 ### ondrag
 
-• **ondrag**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondrag**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the source object continuously during a drag operation.
 
@@ -1698,7 +1710,7 @@ LitElement.ondrag
 
 ### ondragend
 
-• **ondragend**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the source object when the user releases the mouse at the close of a drag operation.
 
@@ -1712,7 +1724,7 @@ LitElement.ondragend
 
 ### ondragenter
 
-• **ondragenter**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragenter**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the target element when the user drags the object to a valid drop target.
 
@@ -1726,7 +1738,7 @@ LitElement.ondragenter
 
 ### ondragleave
 
-• **ondragleave**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragleave**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the target object when the user moves the mouse out of a valid drop target during a drag operation.
 
@@ -1740,7 +1752,7 @@ LitElement.ondragleave
 
 ### ondragover
 
-• **ondragover**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragover**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the target element continuously while the user drags the object over a valid drop target.
 
@@ -1754,7 +1766,7 @@ LitElement.ondragover
 
 ### ondragstart
 
-• **ondragstart**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the source object when the user starts to drag a text selection or selected object.
 
@@ -1768,7 +1780,7 @@ LitElement.ondragstart
 
 ### ondrop
 
-• **ondrop**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondrop**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 #### Inherited from
 
@@ -1778,7 +1790,7 @@ LitElement.ondrop
 
 ### ondurationchange
 
-• **ondurationchange**: `null` \| (`ev`: `Event`) => `any`
+• **ondurationchange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the duration attribute is updated.
 
@@ -1792,7 +1804,7 @@ LitElement.ondurationchange
 
 ### onemptied
 
-• **onemptied**: `null` \| (`ev`: `Event`) => `any`
+• **onemptied**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the media element is reset to its initial state.
 
@@ -1806,7 +1818,7 @@ LitElement.onemptied
 
 ### onended
 
-• **onended**: `null` \| (`ev`: `Event`) => `any`
+• **onended**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the end of playback is reached.
 
@@ -1834,7 +1846,7 @@ LitElement.onerror
 
 ### onfocus
 
-• **onfocus**: `null` \| (`ev`: `FocusEvent`) => `any`
+• **onfocus**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `FocusEvent`) => `any`
 
 Fires when the object receives focus.
 
@@ -1848,7 +1860,7 @@ LitElement.onfocus
 
 ### onformdata
 
-• **onformdata**: `null` \| (`ev`: `FormDataEvent`) => `any`
+• **onformdata**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `FormDataEvent`) => `any`
 
 #### Inherited from
 
@@ -1858,7 +1870,7 @@ LitElement.onformdata
 
 ### onfullscreenchange
 
-• **onfullscreenchange**: `null` \| (`ev`: `Event`) => `any`
+• **onfullscreenchange**: `null` \| (`this`: `Element`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1868,7 +1880,7 @@ LitElement.onfullscreenchange
 
 ### onfullscreenerror
 
-• **onfullscreenerror**: `null` \| (`ev`: `Event`) => `any`
+• **onfullscreenerror**: `null` \| (`this`: `Element`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1878,7 +1890,7 @@ LitElement.onfullscreenerror
 
 ### ongotpointercapture
 
-• **ongotpointercapture**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **ongotpointercapture**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -1888,7 +1900,7 @@ LitElement.ongotpointercapture
 
 ### oninput
 
-• **oninput**: `null` \| (`ev`: `Event`) => `any`
+• **oninput**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1898,7 +1910,7 @@ LitElement.oninput
 
 ### oninvalid
 
-• **oninvalid**: `null` \| (`ev`: `Event`) => `any`
+• **oninvalid**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1908,7 +1920,7 @@ LitElement.oninvalid
 
 ### onkeydown
 
-• **onkeydown**: `null` \| (`ev`: `KeyboardEvent`) => `any`
+• **onkeydown**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `KeyboardEvent`) => `any`
 
 Fires when the user presses a key.
 
@@ -1922,7 +1934,7 @@ LitElement.onkeydown
 
 ### onkeypress
 
-• **onkeypress**: `null` \| (`ev`: `KeyboardEvent`) => `any`
+• **onkeypress**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `KeyboardEvent`) => `any`
 
 Fires when the user presses an alphanumeric key.
 
@@ -1938,7 +1950,7 @@ LitElement.onkeypress
 
 ### onkeyup
 
-• **onkeyup**: `null` \| (`ev`: `KeyboardEvent`) => `any`
+• **onkeyup**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `KeyboardEvent`) => `any`
 
 Fires when the user releases a key.
 
@@ -1952,7 +1964,7 @@ LitElement.onkeyup
 
 ### onload
 
-• **onload**: `null` \| (`ev`: `Event`) => `any`
+• **onload**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires immediately after the browser loads the object.
 
@@ -1966,7 +1978,7 @@ LitElement.onload
 
 ### onloadeddata
 
-• **onloadeddata**: `null` \| (`ev`: `Event`) => `any`
+• **onloadeddata**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when media data is loaded at the current playback position.
 
@@ -1980,7 +1992,7 @@ LitElement.onloadeddata
 
 ### onloadedmetadata
 
-• **onloadedmetadata**: `null` \| (`ev`: `Event`) => `any`
+• **onloadedmetadata**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the duration and dimensions of the media have been determined.
 
@@ -1994,7 +2006,7 @@ LitElement.onloadedmetadata
 
 ### onloadstart
 
-• **onloadstart**: `null` \| (`ev`: `Event`) => `any`
+• **onloadstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when Internet Explorer begins looking for media data.
 
@@ -2008,7 +2020,7 @@ LitElement.onloadstart
 
 ### onlostpointercapture
 
-• **onlostpointercapture**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onlostpointercapture**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2018,7 +2030,7 @@ LitElement.onlostpointercapture
 
 ### onmousedown
 
-• **onmousedown**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmousedown**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user clicks the object with either mouse button.
 
@@ -2032,7 +2044,7 @@ LitElement.onmousedown
 
 ### onmouseenter
 
-• **onmouseenter**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseenter**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 #### Inherited from
 
@@ -2042,7 +2054,7 @@ LitElement.onmouseenter
 
 ### onmouseleave
 
-• **onmouseleave**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseleave**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 #### Inherited from
 
@@ -2052,7 +2064,7 @@ LitElement.onmouseleave
 
 ### onmousemove
 
-• **onmousemove**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmousemove**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user moves the mouse over the object.
 
@@ -2066,7 +2078,7 @@ LitElement.onmousemove
 
 ### onmouseout
 
-• **onmouseout**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseout**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user moves the mouse pointer outside the boundaries of the object.
 
@@ -2080,7 +2092,7 @@ LitElement.onmouseout
 
 ### onmouseover
 
-• **onmouseover**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseover**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user moves the mouse pointer into the object.
 
@@ -2094,7 +2106,7 @@ LitElement.onmouseover
 
 ### onmouseup
 
-• **onmouseup**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseup**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user releases a mouse button while the mouse is over the object.
 
@@ -2108,7 +2120,7 @@ LitElement.onmouseup
 
 ### onpaste
 
-• **onpaste**: `null` \| (`ev`: `ClipboardEvent`) => `any`
+• **onpaste**: `null` \| (`this`: `DocumentAndElementEventHandlers`, `ev`: `ClipboardEvent`) => `any`
 
 #### Inherited from
 
@@ -2118,7 +2130,7 @@ LitElement.onpaste
 
 ### onpause
 
-• **onpause**: `null` \| (`ev`: `Event`) => `any`
+• **onpause**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when playback is paused.
 
@@ -2132,7 +2144,7 @@ LitElement.onpause
 
 ### onplay
 
-• **onplay**: `null` \| (`ev`: `Event`) => `any`
+• **onplay**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the play method is requested.
 
@@ -2146,7 +2158,7 @@ LitElement.onplay
 
 ### onplaying
 
-• **onplaying**: `null` \| (`ev`: `Event`) => `any`
+• **onplaying**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the audio or video has started playing.
 
@@ -2160,7 +2172,7 @@ LitElement.onplaying
 
 ### onpointercancel
 
-• **onpointercancel**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointercancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2170,7 +2182,7 @@ LitElement.onpointercancel
 
 ### onpointerdown
 
-• **onpointerdown**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerdown**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2180,7 +2192,7 @@ LitElement.onpointerdown
 
 ### onpointerenter
 
-• **onpointerenter**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerenter**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2190,7 +2202,7 @@ LitElement.onpointerenter
 
 ### onpointerleave
 
-• **onpointerleave**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerleave**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2200,7 +2212,7 @@ LitElement.onpointerleave
 
 ### onpointermove
 
-• **onpointermove**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointermove**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2210,7 +2222,7 @@ LitElement.onpointermove
 
 ### onpointerout
 
-• **onpointerout**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerout**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2220,7 +2232,7 @@ LitElement.onpointerout
 
 ### onpointerover
 
-• **onpointerover**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerover**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2230,7 +2242,7 @@ LitElement.onpointerover
 
 ### onpointerup
 
-• **onpointerup**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerup**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2240,7 +2252,7 @@ LitElement.onpointerup
 
 ### onprogress
 
-• **onprogress**: `null` \| (`ev`: `ProgressEvent`<`EventTarget`\>) => `any`
+• **onprogress**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `ProgressEvent`<`EventTarget`\>) => `any`
 
 Occurs to indicate progress while downloading media data.
 
@@ -2254,7 +2266,7 @@ LitElement.onprogress
 
 ### onratechange
 
-• **onratechange**: `null` \| (`ev`: `Event`) => `any`
+• **onratechange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the playback rate is increased or decreased.
 
@@ -2268,7 +2280,7 @@ LitElement.onratechange
 
 ### onreset
 
-• **onreset**: `null` \| (`ev`: `Event`) => `any`
+• **onreset**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the user resets a form.
 
@@ -2282,7 +2294,7 @@ LitElement.onreset
 
 ### onresize
 
-• **onresize**: `null` \| (`ev`: `UIEvent`) => `any`
+• **onresize**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `UIEvent`) => `any`
 
 #### Inherited from
 
@@ -2292,7 +2304,7 @@ LitElement.onresize
 
 ### onscroll
 
-• **onscroll**: `null` \| (`ev`: `Event`) => `any`
+• **onscroll**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the user repositions the scroll box in the scroll bar on the object.
 
@@ -2306,7 +2318,7 @@ LitElement.onscroll
 
 ### onseeked
 
-• **onseeked**: `null` \| (`ev`: `Event`) => `any`
+• **onseeked**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the seek operation ends.
 
@@ -2320,7 +2332,7 @@ LitElement.onseeked
 
 ### onseeking
 
-• **onseeking**: `null` \| (`ev`: `Event`) => `any`
+• **onseeking**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the current playback position is moved.
 
@@ -2334,7 +2346,7 @@ LitElement.onseeking
 
 ### onselect
 
-• **onselect**: `null` \| (`ev`: `Event`) => `any`
+• **onselect**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the current selection changes.
 
@@ -2348,7 +2360,7 @@ LitElement.onselect
 
 ### onselectionchange
 
-• **onselectionchange**: `null` \| (`ev`: `Event`) => `any`
+• **onselectionchange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2358,7 +2370,7 @@ LitElement.onselectionchange
 
 ### onselectstart
 
-• **onselectstart**: `null` \| (`ev`: `Event`) => `any`
+• **onselectstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2368,7 +2380,7 @@ LitElement.onselectstart
 
 ### onstalled
 
-• **onstalled**: `null` \| (`ev`: `Event`) => `any`
+• **onstalled**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the download has stopped.
 
@@ -2382,7 +2394,7 @@ LitElement.onstalled
 
 ### onsubmit
 
-• **onsubmit**: `null` \| (`ev`: `Event`) => `any`
+• **onsubmit**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `SubmitEvent`) => `any`
 
 #### Inherited from
 
@@ -2392,7 +2404,7 @@ LitElement.onsubmit
 
 ### onsuspend
 
-• **onsuspend**: `null` \| (`ev`: `Event`) => `any`
+• **onsuspend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs if the load operation has been intentionally halted.
 
@@ -2406,7 +2418,7 @@ LitElement.onsuspend
 
 ### ontimeupdate
 
-• **ontimeupdate**: `null` \| (`ev`: `Event`) => `any`
+• **ontimeupdate**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs to indicate the current playback position.
 
@@ -2420,7 +2432,7 @@ LitElement.ontimeupdate
 
 ### ontoggle
 
-• **ontoggle**: `null` \| (`ev`: `Event`) => `any`
+• **ontoggle**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2430,7 +2442,7 @@ LitElement.ontoggle
 
 ### ontouchcancel
 
-• `Optional` **ontouchcancel**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchcancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2440,7 +2452,7 @@ LitElement.ontouchcancel
 
 ### ontouchend
 
-• `Optional` **ontouchend**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2450,7 +2462,7 @@ LitElement.ontouchend
 
 ### ontouchmove
 
-• `Optional` **ontouchmove**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchmove**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2460,7 +2472,7 @@ LitElement.ontouchmove
 
 ### ontouchstart
 
-• `Optional` **ontouchstart**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2470,7 +2482,7 @@ LitElement.ontouchstart
 
 ### ontransitioncancel
 
-• **ontransitioncancel**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitioncancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2480,7 +2492,7 @@ LitElement.ontransitioncancel
 
 ### ontransitionend
 
-• **ontransitionend**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitionend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2490,7 +2502,7 @@ LitElement.ontransitionend
 
 ### ontransitionrun
 
-• **ontransitionrun**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitionrun**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2500,7 +2512,7 @@ LitElement.ontransitionrun
 
 ### ontransitionstart
 
-• **ontransitionstart**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitionstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2510,7 +2522,7 @@ LitElement.ontransitionstart
 
 ### onvolumechange
 
-• **onvolumechange**: `null` \| (`ev`: `Event`) => `any`
+• **onvolumechange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the volume is changed, or playback is muted or unmuted.
 
@@ -2524,7 +2536,7 @@ LitElement.onvolumechange
 
 ### onwaiting
 
-• **onwaiting**: `null` \| (`ev`: `Event`) => `any`
+• **onwaiting**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when playback stops because the next frame of a video resource is not available.
 
@@ -2538,7 +2550,9 @@ LitElement.onwaiting
 
 ### onwebkitanimationend
 
-• **onwebkitanimationend**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkitanimationend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `onanimationend`.
 
 #### Inherited from
 
@@ -2548,7 +2562,9 @@ LitElement.onwebkitanimationend
 
 ### onwebkitanimationiteration
 
-• **onwebkitanimationiteration**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkitanimationiteration**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `onanimationiteration`.
 
 #### Inherited from
 
@@ -2558,7 +2574,9 @@ LitElement.onwebkitanimationiteration
 
 ### onwebkitanimationstart
 
-• **onwebkitanimationstart**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkitanimationstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `onanimationstart`.
 
 #### Inherited from
 
@@ -2568,7 +2586,9 @@ LitElement.onwebkitanimationstart
 
 ### onwebkittransitionend
 
-• **onwebkittransitionend**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkittransitionend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `ontransitionend`.
 
 #### Inherited from
 
@@ -2578,7 +2598,7 @@ LitElement.onwebkittransitionend
 
 ### onwheel
 
-• **onwheel**: `null` \| (`ev`: `WheelEvent`) => `any`
+• **onwheel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `WheelEvent`) => `any`
 
 #### Inherited from
 
@@ -2876,20 +2896,20 @@ LitElement.finalized
 
 #### Type declaration
 
-| Name            | Type                 |
-| :-------------- | :------------------- |
-| `_value`        | `Object`             |
-| `_value.state`  | `boolean`            |
-| `disabled`      | `Object`             |
-| `disabled.type` | `BooleanConstructor` |
-| `format`        | `Object`             |
-| `format.type`   | `StringConstructor`  |
-| `readonly`      | `Object`             |
-| `readonly.type` | `BooleanConstructor` |
-| `selected`      | `Object`             |
-| `selected.type` | `BooleanConstructor` |
-| `value`         | `Object`             |
-| `value.type`    | `NumberConstructor`  |
+| Name            | Type                                       |
+| :-------------- | :----------------------------------------- |
+| `_value`        | { `state`: `boolean` = true }              |
+| `_value.state`  | `boolean`                                  |
+| `disabled`      | { `type`: `BooleanConstructor` = Boolean } |
+| `disabled.type` | `BooleanConstructor`                       |
+| `format`        | { `type`: `StringConstructor` = String }   |
+| `format.type`   | `StringConstructor`                        |
+| `readonly`      | { `type`: `BooleanConstructor` = Boolean } |
+| `readonly.type` | `BooleanConstructor`                       |
+| `selected`      | { `type`: `BooleanConstructor` = Boolean } |
+| `selected.type` | `BooleanConstructor`                       |
+| `value`         | { `type`: `NumberConstructor` = Number }   |
+| `value.type`    | `NumberConstructor`                        |
 
 #### Overrides
 
@@ -3267,11 +3287,11 @@ LitElement.updateComplete
 
 #### Parameters
 
-| Name       | Type                                        |
-| :--------- | :------------------------------------------ |
-| `type`     | `K`                                         |
-| `listener` | (`ev`: `HTMLElementEventMap`[`K`]) => `any` |
-| `options?` | `boolean` \| `AddEventListenerOptions`      |
+| Name       | Type                                                               |
+| :--------- | :----------------------------------------------------------------- |
+| `type`     | `K`                                                                |
+| `listener` | (`this`: `HTMLElement`, `ev`: `HTMLElementEventMap`[`K`]) => `any` |
+| `options?` | `boolean` \| `AddEventListenerOptions`                             |
 
 #### Returns
 
@@ -3393,6 +3413,20 @@ LitElement.append
 #### Inherited from
 
 LitElement.appendChild
+
+---
+
+### attachInternals
+
+▸ **attachInternals**(): `ElementInternals`
+
+#### Returns
+
+`ElementInternals`
+
+#### Inherited from
+
+LitElement.attachInternals
 
 ---
 
@@ -3544,9 +3578,9 @@ LitElement.closest
 
 #### Type parameters
 
-| Name | Type                         |
-| :--- | :--------------------------- |
-| `E`  | extends ` Element``Element ` |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `E`  | extends `Element` = `Element` |
 
 #### Parameters
 
@@ -4374,9 +4408,9 @@ LitElement.querySelector
 
 #### Type parameters
 
-| Name | Type                         |
-| :--- | :--------------------------- |
-| `E`  | extends ` Element``Element ` |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `E`  | extends `Element` = `Element` |
 
 #### Parameters
 
@@ -4446,9 +4480,9 @@ LitElement.querySelectorAll
 
 #### Type parameters
 
-| Name | Type                         |
-| :--- | :--------------------------- |
-| `E`  | extends ` Element``Element ` |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `E`  | extends `Element` = `Element` |
 
 #### Parameters
 
@@ -4605,11 +4639,11 @@ LitElement.removeChild
 
 #### Parameters
 
-| Name       | Type                                        |
-| :--------- | :------------------------------------------ |
-| `type`     | `K`                                         |
-| `listener` | (`ev`: `HTMLElementEventMap`[`K`]) => `any` |
-| `options?` | `boolean` \| `EventListenerOptions`         |
+| Name       | Type                                                               |
+| :--------- | :----------------------------------------------------------------- |
+| `type`     | `K`                                                                |
+| `listener` | (`this`: `HTMLElement`, `ev`: `HTMLElementEventMap`[`K`]) => `any` |
+| `options?` | `boolean` \| `EventListenerOptions`                                |
 
 #### Returns
 
@@ -5376,7 +5410,7 @@ object or the `@property` decorator and are registered in
 
 Note, this method should be considered "final" and not overridden. To
 customize the options for a given property, override
-[`createProperty`](DarkForestButton.md#createproperty).
+[`createProperty`](DarkForestNumberInput.md#createproperty).
 
 **`nocollapse`**
 

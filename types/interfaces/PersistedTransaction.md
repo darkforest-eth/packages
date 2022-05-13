@@ -2,9 +2,9 @@
 
 ## Type parameters
 
-| Name | Type                                        |
-| :--- | :------------------------------------------ |
-| `T`  | extends `TxIntent` \| ` unknown``TxIntent ` |
+| Name | Type                                         |
+| :--- | :------------------------------------------- |
+| `T`  | extends `TxIntent` \| `unknown` = `TxIntent` |
 
 ## Table of contents
 

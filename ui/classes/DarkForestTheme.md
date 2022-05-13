@@ -73,6 +73,7 @@
 - [assignedSlot](DarkForestTheme.md#assignedslot)
 - [attributes](DarkForestTheme.md#attributes)
 - [autocapitalize](DarkForestTheme.md#autocapitalize)
+- [autofocus](DarkForestTheme.md#autofocus)
 - [baseURI](DarkForestTheme.md#baseuri)
 - [childElementCount](DarkForestTheme.md#childelementcount)
 - [childNodes](DarkForestTheme.md#childnodes)
@@ -246,6 +247,7 @@
 - [animate](DarkForestTheme.md#animate)
 - [append](DarkForestTheme.md#append)
 - [appendChild](DarkForestTheme.md#appendchild)
+- [attachInternals](DarkForestTheme.md#attachinternals)
 - [attachShadow](DarkForestTheme.md#attachshadow)
 - [attributeChangedCallback](DarkForestTheme.md#attributechangedcallback)
 - [before](DarkForestTheme.md#before)
@@ -945,6 +947,16 @@ Theme.autocapitalize
 
 ---
 
+### autofocus
+
+• **autofocus**: `boolean`
+
+#### Inherited from
+
+Theme.autofocus
+
+---
+
 ### baseURI
 
 • `Readonly` **baseURI**: `string`
@@ -1381,7 +1393,7 @@ Theme.offsetWidth
 
 ### onabort
 
-• **onabort**: `null` \| (`ev`: `UIEvent`) => `any`
+• **onabort**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `UIEvent`) => `any`
 
 Fires when the user aborts the download.
 
@@ -1395,7 +1407,7 @@ Theme.onabort
 
 ### onanimationcancel
 
-• **onanimationcancel**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationcancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1405,7 +1417,7 @@ Theme.onanimationcancel
 
 ### onanimationend
 
-• **onanimationend**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1415,7 +1427,7 @@ Theme.onanimationend
 
 ### onanimationiteration
 
-• **onanimationiteration**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationiteration**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1425,7 +1437,7 @@ Theme.onanimationiteration
 
 ### onanimationstart
 
-• **onanimationstart**: `null` \| (`ev`: `AnimationEvent`) => `any`
+• **onanimationstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `AnimationEvent`) => `any`
 
 #### Inherited from
 
@@ -1435,7 +1447,7 @@ Theme.onanimationstart
 
 ### onauxclick
 
-• **onauxclick**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onauxclick**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 #### Inherited from
 
@@ -1445,7 +1457,7 @@ Theme.onauxclick
 
 ### onblur
 
-• **onblur**: `null` \| (`ev`: `FocusEvent`) => `any`
+• **onblur**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `FocusEvent`) => `any`
 
 Fires when the object loses the input focus.
 
@@ -1459,7 +1471,7 @@ Theme.onblur
 
 ### oncanplay
 
-• **oncanplay**: `null` \| (`ev`: `Event`) => `any`
+• **oncanplay**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when playback is possible, but would require further buffering.
 
@@ -1473,7 +1485,7 @@ Theme.oncanplay
 
 ### oncanplaythrough
 
-• **oncanplaythrough**: `null` \| (`ev`: `Event`) => `any`
+• **oncanplaythrough**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1483,7 +1495,7 @@ Theme.oncanplaythrough
 
 ### onchange
 
-• **onchange**: `null` \| (`ev`: `Event`) => `any`
+• **onchange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the contents of the object or selection have changed.
 
@@ -1497,7 +1509,7 @@ Theme.onchange
 
 ### onclick
 
-• **onclick**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onclick**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user clicks the left mouse button on the object
 
@@ -1511,7 +1523,7 @@ Theme.onclick
 
 ### onclose
 
-• **onclose**: `null` \| (`ev`: `Event`) => `any`
+• **onclose**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1521,7 +1533,7 @@ Theme.onclose
 
 ### oncontextmenu
 
-• **oncontextmenu**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **oncontextmenu**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user clicks the right mouse button in the client area, opening the context menu.
 
@@ -1535,7 +1547,7 @@ Theme.oncontextmenu
 
 ### oncopy
 
-• **oncopy**: `null` \| (`ev`: `ClipboardEvent`) => `any`
+• **oncopy**: `null` \| (`this`: `DocumentAndElementEventHandlers`, `ev`: `ClipboardEvent`) => `any`
 
 #### Inherited from
 
@@ -1545,7 +1557,7 @@ Theme.oncopy
 
 ### oncuechange
 
-• **oncuechange**: `null` \| (`ev`: `Event`) => `any`
+• **oncuechange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1555,7 +1567,7 @@ Theme.oncuechange
 
 ### oncut
 
-• **oncut**: `null` \| (`ev`: `ClipboardEvent`) => `any`
+• **oncut**: `null` \| (`this`: `DocumentAndElementEventHandlers`, `ev`: `ClipboardEvent`) => `any`
 
 #### Inherited from
 
@@ -1565,7 +1577,7 @@ Theme.oncut
 
 ### ondblclick
 
-• **ondblclick**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **ondblclick**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user double-clicks the object.
 
@@ -1579,7 +1591,7 @@ Theme.ondblclick
 
 ### ondrag
 
-• **ondrag**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondrag**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the source object continuously during a drag operation.
 
@@ -1593,7 +1605,7 @@ Theme.ondrag
 
 ### ondragend
 
-• **ondragend**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the source object when the user releases the mouse at the close of a drag operation.
 
@@ -1607,7 +1619,7 @@ Theme.ondragend
 
 ### ondragenter
 
-• **ondragenter**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragenter**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the target element when the user drags the object to a valid drop target.
 
@@ -1621,7 +1633,7 @@ Theme.ondragenter
 
 ### ondragleave
 
-• **ondragleave**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragleave**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the target object when the user moves the mouse out of a valid drop target during a drag operation.
 
@@ -1635,7 +1647,7 @@ Theme.ondragleave
 
 ### ondragover
 
-• **ondragover**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragover**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the target element continuously while the user drags the object over a valid drop target.
 
@@ -1649,7 +1661,7 @@ Theme.ondragover
 
 ### ondragstart
 
-• **ondragstart**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondragstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 Fires on the source object when the user starts to drag a text selection or selected object.
 
@@ -1663,7 +1675,7 @@ Theme.ondragstart
 
 ### ondrop
 
-• **ondrop**: `null` \| (`ev`: `DragEvent`) => `any`
+• **ondrop**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `DragEvent`) => `any`
 
 #### Inherited from
 
@@ -1673,7 +1685,7 @@ Theme.ondrop
 
 ### ondurationchange
 
-• **ondurationchange**: `null` \| (`ev`: `Event`) => `any`
+• **ondurationchange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the duration attribute is updated.
 
@@ -1687,7 +1699,7 @@ Theme.ondurationchange
 
 ### onemptied
 
-• **onemptied**: `null` \| (`ev`: `Event`) => `any`
+• **onemptied**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the media element is reset to its initial state.
 
@@ -1701,7 +1713,7 @@ Theme.onemptied
 
 ### onended
 
-• **onended**: `null` \| (`ev`: `Event`) => `any`
+• **onended**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the end of playback is reached.
 
@@ -1729,7 +1741,7 @@ Theme.onerror
 
 ### onfocus
 
-• **onfocus**: `null` \| (`ev`: `FocusEvent`) => `any`
+• **onfocus**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `FocusEvent`) => `any`
 
 Fires when the object receives focus.
 
@@ -1743,7 +1755,7 @@ Theme.onfocus
 
 ### onformdata
 
-• **onformdata**: `null` \| (`ev`: `FormDataEvent`) => `any`
+• **onformdata**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `FormDataEvent`) => `any`
 
 #### Inherited from
 
@@ -1753,7 +1765,7 @@ Theme.onformdata
 
 ### onfullscreenchange
 
-• **onfullscreenchange**: `null` \| (`ev`: `Event`) => `any`
+• **onfullscreenchange**: `null` \| (`this`: `Element`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1763,7 +1775,7 @@ Theme.onfullscreenchange
 
 ### onfullscreenerror
 
-• **onfullscreenerror**: `null` \| (`ev`: `Event`) => `any`
+• **onfullscreenerror**: `null` \| (`this`: `Element`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1773,7 +1785,7 @@ Theme.onfullscreenerror
 
 ### ongotpointercapture
 
-• **ongotpointercapture**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **ongotpointercapture**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -1783,7 +1795,7 @@ Theme.ongotpointercapture
 
 ### oninput
 
-• **oninput**: `null` \| (`ev`: `Event`) => `any`
+• **oninput**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1793,7 +1805,7 @@ Theme.oninput
 
 ### oninvalid
 
-• **oninvalid**: `null` \| (`ev`: `Event`) => `any`
+• **oninvalid**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -1803,7 +1815,7 @@ Theme.oninvalid
 
 ### onkeydown
 
-• **onkeydown**: `null` \| (`ev`: `KeyboardEvent`) => `any`
+• **onkeydown**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `KeyboardEvent`) => `any`
 
 Fires when the user presses a key.
 
@@ -1817,7 +1829,7 @@ Theme.onkeydown
 
 ### onkeypress
 
-• **onkeypress**: `null` \| (`ev`: `KeyboardEvent`) => `any`
+• **onkeypress**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `KeyboardEvent`) => `any`
 
 Fires when the user presses an alphanumeric key.
 
@@ -1833,7 +1845,7 @@ Theme.onkeypress
 
 ### onkeyup
 
-• **onkeyup**: `null` \| (`ev`: `KeyboardEvent`) => `any`
+• **onkeyup**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `KeyboardEvent`) => `any`
 
 Fires when the user releases a key.
 
@@ -1847,7 +1859,7 @@ Theme.onkeyup
 
 ### onload
 
-• **onload**: `null` \| (`ev`: `Event`) => `any`
+• **onload**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires immediately after the browser loads the object.
 
@@ -1861,7 +1873,7 @@ Theme.onload
 
 ### onloadeddata
 
-• **onloadeddata**: `null` \| (`ev`: `Event`) => `any`
+• **onloadeddata**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when media data is loaded at the current playback position.
 
@@ -1875,7 +1887,7 @@ Theme.onloadeddata
 
 ### onloadedmetadata
 
-• **onloadedmetadata**: `null` \| (`ev`: `Event`) => `any`
+• **onloadedmetadata**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the duration and dimensions of the media have been determined.
 
@@ -1889,7 +1901,7 @@ Theme.onloadedmetadata
 
 ### onloadstart
 
-• **onloadstart**: `null` \| (`ev`: `Event`) => `any`
+• **onloadstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when Internet Explorer begins looking for media data.
 
@@ -1903,7 +1915,7 @@ Theme.onloadstart
 
 ### onlostpointercapture
 
-• **onlostpointercapture**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onlostpointercapture**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -1913,7 +1925,7 @@ Theme.onlostpointercapture
 
 ### onmousedown
 
-• **onmousedown**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmousedown**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user clicks the object with either mouse button.
 
@@ -1927,7 +1939,7 @@ Theme.onmousedown
 
 ### onmouseenter
 
-• **onmouseenter**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseenter**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 #### Inherited from
 
@@ -1937,7 +1949,7 @@ Theme.onmouseenter
 
 ### onmouseleave
 
-• **onmouseleave**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseleave**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 #### Inherited from
 
@@ -1947,7 +1959,7 @@ Theme.onmouseleave
 
 ### onmousemove
 
-• **onmousemove**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmousemove**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user moves the mouse over the object.
 
@@ -1961,7 +1973,7 @@ Theme.onmousemove
 
 ### onmouseout
 
-• **onmouseout**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseout**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user moves the mouse pointer outside the boundaries of the object.
 
@@ -1975,7 +1987,7 @@ Theme.onmouseout
 
 ### onmouseover
 
-• **onmouseover**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseover**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user moves the mouse pointer into the object.
 
@@ -1989,7 +2001,7 @@ Theme.onmouseover
 
 ### onmouseup
 
-• **onmouseup**: `null` \| (`ev`: `MouseEvent`) => `any`
+• **onmouseup**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `MouseEvent`) => `any`
 
 Fires when the user releases a mouse button while the mouse is over the object.
 
@@ -2003,7 +2015,7 @@ Theme.onmouseup
 
 ### onpaste
 
-• **onpaste**: `null` \| (`ev`: `ClipboardEvent`) => `any`
+• **onpaste**: `null` \| (`this`: `DocumentAndElementEventHandlers`, `ev`: `ClipboardEvent`) => `any`
 
 #### Inherited from
 
@@ -2013,7 +2025,7 @@ Theme.onpaste
 
 ### onpause
 
-• **onpause**: `null` \| (`ev`: `Event`) => `any`
+• **onpause**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when playback is paused.
 
@@ -2027,7 +2039,7 @@ Theme.onpause
 
 ### onplay
 
-• **onplay**: `null` \| (`ev`: `Event`) => `any`
+• **onplay**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the play method is requested.
 
@@ -2041,7 +2053,7 @@ Theme.onplay
 
 ### onplaying
 
-• **onplaying**: `null` \| (`ev`: `Event`) => `any`
+• **onplaying**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the audio or video has started playing.
 
@@ -2055,7 +2067,7 @@ Theme.onplaying
 
 ### onpointercancel
 
-• **onpointercancel**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointercancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2065,7 +2077,7 @@ Theme.onpointercancel
 
 ### onpointerdown
 
-• **onpointerdown**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerdown**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2075,7 +2087,7 @@ Theme.onpointerdown
 
 ### onpointerenter
 
-• **onpointerenter**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerenter**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2085,7 +2097,7 @@ Theme.onpointerenter
 
 ### onpointerleave
 
-• **onpointerleave**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerleave**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2095,7 +2107,7 @@ Theme.onpointerleave
 
 ### onpointermove
 
-• **onpointermove**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointermove**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2105,7 +2117,7 @@ Theme.onpointermove
 
 ### onpointerout
 
-• **onpointerout**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerout**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2115,7 +2127,7 @@ Theme.onpointerout
 
 ### onpointerover
 
-• **onpointerover**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerover**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2125,7 +2137,7 @@ Theme.onpointerover
 
 ### onpointerup
 
-• **onpointerup**: `null` \| (`ev`: `PointerEvent`) => `any`
+• **onpointerup**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `PointerEvent`) => `any`
 
 #### Inherited from
 
@@ -2135,7 +2147,7 @@ Theme.onpointerup
 
 ### onprogress
 
-• **onprogress**: `null` \| (`ev`: `ProgressEvent`<`EventTarget`\>) => `any`
+• **onprogress**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `ProgressEvent`<`EventTarget`\>) => `any`
 
 Occurs to indicate progress while downloading media data.
 
@@ -2149,7 +2161,7 @@ Theme.onprogress
 
 ### onratechange
 
-• **onratechange**: `null` \| (`ev`: `Event`) => `any`
+• **onratechange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the playback rate is increased or decreased.
 
@@ -2163,7 +2175,7 @@ Theme.onratechange
 
 ### onreset
 
-• **onreset**: `null` \| (`ev`: `Event`) => `any`
+• **onreset**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the user resets a form.
 
@@ -2177,7 +2189,7 @@ Theme.onreset
 
 ### onresize
 
-• **onresize**: `null` \| (`ev`: `UIEvent`) => `any`
+• **onresize**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `UIEvent`) => `any`
 
 #### Inherited from
 
@@ -2187,7 +2199,7 @@ Theme.onresize
 
 ### onscroll
 
-• **onscroll**: `null` \| (`ev`: `Event`) => `any`
+• **onscroll**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the user repositions the scroll box in the scroll bar on the object.
 
@@ -2201,7 +2213,7 @@ Theme.onscroll
 
 ### onseeked
 
-• **onseeked**: `null` \| (`ev`: `Event`) => `any`
+• **onseeked**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the seek operation ends.
 
@@ -2215,7 +2227,7 @@ Theme.onseeked
 
 ### onseeking
 
-• **onseeking**: `null` \| (`ev`: `Event`) => `any`
+• **onseeking**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the current playback position is moved.
 
@@ -2229,7 +2241,7 @@ Theme.onseeking
 
 ### onselect
 
-• **onselect**: `null` \| (`ev`: `Event`) => `any`
+• **onselect**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Fires when the current selection changes.
 
@@ -2243,7 +2255,7 @@ Theme.onselect
 
 ### onselectionchange
 
-• **onselectionchange**: `null` \| (`ev`: `Event`) => `any`
+• **onselectionchange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2253,7 +2265,7 @@ Theme.onselectionchange
 
 ### onselectstart
 
-• **onselectstart**: `null` \| (`ev`: `Event`) => `any`
+• **onselectstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2263,7 +2275,7 @@ Theme.onselectstart
 
 ### onstalled
 
-• **onstalled**: `null` \| (`ev`: `Event`) => `any`
+• **onstalled**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the download has stopped.
 
@@ -2277,7 +2289,7 @@ Theme.onstalled
 
 ### onsubmit
 
-• **onsubmit**: `null` \| (`ev`: `Event`) => `any`
+• **onsubmit**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `SubmitEvent`) => `any`
 
 #### Inherited from
 
@@ -2287,7 +2299,7 @@ Theme.onsubmit
 
 ### onsuspend
 
-• **onsuspend**: `null` \| (`ev`: `Event`) => `any`
+• **onsuspend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs if the load operation has been intentionally halted.
 
@@ -2301,7 +2313,7 @@ Theme.onsuspend
 
 ### ontimeupdate
 
-• **ontimeupdate**: `null` \| (`ev`: `Event`) => `any`
+• **ontimeupdate**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs to indicate the current playback position.
 
@@ -2315,7 +2327,7 @@ Theme.ontimeupdate
 
 ### ontoggle
 
-• **ontoggle**: `null` \| (`ev`: `Event`) => `any`
+• **ontoggle**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 #### Inherited from
 
@@ -2325,7 +2337,7 @@ Theme.ontoggle
 
 ### ontouchcancel
 
-• `Optional` **ontouchcancel**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchcancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2335,7 +2347,7 @@ Theme.ontouchcancel
 
 ### ontouchend
 
-• `Optional` **ontouchend**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2345,7 +2357,7 @@ Theme.ontouchend
 
 ### ontouchmove
 
-• `Optional` **ontouchmove**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchmove**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2355,7 +2367,7 @@ Theme.ontouchmove
 
 ### ontouchstart
 
-• `Optional` **ontouchstart**: `null` \| (`ev`: `TouchEvent`) => `any`
+• `Optional` **ontouchstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TouchEvent`) => `any`
 
 #### Inherited from
 
@@ -2365,7 +2377,7 @@ Theme.ontouchstart
 
 ### ontransitioncancel
 
-• **ontransitioncancel**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitioncancel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2375,7 +2387,7 @@ Theme.ontransitioncancel
 
 ### ontransitionend
 
-• **ontransitionend**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitionend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2385,7 +2397,7 @@ Theme.ontransitionend
 
 ### ontransitionrun
 
-• **ontransitionrun**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitionrun**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2395,7 +2407,7 @@ Theme.ontransitionrun
 
 ### ontransitionstart
 
-• **ontransitionstart**: `null` \| (`ev`: `TransitionEvent`) => `any`
+• **ontransitionstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `TransitionEvent`) => `any`
 
 #### Inherited from
 
@@ -2405,7 +2417,7 @@ Theme.ontransitionstart
 
 ### onvolumechange
 
-• **onvolumechange**: `null` \| (`ev`: `Event`) => `any`
+• **onvolumechange**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when the volume is changed, or playback is muted or unmuted.
 
@@ -2419,7 +2431,7 @@ Theme.onvolumechange
 
 ### onwaiting
 
-• **onwaiting**: `null` \| (`ev`: `Event`) => `any`
+• **onwaiting**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
 
 Occurs when playback stops because the next frame of a video resource is not available.
 
@@ -2433,7 +2445,9 @@ Theme.onwaiting
 
 ### onwebkitanimationend
 
-• **onwebkitanimationend**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkitanimationend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `onanimationend`.
 
 #### Inherited from
 
@@ -2443,7 +2457,9 @@ Theme.onwebkitanimationend
 
 ### onwebkitanimationiteration
 
-• **onwebkitanimationiteration**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkitanimationiteration**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `onanimationiteration`.
 
 #### Inherited from
 
@@ -2453,7 +2469,9 @@ Theme.onwebkitanimationiteration
 
 ### onwebkitanimationstart
 
-• **onwebkitanimationstart**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkitanimationstart**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `onanimationstart`.
 
 #### Inherited from
 
@@ -2463,7 +2481,9 @@ Theme.onwebkitanimationstart
 
 ### onwebkittransitionend
 
-• **onwebkittransitionend**: `null` \| (`ev`: `Event`) => `any`
+• **onwebkittransitionend**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `Event`) => `any`
+
+**`deprecated`** This is a legacy alias of `ontransitionend`.
 
 #### Inherited from
 
@@ -2473,7 +2493,7 @@ Theme.onwebkittransitionend
 
 ### onwheel
 
-• **onwheel**: `null` \| (`ev`: `WheelEvent`) => `any`
+• **onwheel**: `null` \| (`this`: `GlobalEventHandlers`, `ev`: `WheelEvent`) => `any`
 
 #### Inherited from
 
@@ -2845,11 +2865,11 @@ Theme.template
 
 #### Parameters
 
-| Name       | Type                                        |
-| :--------- | :------------------------------------------ |
-| `type`     | `K`                                         |
-| `listener` | (`ev`: `HTMLElementEventMap`[`K`]) => `any` |
-| `options?` | `boolean` \| `AddEventListenerOptions`      |
+| Name       | Type                                                               |
+| :--------- | :----------------------------------------------------------------- |
+| `type`     | `K`                                                                |
+| `listener` | (`this`: `HTMLElement`, `ev`: `HTMLElementEventMap`[`K`]) => `any` |
+| `options?` | `boolean` \| `AddEventListenerOptions`                             |
 
 #### Returns
 
@@ -2985,6 +3005,20 @@ Theme.append
 #### Inherited from
 
 Theme.appendChild
+
+---
+
+### attachInternals
+
+▸ **attachInternals**(): `ElementInternals`
+
+#### Returns
+
+`ElementInternals`
+
+#### Inherited from
+
+Theme.attachInternals
 
 ---
 
@@ -3158,9 +3192,9 @@ Theme.closest
 
 #### Type parameters
 
-| Name | Type                         |
-| :--- | :--------------------------- |
-| `E`  | extends ` Element``Element ` |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `E`  | extends `Element` = `Element` |
 
 #### Parameters
 
@@ -4008,9 +4042,9 @@ Theme.querySelector
 
 #### Type parameters
 
-| Name | Type                         |
-| :--- | :--------------------------- |
-| `E`  | extends ` Element``Element ` |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `E`  | extends `Element` = `Element` |
 
 #### Parameters
 
@@ -4080,9 +4114,9 @@ Theme.querySelectorAll
 
 #### Type parameters
 
-| Name | Type                         |
-| :--- | :--------------------------- |
-| `E`  | extends ` Element``Element ` |
+| Name | Type                          |
+| :--- | :---------------------------- |
+| `E`  | extends `Element` = `Element` |
 
 #### Parameters
 
@@ -4239,11 +4273,11 @@ Theme.removeChild
 
 #### Parameters
 
-| Name       | Type                                        |
-| :--------- | :------------------------------------------ |
-| `type`     | `K`                                         |
-| `listener` | (`ev`: `HTMLElementEventMap`[`K`]) => `any` |
-| `options?` | `boolean` \| `EventListenerOptions`         |
+| Name       | Type                                                               |
+| :--------- | :----------------------------------------------------------------- |
+| `type`     | `K`                                                                |
+| `listener` | (`this`: `HTMLElement`, `ev`: `HTMLElementEventMap`[`K`]) => `any` |
+| `options?` | `boolean` \| `EventListenerOptions`                                |
 
 #### Returns
 

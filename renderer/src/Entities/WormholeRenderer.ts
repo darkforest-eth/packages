@@ -1,14 +1,21 @@
-import { LocationId, RenderZIndex } from '@darkforest_eth/types';
+import {
+  LocationId,
+  RendererType,
+  RenderZIndex,
+  WormholeRendererType,
+} from '@darkforest_eth/types';
 import { engineConsts } from '../EngineConsts';
 import { Renderer } from '../Renderer';
-
+import { GameGLManager } from '../WebGL/GameGLManager';
 const { purpleA } = engineConsts.colors;
 
-export class WormholeRenderer {
+export class WormholeRenderer implements WormholeRendererType {
   renderer: Renderer;
 
-  constructor(renderer: Renderer) {
-    this.renderer = renderer;
+  rendererType = RendererType.Wormhole;
+
+  constructor(gl: GameGLManager) {
+    this.renderer = gl.renderer;
   }
 
   queueWormholes() {
@@ -48,4 +55,7 @@ export class WormholeRenderer {
       confirmed ? false : true
     );
   }
+
+  // eslint-disable-next-line
+  flush() {}
 }

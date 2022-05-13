@@ -1,6 +1,6 @@
 import { PerlinConfig } from '@darkforest_eth/types';
 import BigInt, { BigInteger } from 'big-integer';
-import { Fraction } from './fractions/bigFraction.js';
+import { Fraction, IFraction } from './fractions/bigFraction';
 import { perlinRandHash } from './mimc';
 
 const TRACK_LCM = false;
@@ -14,8 +14,8 @@ export interface IntegerVector {
 }
 
 interface Vector {
-  x: Fraction;
-  y: Fraction;
+  x: IFraction;
+  y: IFraction;
 }
 
 interface GradientAtPoint {
@@ -78,7 +78,7 @@ try {
   console.error('Browser does not support BigInt.', err);
 }
 
-export const getRandomGradientAt = (point: Vector, scale: Fraction, randFn: HashFn): Vector => {
+export const getRandomGradientAt = (point: Vector, scale: IFraction, randFn: HashFn): Vector => {
   const val = vecs[randFn(point.x.valueOf(), point.y.valueOf(), scale.valueOf())];
   return val;
 };
@@ -90,21 +90,21 @@ const minus: (a: Vector, b: Vector) => Vector = (a, b) => {
   };
 };
 
-const dot: (a: Vector, b: Vector) => Fraction = (a, b) => {
+const dot: (a: Vector, b: Vector) => IFraction = (a, b) => {
   return a.x.mul(b.x).add(a.y.mul(b.y));
 };
 
-const smoothStep: (x: Fraction) => Fraction = (x) => {
+const smoothStep: (x: IFraction) => IFraction = (x) => {
   // return 6 * x ** 5 - 15 * x ** 4 + 10 * x ** 3;
   return x;
 };
 
-const scalarMultiply: (s: Fraction, v: Vector) => Vector = (s, v) => ({
+const scalarMultiply: (s: IFraction, v: Vector) => Vector = (s, v) => ({
   x: v.x.mul(s),
   y: v.y.mul(s),
 });
 
-const getWeight: (corner: Vector, p: Vector) => Fraction = (corner, p) => {
+const getWeight: (corner: Vector, p: Vector) => IFraction = (corner, p) => {
   return smoothStep(new Fraction(1).sub(p.x.sub(corner.x).abs())).mul(
     smoothStep(new Fraction(1).sub(p.y.sub(corner.y).abs()))
   );
@@ -113,9 +113,9 @@ const getWeight: (corner: Vector, p: Vector) => Fraction = (corner, p) => {
 // p is in a scale x scale square. we scale down to a 1x1 square
 const perlinValue: (
   corners: [GradientAtPoint, GradientAtPoint, GradientAtPoint, GradientAtPoint],
-  scale: Fraction,
+  scale: IFraction,
   p: Vector
-) => Fraction = (corners, scale, p) => {
+) => IFraction = (corners, scale, p) => {
   let ret = new Fraction(0);
   for (const corner of corners) {
     const distVec = minus(p, corner.coords);
@@ -145,7 +145,7 @@ const updateLCM = (oldLCM: BigInteger, newValue: BigInteger): BigInteger => {
 };
 
 // fractional mod
-const realMod = (dividend: Fraction, divisor: Fraction): Fraction => {
+const realMod = (dividend: IFraction, divisor: IFraction): IFraction => {
   const temp = dividend.mod(divisor);
   // temp.s is sign
   if (temp.s.toString() === '-1') {
@@ -154,7 +154,7 @@ const realMod = (dividend: Fraction, divisor: Fraction): Fraction => {
   return temp;
 };
 
-const valueAt = (p: Vector, scale: Fraction, randFn: (...inputs: number[]) => number) => {
+const valueAt = (p: Vector, scale: IFraction, randFn: (...inputs: number[]) => number) => {
   const bottomLeftCoords = {
     x: p.x.sub(realMod(p.x, scale)),
     y: p.y.sub(realMod(p.y, scale)),
@@ -208,7 +208,7 @@ export function perlin(coords: IntegerVector, options: PerlinConfig) {
   if (options.mirrorX) y = Math.abs(y); // mirror across the horizontal x-axis
   const fractionalP = { x: new Fraction(x), y: new Fraction(y) };
   let ret = new Fraction(0);
-  const pValues: Fraction[] = [];
+  const pValues: IFraction[] = [];
   for (let i = 0; i < 3; i += 1) {
     // scale must be a power of two, up to 8192
     pValues.push(valueAt(fractionalP, new Fraction(options.scale * 2 ** i), rand(options.key)));

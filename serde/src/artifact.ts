@@ -1,11 +1,5 @@
 import type { DarkForest } from '@darkforest_eth/contracts/typechain';
-import type {
-  Artifact,
-  ArtifactId,
-  ArtifactPointValues,
-  Awaited,
-  VoyageId,
-} from '@darkforest_eth/types';
+import type { Artifact, ArtifactId, ArtifactPointValues, VoyageId } from '@darkforest_eth/types';
 import { ArtifactRarity, ArtifactType, Biome } from '@darkforest_eth/types';
 import bigInt from 'big-integer';
 import type { BigNumber as EthersBN } from 'ethers';

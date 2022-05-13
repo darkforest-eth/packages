@@ -32,8 +32,15 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 ### Interfaces
 
 - [ArrivalWithTimer](interfaces/ArrivalWithTimer.md)
+- [AsteroidRendererType](interfaces/AsteroidRendererType.md)
+- [BackgroundRendererType](interfaces/BackgroundRendererType.md)
+- [BaseRenderer](interfaces/BaseRenderer.md)
+- [BeltRendererType](interfaces/BeltRendererType.md)
+- [BlackDomainRendererType](interfaces/BlackDomainRendererType.md)
 - [CanvasCoords](interfaces/CanvasCoords.md)
+- [CaptureZoneRendererType](interfaces/CaptureZoneRendererType.md)
 - [Chunk](interfaces/Chunk.md)
+- [CircleRendererType](interfaces/CircleRendererType.md)
 - [DeleteMessagesRequest](interfaces/DeleteMessagesRequest.md)
 - [DiagnosticUpdater](interfaces/DiagnosticUpdater.md)
 - [Diagnostics](interfaces/Diagnostics.md)
@@ -43,9 +50,13 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [IRendererConfig](interfaces/IRendererConfig.md)
 - [Leaderboard](interfaces/Leaderboard.md)
 - [LeaderboardEntry](interfaces/LeaderboardEntry.md)
+- [LineRendererType](interfaces/LineRendererType.md)
+- [MineBodyRendererType](interfaces/MineBodyRendererType.md)
+- [MineRendererType](interfaces/MineRendererType.md)
 - [ModalPosition](interfaces/ModalPosition.md)
 - [NetworkEvent](interfaces/NetworkEvent.md)
 - [PerlinConfig](interfaces/PerlinConfig.md)
+- [PerlinRendererType](interfaces/PerlinRendererType.md)
 - [PersistedTransaction](interfaces/PersistedTransaction.md)
 - [PlanetCosmeticInfo](interfaces/PlanetCosmeticInfo.md)
 - [PlanetDefaults](interfaces/PlanetDefaults.md)
@@ -53,14 +64,30 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [PlanetMessageRequest](interfaces/PlanetMessageRequest.md)
 - [PlanetMessageResponse](interfaces/PlanetMessageResponse.md)
 - [PlanetRenderInfo](interfaces/PlanetRenderInfo.md)
+- [PlanetRenderManagerType](interfaces/PlanetRenderManagerType.md)
+- [PlanetRendererType](interfaces/PlanetRendererType.md)
 - [PostMessageRequest](interfaces/PostMessageRequest.md)
+- [QuasarBodyRendererType](interfaces/QuasarBodyRendererType.md)
+- [QuasarRayRendererType](interfaces/QuasarRayRendererType.md)
+- [QuasarRendererType](interfaces/QuasarRendererType.md)
 - [QueuedArrival](interfaces/QueuedArrival.md)
 - [Radii](interfaces/Radii.md)
+- [RectRendererType](interfaces/RectRendererType.md)
 - [Rectangle](interfaces/Rectangle.md)
 - [RenderedArtifact](interfaces/RenderedArtifact.md)
+- [RingRendererType](interfaces/RingRendererType.md)
+- [RuinsRendererType](interfaces/RuinsRendererType.md)
 - [SignedMessage](interfaces/SignedMessage.md)
+- [SpaceRendererType](interfaces/SpaceRendererType.md)
+- [SpacetimeRipRendererType](interfaces/SpacetimeRipRendererType.md)
+- [SpriteRendererType](interfaces/SpriteRendererType.md)
+- [TextRendererType](interfaces/TextRendererType.md)
 - [Transaction](interfaces/Transaction.md)
 - [TransactionCollection](interfaces/TransactionCollection.md)
+- [UIRendererType](interfaces/UIRendererType.md)
+- [UnminedRendererType](interfaces/UnminedRendererType.md)
+- [VoyageRendererType](interfaces/VoyageRendererType.md)
+- [WormholeRendererType](interfaces/WormholeRendererType.md)
 
 ### Type aliases
 
@@ -74,14 +101,15 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [AttribProps](README.md#attribprops)
 - [AttribType](README.md#attribtype)
 - [AutoGasSetting](README.md#autogassetting)
-- [Awaited](README.md#awaited)
 - [Biome](README.md#biome)
 - [CaptureZone](README.md#capturezone)
 - [ClaimedCoords](README.md#claimedcoords)
 - [ClaimedLocation](README.md#claimedlocation)
+- [ContractMethodName](README.md#contractmethodname)
 - [CursorState](README.md#cursorstate)
 - [DrawMode](README.md#drawmode)
 - [EthAddress](README.md#ethaddress)
+- [EthTxStatus](README.md#ethtxstatus)
 - [HSLVec](README.md#hslvec)
 - [HatType](README.md#hattype)
 - [LocatablePlanet](README.md#locatableplanet)
@@ -104,6 +132,8 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [RGBVec](README.md#rgbvec)
 - [RegisterResponse](README.md#registerresponse)
 - [RenderZIndex](README.md#renderzindex)
+- [RendererProgram](README.md#rendererprogram)
+- [RendererType](README.md#renderertype)
 - [RevealedCoords](README.md#revealedcoords)
 - [RevealedLocation](README.md#revealedlocation)
 - [RuinsInfo](README.md#ruinsinfo)
@@ -153,6 +183,7 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 - [PlanetType](README.md#planettype)
 - [PlanetTypeNames](README.md#planettypenames)
 - [RenderZIndex](README.md#renderzindex)
+- [RendererType](README.md#renderertype)
 - [Setting](README.md#setting)
 - [SpaceType](README.md#spacetype)
 - [SpaceTypeNames](README.md#spacetypenames)
@@ -170,17 +201,17 @@ import * as types from 'http://cdn.skypack.dev/@darkforest_eth/types';
 
 ### Abstract
 
-Ƭ **Abstract**<`T`, `Id`\>: `Any.Type`<`T`, `Id`\>
+Ƭ **Abstract**<`Type`, `Token`\>: `Type` & `Tagged`<`Token`\>
 
 An abstract type used to differentiate between common types, like `number` or `string`.
-The `Id` type parameter is the key to vary upon and should be unique unless being used to subtype.
+The `Token` type parameter is the key to vary upon and should be unique unless being used to subtype.
 
 #### Type parameters
 
-| Name | Type              |
-| :--- | :---------------- |
-| `T`  | `T`               |
-| `Id` | extends `Any.Key` |
+| Name    | Type      |
+| :------ | :-------- |
+| `Type`  | `Type`    |
+| `Token` | `unknown` |
 
 ---
 
@@ -298,20 +329,6 @@ depending on how much they are willing to pay and how fast they want their trans
 
 ---
 
-### Awaited
-
-Ƭ **Awaited**<`T`\>: `Any.Await`<`T`\>
-
-Unwraps a Promise type into the type it contains. Useful when working with Promise-returning functions.
-
-#### Type parameters
-
-| Name |
-| :--- |
-| `T`  |
-
----
-
 ### Biome
 
 Ƭ **Biome**: [`Abstract`](README.md#abstract)<`number`, `"Biome"`\>
@@ -347,6 +364,12 @@ Represents a planet location that has been broadcast on-chain
 
 ---
 
+### ContractMethodName
+
+Ƭ **ContractMethodName**: `"revealLocation"` \| `"initializePlayer"` \| `"move"` \| `"upgradePlanet"` \| `"buyHat"` \| `"transferPlanet"` \| `"findArtifact"` \| `"prospectPlanet"` \| `"depositArtifact"` \| `"withdrawArtifact"` \| `"activateArtifact"` \| `"deactivateArtifact"` \| `"withdrawSilver"` \| `"useKey"` \| `"adminUseKey"` \| `"addKeys"` \| `"giveSpaceShips"` \| `"createLobby"` \| `"invadePlanet"` \| `"capturePlanet"`
+
+---
+
 ### CursorState
 
 Ƭ **CursorState**: [`Abstract`](README.md#abstract)<`string`, `"CursorState"`\>
@@ -366,6 +389,12 @@ Represents a planet location that has been broadcast on-chain
 This is expected to be a 40-character, lowercase hex string, prefixed with 0x
 (so 42 characters in total). EthAddress should only ever be instantiated
 through the `address` function in `serde`.
+
+---
+
+### EthTxStatus
+
+Ƭ **EthTxStatus**: `"Init"` \| `"Processing"` \| `"Prioritized"` \| `"Submit"` \| `"Confirm"` \| `"Fail"` \| `"Cancel"`
 
 ---
 
@@ -619,6 +648,31 @@ struct
 ### RenderZIndex
 
 Ƭ **RenderZIndex**: [`Abstract`](README.md#abstract)<`number`, `"RenderZIndex"`\>
+
+---
+
+### RendererProgram
+
+Ƭ **RendererProgram**: `Object`
+
+#### Type declaration
+
+| Name             | Type                                                           |
+| :--------------- | :------------------------------------------------------------- |
+| `attribs`        | { `[key: string]`: [`AttribProps`](README.md#attribprops); }   |
+| `fragmentShader` | `string`                                                       |
+| `uniforms`       | { `[key: string]`: [`UniformProps`](README.md#uniformprops); } |
+| `vertexShader`   | `string`                                                       |
+
+---
+
+### RendererType
+
+Ƭ **RendererType**: [`Abstract`](README.md#abstract)<`number`, `"RendererType"`\>
+
+Enum for determining the type of renderer
+Each renderer should contain a variable called 'rendererType'
+'rendererType' should be a enum that corresponds with the type of renderer it is
 
 ---
 
@@ -924,7 +978,7 @@ Enumeration of artifact rarity levels. Common = 1, Mythic = 5
 
 ### ArtifactRarityNames
 
-• **ArtifactRarityNames**: `Object`
+• `Const` **ArtifactRarityNames**: `Object`
 
 Mapping from ArtifactRarity to pretty-printed names.
 
@@ -960,7 +1014,7 @@ Enumeration of artifact types.
 
 ### ArtifactTypeNames
 
-• **ArtifactTypeNames**: `Object`
+• `Const` **ArtifactTypeNames**: `Object`
 
 Mapping from ArtifactType to pretty-printed names.
 
@@ -1019,7 +1073,7 @@ Enumeration of the biomes in the game. OCEAN = 1, CORRUPTED = 10
 
 ### BiomeNames
 
-• **BiomeNames**: `Object`
+• `Const` **BiomeNames**: `Object`
 
 Mapping from Biome to pretty-printed names.
 
@@ -1147,7 +1201,7 @@ Enumeration of the possible planet levels.
 
 ### PlanetLevelNames
 
-• **PlanetLevelNames**: `Object`
+• `Const` **PlanetLevelNames**: `Object`
 
 Mapping from PlanetLevel to pretty-printed names.
 
@@ -1187,7 +1241,7 @@ Enumeration of the planet types. (PLANET = 0, SILVER_BANK = 4)
 
 ### PlanetTypeNames
 
-• **PlanetTypeNames**: `Object`
+• `Const` **PlanetTypeNames**: `Object`
 
 Mapping from PlanetType to pretty-printed names.
 
@@ -1211,6 +1265,43 @@ Mapping from PlanetType to pretty-printed names.
 
 ---
 
+### RendererType
+
+• **RendererType**: `Object`
+
+#### Type declaration
+
+| Name            | Type                                     |
+| :-------------- | :--------------------------------------- |
+| `Asteroid`      | [`RendererType`](README.md#renderertype) |
+| `Background`    | [`RendererType`](README.md#renderertype) |
+| `Belt`          | [`RendererType`](README.md#renderertype) |
+| `BlackDomain`   | [`RendererType`](README.md#renderertype) |
+| `CaptureZone`   | [`RendererType`](README.md#renderertype) |
+| `Circle`        | [`RendererType`](README.md#renderertype) |
+| `Line`          | [`RendererType`](README.md#renderertype) |
+| `Mine`          | [`RendererType`](README.md#renderertype) |
+| `MineBody`      | [`RendererType`](README.md#renderertype) |
+| `Perlin`        | [`RendererType`](README.md#renderertype) |
+| `Planet`        | [`RendererType`](README.md#renderertype) |
+| `PlanetManager` | [`RendererType`](README.md#renderertype) |
+| `Quasar`        | [`RendererType`](README.md#renderertype) |
+| `QuasarBody`    | [`RendererType`](README.md#renderertype) |
+| `QuasarRay`     | [`RendererType`](README.md#renderertype) |
+| `Rect`          | [`RendererType`](README.md#renderertype) |
+| `Ring`          | [`RendererType`](README.md#renderertype) |
+| `Ruins`         | [`RendererType`](README.md#renderertype) |
+| `Space`         | [`RendererType`](README.md#renderertype) |
+| `SpacetimeRip`  | [`RendererType`](README.md#renderertype) |
+| `Sprite`        | [`RendererType`](README.md#renderertype) |
+| `Text`          | [`RendererType`](README.md#renderertype) |
+| `UI`            | [`RendererType`](README.md#renderertype) |
+| `Unmined`       | [`RendererType`](README.md#renderertype) |
+| `Voyager`       | [`RendererType`](README.md#renderertype) |
+| `Wormhole`      | [`RendererType`](README.md#renderertype) |
+
+---
+
 ### Setting
 
 • **Setting**: `Object`
@@ -1231,6 +1322,7 @@ per instance of the dark forest contract that it's connected to.
 | `DisableHatRendering`                        | [`Setting`](README.md#setting) |
 | `DrawChunkBorders`                           | [`Setting`](README.md#setting) |
 | `ExperimentalFeatures`                       | [`Setting`](README.md#setting) |
+| `ForceReloadEmbeddedPlugins`                 | [`Setting`](README.md#setting) |
 | `FoundArtifact`                              | [`Setting`](README.md#setting) |
 | `FoundComet`                                 | [`Setting`](README.md#setting) |
 | `FoundDeepSpace`                             | [`Setting`](README.md#setting) |
@@ -1277,7 +1369,7 @@ Enumeration of the types of space in the game. NEBULA = 0, DEAD_SPACE = 3
 
 ### SpaceTypeNames
 
-• **SpaceTypeNames**: `Object`
+• `Const` **SpaceTypeNames**: `Object`
 
 Mapping from SpaceType to pretty-printed names.
 

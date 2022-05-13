@@ -4,7 +4,7 @@ This project is a place to store all packages that Dark Forest publishes for 3rd
 
 ## Usage
 
-These are the reference implementations for the published packages, but you may want to fork and edit them for own use. When forking, you'll likely need to generate JavaScript from the TypeScript code before it can be consumed by other code. A `prepare` script is generally available to build each package correctly, and you can run it with either `yarn` or `yarn prepare` inside the package directory you are modifying.
+These are the reference implementations for the published packages, but you may want to fork and edit them for own use. When forking, you'll likely need to generate JavaScript from the TypeScript code before it can be consumed by other code. A `build` script is generally available to build each package correctly, and you can run it with `yarn build` inside the package directory you are modifying.
 
 ## License
 

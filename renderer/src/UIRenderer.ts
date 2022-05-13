@@ -1,16 +1,26 @@
 import { isLocatable } from '@darkforest_eth/gamelogic';
 import { isUnconfirmedMoveTx } from '@darkforest_eth/serde';
-import { Planet, RenderZIndex, RGBVec, WorldCoords } from '@darkforest_eth/types';
+import {
+  Planet,
+  RendererType,
+  RenderZIndex,
+  RGBVec,
+  UIRendererType,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { engineConsts } from './EngineConsts';
 import { Renderer } from './Renderer';
+import { GameGLManager } from './WebGL/GameGLManager';
 
 const { orangeA, red, redA, white, whiteA, purpleA } = engineConsts.colors;
 
-export class UIRenderer {
+export class UIRenderer implements UIRendererType {
   renderer: Renderer;
 
-  constructor(renderer: Renderer) {
-    this.renderer = renderer;
+  rendererType = RendererType.UI;
+
+  constructor(gl: GameGLManager) {
+    this.renderer = gl.renderer;
   }
 
   queueBorders() {
@@ -116,4 +126,7 @@ export class UIRenderer {
       (!hoverPlanet || hoverPlanet?.locationId === selectedPlanet.locationId) &&
       this.renderer.planetRenderManager.queueRangeRings(selectedPlanet);
   }
+
+  // eslint-disable-next-line
+  flush(): void {}
 }

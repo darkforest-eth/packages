@@ -1,4 +1,4 @@
-import { AutoGasSetting } from './setting';
+import type { AutoGasSetting } from './setting';
 
 /**
  * Each time a transaction either reverts or confirms we send an event to the webserver with this

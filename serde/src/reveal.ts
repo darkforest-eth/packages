@@ -1,6 +1,6 @@
 import { LOCATION_ID_UB } from '@darkforest_eth/constants';
 import type { DarkForest } from '@darkforest_eth/contracts/typechain';
-import type { Awaited, RevealedCoords } from '@darkforest_eth/types';
+import type { RevealedCoords } from '@darkforest_eth/types';
 import bigInt from 'big-integer';
 import { address } from './address';
 import { locationIdFromDecStr } from './location';

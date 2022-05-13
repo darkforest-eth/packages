@@ -1,5 +1,5 @@
 import type { DarkForest } from '@darkforest_eth/contracts/typechain';
-import type { Awaited, Upgrade, UpgradeBranches } from '@darkforest_eth/types';
+import type { Upgrade, UpgradeBranches } from '@darkforest_eth/types';
 
 // Sort of duplicate of RawArtifactWithMetadata to avoid circular dependency
 export type RawUpgrade = Awaited<ReturnType<DarkForest['getArtifactById']>>['upgrade'];

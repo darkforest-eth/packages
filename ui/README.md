@@ -97,13 +97,13 @@
 
 ### borderRadius
 
-• **borderRadius**: `"3px"`
+• `Const` **borderRadius**: `"3px"`
 
 ---
 
 ### colors
 
-• **colors**: `Object`
+• `Const` **colors**: `Object`
 
 #### Type declaration
 
@@ -124,7 +124,7 @@
 
 ### zIndex
 
-• **zIndex**: `Object`
+• `Const` **zIndex**: `Object`
 
 #### Type declaration
 

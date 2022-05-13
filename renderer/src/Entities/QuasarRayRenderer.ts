@@ -1,17 +1,25 @@
 import { getPlanetCosmetic } from '@darkforest_eth/procedural';
-import { CanvasCoords, Planet, WorldCoords } from '@darkforest_eth/types';
+import {
+  CanvasCoords,
+  Planet,
+  QuasarRayRendererType,
+  RendererType,
+  WorldCoords,
+} from '@darkforest_eth/types';
 import { EngineUtils } from '../EngineUtils';
 import { QUASARRAY_PROGRAM_DEFINITION } from '../Programs/QuasarRayProgram';
 import { GameGLManager } from '../WebGL/GameGLManager';
 import { GenericRenderer } from '../WebGL/GenericRenderer';
 
-export class QuasarRayRenderer extends GenericRenderer<
-  typeof QUASARRAY_PROGRAM_DEFINITION,
-  GameGLManager
-> {
+export class QuasarRayRenderer
+  extends GenericRenderer<typeof QUASARRAY_PROGRAM_DEFINITION, GameGLManager>
+  implements QuasarRayRendererType
+{
   quad3Buffer: number[];
   quad2BufferTop: number[];
   quad2BufferBot: number[];
+
+  rendererType = RendererType.QuasarRay;
 
   constructor(manager: GameGLManager) {
     super(manager, QUASARRAY_PROGRAM_DEFINITION);
@@ -68,11 +76,11 @@ export class QuasarRayRenderer extends GenericRenderer<
   }
 
   public queueQuasarRay(
-    top = true,
     planet: Planet,
     centerW: WorldCoords,
     radiusW: number,
     z: number,
+    top = true,
     angle = 0
   ): void {
     const viewport = this.manager.renderer.getViewport();
