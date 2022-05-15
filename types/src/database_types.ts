@@ -25,3 +25,15 @@ export interface LeaderboardEntry {
   ethAddress: EthAddress;
   twitter?: string;
 }
+
+export interface ArenaLeaderboard {
+  entries: ArenaLeaderboardEntry[];
+}
+
+export interface ArenaLeaderboardEntry {
+  address: string;
+  twitter?: string;
+  games: number;
+  wins: number;
+}
+
