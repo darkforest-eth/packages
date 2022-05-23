@@ -303,7 +303,7 @@ export class TxExecutor {
     if (shouldRefreshNonce) {
       const chainNonce = await this.ethConnection.getNonce();
       const localNonce = this.nonce || 0;
-
+      console.log(`refreshing nonce, local is ${localNonce} and chain is ${chainNonce}`);
       this.nonce = Math.max(chainNonce, localNonce);
     }
 
@@ -343,15 +343,20 @@ export class TxExecutor {
 
     const time_exec_called = Date.now();
 
-    try {
-      tx.state = 'Processing';
 
-      if (this.beforeTransaction) {
+    tx.state = 'Processing';
+
+    if (this.beforeTransaction) {
+      try {
         await this.beforeTransaction(tx);
+      } catch (e) {
+        console.error(e);
       }
+    }
 
-      const releaseMutex = await this.nonceMutex.acquire();
-
+    const releaseMutex = await this.nonceMutex.acquire();
+    let hasMutex = true;
+    try {
       const nonce = await this.getNonce();
 
       const requestWithDefaults = Object.assign(
@@ -372,6 +377,7 @@ export class TxExecutor {
       );
 
       releaseMutex();
+      hasMutex = false;
 
       tx.state = 'Submit';
       tx.hash = submitted.hash;
@@ -413,6 +419,7 @@ export class TxExecutor {
         tx.lastUpdatedAt = time_errored;
         tx.onReceiptError(error);
       }
+      if (hasMutex) releaseMutex();
     } finally {
       this.diagnosticsUpdater?.updateDiagnostics((d) => {
         d.totalTransactions++;
