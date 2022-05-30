@@ -163,6 +163,8 @@ export const decodeInitializers = decoders.guard(
       [true, true, true, true, true]
     ),
 
+    RANDOM_ARTIFACTS : withDefault(decoders.boolean, true),
+
     NO_ADMIN: withDefault(decoders.boolean, false),
     
     INIT_PLANETS: withDefault<ArenaPlanets>(decoders.array(decodeArenaPlanet), []),

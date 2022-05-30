@@ -4,6 +4,7 @@ import { address } from './address';
 import { locationIdFromEthersBN } from './location';
 
 export type RawPlayer = Awaited<ReturnType<DarkForest['players']>>;
+
 export type RawArenaPlayer = Awaited<ReturnType<DarkForest['arenaPlayers']>>;
 
 /**
