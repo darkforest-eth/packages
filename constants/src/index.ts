@@ -206,4 +206,5 @@ export const GNOSIS_CHAIN_ID = 100 as const;
  * This should be updated every round.
  */
 export const THEGRAPH_API_URL =
-  'https://api.thegraph.com/subgraphs/name/darkforest-eth/dark-forest-v06-round-5';
+  'https://graph-optimism.gnosischain.com/subgraphs/name/arena/test';
+  
