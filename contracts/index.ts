@@ -50,7 +50,7 @@ export const CONTRACT_ADDRESS = '0x9EED3460Ce72254f9F0ad5164C12F39E5E10A40C';
 /**
  * The address for the initalizer contract. Useful for lobbies.
  */
-export const INIT_ADDRESS = '0x6b9EA68DbF64aFe8eeFED0169A8B4c5fa8c666cc';
+export const INIT_ADDRESS = '0x6c9a62B7295850669F4a5FB08f7AF03a5181073A';
 /**
  * The address for the Verifier library. Useful for lobbies.
  */
