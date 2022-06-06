@@ -18,6 +18,7 @@ export interface AddressScoreMap {
 
 export interface Leaderboard {
   entries: LeaderboardEntry[];
+  length: number;
 }
 
 export interface LeaderboardEntry {
