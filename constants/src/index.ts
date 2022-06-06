@@ -202,6 +202,8 @@ export const GNOSIS_OPTIMISM_CHAIN_ID = 300 as const;
 export const KOVAN_OPTIMISM_CHAIN_ID = 69 as const;
 
 export const GNOSIS_CHAIN_ID = 100 as const;
+export const LOCAL_OPTIMISM_CHAIN_ID = 17 as const;
+
 /**
  * This should be updated every round.
  */

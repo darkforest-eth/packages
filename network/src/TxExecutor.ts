@@ -355,7 +355,6 @@ export class TxExecutor {
     }
 
     const releaseMutex = await this.nonceMutex.acquire();
-    let hasMutex = true;
     try {
       const nonce = await this.getNonce();
 
@@ -377,7 +376,6 @@ export class TxExecutor {
       );
 
       releaseMutex();
-      hasMutex = false;
 
       tx.state = 'Submit';
       tx.hash = submitted.hash;
@@ -406,8 +404,13 @@ export class TxExecutor {
       tx.state = 'Fail';
       error = e as Error;
 
+      // if the tx isnt submitted, the mutex hasnt been released.
+      // so we can't call resetNonce because that function waits
+      // for the mutex to be releaesd, so everything stops.
+      // instead we set the nonce to undefined manually
       if (!time_submitted) {
-        await this.resetNonce();
+        this.nonce = undefined;
+        releaseMutex();
         time_errored = Date.now();
         tx.onSubmissionError(error);
       } else {
@@ -419,7 +422,6 @@ export class TxExecutor {
         tx.lastUpdatedAt = time_errored;
         tx.onReceiptError(error);
       }
-      if (hasMutex) releaseMutex();
     } finally {
       this.diagnosticsUpdater?.updateDiagnostics((d) => {
         d.totalTransactions++;
