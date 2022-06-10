@@ -151,7 +151,7 @@ export class TxExecutor {
       queueConfiguration ?? {
         invocationIntervalMs: 200,
         maxInvocationsPerIntervalMs: 3,
-        maxConcurrency: 3,
+        maxConcurrency: 10,
       }
     );
     this.lastTransactionTimestamp = Date.now();
