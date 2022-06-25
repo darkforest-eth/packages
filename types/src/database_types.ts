@@ -23,6 +23,8 @@ export interface Leaderboard {
 
 export interface LeaderboardEntry {
   score: number | undefined;
+  moves: number;
+  time: number;
   ethAddress: EthAddress;
   twitter?: string;
 }
