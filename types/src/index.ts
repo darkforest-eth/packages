@@ -28,10 +28,12 @@
  export * from './capture_zones';
  export * from './claim';
  export * from './database_types';
+ export * from './decoder-helpers';
  export * from './diagnostics';
  export * from './event';
  export * from './game_types';
  export * from './gas_prices';
+ export * from './graph_types';
  export * from './hat';
  export * from './identifier';
  export * from './modal';

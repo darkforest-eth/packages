@@ -1,6 +1,7 @@
 import type { Biome, SpaceType } from './game_types';
 import type { ArtifactId, EthAddress, LocationId } from './identifier';
 import type { PlanetMessage } from './planetmessage';
+import { Player } from './player';
 import type { TransactionCollection } from './transaction';
 import type { Upgrade, UpgradeState } from './upgrade';
 import type { Abstract } from './utility';
@@ -151,6 +152,7 @@ export type Planet = {
   invadeStartBlock?: number;
   isTargetPlanet: boolean;
   isSpawnPlanet: boolean;
+  blockedPlanetIds: LocationId[];
 };
 
 /**

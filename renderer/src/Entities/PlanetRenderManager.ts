@@ -6,7 +6,7 @@ import {
   isLocatable,
   isSpaceShip,
 } from '@darkforest_eth/gamelogic';
-import { getOwnerColorVec, getPlanetCosmetic } from '@darkforest_eth/procedural';
+import { getPlanetCosmetic, getPlayerColorVec } from '@darkforest_eth/procedural';
 import { isUnconfirmedMoveTx } from '@darkforest_eth/serde';
 import {
   Artifact,
@@ -52,6 +52,7 @@ export class PlanetRenderManager implements PlanetRenderManagerType {
     const renderAtReducedQuality = renderInfo.radii.radiusPixels <= 5 && highPerfMode;
     const isHovering = uiManager.getHoveringOverPlanet()?.locationId === planet.locationId;
     const isSelected = uiManager.getSelectedPlanet()?.locationId === planet.locationId;
+    const teamsEnabled = uiManager.getTeamsEnabled();
 
     let textAlpha = 255;
     if (renderInfo.radii.radiusPixels < 2 * maxRadius) {
@@ -62,7 +63,8 @@ export class PlanetRenderManager implements PlanetRenderManagerType {
     const artifacts = uiManager
       .getArtifactsWithIds(planet.heldArtifactIds)
       .filter((a) => !!a) as Artifact[];
-    const color = uiManager.isOwnedByMe(planet) ? whiteA : getOwnerColorVec(planet);
+    const player = uiManager.getPlayer(planet.owner);
+    const color = uiManager.isOwnedByMe(planet) ? whiteA : getPlayerColorVec(player, teamsEnabled);
 
     // draw planet body
     this.queuePlanetBody(planet, planet.location.coords, renderInfo.radii.radiusWorld);
@@ -187,7 +189,11 @@ export class PlanetRenderManager implements PlanetRenderManagerType {
     textAlpha: number
   ) {
     const { overlay2dRenderer: cM } = this.renderer;
-    if (renderInfo.planet.isTargetPlanet)
+    if (renderInfo.blocked && renderInfo.planet.isTargetPlanet) {
+      cM.drawEmoji(coords, radiusW, renderInfo, textAlpha, `🏠`);
+    } else if (renderInfo.blocked) {
+      cM.drawEmoji(coords, radiusW, renderInfo, textAlpha, `🚫`);
+    } else if (renderInfo.planet.isTargetPlanet)
       cM.drawEmoji(coords, radiusW, renderInfo, textAlpha, `🎯`);
     else if (renderInfo.planet.isSpawnPlanet)
       cM.drawEmoji(coords, radiusW, renderInfo, textAlpha, `🍼`);
@@ -242,13 +248,15 @@ export class PlanetRenderManager implements PlanetRenderManagerType {
   }
 
   // calculates attack value of mouse-drag action
-  private getMouseAtk(): number | undefined {
+  private getMouseAtk(): number | 'blocked' | undefined {
     const { context } = this.renderer;
 
     const fromPlanet = context.getMouseDownPlanet();
     const toPlanet = context.getHoveringOverPlanet();
 
     if (!fromPlanet || !toPlanet) return undefined;
+    const player = context.getAccount();
+    if(context.playerMoveBlocked(player || EMPTY_ADDRESS, toPlanet.locationId)) return 'blocked';
 
     let effectiveEnergy = fromPlanet.energy;
     for (const unconfirmedMove of fromPlanet.transactions?.getTransactions(isUnconfirmedMoveTx) ??
@@ -388,7 +396,9 @@ export class PlanetRenderManager implements PlanetRenderManagerType {
     let energyString = energy <= 0 ? '' : formatNumber(energy);
     if (lockedEnergy > 0) energyString += ` (-${formatNumber(lockedEnergy)})`;
 
-    const playerColor = hasOwner(planet) ? getOwnerColorVec(planet) : barbsA;
+    const player = uiManager.getPlayer(planet.owner);
+    const teamsEnabled = uiManager.getTeamsEnabled();
+    const playerColor = hasOwner(planet) ? getPlayerColorVec(player, teamsEnabled) : barbsA;
     const color = uiManager.isOwnedByMe(planet) ? whiteA : playerColor;
     color[3] = alpha;
 
@@ -402,6 +412,8 @@ export class PlanetRenderManager implements PlanetRenderManagerType {
     // now display atk string
     const fromPlanet = uiManager.getMouseDownPlanet();
     const toPlanet = uiManager.getHoveringOverPlanet();
+    const sender = uiManager.getPlayer(fromPlanet?.owner);
+    const recipient = uiManager.getPlayer(toPlanet?.owner);
 
     const myAtk = this.getMouseAtk();
 
@@ -411,9 +423,12 @@ export class PlanetRenderManager implements PlanetRenderManagerType {
       toPlanet?.locationId === planet.locationId &&
       !uiManager.getIsChoosingTargetPlanet();
 
+    const isOwnedByTeam = sender?.team == recipient?.team;
     if (moveHereInProgress && myAtk && toPlanet) {
       let atkString = '';
-      if (uiManager.isOwnedByMe(planet) || planet.energy === 0) {
+      if(myAtk == 'blocked') {
+        atkString = 'BLOCKED';
+      } else if (uiManager.isOwnedByMe(planet) || planet.energy === 0 || (teamsEnabled && isOwnedByTeam)) {
         atkString += ` (+${formatNumber(myAtk)})`;
       } else {
         atkString += ` (-${formatNumber((myAtk * 100) / toPlanet.defense)})`;

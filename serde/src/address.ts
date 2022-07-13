@@ -1,5 +1,6 @@
 import type { EthAddress } from '@darkforest_eth/types';
 import bigInt from 'big-integer';
+import { ethers } from 'ethers';
 
 /**
  * Converts a string to an `EthAddress`: a 0x-prefixed all lowercase hex string
@@ -9,6 +10,10 @@ import bigInt from 'big-integer';
  *
  * @param str An address-like `string`
  */
+
+export function isAddress(str: string): boolean {
+  return ethers.utils.isAddress(str);
+}
 export function address(str: string): EthAddress {
   let ret = str.toLowerCase();
   if (ret.slice(0, 2) === '0x') {

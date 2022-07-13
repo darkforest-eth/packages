@@ -12,8 +12,10 @@ import {
   UnconfirmedInit,
   UnconfirmedInvadePlanet,
   UnconfirmedMove,
+  UnconfirmedNotReady,
   UnconfirmedPlanetTransfer,
   UnconfirmedProspectPlanet,
+  UnconfirmedReady,
   UnconfirmedReveal,
   UnconfirmedUpgrade,
   UnconfirmedWithdrawArtifact,
@@ -107,10 +109,16 @@ export function isUnconfirmedInvadePlanet(txIntent: TxIntent): txIntent is Uncon
   return txIntent.methodName === 'invadePlanet';
 }
 
-export function isUnconfirmedClaimVictory(
-  txIntent: TxIntent
-): txIntent is UnconfirmedClaimVictory {
-  return txIntent.methodName === 'claimTargetPlanetVictory';
+export function isUnconfirmedClaimVictory(txIntent: TxIntent): txIntent is UnconfirmedClaimVictory {
+  return txIntent.methodName === 'claimVictory';
+}
+
+export function isUnconfirmedReady(txIntent: TxIntent): txIntent is UnconfirmedReady {
+  return txIntent.methodName === 'ready';
+}
+
+export function isUnconfirmedNotReady(txIntent: TxIntent): txIntent is UnconfirmedNotReady {
+  return txIntent.methodName === 'notReady';
 }
 
 export function isUnconfirmedRevealTx(tx: Transaction): tx is Transaction<UnconfirmedReveal> {
@@ -124,7 +132,6 @@ export function isUnconfirmedInitTx(tx: Transaction): tx is Transaction<Unconfir
 export function isUnconfirmedMoveTx(tx: Transaction): tx is Transaction<UnconfirmedMove> {
   return isUnconfirmedMove(tx.intent);
 }
-
 
 export function isUnconfirmedReleaseTx(tx: Transaction): tx is Transaction<UnconfirmedMove> {
   return isUnconfirmedRelease(tx.intent);
@@ -208,3 +215,10 @@ export function isUnconfirmedClaimVictoryTx(
   return isUnconfirmedClaimVictory(tx.intent);
 }
 
+export function isUnconfirmedReadyTx(tx: Transaction): tx is Transaction<UnconfirmedReady> {
+  return isUnconfirmedReady(tx.intent);
+}
+
+export function isUnconfirmedNotReadyTx(tx: Transaction): tx is Transaction<UnconfirmedNotReady> {
+  return isUnconfirmedNotReady(tx.intent);
+}

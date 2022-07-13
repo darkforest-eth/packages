@@ -1,6 +1,6 @@
 import { HandleController, Slider, SliderHandle } from '@spectrum-web-components/slider';
 import { css, CSSResultArray, unsafeCSS } from 'lit';
-import * as dfstyles from './styles';
+import dfstyles from './styles';
 
 export class DarkForestSlider extends Slider {
   // Not part of LitElement but let's tack on the tagName for easier registration

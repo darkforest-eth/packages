@@ -3,7 +3,7 @@ import { Theme } from '@spectrum-web-components/theme';
 import '@spectrum-web-components/theme/scale-medium.js';
 import '@spectrum-web-components/theme/theme-dark.js';
 import { css, unsafeCSS } from 'lit';
-import * as dfstyles from './styles';
+import dfstyles from './styles';
 
 export class DarkForestTheme extends Theme {
   // Not part of LitElement but let's tack on the tagName for easier registration

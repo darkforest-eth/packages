@@ -16,6 +16,7 @@ import {
   LocationId,
   Planet,
   PlanetCosmeticInfo,
+  Player,
   RGBAVec,
   RGBVec,
   RuinsInfo,
@@ -120,6 +121,7 @@ export const grayColors: PlanetCosmeticInfo = {
   hatType: HatType.GraduationCap,
 };
 const namesById = new Map<LocationId, string>();
+const configsById = new Map<string, string>();
 const taglinesById = new Map<LocationId, string>();
 const huesByHash = new Map<string, number>();
 const rgbsByHash = new Map<string, RGBAVec>();
@@ -221,29 +223,24 @@ export function hashToHue(hash: string): number {
   return baseHue;
 }
 
-export function getPlayerColor(player: EthAddress): string {
-  return hslStr(hashToHue(player.slice(2)), 100, 70); // remove 0x
+export function getPlayerColor(player: Player | undefined, teamsEnabled : boolean): string {
+  if(!player || player.address == EMPTY_ADDRESS) return '#996666';
+  const input = teamsEnabled ? (player.team *  9941).toString() : player.address.slice(2)
+  return hslStr(hashToHue(input), 100, 70); // remove 0x
 }
 
-export function getPlayerColorVec(player: EthAddress): RGBAVec {
-  if (!rgbsByHash.has(player)) {
-    const noAlpha = hslToRgb([hashToHue(player.slice(2)), 100, 70]);
+export function getPlayerColorVec(player: Player | undefined, teamsEnabled: boolean): RGBAVec {
+  if (!player || player.address == EMPTY_ADDRESS) return [153, 153, 102, 255];
+  const value = teamsEnabled ? (player.team *  9941).toString() : player.address.slice(2);
+
+  if (!rgbsByHash.has(value)) {
+    const noAlpha = hslToRgb([hashToHue(value), 100, 70]);
 
     const withAlpha = [...noAlpha, 1] as RGBAVec;
-    rgbsByHash.set(player, withAlpha);
+    rgbsByHash.set(value, withAlpha);
   }
 
-  return rgbsByHash.get(player) as RGBAVec;
-}
-
-export function getOwnerColorVec(planet: Planet): RGBAVec {
-  if (planet.owner === EMPTY_ADDRESS) return [153, 153, 102, 255];
-  return getPlayerColorVec(planet.owner);
-}
-
-export function getOwnerColor(planet: Planet): string {
-  if (planet.owner === EMPTY_ADDRESS) return '#996666';
-  return getPlayerColor(planet.owner);
+  return rgbsByHash.get(value) as RGBAVec;
 }
 
 export function getPlanetClass(planet: Planet): UpgradeBranchName {
@@ -279,6 +276,20 @@ export function planetPerlin(loc: LocationId) {
 export function planetRandom(loc: LocationId) {
   // shouldn't need to clone since loc is primitive but just to be safe
   const realHash = loc.substring(4, loc.length);
+
+  let count = 0;
+  const countOffset = parseInt('0x' + realHash.substring(0, 10));
+
+  return () => {
+    count++;
+    const ret = seededRandom(count + countOffset);
+    return ret;
+  };
+}
+
+export function configRandom(config: string) {
+  // shouldn't need to clone since loc is primitive but just to be safe
+  const realHash = config.substring(4, config.length);
 
   let count = 0;
   const countOffset = parseInt('0x' + realHash.substring(0, 10));
@@ -440,6 +451,28 @@ export function getPlanetTitle(planet: Planet | undefined) {
 export function getPlanetName(planet: Planet | undefined): string {
   if (!planet) return 'Unknown';
   return getPlanetNameHash(planet.locationId);
+}
+
+export function getConfigName(config: string):  string {
+  const name = configsById.get(config);
+  if (name) return name;
+
+  let planetName = '';
+
+  const rand = configRandom(config)
+  const randInt = () => Math.floor(rand() * 2 ** 24);
+
+  if (randInt() % 1024 === 0) {
+    planetName = 'Clown Town';
+  } else {
+    const word1 = planetNameWords[randInt() % planetNameWords.length];
+    const word2 = planetNameWords[randInt() % planetNameWords.length];
+    planetName = titleCase(`${word1} ${word2}`);
+  }
+
+  configsById.set(config, planetName);
+
+  return planetName;
 }
 
 export function getPlanetNameHash(locId: LocationId): string {

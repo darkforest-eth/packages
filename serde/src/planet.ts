@@ -43,7 +43,7 @@ export function decodePlanet(
   rawPlanet: RawPlanet,
   rawPlanetExtendedInfo: RawPlanetExtendedInfo,
   rawPlanetExtendedInfo2: RawPlanetExtendedInfo2,
-  rawPlanetArenaInfo: RawPlanetArenaInfo,
+  rawPlanetArenaInfo: RawPlanetArenaInfo
 ): Planet {
   const locationId = locationIdFromDecStr(rawLocationId.toString());
 
@@ -104,8 +104,9 @@ export function decodePlanet(
       ? undefined
       : rawPlanetExtendedInfo2.invadeStartBlock.toNumber(),
 
-      isTargetPlanet: rawPlanetArenaInfo.targetPlanet,
-      isSpawnPlanet: rawPlanetArenaInfo.spawnPlanet
+    isTargetPlanet: rawPlanetArenaInfo.targetPlanet,
+    isSpawnPlanet: rawPlanetArenaInfo.spawnPlanet,
+    blockedPlanetIds: rawPlanetArenaInfo.blockedPlanetIds.map(v => locationIdFromDecStr(v.toString())),
   };
 
   return planet;

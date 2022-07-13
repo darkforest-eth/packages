@@ -1,6 +1,6 @@
 import { css, html, LitElement, nothing, unsafeCSS } from 'lit';
 import { createRef, ref } from 'lit/directives/ref.js';
-import * as dfstyles from './styles';
+import dfstyles from './styles';
 
 export class DarkForestCheckbox extends LitElement {
   // Not part of LitElement but let's tack on the tagName for easier registration

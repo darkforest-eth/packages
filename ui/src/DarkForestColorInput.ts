@@ -1,6 +1,6 @@
 import { css, html, LitElement, unsafeCSS } from 'lit';
 import { createRef, ref } from 'lit/directives/ref.js';
-import * as dfstyles from './styles';
+import dfstyles from './styles';
 
 export class DarkForestColorInput extends LitElement {
   // Not part of LitElement but let's tack on the tagName for easier registration
@@ -41,7 +41,7 @@ export class DarkForestColorInput extends LitElement {
     .input:hover,
     .input:focus {
       border: 1px solid ${unsafeCSS(dfstyles.colors.border)};
-      background: ${unsafeCSS(dfstyles.colors.backgroundLight)};
+      background: ${unsafeCSS(dfstyles.colors.backgroundlight)};
       color: ${unsafeCSS(dfstyles.colors.text)};
     }
   `;

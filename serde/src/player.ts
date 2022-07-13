@@ -15,7 +15,7 @@ export type RawArenaPlayer = Awaited<ReturnType<DarkForest['arenaPlayers']>>;
  * @param rawPlayer result of an ethers.js contract call which returns a raw
  * `PlayerTypes.Player` struct, typed with typechain.
  */
-export function decodePlayer(rawPlayer: RawPlayer, rawArenaPlayer: RawArenaPlayer): Player {
+export function decodePlayer(rawPlayer: RawPlayer, rawArenaPlayer : RawArenaPlayer): Player {
   return {
     address: address(rawPlayer.player),
     initTimestamp: rawPlayer.initTimestamp.toNumber(),
@@ -26,7 +26,8 @@ export function decodePlayer(rawPlayer: RawPlayer, rawArenaPlayer: RawArenaPlaye
     spaceJunk: rawPlayer.spaceJunk.toNumber(),
     spaceJunkLimit: rawPlayer.spaceJunkLimit.toNumber(),
     claimedShips: rawPlayer.claimedShips,
-    moves: rawArenaPlayer.moves.toNumber()
-
+    moves: rawArenaPlayer.moves.toNumber(),
+    team: rawArenaPlayer.team.toNumber(),
+    ready: rawArenaPlayer.ready,
   };
 }

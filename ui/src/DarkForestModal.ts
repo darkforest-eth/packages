@@ -1,7 +1,7 @@
 import { css, html, LitElement, nothing, PropertyValues, unsafeCSS } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import * as dfstyles from './styles';
+import dfstyles, {zIndex} from './styles';
 
 type Coords = { x: number; y: number };
 type Contain = 'left' | 'right' | 'top' | 'bottom' | 'horizontal' | 'vertical';
@@ -59,7 +59,7 @@ export class DarkForestModal extends LitElement {
       display: flex;
       flex-direction: column;
       position: absolute;
-      z-index: ${unsafeCSS(dfstyles.zIndex.Modal)};
+      z-index: ${unsafeCSS(zIndex.Modal)};
       width: fit-content;
       height: fit-content;
       background: ${unsafeCSS(dfstyles.colors.background)};
@@ -167,11 +167,11 @@ export class DarkForestModal extends LitElement {
 
     // Adjust the zIndex if it changed
     if (changedProperties.has('index')) {
-      let zIndex = dfstyles.zIndex.Modal;
+      let idx = zIndex.Modal;
       if (this.index) {
-        zIndex += this.index;
+        idx += this.index;
       }
-      this.style.zIndex = zIndex;
+      this.style.zIndex = idx;
     }
 
     // Always try to update the position if any update was requested

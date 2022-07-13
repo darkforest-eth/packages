@@ -28,10 +28,12 @@ export const decodeArenaPlanet = decoders.exact({
   requireValidLocationId: decoders.boolean,
   isTargetPlanet: decoders.boolean,
   isSpawnPlanet: decoders.boolean,
+  blockedPlanetIds: decoders.array(decoders.string),
 });
-
-export type ArenaPlanets = ReturnType<typeof decodeArenaPlanets>;
 
 export const decodeArenaPlanets = decoders.guard(decoders.array(decodeArenaPlanet), {
   style: 'simple',
 });
+
+export type ArenaPlanets = ReturnType<typeof decodeArenaPlanets>;
+

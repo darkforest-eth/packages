@@ -75,3 +75,9 @@ export interface PerlinConfig {
    */
   floor: boolean;
 }
+
+
+/**
+ * Blocks move from one planet to another
+ */
+export type BlocklistMap = Map<LocationId, Map<LocationId, boolean>>;

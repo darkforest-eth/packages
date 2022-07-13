@@ -1,6 +1,6 @@
 import { css, html, LitElement, unsafeCSS } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import * as dfstyles from './styles';
+import dfstyles from './styles';
 
 export class DarkForestButton extends LitElement {
   // Not part of LitElement but let's tack on the tagName for easier registration
@@ -22,7 +22,7 @@ export class DarkForestButton extends LitElement {
         align-items: center;
         cursor: pointer;
         color: var(--df-button-color, ${unsafeCSS(dfstyles.colors.text)});
-        background-color: var(--df-button-background, ${unsafeCSS(dfstyles.colors.backgroundDark)});
+        background-color: var(--df-button-background, ${unsafeCSS(dfstyles.colors.backgrounddark)});
         padding: 2px 8px;
       }
 
@@ -30,8 +30,8 @@ export class DarkForestButton extends LitElement {
       .button:not(.disabled):active,
       .button:not(.disabled).forceActive {
         filter: brightness(80%);
-        color: ${unsafeCSS(dfstyles.colors.background)};
-        background: var(--df-button-hover-background, ${unsafeCSS(dfstyles.colors.text)});
+        color: ${unsafeCSS(dfstyles.colors.backgrounddark)};
+        background: var(--df-button-hover-background, ${unsafeCSS(dfstyles.colors.textLight)});
 
         /* Set the Icon color to a darker value on hover */
         --df-icon-color: ${unsafeCSS(dfstyles.colors.background)};
@@ -90,6 +90,13 @@ export class DarkForestButton extends LitElement {
         background: none;
         filter: none;
       }
+
+      .portal {
+        background: ${unsafeCSS(dfstyles.colors.textLight)};
+        color: #423F3F;
+        font-weight: 500;
+        border: 1px solid ${unsafeCSS(dfstyles.colors.borderDarker)};
+      }
     `,
   ];
 
@@ -112,7 +119,7 @@ export class DarkForestButton extends LitElement {
   // Properties defined above will have a getter/setter created on the component,
   // but we want to define their type and/or defaults on the component
   size: 'small' | 'medium' | 'large' | 'stretch' = 'medium';
-  variant: 'normal' | 'danger' = 'normal';
+  variant: 'normal' | 'portal' | 'danger' = 'normal';
   disabled = false;
   active = false;
 
@@ -126,6 +133,7 @@ export class DarkForestButton extends LitElement {
       disabled: this.disabled,
       forceActive: this.active,
       danger: this.variant === 'danger',
+      portal: this.variant === 'portal',
     };
     return html`<button class=${classMap(classes)} @click=${this._handleClick}>
       <slot></slot>

@@ -2,7 +2,7 @@ import { SpecialKey } from '@darkforest_eth/constants';
 import { css, html, nothing, unsafeCSS } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { DarkForestButton } from './DarkForestButton';
-import * as dfstyles from './styles';
+import dfstyles from './styles';
 
 export class ShortcutPressedEvent extends Event {
   constructor() {

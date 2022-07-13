@@ -41,6 +41,8 @@ export const engineConsts = {
       mineA: [255, 255, 255, 255] as RGBAVec,
       // Alpha version of `gold` above
       shipA: [255, 221, 48, 255] as RGBAVec,
+      help: [0, 255, 0] as RGBVec,
+      helpA: [0, 255, 0, 255] as RGBAVec,
     },
     bonus: {
       energyCap: hslToRgb([360, 73, 70]) as RGBVec,

@@ -38,7 +38,8 @@ export const ModalName = {
   ManageAccount: 'ManageAccount' as ModalName,
   Onboarding: 'Onboarding' as ModalName,
   Private: 'Private' as ModalName,
-  Survey: 'Survey' as ModalName
+  Survey: 'Survey' as ModalName,
+  WaitingRoom: 'WaitingRoom' as ModalName,
 };
 
 export type CursorState = Abstract<string, 'CursorState'>;
@@ -135,6 +136,7 @@ export const TooltipName = {
   Capturable: 'Capturable' as TooltipName,
   TargetPlanet: 'TargetPlanet' as TooltipName,
   SpawnPlanet: 'SpawnPlanet' as TooltipName,
+  Blocked: 'Blocked' as TooltipName,
   /**
    * So that you can render a tooltip without anything, and control its contents entirely via the
    * {@link TooltipTriggerProps#extraContent} prop field.

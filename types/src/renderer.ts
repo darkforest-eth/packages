@@ -9,6 +9,7 @@ import type { Chunk, WorldCoords } from './world';
 export interface PlanetRenderInfo {
   planet: LocatablePlanet;
   radii: Radii;
+  blocked: boolean;
 }
 
 export interface Radii {
