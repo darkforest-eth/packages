@@ -61,5 +61,5 @@ export interface ExtendedMatchEntry extends LiveMatchEntry {
     address: string;
   }[];
   configHash: string;
-  // spawnPlanets: number;
+  planets: { spawnPlanet: boolean }[];
 }
