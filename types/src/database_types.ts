@@ -43,7 +43,7 @@ export interface ArenaLeaderboardEntry {
 }
 
 export interface LiveMatch {
-  entries: LiveMatchEntry[];
+  entries: ExtendedMatchEntry[];
 }
 
 export interface LiveMatchEntry {
@@ -60,4 +60,6 @@ export interface ExtendedMatchEntry extends LiveMatchEntry {
   players?: {
     address: string;
   }[];
+  configHash: string;
+  // spawnPlanets: number;
 }
