@@ -45,6 +45,7 @@ export const Setting = {
   MiningCores: 'MiningCores' as Setting,
   ShowTutorial: 'ShowTutorial' as Setting,
   ShowSpectatorInfo: 'ShowSpectatorInfo' as Setting,
+  ShowArenaBriefing: 'ShowArenaBriefing' as Setting,
   IsMining: 'IsMining' as Setting,
   DisableDefaultShortcuts: 'DisableDefaultShortcuts' as Setting,
   ExperimentalFeatures: 'ExperimentalFeatures' as Setting,
