@@ -24,6 +24,7 @@ export class DarkForestButton extends LitElement {
         color: var(--df-button-color, ${unsafeCSS(dfstyles.colors.text)});
         background-color: var(--df-button-background, ${unsafeCSS(dfstyles.colors.backgrounddark)});
         padding: 2px 8px;
+        gap: 2px;
       }
 
       .button:not(.disabled):hover,
@@ -93,7 +94,7 @@ export class DarkForestButton extends LitElement {
 
       .portal {
         background: ${unsafeCSS(dfstyles.colors.textLight)};
-        color: #423F3F;
+        color: #423f3f;
         font-weight: 500;
         border: 1px solid ${unsafeCSS(dfstyles.colors.borderDarker)};
       }

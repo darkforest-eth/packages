@@ -1,3 +1,4 @@
+export * from './DarkForestBadge';
 export * from './DarkForestButton';
 export * from './DarkForestCheckbox';
 export * from './DarkForestColorInput';
