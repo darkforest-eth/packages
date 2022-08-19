@@ -212,6 +212,13 @@ export type UnconfirmedCreateLobby = TxIntent & {
 /**
  * @hidden
  */
+ export type UnconfirmedStartLobby = TxIntent & {
+  methodName: 'start';
+};
+
+/**
+ * @hidden
+ */
 export type UnconfirmedInvadePlanet = TxIntent & {
   methodName: 'invadePlanet';
   locationId: LocationId;
