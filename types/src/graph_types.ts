@@ -1,5 +1,9 @@
 import { BigNumber } from 'ethers';
 import { ExactArray10, ExactArray5, ExactArray8, Tuple6 } from './decoder-helpers';
+import { EthAddress } from './identifier';
+
+// All of these values are based on the subgraph schema in eth/subgraph/schema.graphql
+// They are used to type the Graph queries that are in the client/src/Backend/Network/GraphApi folder.
 
 export interface GraphConfig {
   // # CLAIM_PLANET_COOLDOWN,
@@ -93,4 +97,88 @@ export interface GraphArena {
   startTime: number;
   config: GraphConfig;
   planets: GraphPlanet[];
+}
+
+export interface MapInfo {
+  creator: EthAddress;
+  configHash: string;
+  lobbyAddress?: EthAddress;
+  startTime?: number;
+  winners?: EthAddress[];
+}
+
+export interface GraphConfigPlayer {
+  address: string;
+  elo: number;
+  wins: number;
+  losses: number;
+}
+
+export interface winners {
+  address: string;
+  moves: number;
+}
+
+export interface GraphArena {
+  winners: winners[];
+  creator: string;
+  duration: number | null;
+  endTime: number | null;
+  gameOver: boolean;
+  id: string;
+  startTime: number;
+  moves: number;
+}
+
+export interface BadgeSet {
+  startYourEngine: boolean;
+  nice: boolean;
+  based: boolean;
+  ouch: boolean;
+  wallBreaker: boolean; // Synthetic Value added after data is loaded.
+}
+
+export interface GrandPrixResult {
+  bestTime: number;
+  moves: number;
+  badges: BadgeSet;
+}
+
+export interface ConfigPlayer {
+  id: string;
+  address: string;
+  bestTime: {
+    duration: number;
+    winners: {
+      moves: number;
+    }[];
+  };
+  badge: BadgeSet;
+  configHash: string;
+  gamesStarted: number;
+}
+
+export interface SeasonPlayers {
+  [address: string]: GrandPrixResult[];
+}
+
+export interface SeasonScore {
+  player: string;
+  score: number;
+}
+
+export interface WallbreakerArena {
+  configHash: string;
+  winners: {
+    address: string;
+  }[];
+  lobbyAddress: string;
+  duration: number;
+}
+
+export interface Wallbreaker {
+  configHash: string;
+  player: string;
+  duration: number;
+  arenaAddress: string;
 }
