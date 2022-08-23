@@ -25,6 +25,7 @@
 
  export * from './arrival';
  export * from './artifact';
+ export * from './badges';
  export * from './capture_zones';
  export * from './claim';
  export * from './database_types';
@@ -33,6 +34,7 @@
  export * from './event';
  export * from './game_types';
  export * from './gas_prices';
+ export * from './grand_prix';
  export * from './graph_types';
  export * from './hat';
  export * from './identifier';

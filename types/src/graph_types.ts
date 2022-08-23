@@ -1,4 +1,5 @@
 import { BigNumber } from 'ethers';
+import { BadgeType } from './badges';
 import { ExactArray10, ExactArray5, ExactArray8, Tuple6 } from './decoder-helpers';
 import { EthAddress } from './identifier';
 
@@ -138,12 +139,6 @@ export interface BadgeSet {
   wallBreaker: boolean; // Synthetic Value added after data is loaded.
 }
 
-export interface GrandPrixResult {
-  bestTime: number;
-  moves: number;
-  badges: BadgeSet;
-}
-
 export interface ConfigPlayer {
   id: string;
   address: string;
@@ -152,20 +147,15 @@ export interface ConfigPlayer {
     winners: {
       moves: number;
     }[];
+    startTime: number;
+    endTime: number;
   };
   badge: BadgeSet;
   configHash: string;
   gamesStarted: number;
+  gamesFinished: number;
 }
 
-export interface SeasonPlayers {
-  [address: string]: GrandPrixResult[];
-}
-
-export interface SeasonScore {
-  player: string;
-  score: number;
-}
 
 export interface WallbreakerArena {
   configHash: string;
@@ -176,9 +166,4 @@ export interface WallbreakerArena {
   duration: number;
 }
 
-export interface Wallbreaker {
-  configHash: string;
-  player: string;
-  duration: number;
-  arenaAddress: string;
-}
+
