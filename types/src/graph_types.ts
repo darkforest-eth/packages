@@ -106,6 +106,7 @@ export interface MapInfo {
   lobbyAddress?: EthAddress;
   startTime?: number;
   winners?: EthAddress[];
+  planets: string[]; 
 }
 
 export interface GraphConfigPlayer {
