@@ -114,7 +114,7 @@ export class EthConnection {
     this.myBalance$ = monomitter(true);
     this.gasPrices$ = monomitter();
     this.rpcChanged$.publish(provider.connection.url);
-    this.startPolling();
+    // this.startPolling();
   }
 
   private async reloadContracts(): Promise<void> {
