@@ -173,16 +173,20 @@ export interface LiveMatchEntry {
   };
   id: string;
   startTime: number;
+  endTime: number;
   twitter?: string;
 }
 
 export interface ExtendedMatchEntry extends LiveMatchEntry {
   creator: EthAddress;
+  lobbyAddress: EthAddress;
   players?: {
     address: string;
   }[];
   configHash: string;
   planets: { spawnPlanet: boolean }[];
+  gameOver: boolean;
+  duration: number;
 }
 
 export interface LiveMatch {
