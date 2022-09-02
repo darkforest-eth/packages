@@ -167,4 +167,26 @@ export interface WallbreakerArena {
   duration: number;
 }
 
+export interface LiveMatchEntry {
+  firstMover: {
+    address: string;
+  };
+  id: string;
+  startTime: number;
+  twitter?: string;
+}
+
+export interface ExtendedMatchEntry extends LiveMatchEntry {
+  creator: EthAddress;
+  players?: {
+    address: string;
+  }[];
+  configHash: string;
+  planets: { spawnPlanet: boolean }[];
+}
+
+export interface LiveMatch {
+  entries: ExtendedMatchEntry[];
+}
+
 
