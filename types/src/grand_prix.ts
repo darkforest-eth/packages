@@ -1,5 +1,7 @@
+import { BigNumber } from "ethers";
 import { BadgeType } from "./badges";
 import { BadgeSet } from "./graph_types";
+import { EthAddress } from "./identifier";
 
  export interface SeasonHistory {
   seasonId: number;
@@ -60,4 +62,20 @@ export interface GrandPrixResult {
   bestTime: number;
   moves: number;
   badges: BadgeSet;
+}
+
+export interface GrandPrixMetadata {
+  seasonId: number;
+  configHash: string;
+  startTime: number;
+  endTime: number;
+  parentAddress: EthAddress;
+}
+
+export interface RegistryResponse {
+  configHash: string;
+  startTime: BigNumber;
+  endTime: BigNumber;
+  parentAddress: string;
+  seasonId: BigNumber;
 }
